@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Migräne</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --card2: #f1f3f5;
+    --a1: #7b2d8b;    /* lila – Neurologie */
+    --a2: #1971c2;    /* blau – Diagnostik */
+    --a3: #2f9e44;    /* grün – Therapie */
+    --a4: #c92a2a;    /* rot – Notfall/SAB */
+    --warn: #e67700;
+    --text: #212529;
+    --muted: #868e96;
+    --border: #dee2e6;
+    --light-purple: #f8f0ff;
+    --light-blue: #e8f0ff;
+    --light-green: #ebfbee;
+    --light-red: #fff5f5;
+    --light-orange: #fff9db;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-weight: 400; line-height: 1.7; padding: 2rem 1rem; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border); }
+  .header h1 { font-family: 'Inter', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--a1); letter-spacing: -1px; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+  .timer-badge { display: inline-block; background: var(--a1); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 0.8rem; }
+
+  .ch-header { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0 1.2rem; padding: 0.9rem 1.2rem; border-radius: 10px; }
+  .ch-purple { background: var(--light-purple); border-left: 5px solid var(--a1); }
+  .ch-blue   { background: var(--light-blue);   border-left: 5px solid var(--a2); }
+  .ch-green  { background: var(--light-green);  border-left: 5px solid var(--a3); }
+  .ch-red    { background: var(--light-red);     border-left: 5px solid var(--a4); }
+  .ch-orange { background: var(--light-orange);  border-left: 5px solid var(--warn); }
+  .ch-num { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 800; opacity: 0.2; }
+  .ch-purple .ch-num { color: var(--a1); } .ch-blue .ch-num   { color: var(--a2); }
+  .ch-green .ch-num  { color: var(--a3); } .ch-red .ch-num    { color: var(--a4); }
+  .ch-orange .ch-num { color: var(--warn); }
+  .ch-t h2 { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 800; line-height: 1.1; }
+  .ch-purple .ch-t h2 { color: var(--a1); } .ch-blue .ch-t h2   { color: var(--a2); }
+  .ch-green .ch-t h2  { color: var(--a3); } .ch-red .ch-t h2    { color: var(--a4); }
+  .ch-orange .ch-t h2 { color: var(--warn); }
+  .ch-t p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 10px; padding: 1.4rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .card h3 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--a1); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light-purple); }
+  .card h3.bl { color: var(--a2); border-color: var(--light-blue); }
+  .card h3.gn { color: var(--a3); border-color: var(--light-green); }
+  .card h3.rd { color: var(--a4); border-color: var(--light-red); }
+  .card h3.or { color: var(--warn); border-color: var(--light-orange); }
+  .card h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); padding: 0.15rem 0.6rem; border-radius: 4px; font-size: 0.77rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: var(--card2); color: var(--text); }
+  .tag.pu { background: var(--light-purple); border-color: #d090f0; color: #5a0a7a; }
+  .tag.bl { background: var(--light-blue);   border-color: #90baf0; color: #0d3a7a; }
+  .tag.gn { background: var(--light-green);  border-color: #8ce99a; color: #1b4a22; }
+  .tag.rd { background: var(--light-red);    border-color: #ffa8a8; color: var(--a4); }
+  .tag.or { background: var(--light-orange); border-color: #ffd43b; color: #7a3800; }
+  .tag.gr { background: #f8f9fa;             border-color: #ced4da; color: #495057; }
+
+  .fb { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #343a40; }
+  .fb.bl { border-left-color: var(--a2); }
+  .fb.gn { border-left-color: var(--a3); }
+  .fb.rd { border-left-color: var(--a4); }
+  .fb.or { border-left-color: var(--warn); }
+  .fb .cm { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hli { color: var(--a2);  font-weight: 600; }
+  .hlg { color: var(--a3);  font-weight: 600; }
+  .hlr { color: var(--a4);  font-weight: 600; }
+  .hlo { color: var(--warn);font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: var(--card2); padding: 0.5rem 0.8rem; text-align: left; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 2px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8f9fa; }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-pu { background: var(--light-purple); color: #5a0a7a; }
+  .badge-bl { background: var(--light-blue);   color: #0d3a7a; }
+  .badge-gn { background: var(--light-green);  color: #1b4a22; }
+  .badge-rd { background: var(--light-red);    color: var(--a4); }
+  .badge-or { background: var(--light-orange); color: #7a3800; }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0 1rem; }
+  .sdiv span { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: var(--light-orange); border: 1px solid #ffd43b; border-left: 3px solid var(--warn); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #664d00; }
+  .wbox strong { color: #b35900; }
+  .ebox { background: var(--light-red);    border: 1px solid #ffa8a8; border-left: 3px solid var(--a4); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #6b1010; }
+  .ebox strong { color: var(--a4); }
+  .gbox { background: var(--light-green);  border: 1px solid #8ce99a; border-left: 3px solid var(--a3); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #1b4a22; }
+  .gbox strong { color: #2b7a3d; }
+  .bluebox { background: var(--light-blue); border: 1px solid #90baf0; border-left: 3px solid var(--a2); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #0d3a7a; }
+  .purpbox { background: var(--light-purple); border: 1px solid #d090f0; border-left: 3px solid var(--a1); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #5a0a7a; }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: var(--a1); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .snum.gn { background: var(--a3); }
+  .snum.rd { background: var(--a4); }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; font-weight: 600; }
+  .pt-table td:nth-child(3) { color: #2b7a3d; font-size: 0.83rem; }
+  .pt-table td:nth-child(4) { color: #7a3800; font-size: 0.81rem; font-style: italic; }
+
+  .dd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 0.6rem; }
+  .dd-col { padding: 0.9rem 1rem; font-size: 0.83rem; }
+  .dd-col:first-child { background: var(--light-purple); border-right: 1px solid var(--border); }
+  .dd-col:last-child  { background: var(--light-red); }
+  .dd-col h4 { font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .dd-col:first-child h4 { color: var(--a1); }
+  .dd-col:last-child h4  { color: var(--a4); }
+  .dd-col li { list-style: none; padding: 0.12rem 0; }
+  .dd-col li::before { content: "·  "; color: var(--muted); }
+
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: 1fr; }
+    .dd-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Migräne</h1>
+  <div class="sub">Hemikranie · Pulsierend · Aura · Triptane · SAB ausschließen! · FSP Leitfaden</div>
+  <div class="timer-badge">⏱ 20 Min. Arztbrief · 20 Min. AA-Gespräch</div>
+</div>
+
+
+<!-- KAPITEL 1: LEITSYMPTOME -->
+<div class="ch-header ch-purple">
+  <div class="ch-num">01</div>
+  <div class="ch-t">
+    <h2>Leitsymptome &amp; typischer Patient</h2>
+    <p>Pulsierend · einseitig · Übelkeit · Licht-/Lärmempfindlichkeit · Aura</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Diagnosekriterien (ICD-10) – auswendig kennen!</h3>
+    <h4>Typische Migränesymptome – mind. 2 von 4</h4>
+    <span class="tag pu">Einseitige Lokalisation (Hemikranie)</span>
+    <span class="tag pu">Pulsierender / hämmernder Charakter</span>
+    <span class="tag pu">Mittlere bis starke Intensität (6–9/10)</span>
+    <span class="tag pu">Verstärkung durch Bewegung / Treppensteigen</span>
+
+    <h4>Begleitsymptome – mind. 1 von 2</h4>
+    <span class="tag pu">Übelkeit (Nausea) und/oder Erbrechen (Emesis)</span>
+    <span class="tag pu">Photophobie UND Phonophobie</span>
+
+    <h4>Aura (bei Migräne mit Aura)</h4>
+    <span class="tag bl">Flimmerskotom (häufigste Aura!)</span>
+    <span class="tag bl">Lichtblitze (Fotopsien)</span>
+    <span class="tag bl">Fortifikationsspektren (Zickzack-Linien)</span>
+    <span class="tag bl">Sensibilitätsstörungen (einseitig)</span>
+    <span class="tag bl">Aphasie (vorübergehend)</span>
+    <span class="tag bl">Dauer: &lt;60 Minuten! → sonst DD SAB/TIA!</span>
+
+    <h4>Zeitverlauf</h4>
+    <span class="tag gr">Dauer: 4–72 Stunden</span>
+    <span class="tag gr">Langsam zunehmend (kein Donnerschlag!)</span>
+    <span class="tag gr">Wiederholte Episoden (≥5 Attacken für Diagnose)</span>
+    <span class="tag gr">Bekannte Migräne-Anamnese (wichtig!)</span>
+
+    <div class="purpbox">
+      <strong>Aura ≠ Prodromi!</strong> Freiburg fragte: „Hat der Patient Vorzeichen?" → Aura tritt während oder kurz vor dem Anfall auf (&lt;60 Min.), nicht Tage vorher. Prodromi = Vorboten 1–2 Tage vorher (Stimmungsveränderung, Gähnen, Heißhunger).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Typischer Prüfungspatient</h3>
+    <div style="background:var(--light-purple);border:1px solid #d090f0;border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.9;margin-bottom:0.8rem">
+      · <strong>Elke/Paul/Johannes Kovermann</strong>, 35–39 J.<br>
+      · <span style="color:var(--a1)">Seit 2 Tagen pulsierender, linksseitiger Kopfschmerz (NRS 8/10)</span><br>
+      · <span style="color:var(--a1)">Übelkeit + 2× Erbrechen</span><br>
+      · <span style="color:var(--a1)">Phonophobie + Photophobie</span><br>
+      · Aura: Lichtblitze / Flimmerskotom<br>
+      · Bekannte Migräne seit Jahren<br>
+      · Triptan bekannt – <span style="color:var(--a1)">dieses Mal nicht eingenommen</span><br>
+      · <span style="color:var(--warn)">Mutter an Hirntumor gestorben → große Angst!</span><br>
+      · Vater leidet an Demenz<br>
+      · TVT in der Vorgeschichte<br>
+      · Laktoseintoleranz<br>
+      · <span style="color:var(--a1)">Geschieden, 4 Kinder, viel Stress (Immobilienmakler/in)</span>
+    </div>
+    <h4>Triggerfaktoren – immer fragen!</h4>
+    <span class="tag or">Stress (häufigster Trigger!)</span>
+    <span class="tag or">Schlafmangel / Schlafveränderung</span>
+    <span class="tag or">Alkohol (Rotwein!)</span>
+    <span class="tag or">Hormonelle Veränderungen (Menstruation)</span>
+    <span class="tag or">Bestimmte Nahrungsmittel (Käse, Schokolade)</span>
+    <span class="tag or">Wetterwechsel</span>
+    <span class="tag or">Flimmerndes Licht, Lärm</span>
+    <div class="wbox">
+      <strong>TVT in der Anamnese!</strong> → Kontraindikation für kombinierte orale Kontrazeptiva (Pille). Auch: Triptane KI bei pAVK, KHK, Hypertonie, Z.n. Schlaganfall. Bei TVT → Triptane vorsichtig!
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 2: DD-TABELLE -->
+<div class="ch-header ch-red">
+  <div class="ch-num">02</div>
+  <div class="ch-t">
+    <h2>Differentialdiagnosen – Notfall ausschließen!</h2>
+    <p>SAB · Meningitis · Hirntumor · Cluster-Kopfschmerz · Spannungskopfschmerz</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="rd">DD-Tabelle: Migräne vs. gefährliche Ursachen</h3>
+    <table>
+      <tr><th>Diagnose</th><th>Typisch</th><th>Ausschluss</th><th>Alarmsymptom</th></tr>
+      <tr><td><strong style="color:var(--a4)">SAB ⚡</strong></td><td>Vernichtungskopfschmerz (Donnerschlagkopfschmerz) – plötzlich, maximal in Sekunden!</td><td>CT Schädel nativ + Liquorpunktion (bei neg. CT!)</td><td>Schwerster KS je erlebt, Nackensteifigkeit, Bewusstlosigkeit</td></tr>
+      <tr><td><strong style="color:var(--a4)">Meningitis ⚡</strong></td><td>Nackensteifigkeit, Fieber, Lichtempfindlichkeit, Petechien</td><td>Nackensteifigkeit prüfen! Lumbalpunktion, Fieber ausschließen</td><td>Fieber + Nackenstarre + Petechien = Notfall!</td></tr>
+      <tr><td><strong style="color:var(--warn)">Hirntumor</strong></td><td>Nachtschmerz, zunehmend, Nüchternerbrechen, fokal-neurologische Ausfälle, papilläres Ödem</td><td>MRT Schädel mit KM (besser als CT!)</td><td>Progressiv schlimmer werdende KS, besonders morgens</td></tr>
+      <tr><td><strong style="color:var(--warn)">TIA / Schlaganfall</strong></td><td>Fokal-neurologische Ausfälle (Parese, Aphasie), kein KS obligat</td><td>CCT / MRT + DWI (Diffusionsgewichtung)</td><td>Plötzlich, Ausfälle &gt;60 Min.</td></tr>
+      <tr><td><strong style="color:var(--a1)">Cluster-KS</strong></td><td>Streng einseitig periorbital, sehr kurz (15–180 Min.), Tränen, rotes Auge, Rhinorrhö, nachts</td><td>Anamnese (Attackendauer!)</td><td>Auge rot, Tränen, Horner-Syndrom</td></tr>
+      <tr><td><strong style="color:var(--a1)">Spannungs-KS</strong></td><td>Beidseitig, drückend (kein Pulsieren!), leicht bis mittelgradig, kein Erbrechen</td><td>Anamnese (Charakter, Beidseitigkeit)</td><td>–</td></tr>
+    </table>
+
+    <div class="ebox">
+      <strong>⚠️ Donnerschlagkopfschmerz = SAB bis Beweis des Gegenteils!</strong> Maximaler Schmerz der jemals erlebt, Beginn in Sekunden → sofort CT Schädel nativ! Migräne beginnt langsam (langsam zunehmend). Freiburg fragte: „Wann denken Sie an SAB?"
+    </div>
+
+    <div class="wbox" style="margin-top:0.8rem">
+      <strong>Nackensteifigkeit ausschließen = Meningitis ausschließen!</strong> Freiburg fragte explizit: „Wie können Sie in der Anamnese Meningitis ausschließen?" → Fieber verneint? Nackensteifigkeit verneint? → wenn ja: Meningitis unwahrscheinlich. Lumbalpunktion bei Verdacht.
+    </div>
+
+    <div class="bluebox" style="margin-top:0.8rem">
+      <strong>MRT besser als CT bei Hirntumor? (Freiburg fragte!)</strong> MRT: höhere Weichteilauflösung, besser für Hirnparenchym, Läsionen, Metastasen, keine Strahlung. CT: schneller, gut bei akuten Blutungen (SAB → immer CT zuerst!).
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 3: ARZTBRIEF -->
+<div class="ch-header ch-blue">
+  <div class="ch-num">03</div>
+  <div class="ch-t">
+    <h2>Arztbrief-Template</h2>
+    <p>Vollständig · VD · DD · Diagnostik · Akut- und Prophylaxetherapie</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="bl">Arztbrief: Migräne</h3>
+
+    <h4>Aktuelle Beschwerden</h4>
+    <div class="fb">
+Frau/Herr Kovermann, eine/ein [Alter]-jährige/r Patientin/Patient,
+stellte sich bei uns wegen <span class="hl">seit 2 Tagen bestehender, plötzlich
+aufgetretener, pulsierender, linksseitiger Cephalgie</span>
+(NRS 8/10) vor.<br><br>
+Die Beschwerden seien von <span class="hl">Nausea, zweimaligem Erbrechen,
+Phonophobie und Photophobie</span> begleitet.<br>
+Zusätzlich berichtete die Patientin über
+<span class="hl">Flimmerskotom / Lichtblitze</span> während des Anfalls
+(= Migräne-Aura).<br><br>
+Es sei <span class="hl">nicht das erste Mal</span> – ähnliche Beschwerden seien
+bekannt. Früher habe Triptan geholfen, jedoch habe sie es dieses Mal
+<span class="hl">nicht eingenommen</span>, da sie aufgrund der Familiengeschichte
+(Mutter an Hirntumor verstorben) besorgt sei und eine Untersuchung wünsche.<br><br>
+<span class="cm">// Verneinte Alarmsymptome:</span><br>
+Fieber, <span class="hl">Nackensteifigkeit</span>, Bewusstlosigkeit,
+fokal-neurologische Ausfälle, Gewichtsabnahme wurden verneint.
+    </div>
+
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: Migräne mit Aura</span><br>
+(Einseitig, pulsierend, NRS 8/10, Übelkeit + Erbrechen,
+Phonophobie + Photophobie, Aura: Flimmerskotom,
+Verstärkung durch Bewegung, bekannte Vorgeschichte, Triptan-Ansprechen)<br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlr">Subarachnoidalblutung (SAB)</span>
+  – Donnerschlagkopfschmerz (maximal in Sekunden), Nackensteifigkeit;
+  hier: langsam zunehmend → eher gegen SAB, aber ausschließen!<br>
+· <span class="hlr">Meningitis</span>
+  – Fieber + Nackensteifigkeit + Petechien; hier verneint<br>
+· <span class="hlo">Hirntumor</span>
+  – Nachtschmerz, progressiv, Nüchternerbrechen, Papillenödem;
+  Mutter an Hirntumor → MRT Schädel veranlassen!<br>
+· <span class="hlo">Cluster-Kopfschmerz</span>
+  – periorbital, kurze Attacken (15–180 Min.), autonome Symptome<br>
+· <span class="hlo">Spannungskopfschmerz</span>
+  – beidseitig, drückend, kein Erbrechen
+    </div>
+
+    <h4>Diagnostik</h4>
+    <div class="fb bl">
+· <span class="hli">Neurologische Untersuchung</span>:
+  Hirnnervenstatus, Nackensteifigkeit (Meningismus!),
+  trigeminale Nervenaustrittspunkte, Reflexe, Koordination,
+  Blutdruck messen<br>
+· Labor: BB, CRP, BSG, Elektrolyte
+  <span class="cm">// bei Migräne meist unauffällig – dient dem Ausschluss!</span><br>
+· <span class="hli">MRT Schädel</span>: wegen FA (Mutter Hirntumor!) → Tumor ausschließen
+  <span class="cm">// MRT besser als CT für Weichteile/Hirntumor; CT besser für akute Blutung (SAB)</span><br>
+· Bei Verdacht auf SAB: <span class="hli">CT nativ + Lumbalpunktion</span>
+  (wenn CT negativ, aber Verdacht bleibt)<br>
+· Migränetagebuch empfehlen (Trigger dokumentieren)
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb gn">
+<span class="hlg">Sofortmaßnahmen (immer!):</span><br>
+· Reizabschirmung: ruhiger, dunkler Raum<br>
+· Körperliche Schonung<br>
+· Kühlung von Stirn / Schläfen<br>
+· Ausreichend Flüssigkeit<br><br>
+<span class="hlg">Akuttherapie – leicht bis mittelgradig:</span><br>
+· <span class="hlg">NSAR: ASS 1000 mg, Ibuprofen 600–800 mg, Diclofenac</span><br>
+· ASS + Paracetamol + Koffein (Kombinationspräparat)<br><br>
+<span class="hlg">Akuttherapie – mittelgradig bis schwer (1. Wahl!):</span><br>
+· <span class="hlg">Triptane: Sumatriptan, Eletriptan</span>
+  (5-HT1-Agonist → Vasokonstriktion + Entzündungshemmung)<br>
+· Sumatriptan s.c. = schnellste Wirkung!<br>
+· <span class="hlr">KI für Triptane: KHK, pAVK, aHT, Z.n. Schlaganfall/TIA, Schwangerschaft</span><br><br>
+<span class="hlg">Bei Übelkeit/Erbrechen (immer zusätzlich!):</span><br>
+· <span class="hlg">Metoclopramid</span> (MCP) p.o. oder i.v. / Domperidon<br><br>
+<span class="hlg">Prophylaxe (Indikation: ≥3 Attacken/Monat):</span><br>
+· <span class="hlg">1. Wahl: Betablocker (Propranolol, Metoprolol)</span><br>
+· Alternative: Amitriptylin, Flunarizin, Topiramat, Valproinsäure<br>
+· Anti-CGRP-Antikörper (bei Versagen der klassischen Prophylaxe)<br>
+· Botulinumtoxin A: bei chronischer Migräne<br><br>
+<span class="hlg">Nicht-medikamentöse Prophylaxe:</span><br>
+· Ausdauersport (3×/Woche), Stressreduktion<br>
+· Migränetagebuch (Trigger identifizieren!)<br>
+· Entspannungsverfahren / Verhaltenstherapie
+    </div>
+
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler aus den Fällen:</strong><br>
+      – Betablocker als Akuttherapie genannt → FALSCH! Betablocker = Prophylaxe!<br>
+      – TVT in Anamnese → Pille kontraindiziert! (Prüfer Freiburg fragte nach Pille und Menses)<br>
+      – MRT vs. CT nicht unterschieden → Prüfer fragte explizit warum MRT besser<br>
+      – Metoclopramid als Antiemetikum nicht erwähnt → Karlsruhe fragte: „Welches Antiemetikum?"<br>
+      – Nackensteifigkeit in Anamnese nicht explizit ausgeschlossen
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 4: AA-GESPRÄCH -->
+<div class="ch-header ch-green">
+  <div class="ch-num">04</div>
+  <div class="ch-t">
+    <h2>AA-Gespräch &amp; Prüfungsfragen</h2>
+    <p>Direkt aus Freiburg · Karlsruhe · Stuttgart · echte Prüfungsfragen</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Patientenvorstellung – 5 Schritte</h3>
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="scont"><strong>Leitsymptom sofort!</strong>
+      „Ich möchte Ihnen Frau Kovermann vorstellen, eine 39-jährige Immobilienmaklerin, die sich wegen <span class="hl">seit 2 Tagen bestehender, pulsierender, linksseitiger Cephalgie (NRS 8/10) mit Übelkeit, Erbrechen und Photophobie</span> bei uns vorgestellt hat."
+      <br><em style="color:var(--muted);font-size:0.8rem">Stuttgart: „Ist das Geburtsdatum relevant? Sagen Sie mir warum der Patient kam!"</em></div>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="scont"><strong>Aura + Vorgeschichte</strong>
+      „Begleitend berichtete die Patientin über <span class="hl">Flimmerskotom</span> (Migräne-Aura). Ähnliche Episoden seien bekannt, normalerweise hilft Triptan – dieses Mal nicht eingenommen."</div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="scont"><strong>Alarmsymptome verneint</strong>
+      „<span class="hl">Fieber, Nackensteifigkeit, Bewusstseinsverlust und fokal-neurologische Ausfälle wurden verneint</span> → Meningitis und SAB eher unwahrscheinlich."</div>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="scont"><strong>Risikofaktoren</strong>
+      „Relevante Vorgeschichte: <span class="hl">TVT</span> (→ Triptane vorsichtig, Pille KI!), Laktoseintoleranz, <span class="hlo">Mutter an Hirntumor verstorben</span> → MRT veranlasst."</div>
+    </div>
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="scont"><strong>Procedere</strong>
+      „Ich habe <span class="hli">neurologische Untersuchung, Labor, MRT Schädel</span> veranlasst und als Akuttherapie <span class="hlg">Triptan + Metoclopramid</span> eingeleitet. Prophylaxe mit <span class="hlg">Propranolol</span> besprochen."</div>
+    </div>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th><th>Stadt</th></tr>
+      <tr><td>VD und warum Migräne?</td><td>Einseitig + pulsierend + NRS 8/10 + Übelkeit + Erbrechen + Photophobie + Phonophobie + bekannte Vorgeschichte + Triptan-Ansprechen → klassische Migräne-Kriterien erfüllt</td><td>Alle</td></tr>
+      <tr><td>Hat der Patient Aura? Was ist Aura? (Freiburg!)</td><td>Aura = reversible fokale neurologische Symptome &lt;60 Min., meist visuell: Flimmerskotom, Lichtblitze, Fortifikationsspektren. NICHT Prodromi (Tage vorher)! Aura tritt kurz vor / während Anfall auf.</td><td>Freiburg 04/2025</td></tr>
+      <tr><td>Was ist typisch für Migräne? (Freiburg!)</td><td><strong>Pulsierend / hämmernder Charakter</strong> + einseitig + Übelkeit + Licht/Lärmempfindlichkeit + Verstärkung durch Bewegung</td><td>Freiburg</td></tr>
+      <tr><td>Was ist Flimmerskotom?</td><td>Häufigste Migräne-Aura: bewegliches Flimmern im Gesichtsfeld, von zentral nach peripher wandernd, oft mit Zickzack-Linien (Fortifikationsspektren). Binokular! Dauer &lt;60 Min.</td><td>Freiburg</td></tr>
+      <tr><td>Wann denken Sie an SAB? (Freiburg!)</td><td><strong>Donnerschlagkopfschmerz</strong>: maximaler Schmerz jemals erlebt, beginnt in Sekunden. + Nackensteifigkeit, Bewusstlosigkeit, fokal-neurol. Ausfälle. → Sofort CT nativ!</td><td>Freiburg</td></tr>
+      <tr><td>Wie Meningitis ausschließen? (Freiburg + Karlsruhe!)</td><td>Anamnese: Fieber verneint? Nackensteifigkeit verneint? KU: Meningismus prüfen (Nackensteifigkeit, Kernig, Brudzinski). Labor: CRP, Leukozytose. Ggf. Lumbalpunktion.</td><td>Freiburg + Karlsruhe</td></tr>
+      <tr><td>MRT oder CT? Warum MRT besser? (Freiburg!)</td><td>MRT: besser für Weichteile, Hirntumoren, Demyelinisierung, keine Strahlung. CT: schneller, besser für akute Blutungen (SAB → CT nativ zuerst!). Bei V.a. Hirntumor → MRT mit KM.</td><td>Freiburg</td></tr>
+      <tr><td>Prophylaxe – Betablocker ohne Schmerzen? Warum? (Freiburg!)</td><td>Betablocker (Propranolol, Metoprolol) = medikamentöse Prophylaxe, nicht Akuttherapie! Indikation: ≥3 Attacken/Monat, lange Attacken, schlechtes Ansprechen auf Akuttherapie. Täglich einnehmen um Häufigkeit zu reduzieren.</td><td>Freiburg + Karlsruhe</td></tr>
+      <tr><td>Welches Antiemetikum? (Karlsruhe!)</td><td><strong>Metoclopramid</strong> (MCP) = 1. Wahl. Wirkt auf Dopaminrezeptoren im ZNS, verbessert gleichzeitig Magenentleerung. Alternative: Domperidon. Vor oder zusammen mit Analgetikum geben!</td><td>Karlsruhe 02/2024</td></tr>
+      <tr><td>Unterschied Migräne vs. Spannungskopfschmerz vs. Cluster?</td><td>Migräne: einseitig, pulsierend, Übelkeit, Licht/Lärm. Spannungs-KS: beidseitig, drückend, kein Erbrechen. Cluster: streng periorbital, sehr kurz, autonome Sympt. (rotes Auge, Tränen), nachts</td><td>Alle</td></tr>
+      <tr><td>Können Lumbalpunktion veranlassen? (Freiburg!)</td><td>Bei V.a. SAB, wenn CT negativ → Lumbalpunktion (Xanthochromie = gelbliche Verfärbung des Liquors → SAB!). Auch bei V.a. Meningitis → Erregernachweis.</td><td>Freiburg</td></tr>
+      <tr><td>Was ist Opisthotonus? (Freiburg!)</td><td>Stärkste Form des Meningismus: maximale Überstreckung von Kopf und Rücken durch Nackensteifigkeit → Zeichen schwerer Meningitis</td><td>Freiburg</td></tr>
+      <tr><td>Prostatabeschwerden in diesem Alter ungewöhnlich? (Freiburg!)</td><td>Ja – Prostatahyperplasie typisch ab 50 J. Bei 35-jährigem Mann → ungewöhnlich → Prostatitis? PSA bestimmen, urologisches Konsil</td><td>Freiburg</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- KAPITEL 5: EMPATHIE -->
+<div class="full">
+  <div class="card">
+    <h3>Typische Patientenreaktionen – Musterantworten</h3>
+    <div class="fb gn">
+<span class="cm">// Direkt aus den echten Fällen!</span><br><br>
+🧑 „Ich habe Angst, dass ich wie meine Mutter einen Hirntumor habe!"<br>
+→ <span class="hlg">„Ich kann gut verstehen, dass Sie sich Sorgen machen – das ist vollkommen verständlich angesichts der Geschichte Ihrer Mutter. Das Bild, das mir die Anamnese gibt, passt eher zu einer Migräne. Aber damit Sie mit Sicherheit nach Hause gehen, machen wir eine Bildgebung – ein MRT – die einen Tumor ausschließt."</span><br>
+<em class="cm">Stuttgart: Patient unterbrach „Sagen Sie mir nicht, ich soll mir keine Sorgen machen!" → Antwort umformulieren, persönlicher werden!</em><br><br>
+🧑 „Kann Migräne zu einem Hirntumor führen?" (Freiburg!)<br>
+→ <span class="hlg">„Nein – Migräne ist eine eigenständige neurologische Erkrankung und entwickelt sich nicht in einen Tumor. Ihr erhöhtes Risiko kommt aus der Familiengeschichte, nicht von der Migräne selbst."</span><br><br>
+🧑 „Könnte das Demenz sein, wie bei meinem Vater?"<br>
+→ <span class="hlg">„Demenz verursacht keine solchen plötzlichen, heftigen Kopfschmerzen. Die Symptome, die Sie beschreiben, passen nicht zu Demenz – dafür gibt es keine Hinweise."</span><br><br>
+🧑 „Ich kann so nicht weitermachen! Ich will nicht einfach nach Hause mit 'Migräne'." (Stuttgart!)<br>
+→ <span class="hlg">„Das verstehe ich. Deshalb bleiben Sie noch ein paar Stunden hier bei uns – wir machen eine Bildgebung und Blutabnahme. Erst wenn wir alle anderen Ursachen ausgeschlossen haben und Sie sich besser fühlen, entlassen wir Sie."</span><br><br>
+🧑 Patient kommt unruhig, unterbricht sofort: „Ohh Frau Doktor, ich habe sehr sehr heftige Kopfschmerzen!" (Freiburg!)<br>
+→ <span class="hlg">„Es tut mir leid, dass die Schmerzen so stark sind. Darf ich mich zuerst kurz vorstellen und Ihre persönlichen Daten aufnehmen – dann kann ich Ihnen am besten helfen."</span>
+→ Prüfer waren damit sehr zufrieden!
+    </div>
+  </div>
+</div>
+
+
+<!-- PATIENTENSPRACHE -->
+<div class="ch-header ch-orange">
+  <div class="ch-num">06</div>
+  <div class="ch-t">
+    <h2>Fachbegriffe → Patientensprache</h2>
+    <p>Wie erkläre ich dem Patienten seine Diagnose und Therapie?</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="or">Übersetzungstabelle</h3>
+    <table class="pt-table">
+      <tr><th>Fachbegriff</th><th>Medizinisch</th><th>Patientensprache</th><th>Patientenfrage</th></tr>
+      <tr><td><strong>Migräne</strong></td><td>Neurologische Erkrankung mit rezidivierenden einseitigen pulsierenden KS</td><td>„Eine neurologische Erkrankung, bei der bestimmte Nervenbahnen im Gehirn überaktiv werden und starke einseitige Kopfschmerzen mit Übelkeit und Lichtempfindlichkeit auslösen."</td><td>„Was habe ich?"</td></tr>
+      <tr><td><strong>Migräne-Aura</strong></td><td>Reversible fokale neurol. Symptome &lt;60 Min.</td><td>„Kurz vor oder während des Anfalls können Sehstörungen auftreten – zum Beispiel Flimmern oder Lichtblitze. Das geht nach spätestens einer Stunde weg und ist nicht gefährlich."</td><td>–</td></tr>
+      <tr><td><strong>Flimmerskotom</strong></td><td>Bewegliches Flimmern im Gesichtsfeld</td><td>„Ein Flimmern oder Zackenmuster im Blickfeld, das sich langsam nach außen bewegt. Das ist ein typisches Zeichen der Migräne-Aura."</td><td>–</td></tr>
+      <tr><td><strong>Triptan (Sumatriptan)</strong></td><td>5-HT1B/D-Agonist, Vasokonstriktor</td><td>„Ein spezielles Medikament gegen Migräne, das die überaktiven Nervenbahnen beruhigt und die erweiterten Blutgefäße im Kopf wieder verengt. Es wirkt schnell und zuverlässig."</td><td>„Warum bekomme ich dieses Medikament?"</td></tr>
+      <tr><td><strong>Prophylaxe (Propranolol)</strong></td><td>Betablocker zur Reduktion der Attackenfrequenz</td><td>„Ein Medikament, das Sie täglich einnehmen – auch wenn Sie keine Schmerzen haben. Es senkt die Häufigkeit der Anfälle, verhindert sie aber nicht vollständig."</td><td>„Warum muss ich Tabletten nehmen, wenn ich keine Schmerzen habe?"</td></tr>
+      <tr><td><strong>MRT</strong></td><td>Magnetresonanztomographie</td><td>„Eine Untersuchung ohne Strahlen, die sehr genaue Bilder des Gehirns liefert. Sie liegen in einer Röhre und hören ein lautes Geräusch – das ist normal. Wir können damit einen Tumor ausschließen."</td><td>„Welche Untersuchungen werden durchgeführt?"</td></tr>
+      <tr><td><strong>Metoclopramid (MCP)</strong></td><td>Antiemetikum / Prokinetikum</td><td>„Ein Mittel gegen Übelkeit, das gleichzeitig die Magenentleerung beschleunigt – so wird das Schmerzmedikament schneller aufgenommen."</td><td>–</td></tr>
+      <tr><td><strong>Migränetagebuch</strong></td><td>Dokumentation von Attacken und Triggern</td><td>„Ein Heft, in dem Sie aufschreiben, wann Anfälle kommen, wie lange sie dauern, was davor passiert ist – Stress, schlechter Schlaf, bestimmte Speisen. So können wir die Auslöser besser erkennen."</td><td>–</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- FACHBEGRIFFE + ZEITPLAN -->
+<div class="sdiv"><span>Fachbegriffe &amp; Zeitplan</span></div>
+<div class="grid">
+  <div class="card">
+    <h3>Fachbegriffe aus den Prüfungen</h3>
+    <h4>Migräne direkt</h4>
+    <div>
+      <span class="tag pu">Hemikranie (einseitiger KS)</span>
+      <span class="tag pu">Phonophobie / Photophobie</span>
+      <span class="tag pu">Flimmerskotom / Aura</span>
+      <span class="tag pu">Fortifikationsspektren</span>
+      <span class="tag pu">Sumatriptan / Triptan</span>
+      <span class="tag pu">Propranolol (Prophylaxe)</span>
+      <span class="tag pu">Metoclopramid (Antiemetikum)</span>
+      <span class="tag pu">Opisthotonus</span>
+      <span class="tag pu">Meningismus</span>
+    </div>
+    <h4 style="margin-top:0.8rem">DD – Notfall</h4>
+    <div>
+      <span class="tag rd">SAB (Donnerschlagkopfschmerz)</span>
+      <span class="tag rd">Meningitis (Fieber + Nackensteifigkeit)</span>
+      <span class="tag rd">Hirntumor</span>
+      <span class="tag rd">TIA / Schlaganfall</span>
+      <span class="tag rd">Aneurysma</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Sonstige aus Prüfungen</h4>
+    <div>
+      <span class="tag gr">Rhagade</span>
+      <span class="tag gr">Lobus</span>
+      <span class="tag gr">Angiom</span>
+      <span class="tag gr">Neoplasma</span>
+      <span class="tag gr">Exostose</span>
+      <span class="tag gr">Bronchospasmus</span>
+      <span class="tag gr">Hämatemesis</span>
+      <span class="tag gr">Cholestase</span>
+      <span class="tag gr">Tubärgravidität</span>
+      <span class="tag gr">Lumboischialgie</span>
+      <span class="tag gr">Stauungsdermatitis</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="or">Zeitplan &amp; Top-Tipps</h3>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-pu">Patientengespräch</span></td><td><strong>20 Min</strong></td><td>Schmerzcharakter (pulsierend!). Aura beschreiben lassen (Flimmerskotom!). Alarmsymptome ausschließen: Fieber? Nackensteifigkeit? Bewusstlosigkeit? Trigger erfragen. Pille? Menses?</td></tr>
+      <tr><td><span class="badge badge-bl">Arztbrief</span></td><td><strong>20 Min</strong></td><td>VD Migräne mit Aura. DD SAB + Meningitis + Tumor (immer!). MRT wegen FA. Akuttherapie: Triptan + MCP. Prophylaxe: Propranolol.</td></tr>
+      <tr><td><span class="badge badge-gn">AA-Gespräch</span></td><td><strong>20 Min</strong></td><td>Aura erklären. SAB-Kriterien (Donnerschlag!). Meningitis ausschließen. MRT vs. CT. Betablocker = Prophylaxe! Metoclopramid = Antiemetikum der Wahl.</td></tr>
+    </table>
+
+    <div class="ebox" style="margin-top:1rem">
+      <strong>Häufigster Fehler!</strong> Betablocker als Akuttherapie nennen → FALSCH! Propranolol/Metoprolol = Prophylaxe (täglich, auch schmerzfrei). Akut: Triptane + NSAR.
+    </div>
+    <div class="gbox" style="margin-top:0.8rem">
+      <strong>Freiburg 02/2023:</strong> Patient kam unruhig, direkt: „Ich habe sehr heftige Kopfschmerzen!" → Kandidat sagte ruhig: „Es tut mir leid, aber ich muss mich zuerst vorstellen..." → Prüfer sehr zufrieden! Struktur behalten auch bei unruhigem Patienten.
+    </div>
+    <div class="bluebox" style="margin-top:0.8rem">
+      <strong>Stuttgart-Tipp:</strong> Patient mit bekannter Migräne bestand darauf, nicht nach Hause zu wollen. → Richtige Antwort: „Sie bleiben noch – wir machen MRT und Blutabnahme, um alles auszuschließen." Nie einfach „Sie haben Migräne, gehen Sie nach Hause."
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top: 1px solid var(--border);">
+  FSP Leitfaden · Migräne + Patientensprache · Freiburg · Karlsruhe · Stuttgart · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

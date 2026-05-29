@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – TVT & Lungenembolie</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #070d1a;
+    --card: #0d1628;
+    --a1: #818cf8;   /* TVT - indigo */
+    --a2: #f472b6;   /* LE - pink */
+    --good: #34d399;
+    --warn: #fbbf24;
+    --bad: #f87171;
+    --info: #60a5fa;
+    --text: #e2e8ff;
+    --muted: #3d4a70;
+    --border: #1a2540;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.7;
+    padding: 2rem 1rem;
+  }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+  }
+  .header::after {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--a1), var(--a2));
+    margin: 1.5rem auto 0;
+    border-radius: 2px;
+  }
+  .header h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--a1), var(--a2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+  }
+  .header .sub {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .timer-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--a1), #6366f1);
+    color: white;
+    padding: 0.3rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-top: 1rem;
+  }
+
+  /* CHAPTER HEADERS */
+  .chapter-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0 1.5rem;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+  }
+  .ch-tvt { background: rgba(129,140,248,0.08); border-left: 5px solid var(--a1); }
+  .ch-le  { background: rgba(244,114,182,0.08); border-left: 5px solid var(--a2); }
+  .ch-pt  { background: rgba(52,211,153,0.08);  border-left: 5px solid var(--good); }
+  .chapter-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    opacity: 0.3;
+  }
+  .ch-tvt .chapter-num { color: var(--a1); }
+  .ch-le  .chapter-num { color: var(--a2); }
+  .ch-pt  .chapter-num { color: var(--good); }
+  .ch-title h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+  .ch-tvt .ch-title h2 { color: var(--a1); }
+  .ch-le  .ch-title h2 { color: var(--a2); }
+  .ch-pt  .ch-title h2 { color: var(--good); }
+  .ch-title p { font-size: 0.82rem; color: var(--muted); margin-top: 0.3rem; }
+
+  /* LAYOUT */
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full  { margin-bottom: 1.2rem; }
+
+  .card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+  }
+  .card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--a1);
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .card h3.pink  { color: var(--a2); border-color: rgba(244,114,182,0.2); }
+  .card h3.green { color: var(--good); border-color: rgba(52,211,153,0.2); }
+  .card h3.warn  { color: var(--warn); border-color: rgba(251,191,36,0.2); }
+  .card h3.blue  { color: var(--info); border-color: rgba(96,165,250,0.2); }
+  .card h3.bad   { color: var(--bad);  border-color: rgba(248,113,113,0.2); }
+
+  .card h4 {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin: 0.9rem 0 0.4rem;
+  }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag {
+    display: inline-block;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.18rem 0.65rem;
+    border-radius: 5px;
+    font-size: 0.78rem;
+    margin: 0.1rem;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(255,255,255,0.03);
+  }
+  .tag.tv  { background: rgba(129,140,248,0.1); border-color: rgba(129,140,248,0.3); color: var(--a1); }
+  .tag.pk  { background: rgba(244,114,182,0.1); border-color: rgba(244,114,182,0.3); color: var(--a2); }
+  .tag.gn  { background: rgba(52,211,153,0.1);  border-color: rgba(52,211,153,0.3);  color: var(--good); }
+  .tag.wn  { background: rgba(251,191,36,0.1);  border-color: rgba(251,191,36,0.3);  color: var(--warn); }
+  .tag.bd  { background: rgba(248,113,113,0.1); border-color: rgba(248,113,113,0.3); color: var(--bad); }
+  .tag.bl  { background: rgba(96,165,250,0.1);  border-color: rgba(96,165,250,0.3);  color: var(--info); }
+
+  .fb { background: rgba(0,0,0,0.35); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #c8d0f8; }
+  .fb.pink  { border-color: var(--a2);  color: #f0c8e0; }
+  .fb.green { border-color: var(--good); color: #b8f0d8; }
+  .fb.warn  { border-color: var(--warn); color: #e8d090; }
+  .fb .cm { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hlp { color: var(--a2);  font-weight: 600; }
+  .hlg { color: var(--good);font-weight: 600; }
+  .hlw { color: var(--warn);font-weight: 600; }
+  .hlb { color: var(--bad); font-weight: 600; }
+  .hli { color: var(--info);font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: rgba(255,255,255,0.04); padding: 0.5rem 0.8rem; text-align: left; font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 1px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-tv  { background: rgba(129,140,248,0.15); color: var(--a1); }
+  .badge-pk  { background: rgba(244,114,182,0.15); color: var(--a2); }
+  .badge-gn  { background: rgba(52,211,153,0.15);  color: var(--good); }
+  .badge-wn  { background: rgba(251,191,36,0.15);  color: var(--warn); }
+  .badge-bd  { background: rgba(248,113,113,0.15); color: var(--bad); }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0 1rem; }
+  .sdiv span { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: rgba(251,191,36,0.07); border: 1px solid rgba(251,191,36,0.2); border-left: 3px solid var(--warn); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #d4c080; }
+  .wbox strong { color: var(--warn); }
+  .ebox { background: rgba(248,113,113,0.07); border: 1px solid rgba(248,113,113,0.2); border-left: 3px solid var(--bad); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #d4a0a0; }
+  .ebox strong { color: var(--bad); }
+  .gbox { background: rgba(52,211,153,0.07); border: 1px solid rgba(52,211,153,0.2); border-left: 3px solid var(--good); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #a0d4b8; }
+  .gbox strong { color: var(--good); }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: var(--a1); color: #070d1a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .snum.pk { background: var(--a2); }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+  .scont strong.pk { color: var(--a2); }
+
+  /* Virchow */
+  .virchow { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.5rem; margin: 0.8rem 0; }
+  .vbox { border-radius: 8px; padding: 0.8rem; text-align: center; border: 1px solid var(--border); }
+  .vbox .vl { font-family: 'Plus Jakarta Sans',sans-serif; font-size: 1.4rem; font-weight: 800; margin-bottom: 0.2rem; }
+  .vbox .vd { font-size: 0.72rem; color: var(--muted); line-height: 1.4; }
+  .v1 { background: rgba(129,140,248,0.08); border-color: rgba(129,140,248,0.2); }
+  .v1 .vl { color: var(--a1); }
+  .v2 { background: rgba(251,191,36,0.08); border-color: rgba(251,191,36,0.2); }
+  .v2 .vl { color: var(--warn); }
+  .v3 { background: rgba(248,113,113,0.08); border-color: rgba(248,113,113,0.2); }
+  .v3 .vl { color: var(--bad); }
+
+  /* Patientensprache table */
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+  .pt-table td:nth-child(3) { color: var(--good); font-size: 0.83rem; }
+  .pt-table td:nth-child(4) { color: var(--warn); font-size: 0.82rem; font-style: italic; }
+
+  @media (max-width: 700px) {
+    .grid, .virchow { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2rem; }
+    .chapter-num { font-size: 1.8rem; }
+    .ch-title h2 { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <h1>TVT &amp; Lungenembolie</h1>
+  <div class="sub">Tiefe Venenthrombose · Lungenembolie · Patientensprache · FSP Leitfaden</div>
+  <div class="timer-badge">⏱ 20 Min. Arztbrief · 20 Min. AA-Gespräch</div>
+</div>
+
+
+<!-- ═══════════════ KAPITEL 1: TVT ═══════════════ -->
+<div class="chapter-header ch-tvt">
+  <div class="chapter-num">01</div>
+  <div class="ch-title">
+    <h2>Tiefe Venenthrombose (TVT)</h2>
+    <p>Beinvenenthrombose · Virchow-Trias · Diagnostik · Antikoagulation</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Leitsymptome TVT – immer abfragen</h3>
+    <h4>Entzündungszeichen am Bein</h4>
+    <span class="tag tv">Schmerzen / Spannungsgefühl</span>
+    <span class="tag tv">Schwellung / Ödem (einseitig!)</span>
+    <span class="tag tv">Rötung (Rubor)</span>
+    <span class="tag tv">Überwärmung (Calor)</span>
+    <span class="tag tv">Zyanose / livide Verfärbung</span>
+    <span class="tag tv">Besserung bei Hochlagerung</span>
+    <h4>Typische Anamnese-Details</h4>
+    <span class="tag wn">Langer Flug (Bangkok → Frankfurt, 12h!)</span>
+    <span class="tag wn">Bettlägerigkeit / Immobilisation</span>
+    <span class="tag wn">OP in den letzten Wochen</span>
+    <span class="tag wn">Beginn kurz nach der Reise</span>
+    <h4>Verneinte Symptome (LE ausschließen!)</h4>
+    <span class="tag">Dyspnoe → sofort LE denken!</span>
+    <span class="tag">Thorakalgie</span>
+    <span class="tag">Hämoptyse</span>
+    <span class="tag">Tachykardie</span>
+    <div class="wbox">
+      <strong>Wichtig:</strong> Immer fragen: „Wie lange war der Flug? Wohin sind Sie geflogen?" – Prüfer haben das explizit nachgefragt, wenn es vergessen wurde!
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Virchow-Trias – Pathogenese</h3>
+    <div class="virchow">
+      <div class="vbox v1">
+        <div class="vl">1</div>
+        <div style="font-weight:700;font-size:0.85rem;color:var(--a1);margin-bottom:0.2rem">Stase</div>
+        <div class="vd">Verlangsamter Blutfluss<br>Immobilisation, Flug,<br>Bettruhe, Herzinsuffizienz</div>
+      </div>
+      <div class="vbox v2">
+        <div class="vl">2</div>
+        <div style="font-weight:700;font-size:0.85rem;color:var(--warn);margin-bottom:0.2rem">Wandschaden</div>
+        <div class="vd">Verletzung, Operation,<br>Entzündung der Gefäßwand<br>Varikose, Katheter</div>
+      </div>
+      <div class="vbox v3">
+        <div class="vl">3</div>
+        <div style="font-weight:700;font-size:0.85rem;color:var(--bad);margin-bottom:0.2rem">Hyperkoagulabilität</div>
+        <div class="vd">Gerinnungsstörung<br>Malignom, Pille,<br>Schwangerschaft, Koagulopathie</div>
+      </div>
+    </div>
+    <h4>Risikofaktoren aus den Fällen</h4>
+    <span class="tag bd">Langer Flug (Economy-Class-Syndrom)</span>
+    <span class="tag bd">Orale Kontrazeptiva (Pille!)</span>
+    <span class="tag bd">Rauchen</span>
+    <span class="tag bd">Positive Familienanamnese (Koagulopathie!)</span>
+    <span class="tag bd">Diabetes mellitus</span>
+    <span class="tag bd">Arterielle Hypertonie</span>
+    <span class="tag bd">Varizen / Phlebektomie</span>
+    <span class="tag bd">Malignom (Tumorerkrankung)</span>
+    <div class="wbox">
+      <strong>Typischer Prüfungspatient:</strong> Managerin / Manager, reist viel mit dem Flugzeug, nimmt die Pille, positiver Familienanamnese für Koagulopathie (Vater), raucht, aHT + DM. Flug von Bangkok als Auslöser!
+    </div>
+  </div>
+</div>
+
+<!-- TVT UNTERSUCHUNG + DIAGNOSTIK -->
+<div class="grid">
+  <div class="card">
+    <h3>Körperliche Untersuchung – Provokationstests</h3>
+    <table>
+      <tr><th>Test</th><th>Durchführung</th><th>Positiv wenn</th></tr>
+      <tr><td><span class="hl">Homans-Zeichen</span></td><td>Dorsalflexion des Fußes</td><td>Wadenschmerz</td></tr>
+      <tr><td><span class="hl">Payr-Zeichen</span></td><td>Druck auf Fußsohle / Innenknöchel</td><td>Schmerz</td></tr>
+      <tr><td><span class="hl">Meyer-Zeichen</span></td><td>Druck auf Wadenmitte (medial)</td><td>Druckschmerz</td></tr>
+      <tr><td><span class="hl">Lowenberg-Zeichen</span></td><td>RR-Manschette um Wade pumpen</td><td>Schmerz &lt;150 mmHg</td></tr>
+    </table>
+    <div class="wbox">
+      <strong>Cave!</strong> Diese Tests sind unzuverlässig. Keine der Tests schließt eine TVT sicher aus oder ein. → Goldstandard: <strong>Duplexsonographie!</strong>
+    </div>
+    <h4 style="margin-top:0.8rem">TVT vs. pAVK – schnell unterscheiden</h4>
+    <table>
+      <tr><th></th><th>TVT</th><th>pAVK</th></tr>
+      <tr><td>Haut</td><td class="hl">Rot, warm, geschwollen</td><td style="color:var(--info)">Blass, kalt, Haarausfall</td></tr>
+      <tr><td>Schmerz</td><td class="hl">Konstant, in Ruhe</td><td style="color:var(--info)">Belastungsabhängig</td></tr>
+      <tr><td>Puls</td><td class="hlg">Vorhanden</td><td class="hlb">Abgeschwächt / fehlend</td></tr>
+      <tr><td>Hochlagerung</td><td class="hlg">Besserung</td><td class="hlb">Verschlechterung</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Diagnostik TVT</h3>
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="scont"><strong>Wells-Score + D-Dimer</strong>
+      D-Dimer normal → TVT ausgeschlossen. D-Dimer erhöht → nicht spezifisch (auch bei Tumor, Infektion, Schwangerschaft erhöht!)</div>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="scont"><strong>Kompressionssonographie / Duplexsonographie</strong>
+      <span class="hlg">Diagnostik der Wahl!</span> Vene nicht komprimierbar = Thrombus. Beurteilung der Flussgeschwindigkeit.</div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="scont"><strong>Labor</strong>
+      BB, CRP, BSG, D-Dimer, aPTT, PT, INR, Kreatinin (vor Antikoagulation!), Gerinnungsstatus</div>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="scont"><strong>Ggf. CT-Venographie / MR-Venographie</strong>
+      Bei unklarem Sono-Befund oder V.a. Beckenvenenthrombose</div>
+    </div>
+    <div class="gbox">
+      <strong>Merksatz:</strong> D-Dimer negativ = TVT ausgeschlossen (hoher negativer Vorhersagewert). D-Dimer positiv = nichts bewiesen → Sono!
+    </div>
+  </div>
+</div>
+
+<!-- TVT ARZTBRIEF -->
+<div class="sdiv"><span>Arztbrief TVT</span></div>
+<div class="full">
+  <div class="card">
+    <h3>Arztbrief-Template: TVT</h3>
+    <div class="fb">
+Frau/Herr [Name], ein/eine [Alter]-jährige/r Patient/in, stellte sich bei uns wegen
+<span class="hl">seit [X] Tagen bestehender, progredienter, ziehender, [rechts-/linksseitiger]
+Unterschenkelschmerzen</span> mit <span class="hl">Schwellung, Rötung, Überwärmung und Spannungsgefühl</span> vor
+(NRS [X]/10). Besserung bei Hochlagerung der betroffenen Extremität.<br><br>
+Die Beschwerden seien <span class="hl">[X Tage nach einem [X]-stündigen Flug von Bangkok nach Frankfurt]</span>
+aufgetreten.<br><br>
+Fragen nach Dyspnoe, Thorakalgie und Hämoptyse wurden <span class="hl">verneint</span>.
+<span class="cm">// IMMER! → LE ausschließen</span>
+    </div>
+    <h4>Risikofaktoren / Vorerkrankungen</h4>
+    <div class="fb">
+Als Vorerkrankungen seien bekannt: <span class="hl">Varikose</span> (ggf. Z.n. Phlebektomie),
+<span class="hl">arterielle Hypertonie</span>, <span class="hl">Diabetes mellitus Typ 1</span>.<br>
+Medikamentös nimmt sie ein: <span class="hl">orale Kontrazeptiva (Östrogen-Pille)</span>, Insulin, ACE-Hemmer.<br><br>
+<span class="hl2">Penicillinallergie</span> (Exanthem) ist bekannt.<br><br>
+Nikotinkonsum: ca. <span class="hl">30 Zigaretten täglich seit 30 Jahren (~45 Pack Years)</span>.<br>
+Familienanamnese: Vater leide an <span class="hl">Koagulopathie (Gerinnungsstörung)</span>.
+<span class="cm">// → thrombophile Diathese in der Familie!</span>
+    </div>
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: Tiefe Venenthrombose (TVT) des linken / rechten Unterschenkels</span><br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlw">pAVK</span> – dagegen: Schwellung, Rötung, Wärme; kein Belastungscharakter<br>
+· <span class="hlw">Erysipel</span> – Spricht dafür: Rötung, Wärme; dagegen: kein Fieber, keine klare Eintrittspforte<br>
+· <span class="hlw">Muskelriss / Zerrung</span> – dagegen: kein Trauma, kein akuter Beginn<br>
+· <span class="hlw">Phlegmone / Cellulitis</span><br>
+· <span class="hlb">Lungenembolie</span> – als gefährliche Komplikation ausschließen!
+    </div>
+    <h4>Diagnostik &amp; Therapie</h4>
+    <div class="fb">
+Diagnostik: KU (Homans, Payr, Meyer), Vitalparameter, <span class="hl">D-Dimer</span>,
+BB, CRP, INR, aPTT, Kreatinin, <span class="hl">Farbduplex-Sonographie</span><br><br>
+Therapie:<br>
+· <span class="hl">Stationäre Aufnahme</span><br>
+· Hochlagerung + frühe Mobilisation<br>
+· <span class="hl">Niedermolekulares Heparin (NMH)</span> s.c. (z.B. Enoxaparin 1 mg/kg q12h)<br>
+· Überbrückung auf orale Antikoagulation:
+  <span class="hl">Rivaroxaban / Apixaban</span> (DOAK) oder Phenprocoumon (Marcumar)<br>
+· Dauer: mindestens <span class="hl">3–6 Monate</span>; bei Malignom: länger!<br>
+· <span class="hl">Kompressionsstrümpfe</span> (Klasse II)<br>
+· Analgetika bei Bedarf
+    </div>
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler:</strong><br>
+      – Vergessen nach Flugdauer und Reiseziel zu fragen → Prüfer hat immer nachgehakt<br>
+      – Pille nicht als Risikofaktor erwähnt → wird explizit erwartet<br>
+      – D-Dimer falsch interpretiert: erhöhtes D-Dimer ≠ TVT → unspezifisch!<br>
+      – Antikoagulationsdauer: 3–6 Monate. Bei Tumor: länger, bis zur Heilung!
+    </div>
+  </div>
+</div>
+
+<!-- TVT PRÜFUNGSFRAGEN -->
+<div class="sdiv"><span>Prüfungsfragen TVT</span></div>
+<div class="full">
+  <div class="card">
+    <h3>Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th></tr>
+      <tr><td>Risikofaktoren TVT?</td><td>Immobilisation (langer Flug!), Pille, Rauchen, Koagulopathie, Malignom, OP, Schwangerschaft, Varikose, DM, aHT</td></tr>
+      <tr><td>Wie unterscheidet man TVT von pAVK?</td><td>Puls tasten! TVT = Pulse vorhanden, Bein warm/rot/geschwollen. pAVK = Pulse fehlend/schwach, Bein kalt/blass</td></tr>
+      <tr><td>Was bedeutet D-Dimer?</td><td>Fibrinabbauprodukt. Normal = TVT ausgeschlossen (hoher neg. Vorhersagewert). Erhöht = unspezifisch (auch bei Tumor, Entzündung, Schwangerschaft)</td></tr>
+      <tr><td>Wichtigste Bildgebung?</td><td><strong>Duplexsonographie / Kompressionssonographie</strong> – Vene nicht komprimierbar = Thrombus</td></tr>
+      <tr><td>Komplikationen TVT?</td><td><strong>Lungenembolie</strong> (10–30%!), postthrombotisches Syndrom, chronische venöse Insuffizienz</td></tr>
+      <tr><td>Wie lange Antikoagulation?</td><td>Mind. <strong>3–6 Monate</strong>. Bei Malignom: bis zur Heilung. Bei Rezidiv: ggf. dauerhaft</td></tr>
+      <tr><td>Warum Brückentherapie (Bridging)?</td><td>Marcumar wirkt verzögert (3–5 Tage) → Überbrückung mit Heparin bis INR im Zielbereich (2–3)</td></tr>
+      <tr><td>Schlaganfall als Komplikation?</td><td>Bei <strong>persistierendem Foramen ovale</strong> kann Embolus ins Gehirn wandern → paradoxe Embolie!</td></tr>
+      <tr><td>Hat das etwas mit dem Vater (Koagulopathie) zu tun?</td><td>Ja! Thrombophile Diathese (z.B. Faktor-V-Leiden, Prothrombin-Mutation) ist vererbbar → Gerinnungsdiagnostik indiziert</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- ═══════════════ KAPITEL 2: LUNGENEMBOLIE ═══════════════ -->
+<div class="chapter-header ch-le">
+  <div class="chapter-num">02</div>
+  <div class="ch-title">
+    <h2>Lungenembolie (LE)</h2>
+    <p>Akuter Notfall · Plötzliche Dyspnoe · CT-Angio · Antikoagulation</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3 class="pink">Leitsymptome Lungenembolie</h3>
+    <h4>Klinik – plötzlicher Beginn!</h4>
+    <span class="tag pk">Plötzliche Dyspnoe (schlagartig!)</span>
+    <span class="tag pk">Tachypnoe / Tachykardie</span>
+    <span class="tag pk">Stechende Thoraxschmerzen (atemabhängig)</span>
+    <span class="tag pk">Hämoptysen (Blut beim Husten)</span>
+    <span class="tag pk">Synkope / Schwindel</span>
+    <span class="tag pk">Zyanose</span>
+    <span class="tag pk">Kaltschweißigkeit</span>
+    <h4>Aus den Fällen: typisch</h4>
+    <span class="tag wn">Beinödem / Varizen vorbekannt</span>
+    <span class="tag wn">Retrosternale Schmerzen nach Treppensteigen</span>
+    <span class="tag wn">Vor kurzem langer Flug</span>
+    <span class="tag wn">Rauchen + positive FA (MI)</span>
+    <div class="wbox">
+      <strong>Aus Freiburg 13.02.2024:</strong> Kandidatin dachte an KHK – es war eine Lungenembolie! Unterschied: LE-Schmerz ist <strong>atemabhängig</strong> und beginnt <strong>schlagartig</strong>. KHK-Schmerz ist atemunabhängig und strahlt in Arm/Kiefer aus.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="pink">LE vs. Herzinfarkt – die wichtigste DD</h3>
+    <table>
+      <tr><th></th><th>Lungenembolie</th><th>Herzinfarkt</th></tr>
+      <tr><td>Beginn</td><td class="hlp">Schlagartig</td><td>Allmählich</td></tr>
+      <tr><td>Schmerz</td><td class="hlp">Atemabhängig, pleuritisch</td><td>Atemunabhängig, Ausstrahlung in Arm/Kiefer</td></tr>
+      <tr><td>Dyspnoe</td><td class="hlp">Intensiv, sofort</td><td>Leicht</td></tr>
+      <tr><td>Vorgeschichte</td><td class="hlp">Immobilisation, TVT, Flug</td><td>KHK, Angina, Rauchen</td></tr>
+      <tr><td>EKG</td><td class="hlp">SI/QIII, Rechtstyp, T-Neg V1-3</td><td>ST-Hebung, Q-Zacken</td></tr>
+      <tr><td>Labor</td><td class="hlp">Troponin ↑ bei schwerer LE, D-Dimer ↑</td><td>Troponin ↑↑, CK-MB ↑</td></tr>
+      <tr><td>Echo</td><td class="hlp">Rechtsherzbelastung ("D-Zeichen")</td><td>Linksventrikuläre Hypo-/Akinesie</td></tr>
+    </table>
+    <div class="wbox">
+      <strong>Merksatz:</strong> Plötzliche Dyspnoe + atemabhängiger Thoraxschmerz + TVT-Vorgeschichte / Flug = <strong>Lungenembolie bis zum Beweis des Gegenteils!</strong>
+    </div>
+  </div>
+</div>
+
+<!-- LE ARZTBRIEF -->
+<div class="sdiv"><span>Arztbrief Lungenembolie</span></div>
+<div class="full">
+  <div class="card">
+    <h3 class="pink">Arztbrief-Template: Lungenembolie</h3>
+    <div class="fb pink">
+Frau/Herr [Name], eine/ein [Alter]-jährige/r Patient/in, stellte sich bei uns wegen
+<span class="hlp">seit ca. [X Stunden] plötzlich aufgetretener, stechender, atemabhängiger,
+[rechts-/linksseitiger] Thoraxschmerzen</span> (NRS [X]/10) vor.<br><br>
+Die Schmerzen traten beim [Treppensteigen / in Ruhe] <span class="hlp">schlagartig</span> auf.<br><br>
+Begleitend berichtete sie über <span class="hlp">Dyspnoe, Tachykardie und Kaltschweißigkeit</span>.<br>
+Zudem sei seit [X Tagen] ein <span class="hlp">Beinödem rechts</span> bekannt (Varizen als Vorerkrankung).<br><br>
+<span class="cm">// Verneinte Symptome:</span><br>
+Hämoptysen, Synkope sowie Ausstrahlung der Schmerzen in den Arm / Unterkiefer wurden verneint.
+    </div>
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb pink">
+<span class="hlp">VD: Lungenembolie (V.a. akute Pulmonalembolie)</span><br><br>
+<span class="hlp">DD:</span><br>
+· <span class="hlw">Myokardinfarkt / ACS</span> – atemunabhängiger Schmerz, Ausstrahlung, ST-Hebung im EKG<br>
+· <span class="hlw">Pneumothorax</span> – einseitig, Auskultation: abgeschwächtes AG<br>
+· <span class="hlw">Pneumonie</span> – Fieber, Sputum, Infiltrat im Röntgen<br>
+· <span class="hlw">Perikarditis / Pleuritis</span> – lageabhängig, Reibegeräusch<br>
+· <span class="hlw">Aortendissektion</span> – Zerreißungsschmerz, Ausstrahlung in Rücken
+    </div>
+    <h4>Diagnostik</h4>
+    <div class="fb pink">
+· Vitalparameter, <span class="hlp">Pulsoxymetrie (SpO₂!)</span><br>
+· <span class="hlp">EKG</span>: SI/QIII-Typ? Rechtstyp? T-Negativierungen V1–3? Rechtsschenkelblock?<br>
+· Labor: BB, D-Dimer, <span class="hlp">Troponin</span> (Rechtsherzbelastung?), BNP, BGA, Kreatinin<br>
+· <span class="hlp">CT-Angiographie (CT-Angio)</span> = Goldstandard für LE-Nachweis!<br>
+· Echokardiographie: Rechtsherzbelastung? D-Zeichen? Septumverlagerung?<br>
+· Röntgen-Thorax (Hampton-Hump? Westermark-Zeichen?)<br>
+· Duplexsonographie Beine (Thrombusnachweis als Emboliequelle)
+    </div>
+    <h4>Therapie</h4>
+    <div class="fb pink">
+<span class="hlp">Allgemein:</span><br>
+· Halbsitzende Lagerung + Sauerstoffgabe (6 L/min, Ziel SpO₂ &gt;94%)<br>
+· Monitoring: EKG, SpO₂, RR, Puls<br>
+· Analgesie: Morphin + Diazepam<br><br>
+<span class="hlp">Antikoagulation sofort!</span><br>
+· Initial: NMH (Enoxaparin) oder UFH i.v., alternativ Rivaroxaban / Apixaban oral<br>
+· Erhaltung: DOAK (Rivaroxaban 20 mg/d oder Apixaban 5 mg 2×/d) mind. 3 Monate<br><br>
+<span class="hlp">Bei hämodynamischer Instabilität (Schock!):</span><br>
+· <span class="hlb">Thrombolyse (rt-PA / Alteplase)</span><br>
+· Alternativ: chirurgische Embolektomie oder Katheter-gestützte Thrombolyse<br><br>
+<span class="hlp">Stationäre Aufnahme obligat!</span>
+    </div>
+    <div class="ebox">
+      <strong>⚠️ Aus den Fällen:</strong><br>
+      – Stuttgart 29.01.2024: Kandidat ist wegen Fachbegriffe durchgefallen → Vorbereitung auf Begriffe ist entscheidend!<br>
+      – Bei Verdacht auf LE sofort CT-Angio veranlassen, nicht nur EKG!<br>
+      – „Was würden Sie bei V.a. Lungenembolie untersuchen?" war eine direkte Frage in Freiburg.
+    </div>
+  </div>
+</div>
+
+<!-- LE PRÜFUNGSFRAGEN -->
+<div class="sdiv"><span>Prüfungsfragen Lungenembolie</span></div>
+<div class="full">
+  <div class="card">
+    <h3 class="pink">Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th></tr>
+      <tr><td>Was ist eine Lungenembolie?</td><td>Verstopfung einer Lungenarterie durch einen Thrombus (meist aus Beinvenen) → Totraumventilation, Rechtsherzbelastung</td></tr>
+      <tr><td>Woher kommt der Embolus?</td><td>In &gt;90% aus tiefen Beinvenen (TVT) → abgelöster Thrombus wandert über V. cava → rechtes Herz → Lungenarterien</td></tr>
+      <tr><td>Diagnostik bei V.a. LE?</td><td>EKG + D-Dimer + <strong>CT-Angiographie</strong> (Goldstandard) + Echo + Duplex Beine</td></tr>
+      <tr><td>Was zeigt das EKG?</td><td>SI/QIII-Typ (= tiefes S in I, Q in III), Rechtstyp, T-Neg V1–3, Rechtsschenkelblock (nicht spezifisch!)</td></tr>
+      <tr><td>Therapie bei LE?</td><td>Antikoagulation (NMH → DOAK), O₂, Lagerung. Bei Schock: <strong>Thrombolyse</strong> mit rt-PA</td></tr>
+      <tr><td>DD zu KHK/Herzinfarkt?</td><td>LE: atemabhängig, schlagartig, Rechtsherzbelastung. MI: atemunabhängig, ST-Hebung, CK-MB↑</td></tr>
+      <tr><td>Welche Komplikationen?</td><td>Rechtsherzinsuffizienz, pulmonaler Hypertonus, rezidivierende LE, Tod</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- ═══════════════ KAPITEL 3: PATIENTENSPRACHE ═══════════════ -->
+<div class="chapter-header ch-pt">
+  <div class="chapter-num">03</div>
+  <div class="ch-title">
+    <h2>Fachbegriffe → Patientensprache</h2>
+    <p>Wie erkläre ich dem Patienten auf Deutsch, was er hat?</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="green">Übersetzungstabelle: Fachbegriff → einfaches Deutsch</h3>
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.8rem">Die dritte Spalte zeigt, wie du es dem Patienten erklärst. Die vierte Spalte ist ein typischer Patientensatz.</p>
+    <table class="pt-table">
+      <tr>
+        <th>Fachbegriff</th>
+        <th>Medizinisch</th>
+        <th>Patientensprache (einfaches Deutsch)</th>
+        <th>Typischer Patientensatz</th>
+      </tr>
+      <!-- TVT & LE -->
+      <tr><td><strong>TVT</strong></td><td>Tiefe Venenthrombose</td><td>„Ein Blutgerinnsel (ein Pfropfen) hat sich in einer tiefen Blutader im Bein gebildet."</td><td>„Doktor, was habe ich?"</td></tr>
+      <tr><td><strong>Lungenembolie</strong></td><td>Pulmonalarterienembolie</td><td>„Das Blutgerinnsel hat sich aus dem Bein gelöst und ist in die Lunge gewandert und verstopft dort eine Ader."</td><td>„Ist das gefährlich?"</td></tr>
+      <tr><td><strong>Embolus</strong></td><td>Thrombus / Pfropfen</td><td>„Ein Blutpfropfen, der sich gelöst hat und durch das Blut wandert."</td><td>–</td></tr>
+      <tr><td><strong>Thrombus</strong></td><td>Blutgerinnsel</td><td>„Ein Blutklumpen in einem Blutgefäß."</td><td>–</td></tr>
+      <tr><td><strong>Antikoagulation</strong></td><td>Blutverdünnung</td><td>„Wir geben Ihnen Blutverdünner-Tabletten / -Spritzen, damit das Blut nicht so leicht gerinnt."</td><td>„Muss ich Spritzen bekommen?"</td></tr>
+      <tr><td><strong>Heparin (NMH)</strong></td><td>Niedermolekulares Heparin</td><td>„Eine Spritze unter die Haut, die das Blut verdünnt und verhindert, dass das Gerinnsel größer wird."</td><td>„Kann ich das selber spritzen?"</td></tr>
+      <tr><td><strong>Marcumar / Phenprocoumon</strong></td><td>Vitamin-K-Antagonist</td><td>„Blutverdünner-Tabletten, bei denen wir regelmäßig den Gerinnungswert (INR) kontrollieren müssen."</td><td>–</td></tr>
+      <tr><td><strong>Duplexsonographie</strong></td><td>Farbduplex-Sono</td><td>„Ein Ultraschall-Bild des Beins – wie beim Baby-Ultraschall – bei dem wir den Blutfluss in den Adern sehen können. Keine Strahlung, kein Schmerz."</td><td>„Gibt es Röntgenstrahlen?"</td></tr>
+      <tr><td><strong>CT-Angiographie</strong></td><td>CT-Angio</td><td>„Eine spezielle Röntgenaufnahme des Körpers mit einem Kontrastmittel in der Vene, mit dem wir die Blutgefäße der Lunge sichtbar machen."</td><td>„Ist das gefährlich?"</td></tr>
+      <tr><td><strong>D-Dimer</strong></td><td>Fibrinabbauprodukt</td><td>„Ein Blutwert, der uns zeigt, ob im Körper gerade ein Gerinnsel abgebaut wird."</td><td>–</td></tr>
+      <tr><td><strong>Koagulopathie</strong></td><td>Gerinnungsstörung</td><td>„Eine Erkrankung, bei der das Blut zu leicht gerinnt – das kann vererbt werden."</td><td>„Hat das was mit meinem Vater zu tun?"</td></tr>
+      <tr><td><strong>Kompressionsstrumpf</strong></td><td>Kompressionstherapie</td><td>„Stützstrümpfe, die das Bein von außen zusammendrücken und den Blutfluss verbessern."</td><td>„Muss ich die immer tragen?"</td></tr>
+      <tr><td><strong>Thrombektomie</strong></td><td>Operative Thrombusent­fernung</td><td>„Eine kleine Operation, bei der das Blutgerinnsel aus dem Blutgefäß herausgeholt wird."</td><td>„Brauche ich eine OP?"</td></tr>
+      <tr><td><strong>Thrombolyse</strong></td><td>Fibrinolyse / Lyse</td><td>„Ein starkes Medikament, das das Blutgerinnsel auflöst – wird nur bei sehr schwerem Verlauf eingesetzt."</td><td>–</td></tr>
+      <tr><td><strong>Dyspnoe</strong></td><td>Atemnot</td><td>„Atembeschwerden – das Gefühl, nicht genug Luft zu bekommen."</td><td>„Ich bekomme keine Luft!"</td></tr>
+      <tr><td><strong>Tachykardie</strong></td><td>Schneller Herzschlag</td><td>„Das Herz schlägt sehr schnell – mehr als 100 Mal pro Minute."</td><td>„Mein Herz rast!"</td></tr>
+      <tr><td><strong>Ödeme / Beinödem</strong></td><td>Wassereinlagerung</td><td>„Wasser hat sich im Bein angesammelt, deshalb ist es geschwollen."</td><td>„Warum ist mein Bein so dick?"</td></tr>
+      <tr><td><strong>Phlebektomie</strong></td><td>Varizen-OP</td><td>„Eine Operation, bei der krankhaft erweiterte Venen (Krampfadern) entfernt wurden."</td><td>–</td></tr>
+      <tr><td><strong>Varizen</strong></td><td>Krampfadern</td><td>„Erweiterte, geschlängelte Venen an den Beinen – das sind die blauen Adern."</td><td>„Ich habe Krampfadern."</td></tr>
+      <tr><td><strong>Stationäre Aufnahme</strong></td><td>Hospitalisierung</td><td>„Wir müssen Sie im Krankenhaus aufnehmen und beobachten, bis es Ihnen besser geht."</td><td>„Muss ich hierbleiben?"</td></tr>
+      <tr><td><strong>Hämoptysen</strong></td><td>Blutiger Auswurf</td><td>„Blut beim Husten – das kann ein Zeichen sein, dass die Lunge betroffen ist."</td><td>–</td></tr>
+      <tr><td><strong>Synkope</strong></td><td>Ohnmacht / Kollaps</td><td>„Kurzes Bewusstlosgehen – Sie sind kurz umgefallen / eingeschlafen."</td><td>„Ich bin kurz ohnmächtig geworden."</td></tr>
+      <tr><td><strong>Persistierendes Foramen ovale (PFO)</strong></td><td>Herzloch</td><td>„Ein kleines Loch in der Herzwand, das normalerweise nach der Geburt zuwächst. Wenn es offen bleibt, kann ein Blutpfropfen vom Bein durch das Herz ins Gehirn gelangen."</td><td>–</td></tr>
+      <tr><td><strong>Postthrombotisches Syndrom</strong></td><td>Langzeitkomplikation der TVT</td><td>„Dauerhafter Schaden an den Venenklappen nach der Thrombose – das Bein kann chronisch schwellen und schmerzen."</td><td>–</td></tr>
+      <tr><td><strong>INR / Quick-Wert</strong></td><td>Gerinnungswert</td><td>„Ein Bluttest, der uns zeigt, wie stark das Blut verdünnt ist – wir müssen das regelmäßig kontrollieren."</td><td>„Wie oft muss ich zum Blutabnehmen?"</td></tr>
+      <tr><td><strong>Antikoagulation – wie lange?</strong></td><td>3–6 Monate (mind.)</td><td>„Mindestens 3 bis 6 Monate müssen Sie die Blutverdünner nehmen. Wenn Sie eine Tumorerkrankung haben, möglicherweise länger."</td><td>„Wie lange muss ich die Tabletten nehmen?"</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PATIENTENREAKTIONEN TVT/LE -->
+<div class="full">
+  <div class="card">
+    <h3 class="green">Typische Patientenreaktionen – Musterantworten</h3>
+    <div class="fb green">
+<span class="cm">// Aus den echten Fällen – diese Situationen kommen immer!</span><br><br>
+🧑 „Was habe ich?"<br>
+→ <span class="hlg">„Wir haben den Verdacht, dass sich ein Blutgerinnsel in Ihrer Beinvene gebildet hat –
+das nennt man eine tiefe Venenthrombose. Wir müssen das jetzt mit einer Ultraschalluntersuchung
+bestätigen."</span><br><br>
+🧑 „Ich muss arbeiten gehen! Kann ich nicht nach Hause?"<br>
+→ <span class="hlg">„Ich verstehe, dass das Ihnen Sorgen macht. Aber wegen der Gefahr, dass sich das Gerinnsel löst
+und in die Lunge wandert, müssen Sie leider heute hier bleiben.
+Das ist zu Ihrer eigenen Sicherheit."</span><br><br>
+🧑 „Hat das etwas mit meinem Vater (Gerinnungsstörung) zu tun?"<br>
+→ <span class="hlg">„Sehr gute Frage. Ja, das ist möglich. Gerinnungsstörungen können vererbt werden. Wir werden nach
+der akuten Behandlung einen Gerinnungstest durchführen."</span><br><br>
+🧑 „Gibt es viele Röntgenstrahlen beim Ultraschall?"<br>
+→ <span class="hlg">„Nein, der Ultraschall verwendet keine Strahlen – er arbeitet mit Schallwellen, genauso wie bei
+einer Schwangerschaftsuntersuchung. Völlig ungefährlich."</span><br><br>
+🧑 „Könnte es eine Lungenembolie sein?"<br>
+→ <span class="hlg">„Das ist tatsächlich eine mögliche Komplikation, die wir unbedingt ausschließen müssen.
+Deshalb möchte ich zuerst Ihre Lungenfunktion prüfen und wenn nötig eine CT-Untersuchung machen."</span><br><br>
+🧑 „Ich will keinen Alkohol reduzieren / will nicht aufhören zu rauchen."<br>
+→ <span class="hlg">„Ich verstehe das. Aber Rauchen und Alkohol erhöhen das Risiko, dass das Gerinnsel zurückkommt.
+Ich würde Ihnen sehr empfehlen, zumindest vorübergehend zu reduzieren – wir können Sie dabei unterstützen."</span>
+    </div>
+  </div>
+</div>
+
+<!-- FACHBEGRIFFE AUS DEN FÄLLEN -->
+<div class="sdiv"><span>Fachbegriffe aus allen Fällen</span></div>
+<div class="full">
+  <div class="card">
+    <h3>Prüfungs-Fachbegriffe – TVT &amp; Lungenembolie</h3>
+    <h4>TVT / LE direkt</h4>
+    <div>
+      <span class="tag tv">Phlebothrombose</span>
+      <span class="tag tv">Embolus</span>
+      <span class="tag tv">Thrombus</span>
+      <span class="tag tv">Antikoagulation</span>
+      <span class="tag tv">Heparin / NMH</span>
+      <span class="tag tv">D-Dimer</span>
+      <span class="tag tv">Duplexsonographie</span>
+      <span class="tag tv">Kompressionssonographie</span>
+      <span class="tag tv">Homans-Zeichen</span>
+      <span class="tag tv">Payr-Zeichen</span>
+      <span class="tag tv">Wells-Score</span>
+      <span class="tag tv">Koagulopathie</span>
+      <span class="tag tv">Thrombophilie</span>
+      <span class="tag pk">Lungenembolie</span>
+      <span class="tag pk">CT-Angiographie</span>
+      <span class="tag pk">Thrombolyse</span>
+      <span class="tag pk">Rechtsherzbelastung</span>
+      <span class="tag pk">Hämoptysen</span>
+      <span class="tag pk">Synkope</span>
+      <span class="tag pk">Tachypnoe</span>
+      <span class="tag pk">SI/QIII-Typ</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Aus Prüfungen – sonstige</h4>
+    <div>
+      <span class="tag">Exazerbation</span>
+      <span class="tag">Rezidiv</span>
+      <span class="tag">Nosokomial</span>
+      <span class="tag">Singultus</span>
+      <span class="tag">Lumboischialgie</span>
+      <span class="tag">Diplopie</span>
+      <span class="tag">Nephroektomie</span>
+      <span class="tag">Rehabilitativ</span>
+      <span class="tag">Analgetikum</span>
+      <span class="tag">Antiemetikum</span>
+      <span class="tag">Obstipation</span>
+      <span class="tag">Inkontinenz</span>
+      <span class="tag">Halluzination</span>
+      <span class="tag">metabolisch</span>
+      <span class="tag">Dekubitus</span>
+      <span class="tag">Basaliom</span>
+      <span class="tag">Mukolytikum</span>
+      <span class="tag">Intoxikation</span>
+      <span class="tag">Maligne</span>
+      <span class="tag">Bluttransfusion</span>
+    </div>
+    <div class="gbox" style="margin-top:1rem">
+      <strong>Wichtiger Hinweis:</strong> Stuttgart 29.01.2024 – Ein Kandidat fiel durch, weil er die Fachbegriffe nicht kannte: „Ich war am Ende ganz verrückt und konnte mich nichts erinnern." → Fachbegriffe täglich mit ANKI üben. 12 von 12 zu kennen ist realistisch!
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+  FSP Leitfaden · TVT &amp; Lungenembolie + Patientensprache · Freiburg · Karlsruhe · Reutlingen · Stuttgart
+</div>
+
+</div>
+</body>
+</html>

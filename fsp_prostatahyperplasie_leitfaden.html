@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Benigne Prostatahyperplasie (BPH)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --card2: #f1f3f5;
+    --a1: #1a4a7a;    /* dunkelblau – Urologie */
+    --a2: #1971c2;
+    --a3: #2f9e44;
+    --a4: #c92a2a;
+    --warn: #e67700;
+    --text: #212529;
+    --muted: #868e96;
+    --border: #dee2e6;
+    --light-navy: #e8f0ff;
+    --light-blue: #dceeff;
+    --light-green: #ebfbee;
+    --light-red: #fff5f5;
+    --light-orange: #fff9db;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-weight: 400; line-height: 1.7; padding: 2rem 1rem; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border); }
+  .header h1 { font-family: 'Inter', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--a1); letter-spacing: -1px; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+  .timer-badge { display: inline-block; background: var(--a1); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 0.8rem; }
+
+  .ch-header { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0 1.2rem; padding: 0.9rem 1.2rem; border-radius: 10px; }
+  .ch-navy   { background: var(--light-navy);   border-left: 5px solid var(--a1); }
+  .ch-blue   { background: var(--light-blue);   border-left: 5px solid var(--a2); }
+  .ch-green  { background: var(--light-green);  border-left: 5px solid var(--a3); }
+  .ch-red    { background: var(--light-red);    border-left: 5px solid var(--a4); }
+  .ch-orange { background: var(--light-orange); border-left: 5px solid var(--warn); }
+  .ch-num { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 800; opacity: 0.2; }
+  .ch-navy .ch-num   { color: var(--a1); } .ch-blue .ch-num   { color: var(--a2); }
+  .ch-green .ch-num  { color: var(--a3); } .ch-red .ch-num    { color: var(--a4); }
+  .ch-orange .ch-num { color: var(--warn); }
+  .ch-t h2 { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 800; line-height: 1.1; }
+  .ch-navy .ch-t h2   { color: var(--a1); } .ch-blue .ch-t h2   { color: var(--a2); }
+  .ch-green .ch-t h2  { color: var(--a3); } .ch-red .ch-t h2    { color: var(--a4); }
+  .ch-orange .ch-t h2 { color: var(--warn); }
+  .ch-t p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 10px; padding: 1.4rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .card h3 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--a1); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light-navy); }
+  .card h3.bl { color: var(--a2); border-color: var(--light-blue); }
+  .card h3.gn { color: var(--a3); border-color: var(--light-green); }
+  .card h3.rd { color: var(--a4); border-color: var(--light-red); }
+  .card h3.or { color: var(--warn); border-color: var(--light-orange); }
+  .card h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); padding: 0.15rem 0.6rem; border-radius: 4px; font-size: 0.77rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: var(--card2); color: var(--text); }
+  .tag.na { background: var(--light-navy);   border-color: #80a8e0; color: #0d2a5a; }
+  .tag.bl { background: var(--light-blue);   border-color: #90baf0; color: #0d3a7a; }
+  .tag.gn { background: var(--light-green);  border-color: #8ce99a; color: #1b4a22; }
+  .tag.rd { background: var(--light-red);    border-color: #ffa8a8; color: var(--a4); }
+  .tag.or { background: var(--light-orange); border-color: #ffd43b; color: #7a3800; }
+  .tag.gr { background: #f8f9fa;             border-color: #ced4da; color: #495057; }
+
+  .fb { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #343a40; }
+  .fb.bl { border-left-color: var(--a2); }
+  .fb.gn { border-left-color: var(--a3); }
+  .fb.rd { border-left-color: var(--a4); }
+  .fb.or { border-left-color: var(--warn); }
+  .fb .cm { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hli { color: var(--a2);  font-weight: 600; }
+  .hlg { color: var(--a3);  font-weight: 600; }
+  .hlr { color: var(--a4);  font-weight: 600; }
+  .hlo { color: var(--warn);font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: var(--card2); padding: 0.5rem 0.8rem; text-align: left; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 2px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8f9fa; }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-na { background: var(--light-navy);   color: #0d2a5a; }
+  .badge-bl { background: var(--light-blue);   color: #0d3a7a; }
+  .badge-gn { background: var(--light-green);  color: #1b4a22; }
+  .badge-rd { background: var(--light-red);    color: var(--a4); }
+  .badge-or { background: var(--light-orange); color: #7a3800; }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0 1rem; }
+  .sdiv span { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox   { background: var(--light-orange); border: 1px solid #ffd43b; border-left: 3px solid var(--warn); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #664d00; }
+  .wbox strong { color: #b35900; }
+  .ebox   { background: var(--light-red);    border: 1px solid #ffa8a8; border-left: 3px solid var(--a4);  border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #6b1010; }
+  .ebox strong { color: var(--a4); }
+  .gbox   { background: var(--light-green);  border: 1px solid #8ce99a; border-left: 3px solid var(--a3);  border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #1b4a22; }
+  .gbox strong { color: #2b7a3d; }
+  .bluebox { background: var(--light-blue);  border: 1px solid #90baf0; border-left: 3px solid var(--a2);  border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #0d3a7a; }
+  .navybox { background: var(--light-navy);  border: 1px solid #80a8e0; border-left: 3px solid var(--a1);  border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #0d2a5a; }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: var(--a1); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+
+  .sx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 0.5rem; }
+  .sx-col { padding: 1rem; font-size: 0.83rem; }
+  .sx-col:first-child { background: var(--light-navy);  border-right: 1px solid var(--border); }
+  .sx-col:last-child  { background: var(--light-orange); }
+  .sx-col h4 { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .sx-col:first-child h4 { color: var(--a1); }
+  .sx-col:last-child h4  { color: var(--warn); }
+  .sx-col li { list-style: none; padding: 0.15rem 0; line-height: 1.6; }
+  .sx-col li::before { content: "·  "; color: var(--muted); }
+
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; font-weight: 600; }
+  .pt-table td:nth-child(3) { color: #2b7a3d; font-size: 0.83rem; }
+
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: 1fr; }
+    .sx-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Benigne Prostatahyperplasie</h1>
+  <div class="sub">BPH · LUTS · Nykturie · DRU · PSA · Tamsulosin · TUR-P · Prostata-Ca als DD · FSP Leitfaden</div>
+  <div class="timer-badge">⏱ 15–20 Min. Arztbrief · 20 Min. AA-Gespräch · Freiburg · Stuttgart</div>
+</div>
+
+
+<!-- KAPITEL 1: LEITSYMPTOME -->
+<div class="ch-header ch-navy">
+  <div class="ch-num">01</div>
+  <div class="ch-t">
+    <h2>Leitsymptome &amp; typischer Patient</h2>
+    <p>Dysurie · Pollakisurie · Nykturie · schleichend · älterer Mann · DM + aHT</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>LUTS – Irritativ vs. Obstruktiv</h3>
+    <div class="sx-grid">
+      <div class="sx-col">
+        <h4>Irritative Symptome</h4>
+        <ul>
+          <li><strong>Pollakisurie</strong> (häufig, wenig)</li>
+          <li><strong>Nykturie</strong> (nachts &gt;2×)</li>
+          <li><strong>Dysurie</strong> (erschwertes Wasserlassen)</li>
+          <li>Imperativer Harndrang</li>
+          <li>Harninkontinenz (Drang)</li>
+        </ul>
+      </div>
+      <div class="sx-col">
+        <h4>Obstruktive Symptome</h4>
+        <ul>
+          <li>Abgeschwächter Harnstrahl</li>
+          <li>Verzögerter Miktionsbeginn</li>
+          <li>Nachträufeln</li>
+          <li>Unterbrochener Harnstrahl</li>
+          <li>Restharngefühl</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4 style="margin-top:1rem">Begleitsymptome</h4>
+    <span class="tag na">Nykturie → Insomnie</span>
+    <span class="tag na">Erektile Dysfunktion</span>
+    <span class="tag na">Astenie / Fatigue</span>
+
+    <h4>Alarmsymptome – sofort abklären!</h4>
+    <span class="tag rd">Hämaturie → Prostatakarzinom / Blasentumor ausschließen!</span>
+    <span class="tag rd">Akuter Harnverhalt → Katheter!</span>
+    <span class="tag rd">Gewichtsverlust / B-Symptomatik → Ca?</span>
+    <span class="tag rd">Knochenschmerzen → Knochenmetastasen?</span>
+
+    <h4>Immer fragen</h4>
+    <span class="tag bl">Seit wann? (schleichend über Monate!)</span>
+    <span class="tag bl">Harnstrahl – schwach oder normal?</span>
+    <span class="tag bl">Bereits beim Urologen gewesen?</span>
+    <span class="tag bl">Medikamente gegen BPH? (Tamsulosin? Tadalafil?)</span>
+    <span class="tag bl">Vater / Bruder mit Prostataproblemen?</span>
+    <span class="tag bl">Erektile Dysfunktion? (Stuttgart fragte!)</span>
+  </div>
+
+  <div class="card">
+    <h3>Typischer Prüfungspatient</h3>
+    <div style="background:var(--light-navy);border:1px solid #80a8e0;border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.9;margin-bottom:0.8rem">
+      · <strong>Oliver Müller / Friedrich Schiller</strong>, 73–82 J.<br>
+      · <span style="color:var(--a1)">Rentner (Koch, Buchhalter)</span>, verheiratet, 2 gesunde Kinder<br>
+      · <span style="color:var(--a1)">Dysurie + Pollakisurie + Nykturie seit 1–3 Monaten</span><br>
+      · <span style="color:var(--a1)">Schleichend aufgetreten, langsam schlimmer</span><br>
+      · Insomnie wegen Nykturie<br>
+      · <span style="color:var(--a1)">VE: DM Typ 2 + aHT seit Jahren</span><br>
+      · Metformin + Bisoprolol (± Furosemid, ACE-Hemmer)<br>
+      · Bereits Tamsulosin + Tadalafil → kein Ansprechen<br>
+      · <span style="color:var(--a1)">Vater: Bronchialkarzinom (Stuttgart: Prostatakarzinom!)</span><br>
+      · Pollenallergie mit Rhinitis<br>
+      · Z.n. Tonsillektomie + Appendektomie im Kindesalter
+    </div>
+
+    <h4>Risikofaktoren für BPH</h4>
+    <span class="tag na">Höheres Alter (&gt;50 J. – häufigste Ursache)</span>
+    <span class="tag na">Metabolisches Syndrom / Adipositas</span>
+    <span class="tag na">Diabetes mellitus</span>
+    <span class="tag na">Positive Familienanamnese</span>
+    <span class="tag na">Hormonelle Faktoren (DHT!)</span>
+
+    <div class="wbox">
+      <strong>Stuttgart: Vater hatte Prostatakarzinom!</strong> Patient hatte Angst vor Krebs. → Empathisch reagieren: „Diese Sorge nehme ich sehr ernst – gerade wegen Ihres Vaters. Aber es gibt viele Ursachen für diese Beschwerden. Wir klären das gemeinsam ab." Nie kategorisch ausschließen!
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 2: ARZTBRIEF -->
+<div class="ch-header ch-blue">
+  <div class="ch-num">02</div>
+  <div class="ch-t">
+    <h2>Arztbrief-Template</h2>
+    <p>BPH · VD · DD · DRU · PSA zuerst · Tamsulosin · TUR-P</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="bl">Arztbrief: Benigne Prostatahyperplasie</h3>
+
+    <h4>Aktuelle Beschwerden</h4>
+    <div class="fb">
+Herr Müller, ein 73-jähriger Rentner, stellte sich wegen
+<span class="hl">seit 3 Monaten bestehender, schleichend progredienter,
+erschwerter Miktion</span> vor.<br><br>
+Er klagte über <span class="hl">Dysurie, Pollakisurie und Nykturie
+(3–5× pro Nacht)</span>, wodurch er unter
+<span class="hl">Durchschlafstörungen</span> leide.<br><br>
+Eigentherapie (Tamsulosin + Tadalafil) habe
+<span class="hl">keine ausreichende Besserung</span> gebracht.<br><br>
+<span class="cm">// Verneint: Hämaturie, Gewichtsverlust, Fieber, Schüttelfrost,
+Knochenschmerzen, akuter Harnverhalt</span>
+    </div>
+
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: Benigne Prostatahyperplasie (BPH)</span><br>
+(Schleichende LUTS bei 73-jährigem Mann: Dysurie + Pollakisurie + Nykturie,
+kein Fieber, keine Hämaturie, keine B-Symptomatik)<br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlr">Prostatakarzinom</span>
+  – B-Symptomatik?, Gewichtsverlust?, PSA ↑?,
+  DRU: derb-knotig → MUSS ausgeschlossen werden!<br>
+· <span class="hlo">Harnwegsinfektion / Prostatitis</span>
+  – Fieber, Dysurie, CRP ↑, Leukozyturie → U-Stix!<br>
+· <span class="hlo">Urolithiasis</span>
+  – Kolikartige Schmerzen, Hämaturie, Sono<br>
+· <span class="hlo">Pyelonephritis</span>
+  – Fieber, Flankenschmerz, Klopfschmerz<br>
+· <span class="hlo">Blasentumor</span>
+  – Hämaturie!, Raucher-RF<br>
+· <span class="hlo">Neurogene Blasenentleerungsstörung</span>
+  – bei Parkinson, MS, nach Trauma
+    </div>
+
+    <h4>Diagnostik</h4>
+    <div class="fb bl">
+· <span class="hli">PSA-Wert zuerst bestimmen</span>
+  – BEVOR DRU! (Stuttgart: „Was ist wichtig vor DRU?" → PSA!)<br>
+  <span class="cm">// DRU verfälscht PSA-Wert → PSA immer zuerst!</span><br>
+· <span class="hli">Digital-rektale Untersuchung (DRU)</span>:
+  Prostata: Größe? Konsistenz (weich = BPH / hart = Karzinom!)?
+  Homogen? Knotig? Druckdolenz?<br>
+· U-Stix + Urinsediment + Urinkultur (DD HWI)<br>
+· Labor: BB, CRP, Kreatinin (Nierenfunktion!), Glukose (DM!)<br>
+· <span class="hli">Abdomensonographie</span>:
+  Restharnmessung! Nierenstauung?
+  Blasenwand (Balkenblase?)<br>
+· <span class="hli">Transrektaler Ultraschall (TRUS)</span>:
+  Goldstandard → Prostatagröße, Homogenität<br>
+· IPSS-Fragebogen (Symptom-Score → Therapieentscheidung!)<br>
+· Uroflowmetrie (Harnstrahlmessung)<br>
+· EKG (DD kardiale Ursache bei Nykturie)
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb gn">
+<span class="hlg">Je nach Leidensdruck (IPSS):</span><br><br>
+<span class="hlg">IPSS &lt;8 (milde Symptome):</span><br>
+· Kontrolliertes Abwarten + Lebensstilmodifikation<br>
+· Abendliche Trinkmenge reduzieren, Koffein/Alkohol meiden<br><br>
+<span class="hlg">IPSS ≥8 (moderate–schwere Symptome) → Medikamente:</span><br>
+· <span class="hlg">α1-Blocker: Tamsulosin 0,4 mg</span> (Wirkbeginn in Tagen/Wochen)
+  → Muskeltonus der Prostata ↓ → bessere Entleerung<br>
+  NW: Retrograde Ejakulation!, orthostatische Hypotonie<br>
+· <span class="hlg">5α-Reduktase-Hemmer: Finasterid</span>
+  → Testosteron → DHT ↓ → Prostatavolumen ↓
+  (Wirkbeginn: 3–6 Monate! Langzeittherapie &gt;1 Jahr)<br>
+· <span class="hlg">PDE-5-Inhibitor: Tadalafil</span>
+  → auch bei erektiler Dysfunktion!<br>
+  Cave: NIEMALS mit Nitraten kombinieren!<br><br>
+<span class="hlg">Absolute OP-Indikation (chirurgisch):</span><br>
+· Rezidivierender Harnverhalt<br>
+· Rezidivierende HWI<br>
+· Hydronephrose / Niereninsuffizienz<br>
+· Blasensteine<br>
+· Makrohämaturie<br><br>
+<span class="hlg">OP-Verfahren:</span><br>
+· <span class="hlg">TUR-P (Transurethrale Resektion der Prostata)</span>
+  = Goldstandard bis 80 mL<br>
+  Cave: <span class="hlr">Retrograde Ejakulation fast immer!</span> (65%) → aufklären!<br>
+· HoLEP (Holmium-Laser-Enukleation): unabhängig vom Volumen<br>
+· Offene Prostataadenomenukleation: &gt;75 mL
+    </div>
+
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler aus den Fällen:</strong><br>
+      – PSA nach DRU bestimmt → verfälschter Wert! Immer PSA VOR DRU!<br>
+      – Prostatakarzinom nicht als DD genannt → muss immer stehen!<br>
+      – Retrograde Ejakulation nicht erwähnt → Stuttgart fragte nach OP-Komplikationen<br>
+      – „Was sehen Sie bei DRU?" nicht beantwortet: Größe + Konsistenz (weich/hart) + homogen/knotig<br>
+      – Tadalafil mit Nitraten kombiniert → gefährlicher RR-Abfall!
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 3: AA-GESPRÄCH -->
+<div class="ch-header ch-green">
+  <div class="ch-num">03</div>
+  <div class="ch-t">
+    <h2>AA-Gespräch &amp; Prüfungsfragen</h2>
+    <p>Freiburg 07/2024 · 01/2024 · Stuttgart 04/2024 · 10/2023 · direkte Fragen</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Patientenvorstellung – 5 Schritte</h3>
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="scont"><strong>Stammdaten</strong>
+      „Ich möchte Ihnen Herrn Müller vorstellen, einen 73-jährigen Rentner, der sich wegen seit 3 Monaten bestehender Miktionsbeschwerden bei uns vorgestellt hat."</div>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="scont"><strong>Leitsymptome</strong>
+      „<span class="hl">Dysurie + Pollakisurie + Nykturie (3–5×/Nacht)</span> – schleichend aufgetreten, progredient. Sekundäre Insomnie. Abgeschwächter Harnstrahl."</div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="scont"><strong>Risikofaktoren</strong>
+      „Alter 73 J., <span class="hl">DM Typ 2, aHT</span>. Tamsulosin + Tadalafil bereits versucht → unzureichend."</div>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="scont"><strong>VD + DD</strong>
+      „VD: <span class="hl">Benigne Prostatahyperplasie</span>. DD: <span class="hlr">Prostatakarzinom</span> (muss ausgeschlossen werden!), <span class="hlo">HWI, Urolithiasis, Blasentumor</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="scont"><strong>Procedere</strong>
+      „<span class="hli">PSA zuerst, dann DRU</span>, U-Stix, Sonographie (Restharn!), IPSS-Score. Je nach Befund: <span class="hlg">Tamsulosin / Finasterid oder TUR-P</span>. Urologie-Konsil."</div>
+    </div>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th><th>Stadt</th></tr>
+      <tr><td>VD und warum?</td><td>BPH: schleichende LUTS (Dysurie, Pollakisurie, Nykturie) bei älterem Mann ohne Fieber, ohne Hämaturie, ohne B-Symptomatik. Häufigste urologische Erkrankung ab 60 J.</td><td>Alle</td></tr>
+      <tr><td>Was ist wichtig VOR der DRU? (Stuttgart!)</td><td><strong>PSA-Wert zuerst bestimmen!</strong> DRU kann PSA-Wert verfälschen (erhöhen). PSA muss vor jeder rektalen Manipulation gemessen werden!</td><td>Stuttgart 10/2023</td></tr>
+      <tr><td>Was suchen Sie bei der DRU?</td><td>Prostata: <strong>Größe</strong> (vergrößert?), <strong>Konsistenz</strong> (weich = BPH / hart = Karzinom!), homogen oder knotig/heterogen?, Druckdolenz? Außerdem: Rektumschleimhaut, Sphinktertonus.</td><td>Freiburg 01/2024</td></tr>
+      <tr><td>Wie stellen Sie die Diagnose?</td><td>IPSS-Score (Symptom-Ausprägung) + DRU + PSA + Sono (Prostatavolumen, Restharn) + Uroflowmetrie + TRUS (Goldstandard für Prostatagröße)</td><td>Freiburg 01/2024</td></tr>
+      <tr><td>Was ist IPSS?</td><td>International Prostate Symptom Score: Fragebogen mit 7 Fragen zu LUTS-Intensität. 0–7 = mild (abwarten), 8–19 = moderat (Therapie), 20–35 = schwer (dringend handeln). Wichtig für Therapieentscheidung!</td><td>Alle</td></tr>
+      <tr><td>Therapie? Medikamente? Mechanismus?</td><td>α1-Blocker (Tamsulosin): Muskeltonus ↓ → bessere Entleerung. 5α-Reduktase-Hemmer (Finasterid): DHT ↓ → Prostata verkleinert sich (Wirkung erst nach 3–6 Monaten!). PDE-5-Inhibitor (Tadalafil): auch bei Erektionsstörung.</td><td>Alle</td></tr>
+      <tr><td>Wann OP? Welches Verfahren? (Freiburg!)</td><td>Absolute Indikation: Harnverhalt, HWI-Rezidive, Blasensteine, Niereninsuffizienz, Makrohämaturie. Verfahren: <strong>TUR-P</strong> (Goldstandard bis 80 mL) = transurethrale Resektion. Endoskopisch! Alternativ: HoLEP (Laser), offene OP (&gt;75 mL).</td><td>Freiburg</td></tr>
+      <tr><td>Komplikationen der TUR-P?</td><td><strong>Retrograde Ejakulation</strong> (65%!): Samen geht in Blase statt nach außen → immer aufklären! Erektile Dysfunktion (10%), Harnröhrenstriktur, Harninkontinenz. TUR-Syndrom (Hyponatriämie durch Spülflüssigkeit).</td><td>Alle</td></tr>
+      <tr><td>Wird der Patient operiert? Hat er Blasenkatheter? (Freiburg!)</td><td>Zunächst konservativ (Medikamente). Katheter: bei akutem Harnverhalt → transurethraler Dauerkatheter als Notfallmaßnahme. OP: nur bei absoluter Indikation oder medikamentösem Versagen.</td><td>Freiburg 01/2024</td></tr>
+      <tr><td>Hat BPH mit den Voroperationen zu tun? (Freiburg!)</td><td>Nein, BPH ist eine altersbedingte Vergrößerung der Prostata durch hormonelle Faktoren (DHT). Leistenhernie-OP oder Appendektomie haben keinen direkten Zusammenhang.</td><td>Freiburg 01/2024</td></tr>
+      <tr><td>Warum Desobstruktion? (Freiburg!)</td><td>TUR-P = transurethrale Desobstruktion: Das überschüssige Prostatagewebe wird endoskopisch abgetragen → Blasenauslass wird freigegeben → Harnfluss verbessert sich.</td><td>Freiburg 01/2024</td></tr>
+      <tr><td>Patient hatte Angst vor Krebs – was sagen? (Stuttgart!)</td><td>„Diese Sorge nehme ich sehr ernst, gerade wegen Ihres Vaters. Es gibt aber viele Ursachen für diese Beschwerden. Wir untersuchen das genau – PSA und Ultraschall werden uns helfen, Krebs auszuschließen oder früh zu erkennen."</td><td>Stuttgart 04/2024</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- KAPITEL 4: PATIENTENSPRACHE -->
+<div class="ch-header ch-orange">
+  <div class="ch-num">04</div>
+  <div class="ch-t">
+    <h2>Patientensprache &amp; Empathie</h2>
+    <p>BPH erklären · Krebsangst ansprechen · Therapieoptionen erläutern</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="or">Übersetzungstabelle</h3>
+    <table class="pt-table">
+      <tr><th>Fachbegriff</th><th>Medizinisch</th><th>Patientensprache</th></tr>
+      <tr><td><strong>BPH / Prostatahyperplasie</strong></td><td>Benigne Vergrößerung der Prostata</td><td>„Ihre Vorsteherdrüse – die Prostata – ist mit dem Alter größer geworden. Das ist sehr häufig bei Männern ab 60 Jahren und ist zunächst nicht gefährlich. Sie drückt auf die Harnröhre, weshalb das Wasserlassen schwieriger wird."</td></tr>
+      <tr><td><strong>DRU (digital-rektale Untersuchung)</strong></td><td>Tastuntersuchung der Prostata über das Rektum</td><td>„Ich werde die Prostata vom After aus abtasten – das dauert nur kurz und kann etwas unangenehm sein, ist aber wichtig, um die Größe und Beschaffenheit der Drüse zu beurteilen."</td></tr>
+      <tr><td><strong>PSA-Wert</strong></td><td>Prostata-spezifisches Antigen</td><td>„Wir bestimmen aus Ihrem Blut einen Wert, der von der Prostata gebildet wird. Ein erhöhter Wert kann auf eine Vergrößerung oder – seltener – auf Krebs hinweisen. Wir schauen das genau an."</td></tr>
+      <tr><td><strong>Tamsulosin (α1-Blocker)</strong></td><td>Relaxation der glatten Prostatamuskulatur</td><td>„Dieses Medikament entspannt die Muskeln rund um die Harnröhre – dadurch kann der Urin leichter fließen. Es wirkt schnell, innerhalb von wenigen Tagen."</td></tr>
+      <tr><td><strong>TUR-P</strong></td><td>Transurethrale Resektion der Prostata</td><td>„Wir können das überschüssige Prostatagewebe mit einem dünnen Instrument durch die Harnröhre entfernen – ohne Schnitt von außen. Das verbessert den Harnfluss deutlich."</td></tr>
+      <tr><td><strong>Retrograde Ejakulation</strong></td><td>Samenfluss in die Blase statt nach außen</td><td>„Nach der Operation kann es vorkommen, dass der Samen bei der Ejakulation in die Blase geht statt nach außen – das nennt sich retrograde Ejakulation. Das ist für die Gesundheit nicht schädlich, aber Sie werden das bemerken."</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3>Typische Patientenreaktionen – Musterantworten</h3>
+    <div class="fb gn">
+<span class="cm">// Direkt aus den echten Fällen!</span><br><br>
+🧑 „Was habe ich?" (Alle Städte!)<br>
+→ <span class="hlg">„Nach dem, was Sie mir beschrieben haben, vermute ich, dass Ihre Prostata – die Vorsteherdrüse – größer geworden ist und dadurch das Wasserlassen erschwert. Das ist sehr häufig bei Männern in Ihrem Alter. Wir müssen das noch genauer untersuchen, um sicherzugehen."</span><br><br>
+🧑 „Ich habe im Internet gelesen, dass es Krebs sein könnte." (Freiburg!)<br>
+→ <span class="hlg">„Ich verstehe, dass Sie sich Sorgen machen – das ist eine verständliche Reaktion. Es gibt viele mögliche Ursachen für Ihre Beschwerden, und die häufigste bei Männern Ihres Alters ist eine gutartige Vergrößerung der Prostata. Wir werden gezielte Untersuchungen machen, die das klären – ich bitte Sie, vorerst ruhig zu bleiben."</span><br><br>
+🧑 „Mein Vater hatte Prostatakrebs – habe ich das auch?" (Stuttgart!)<br>
+→ <span class="hlg">„Diese Sorge nehme ich sehr ernst. Die Vorgeschichte Ihres Vaters ist wichtig für uns. Wir werden gezielt den PSA-Wert messen und eine Ultraschalluntersuchung durchführen, um das genau zu klären. Denken Sie bitte nicht sofort an das Schlimmste – gutartige Ursachen sind weitaus häufiger."</span><br><br>
+🧑 „Hat mein Prostataproblem mit meiner Bruch-Operation zu tun?" (Freiburg!)<br>
+→ <span class="hlg">„Nein, die Prostatavergrößerung hat keinen direkten Zusammenhang mit Ihrer früheren Leistenbruch-Operation. Sie ist vor allem eine altersbedingte Veränderung, die durch Hormone ausgelöst wird."</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- FACHBEGRIFFE + ZEITPLAN -->
+<div class="sdiv"><span>Fachbegriffe &amp; Zeitplan</span></div>
+<div class="grid">
+  <div class="card">
+    <h3>Fachbegriffe aus den Prüfungen</h3>
+    <h4>BPH direkt</h4>
+    <div>
+      <span class="tag na">Benigne Prostatahyperplasie (BPH)</span>
+      <span class="tag na">LUTS (Lower Urinary Tract Symptoms)</span>
+      <span class="tag na">Dysurie / Pollakisurie / Nykturie</span>
+      <span class="tag na">Harnverhalt / Restharnbildung</span>
+      <span class="tag na">Digital-rektale Untersuchung (DRU)</span>
+      <span class="tag na">PSA-Wert (vor DRU!)</span>
+      <span class="tag na">IPSS-Score</span>
+      <span class="tag na">Transrektaler Ultraschall (TRUS)</span>
+      <span class="tag na">Uroflowmetrie</span>
+      <span class="tag na">Tamsulosin (α1-Blocker)</span>
+      <span class="tag na">Finasterid (5α-Reduktase-Hemmer)</span>
+      <span class="tag na">Tadalafil (PDE-5-Inhibitor)</span>
+      <span class="tag na">TUR-P (Goldstandard)</span>
+      <span class="tag na">Retrograde Ejakulation</span>
+      <span class="tag na">Desobstruktion</span>
+    </div>
+    <h4 style="margin-top:0.8rem">DD</h4>
+    <div>
+      <span class="tag rd">Prostatakarzinom</span>
+      <span class="tag or">Prostatitis / HWI</span>
+      <span class="tag or">Urolithiasis</span>
+      <span class="tag or">Blasentumor</span>
+      <span class="tag or">Neurogene Blasenstörung</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Sonstige aus Prüfungen</h4>
+    <div>
+      <span class="tag gr">Appliziert</span>
+      <span class="tag gr">Subduralhämatom</span>
+      <span class="tag gr">Kurativ</span>
+      <span class="tag gr">Psoriasis</span>
+      <span class="tag gr">Irreversibel</span>
+      <span class="tag gr">Pus</span>
+      <span class="tag gr">Palliativ</span>
+      <span class="tag gr">Adnexitis</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="or">Zeitplan &amp; Top-Tipps</h3>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-na">Patientengespräch</span></td><td><strong>15–20 Min</strong></td><td>Schleichend aufgetreten! Harnstrahl schwach? Hämaturie? Gewichtsverlust? Tamsulosin/Tadalafil schon versucht? Vater mit Prostataproblemen? Erektile Dysfunktion?</td></tr>
+      <tr><td><span class="badge badge-bl">Arztbrief</span></td><td><strong>15–20 Min</strong></td><td>VD BPH. DD Prostatakarzinom immer! PSA VOR DRU. Sono (Restharn). IPSS. Tamsulosin / Finasterid. TUR-P + Retrograde Ejakulation erwähnen.</td></tr>
+      <tr><td><span class="badge badge-gn">AA-Gespräch</span></td><td><strong>20 Min</strong></td><td>PSA vor DRU! DRU-Befund beschreiben (Größe, Konsistenz). IPSS erklären. Therapie nach Leidensdruck. Krebsangst empathisch ansprechen. TUR-P = Desobstruktion.</td></tr>
+    </table>
+
+    <div class="ebox" style="margin-top:1rem">
+      <strong>Die wichtigsten 3 Regeln:</strong><br>
+      1. <strong>PSA IMMER VOR DRU</strong> – DRU verfälscht PSA-Wert!<br>
+      2. <strong>Prostatakarzinom immer als DD</strong> – nie ausschließen ohne Untersuchung<br>
+      3. <strong>Retrograde Ejakulation aufklären</strong> – Komplikation TUR-P!
+    </div>
+    <div class="navybox" style="margin-top:0.8rem">
+      <strong>Finasterid vs. Tamsulosin:</strong> Tamsulosin wirkt schnell (Tage/Wochen) → Symptomlinderung. Finasterid wirkt langsam (3–6 Monate) → Volumenreduktion der Prostata. Kombination möglich bei großer Prostata + starkem Leidensdruck.
+    </div>
+    <div class="bluebox" style="margin-top:0.8rem">
+      <strong>Tadalafil + Nitrate = gefährlich!</strong> Beide senken Blutdruck → kombiniert → massiver RR-Abfall → Schock. Stuttgart: Patient mit aHT + ACE-Hemmer → immer Medikamentenkombinationen prüfen!
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top: 1px solid var(--border);">
+  FSP Leitfaden · Benigne Prostatahyperplasie (BPH) + Patientensprache · Freiburg · Stuttgart · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Schenkelhalsfraktur</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --card2: #f1f3f5;
+    --a1: #6b3a1f;    /* dunkelrot-braun – Knochen */
+    --a2: #1971c2;    /* blau – Diagnostik */
+    --a3: #2f9e44;    /* grün – Therapie */
+    --a4: #c92a2a;    /* rot – Notfall */
+    --warn: #e67700;
+    --text: #212529;
+    --muted: #868e96;
+    --border: #dee2e6;
+    --light-brown: #fdf1e8;
+    --light-blue: #e8f0ff;
+    --light-green: #ebfbee;
+    --light-red: #fff5f5;
+    --light-orange: #fff9db;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-weight: 400; line-height: 1.7; padding: 2rem 1rem; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border); }
+  .header h1 { font-family: 'Inter', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--a1); letter-spacing: -1px; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+  .timer-badge { display: inline-block; background: var(--a1); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 0.8rem; }
+
+  .ch-header { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0 1.2rem; padding: 0.9rem 1.2rem; border-radius: 10px; }
+  .ch-brown  { background: var(--light-brown);  border-left: 5px solid var(--a1); }
+  .ch-blue   { background: var(--light-blue);   border-left: 5px solid var(--a2); }
+  .ch-green  { background: var(--light-green);  border-left: 5px solid var(--a3); }
+  .ch-red    { background: var(--light-red);    border-left: 5px solid var(--a4); }
+  .ch-orange { background: var(--light-orange); border-left: 5px solid var(--warn); }
+  .ch-num { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 800; opacity: 0.2; }
+  .ch-brown .ch-num  { color: var(--a1); } .ch-blue .ch-num  { color: var(--a2); }
+  .ch-green .ch-num  { color: var(--a3); } .ch-red .ch-num   { color: var(--a4); }
+  .ch-orange .ch-num { color: var(--warn); }
+  .ch-t h2 { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 800; line-height: 1.1; }
+  .ch-brown .ch-t h2  { color: var(--a1); } .ch-blue .ch-t h2  { color: var(--a2); }
+  .ch-green .ch-t h2  { color: var(--a3); } .ch-red .ch-t h2   { color: var(--a4); }
+  .ch-orange .ch-t h2 { color: var(--warn); }
+  .ch-t p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 10px; padding: 1.4rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .card h3 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--a1); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light-brown); }
+  .card h3.bl { color: var(--a2); border-color: var(--light-blue); }
+  .card h3.gn { color: var(--a3); border-color: var(--light-green); }
+  .card h3.rd { color: var(--a4); border-color: var(--light-red); }
+  .card h3.or { color: var(--warn); border-color: var(--light-orange); }
+  .card h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); padding: 0.15rem 0.6rem; border-radius: 4px; font-size: 0.77rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: var(--card2); color: var(--text); }
+  .tag.br { background: var(--light-brown);  border-color: #e8b880; color: #5a2e0f; }
+  .tag.bl { background: var(--light-blue);   border-color: #a5c8f0; color: #1a3666; }
+  .tag.gn { background: var(--light-green);  border-color: #8ce99a; color: #1b4a22; }
+  .tag.rd { background: var(--light-red);    border-color: #ffa8a8; color: var(--a4); }
+  .tag.or { background: var(--light-orange); border-color: #ffd43b; color: #b35900; }
+  .tag.gr { background: #f8f9fa;             border-color: #ced4da; color: #495057; }
+
+  .fb { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #343a40; }
+  .fb.bl { border-left-color: var(--a2); }
+  .fb.gn { border-left-color: var(--a3); }
+  .fb.rd { border-left-color: var(--a4); }
+  .fb.or { border-left-color: var(--warn); }
+  .fb .cm { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hli { color: var(--a2);  font-weight: 600; }
+  .hlg { color: var(--a3);  font-weight: 600; }
+  .hlr { color: var(--a4);  font-weight: 600; }
+  .hlo { color: var(--warn);font-weight: 600; }
+  .hlm { color: var(--muted); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: var(--card2); padding: 0.5rem 0.8rem; text-align: left; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 2px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8f9fa; }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-br { background: var(--light-brown);  color: #5a2e0f; }
+  .badge-bl { background: var(--light-blue);   color: #1a3666; }
+  .badge-gn { background: var(--light-green);  color: #1b4a22; }
+  .badge-rd { background: var(--light-red);    color: var(--a4); }
+  .badge-or { background: var(--light-orange); color: #b35900; }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0 1rem; }
+  .sdiv span { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: var(--light-orange); border: 1px solid #ffd43b; border-left: 3px solid var(--warn); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #664d00; }
+  .wbox strong { color: #b35900; }
+  .ebox { background: var(--light-red);    border: 1px solid #ffa8a8; border-left: 3px solid var(--a4); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #6b1010; }
+  .ebox strong { color: var(--a4); }
+  .gbox { background: var(--light-green);  border: 1px solid #8ce99a; border-left: 3px solid var(--a3); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #1b4a22; }
+  .gbox strong { color: #2b7a3d; }
+  .bluebox { background: var(--light-blue); border: 1px solid #a5c8f0; border-left: 3px solid var(--a2); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #1a3666; }
+  .bluebox strong { color: var(--a2); }
+  .brbox { background: var(--light-brown); border: 1px solid #e8b880; border-left: 3px solid var(--a1); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #5a2e0f; }
+  .brbox strong { color: var(--a1); }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: var(--a1); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .snum.bl { background: var(--a2); }
+  .snum.gn { background: var(--a3); }
+  .snum.rd { background: var(--a4); }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+  .scont strong.bl { color: var(--a2); }
+  .scont strong.gn { color: var(--a3); }
+
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; font-weight: 600; }
+  .pt-table td:nth-child(3) { color: #2b7a3d; font-size: 0.83rem; }
+  .pt-table td:nth-child(4) { color: #b35900; font-size: 0.81rem; font-style: italic; }
+
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Schenkelhalsfraktur</h1>
+  <div class="sub">Proximale Femurfraktur · Sturz · Osteoporose · TEP / Osteosynthese · FSP Leitfaden</div>
+  <div class="timer-badge">⚡ Notfall! · 20 Min. Arztbrief · 20 Min. AA-Gespräch</div>
+</div>
+
+
+<!-- KAPITEL 1: LEITSYMPTOME -->
+<div class="ch-header ch-brown">
+  <div class="ch-num">01</div>
+  <div class="ch-t">
+    <h2>Leitsymptome &amp; typischer Patient</h2>
+    <p>Sturz · Hüftschmerz · Beinfehlstellung · Gehunfähigkeit · Notfall!</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Leitsymptome – klassische Trias</h3>
+    <h4>Kernsymptome nach Sturz</h4>
+    <span class="tag br">Starker Hüft-/Leistenschmerz nach Sturz</span>
+    <span class="tag br">Gehunfähigkeit / Standunfähigkeit</span>
+    <span class="tag br">Beinfehlstellung: Außenrotation + Verkürzung</span>
+    <span class="tag br">Bein liegt flach (kann es nicht anheben!)</span>
+    <span class="tag br">Ausstrahlung in Knie / Oberschenkel</span>
+    <span class="tag br">Schmerz bei kleinsten Bewegungen (9–10/10)</span>
+
+    <h4>Unfallmechanismus – immer genau erfragen!</h4>
+    <span class="tag bl">Wann gestürzt? (Zeitraum wichtig!)</span>
+    <span class="tag bl">Wo? (Dusche, Bett, Treppe, draußen)</span>
+    <span class="tag bl">Womit gestürzt? (Welche Seite?)</span>
+    <span class="tag bl">Bewusstsein verloren? (V.a. Synkope / TIA!)</span>
+    <span class="tag bl">Schwindel / Stolpern vor dem Sturz?</span>
+    <span class="tag bl">Alleine gefunden worden? Wie lange gelegen?</span>
+    <span class="tag bl">Selbst RD alarmiert oder Familie?</span>
+
+    <h4>Immer ausschließen</h4>
+    <span class="tag rd">Sensibilitätsstörungen (DMS-Kontrolle!)</span>
+    <span class="tag rd">Bewusstseinsverlust (DD: Herzarrhythmie, TIA)</span>
+    <span class="tag rd">Blutungen / Hämatome (offene Fraktur?)</span>
+    <span class="tag rd">Weitere Verletzungen (Polytrauma bei Hochrasanz!)</span>
+
+    <div class="wbox">
+      <strong>Sturzursache immer abklären!</strong> Stuttgart: Patient wurde schwindelig → dann gestürzt. → EKG + Herzenzyme = obligat! Prüfer fragte: „Warum haben Sie EKG angefordert?" → Synkope / Arrhythmie als Sturzauslöser ausschließen!
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Typischer Prüfungspatient</h3>
+    <div style="background:var(--light-brown);border:1px solid #e8b880;border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.9;margin-bottom:0.8rem">
+      · <strong>Lisele Müller, 90 J.</strong> / Michael Neumeister, 75 J.<br>
+      · <span style="color:var(--a1)">Rentnerin / Rentner</span>, verheiratet<br>
+      · <span style="color:var(--a1)">Sturz in Dusche / zu Hause auf re./li. Hüfte</span><br>
+      · Starke Hüftschmerzen, Bein kann nicht bewegt werden<br>
+      · RTW / Tochter alarmiert<br>
+      · Zeitlich, örtlich, situativ orientiert (wichtig!)<br>
+      · <span style="color:var(--a1)">Osteoporose (implizit!)</span><br>
+      · Vorerkrankungen: aHT, pAVK, Hypothyreose, Z.n. IAM<br>
+      · Frühere Fraktur (Handgelenk / Unterarm!) → Hinweis Osteoporose<br>
+      · ASS 100 mg täglich (Blutungsrisiko bei OP!)<br>
+      · Ex-Raucherin, Alkohol: 1 Glas Sekt täglich
+    </div>
+    <h4>Risikofaktoren für Schenkelhalsfraktur</h4>
+    <span class="tag br">Osteoporose (#1 Risikofaktor!)</span>
+    <span class="tag br">Hohes Alter (&gt;70 J.)</span>
+    <span class="tag br">Weibliches Geschlecht (♀:♂ = 2:1)</span>
+    <span class="tag br">Post-Menopause (Östrogenabfall → Knochenschwund)</span>
+    <span class="tag br">Gangunsicherheit / Schwindel</span>
+    <span class="tag br">Sturzgefahr (Teppichkanten, Badezimmer)</span>
+    <span class="tag br">Kortikosteroide (Knochendichteabnahme)</span>
+    <span class="tag br">Alkohol / Nikotin</span>
+    <span class="tag br">Vorherige Frakturen (Handgelenk!)</span>
+    <div class="ebox">
+      <strong>⚠️ Eltern nicht fragen bei 90-jähriger Patientin!</strong> Stuttgart: Prüfer sagte: „Sie ist selbst 90 Jahre alt – es macht keinen Sinn, nach den Eltern zu fragen." → Familiäre Anamnese anpassen ans Alter!
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 2: ARZTBRIEF + SOFORTMASSNAHMEN -->
+<div class="ch-header ch-red">
+  <div class="ch-num">02</div>
+  <div class="ch-t">
+    <h2>Notfallmanagement &amp; Arztbrief</h2>
+    <p>Sofortmaßnahmen · DMS-Kontrolle · EKG · Analgesie · Röntgen</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="rd">Sofortmaßnahmen in der Notaufnahme (ABCDE)</h3>
+    <div class="fb rd">
+<span class="hlr">1. Analgesie – sofort!</span>
+<span class="cm">// Frage: Allergien? Schon Medikamente eingenommen?</span><br>
+· Leichte Schmerzen: Paracetamol 1 g i.v. / Metamizol<br>
+· Starke Schmerzen: Piritramid i.v. (Opioid, weniger Übelkeit als Morphin)<br>
+· NSAR bei alten Patienten: <span class="hlr">Cave! Nieren + Magen!</span><br><br>
+<span class="hlr">2. Venöser Zugang + Blutentnahme:</span><br>
+· BB, Gerinnung, Kreatinin, Elektrolyte, TSH (KM-Gabe!)<br>
+· <span class="hlr">Kreuzblut</span> (Blutgruppe + Erythrozytenkonzentrate bereitstellen!)<br>
+· Herzenzyme (Troponin) + <span class="hlr">EKG</span> (Sturzursache: Synkope / Arrhythmie?)<br><br>
+<span class="hlr">3. DMS-Kontrolle</span> (Durchblutung, Motorik, Sensibilität):<br>
+· Periphere Pulse? Kapillärfüllung?<br>
+· Sensibilität Bein/Fuß (Nervenschaden?)<br>
+· Motorik: Kann Patient Fuß bewegen?<br><br>
+<span class="hlr">4. Monitoring:</span>
+RR, Puls, SpO₂, EKG-Monitor<br><br>
+<span class="hlr">5. Lagerung:</span>
+Schonend, achsengerecht, leicht gebeugt.
+<span class="hlr">Kein Repositionsversuch!</span>
+Polsterung Ferse + Sacrum (Dekubitusprophylaxe!)<br><br>
+<span class="hlr">6. Thromboseprophylaxe:</span>
+Niedermolekulares Heparin (Enoxaparin s.c.)<br><br>
+<span class="hlr">7. Blasenkatheter</span> (falls nötig, möglichst vermeiden)
+    </div>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3>Arztbrief: Schenkelhalsfraktur</h3>
+
+    <h4>Aktuelle Beschwerden</h4>
+    <div class="fb">
+Frau/Herr [Name], eine/ein [Alter]-jährige/r Patientin/Patient,
+wurde heute mit dem <span class="hl">Rettungsdienst</span> in unsere Notaufnahme gebracht.<br><br>
+Die Patientin berichtete, dass sie <span class="hl">heute Nachmittag in der Dusche /
+zu Hause auf die [re./li.] Seite gestürzt</span> sei.
+<span class="hl">Zuvor sei ihr schwindelig geworden</span> / sie sei ausgerutscht.
+<span class="hl">Bewusstsein sei nicht verloren gegangen</span>; sie sei zeitlich, örtlich
+und situativ orientiert.<br><br>
+Seit dem Sturz bestehe ein <span class="hl">starker, stechender Schmerz
+in der [re./li.] Hüfte</span> (NRS 8–9/10), mit
+<span class="hl">Ausstrahlung in den Oberschenkel / das Knie</span>.
+Die Patientin könne das <span class="hl">Bein nicht anheben und nicht aufstehen</span>.<br><br>
+<span class="cm">// Verneinte Befunde:</span><br>
+Sichtbare Hämatome, Blutungen, Hypästhesie / Parese verneint.
+Keine weiteren Verletzungen bekannt.
+    </div>
+
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: Schenkelhalsfraktur</span> [re./li.]<br>
+(Sturz mit Aufprall auf Hüfte, starke Hüftschmerzen, Beinfehlstellung
+– Außenrotation + Verkürzung –, Gehunfähigkeit,
+Alter + Osteoporose-Anamnese / frühere Frakturen)<br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlo">Pertrochantäre Femurfraktur</span>
+  – ähnliche Klinik, mehr lateral; Röntgen unterscheidet<br>
+· <span class="hlo">Femurkopffraktur</span>
+  – oft kombiniert mit Hüftluxation; CT notwendig<br>
+· <span class="hlo">Beckenfraktur</span>
+  – diffuse Beckenschmerzen, Kompressionsschmerz<br>
+· <span class="hlo">Hüftgelenkluxation</span>
+  – federnde Fixierung, Bein in Flexion/Adduktion/Innenrotation<br>
+· <span class="hlo">Muskelprellung / -kontusion</span>
+  – keine Fehlstellung, keine Fraktur im Bild<br>
+· <span class="hlo">TIA / Synkope als Sturzauslöser</span>
+  → EKG + Herzenzyme + CCT!
+    </div>
+
+    <h4>Diagnostik</h4>
+    <div class="fb bl">
+· <span class="hli">DMS-Kontrolle</span>:
+  Periphere Pulse (A. dorsalis pedis, A. tibialis posterior),
+  Sensibilität, Motorik<br>
+· <span class="hli">EKG + Troponin</span>: Synkope / Herzarrhythmie als Sturzursache?<br>
+· Labor: <span class="hli">BB, Gerinnung (Quick, PTT), Kreuzblut</span>,
+  Elektrolyte, Kreatinin, TSH, Herzenzyme<br>
+· <span class="hli">Röntgen Hüfte beidseits (Beckenübersicht + axiale Aufnahme)</span>
+  = erste Bildgebung!<br>
+· <span class="hli">CT-Hüfte</span>: bei unklarem Röntgen, Verdacht auf
+  Femurkopffraktur / Acetabulum, präoperativ<br>
+· Ggf. <span class="hli">CCT (CT-Cranium)</span>:
+  bei Bewusstlosigkeit / V.a. Schädel-Hirn-Trauma<br>
+· Ggf. <span class="hli">Röntgen-Thorax</span>: präoperativ, Pneumonie-Ausschluss
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb gn">
+<span class="hlg">Sofortmaßnahmen:</span>
+Analgesie (Piritramid), i.v.-Zugang, DMS, EKG, Blut, Kreuzblut, Thromboseprophylaxe<br><br>
+<span class="hlg">Operative Therapie</span> (Standardtherapie, möglichst &lt;24 h!):<br><br>
+<span class="hlg">a) Osteosynthese (Knochen erhalten) – junge Patienten:</span><br>
+· Indikation: Junges Alter, gute Knochenqualität,
+  nicht-dislozierte Fraktur (Garden I–II)<br>
+· Verfahren: Dynamische Hüftschraube (DHS), Gammanagel,
+  Schraubenosteosynthese<br><br>
+<span class="hlg">b) Endoprothese (Gelenkersatz) – alte Patienten:</span><br>
+· Indikation: Hohes Alter, dislozierte Fraktur (Garden III–IV),
+  Osteoporose, vorbestehende Coxarthrose<br>
+· Duokopfprothese (Hemiprothese):
+  kleinerer Eingriff, schnelle Mobilisation<br>
+· <span class="hlg">Hüft-TEP (Totalendoprothese)</span>:
+  geringere Revisionsrate langfristig<br>
+· <strong>6 P's = absolute Indikation für Prothese:</strong>
+  Paget, Parkinson, Pathologische Fraktur, Plegie,
+  Polyarthritis, Porose (Osteoporose)<br><br>
+<span class="hlg">Konservative Therapie (Ausnahmen):</span><br>
+· Nur bei: inoperablem Patient (Multimorbidität),
+  eingestauchter Fraktur ohne Dislokation (Garden I)<br>
+· Schmerztherapie + Thromboseprophylaxe + Physiotherapie<br><br>
+<span class="hlg">Postoperativ:</span><br>
+· Frühzeitige Mobilisation (Vollbelastung anstreben!)<br>
+· Physiotherapie (Gangschule, Gehhilfe)<br>
+· Osteoporose-Therapie: Calcium + Vitamin D + Bisphosphonate<br>
+· Sturz-Prophylaxe: Hilfsmittel, Wohnungsanpassung
+    </div>
+
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler aus den Fällen:</strong><br>
+      – EKG vergessen → Sturzursache (Synkope / Herzarrhythmie) muss ausgeschlossen werden!<br>
+      – Kreuzblut nicht angeordnet → bei OP obligat (intraoperativer Blutverlust!)<br>
+      – Klassifikation nicht genannt → Stuttgart fragte explizit: „Garden-Klassifikation kennen!"<br>
+      – Familiäre Anamnese bei 90-jähriger Patient → Eltern nicht fragen!<br>
+      – ASS 100 mg (Dauermedikation) → perioperatives Management! Pausieren oder Blutungsrisiko ansprechen
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 3: KLASSIFIKATIONEN -->
+<div class="ch-header ch-blue">
+  <div class="ch-num">03</div>
+  <div class="ch-t">
+    <h2>Klassifikationen – Prüfungswissen!</h2>
+    <p>Stuttgart fragte: „Klassifikation der Schenkelhalsfraktur kennen!"</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3 class="bl">Garden-Klassifikation</h3>
+    <p style="font-size:0.83rem;color:var(--muted);margin-bottom:0.7rem">Einteilung nach Dislokation + Perfusionsstörungsrisiko des Femurkopfes</p>
+    <table>
+      <tr><th>Typ</th><th>Beschreibung</th><th>Therapie</th></tr>
+      <tr><td><strong class="hlg">Garden I</strong></td><td>Inkomplette Fraktur, eingestaucht, Valgusstellung, keine Dislokation → Perfusion intakt</td><td>Ggf. konservativ ODER Schraubenosteosynthese</td></tr>
+      <tr><td><strong class="hlg">Garden II</strong></td><td>Vollständige Fraktur ohne Dislokation → Perfusion noch intakt</td><td>Schraubenosteosynthese / DHS</td></tr>
+      <tr><td><strong class="hlo">Garden III</strong></td><td>Vollständige Fraktur mit teilweiser Dislokation, Varusstellung → Perfusionsstörung möglich</td><td>Osteosynthese jung / TEP alt</td></tr>
+      <tr><td><strong class="hlr">Garden IV</strong></td><td>Vollständige Fraktur mit kompletter Dislokation → Kein Kontakt der Fragmente → Femurkopfnekrose-Risiko hoch!</td><td>TEP / Hemiprothese</td></tr>
+    </table>
+    <div class="bluebox">
+      <strong>Merksatz Garden:</strong> I + II = nicht disloziert → Osteosynthese (Knochen erhalten). III + IV = disloziert → bei alten Patienten TEP (Femurkopfnekrose-Risiko!)
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="bl">Pauwels-Klassifikation</h3>
+    <p style="font-size:0.83rem;color:var(--muted);margin-bottom:0.7rem">Einteilung nach Winkel der Frakturlinie zur Horizontalen → Dislokationsrisiko</p>
+    <table>
+      <tr><th>Typ</th><th>Winkel</th><th>Heilungstendenz</th></tr>
+      <tr><td><strong class="hlg">Pauwels I</strong></td><td>&lt;30°</td><td>Günstig – Abduktionsfraktur, Valgus</td></tr>
+      <tr><td><strong class="hlo">Pauwels II</strong></td><td>30–50°</td><td>Mäßig – Adduktionsfraktur, Varus</td></tr>
+      <tr><td><strong class="hlr">Pauwels III</strong></td><td>&gt;50°</td><td>Schlecht – Abscherfraktur, instabil!</td></tr>
+    </table>
+    <h4 style="margin-top:1rem">Komplikationen kennen!</h4>
+    <span class="tag rd">Avaskuläre Femurkopfnekrose (20%!)</span>
+    <span class="tag rd">Pseudoarthrose (15%)</span>
+    <span class="tag rd">TVT (tiefe Beinvenenthrombose)</span>
+    <span class="tag rd">Pneumonie (Immobilisierung!)</span>
+    <span class="tag rd">Dekubitus</span>
+    <span class="tag rd">Implantatversagen</span>
+    <span class="tag rd">Postoperative Hüftluxation (TEP!)</span>
+    <div class="ebox">
+      <strong>Femurkopfnekrose:</strong> 20% Risiko! Tritt auf wenn Fraktur die Blutgefäße am Schenkelhals (A. circumflexa femoris) zerstört. Risiko ↑ bei: Garden III/IV, Alter, verzögerter OP.
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 4: AA-GESPRÄCH -->
+<div class="ch-header ch-green">
+  <div class="ch-num">04</div>
+  <div class="ch-t">
+    <h2>AA-Gespräch &amp; Prüfungsfragen</h2>
+    <p>Direkt aus Freiburg · Karlsruhe · Stuttgart · Reutlingen</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Patientenvorstellung – 5 Schritte</h3>
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="scont"><strong>Stammdaten + Orientierung</strong>
+      „Ich möchte Ihnen Frau Müller vorstellen, eine 90-jährige Rentnerin. Die Patientin ist <span class="hl">zeitlich, örtlich und situativ orientiert</span>, kam mit dem Rettungsdienst."</div>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="scont"><strong>Unfallmechanismus + Leitsymptome</strong>
+      „Die Patientin berichtet, heute in der Dusche auf die <span class="hl">rechte Seite gestürzt</span> zu sein – zuvor habe sie Schwindel gehabt. Seit dem Sturz: <span class="hl">starke Hüftschmerzen re. (NRS 8/10), Bein nicht anhebbar, Gehunfähigkeit</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="scont"><strong>Risikofaktoren</strong>
+      „Relevante VE: <span class="hl">aHT, pAVK, Z.n. Myokardinfarkt, Z.n. Unterschenkelthrombose, Z.n. Handgelenksufraktur</span> → V.a. Osteoporose. Dauermedikation: <span class="hl">ASS 100 mg</span> → Blutungsrisiko!"</div>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="scont"><strong>VD + DD</strong>
+      „Meine Verdachtsdiagnose lautet <span class="hl">Schenkelhalsfraktur rechts</span>. DD: <span class="hlo">pertrochantäre Femurfraktur, Beckenfraktur, Hüftluxation</span>. Sturzursache klären: <span class="hlo">Synkope / Herzarrhythmie → EKG + Troponin!</span>"</div>
+    </div>
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="scont"><strong>Procedere</strong>
+      „Sofortmaßnahmen laufen: <span class="hli">Analgesie (Piritramid), EKG, Labor mit Kreuzblut, DMS-Kontrolle, Thromboseprophylaxe</span>. Bildgebung: <span class="hli">Röntgen Becken + Hüfte beidseits, ggf. CT</span>. Traumatologie-Konsil veranlasst."</div>
+    </div>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th><th>Stadt</th></tr>
+      <tr><td>VD und warum?</td><td>Schenkelhalsfraktur: Sturz auf Hüfte, Hüftschmerz + Gehunfähigkeit + Außenrotation + Beinverkürzung, Alter, Osteoporose-Anzeichen (frühere Frakturen)</td><td>Alle</td></tr>
+      <tr><td>Warum EKG + Herzenzyme? (Stuttgart!)</td><td>Sturzursache klären! Synkope oder Herzarrhythmie → Sturz. Prüfer fragte explizit: „Warum haben Sie das angefordert?" → Herzrhythmusstörung / Myokardinfarkt als Auslöser ausschließen</td><td>Stuttgart 07/2021</td></tr>
+      <tr><td>Klassifikation nennen! (Stuttgart!)</td><td><strong>Garden-Klassifikation</strong> (Dislokation + Perfusion): I–II = nicht disloziert. III–IV = disloziert. <strong>Pauwels</strong> (Frakturwinkel): I &lt;30°, II 30–50°, III &gt;50°</td><td>Stuttgart 07/2021</td></tr>
+      <tr><td>Therapie Schenkelhalsfraktur?</td><td>Abhängig von Alter + Garden-Typ. Jung + Garden I/II: Osteosynthese (DHS / Schrauben). Alt + Garden III/IV: TEP (Duokopf oder Hüft-TEP)</td><td>Alle</td></tr>
+      <tr><td>6 P's – absolute Prothesenindikation?</td><td>M. Paget, M. Parkinson, Pathologische Fraktur, Plegie, Polyarthritis, Porose (Osteoporose) → immer Prothese!</td><td>Stuttgart 07/2021</td></tr>
+      <tr><td>Was ist DMS-Kontrolle?</td><td>Durchblutung (periphere Pulse), Motorik (Fuß bewegen), Sensibilität (Berührungsempfinden) → Neurologie + Gefäße der Extremität überprüfen</td><td>Stuttgart 05/2021</td></tr>
+      <tr><td>Warum Kreuzblut anfordern?</td><td>Intraoperativer Blutverlust zu erwarten → Blutgruppe bestimmen + Erythrozytenkonzentrate bereitstellen</td><td>Alle</td></tr>
+      <tr><td>Warum möglichst schnell operieren?</td><td>&lt;24 h: Femurkopfnekrose-Risiko ↓. Frühmobilisation ↑ (Pneumonie, Dekubitus, TVT verhindern). OP nach &gt;48 h → Mortalität ↑</td><td>Karlsruhe + Stuttgart</td></tr>
+      <tr><td>Warum Thromboseprophylaxe? (Stuttgart!)</td><td>Immobilisierung nach Fraktur → TVT-Risiko stark erhöht → Lungenembolie! → Enoxaparin s.c. präoperativ + postoperativ</td><td>Stuttgart</td></tr>
+      <tr><td>Aufklärung CT (Karlsruhe!)</td><td>Röntgenuntersuchung mit Schichten des Körpers. Zeigt Fraktur detaillierter als Röntgen. Mit Kontrastmittel: Allergie? Niereninsuffizienz? TSH (Schilddrüse)? → vorher klären</td><td>Karlsruhe 11/2023</td></tr>
+      <tr><td>Komplikationen Schenkelhalsfraktur?</td><td><strong>Akut:</strong> TVT, Pneumonie, Harnwegsinfekt, Dekubitus. <strong>Langzeit:</strong> Femurkopfnekrose (20%), Pseudoarthrose (15%), Implantatversagen, postop. Hüftluxation (TEP)</td><td>Alle</td></tr>
+      <tr><td>Konservative Therapie wann?</td><td>Nur bei: inoperablem Patient (Multimorbidität), Garden I (eingestaucht, keine Dislokation). Risiko: sekundäre Dislokation!</td><td>Stuttgart</td></tr>
+      <tr><td>Traumatologie-Konsil nötig? (Stuttgart 2021!)</td><td>Ja! Orthopädisch-traumatologisches Konsil obligat bei Schenkelhalsfraktur → OP-Planung, Klassifizierung, Therapieentscheidung</td><td>Stuttgart 05/2021</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- KAPITEL 5: PATIENTENSPRACHE -->
+<div class="ch-header ch-orange">
+  <div class="ch-num">05</div>
+  <div class="ch-t">
+    <h2>Fachbegriffe → Patientensprache</h2>
+    <p>Wie erkläre ich dem Patienten / der Patientin, was passiert ist?</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="or">Übersetzungstabelle</h3>
+    <table class="pt-table">
+      <tr><th>Fachbegriff</th><th>Medizinisch</th><th>Patientensprache</th><th>Typischer Patientensatz</th></tr>
+      <tr><td><strong>Schenkelhalsfraktur</strong></td><td>Bruch des Oberschenkelhalsknochens</td><td>„Beim Sturz haben Sie sich wahrscheinlich den Oberschenkelknochen nahe der Hüfte gebrochen. Das erklärt die starken Schmerzen und warum Sie sich nicht bewegen können."</td><td>„Was ist mit mir passiert?"</td></tr>
+      <tr><td><strong>Osteoporose</strong></td><td>Knochendichteabnahme</td><td>„Mit zunehmendem Alter werden die Knochen porös und weniger stabil – das nennt man Knochenschwund. Deshalb kann schon ein leichter Sturz einen Knochenbruch verursachen."</td><td>–</td></tr>
+      <tr><td><strong>DMS-Kontrolle</strong></td><td>Durchblutung, Motorik, Sensibilität</td><td>„Ich überprüfe jetzt, ob die Durchblutung, Beweglichkeit und das Gefühl in Ihrem Bein in Ordnung sind – das ist nach einem Sturz sehr wichtig."</td><td>–</td></tr>
+      <tr><td><strong>Röntgen</strong></td><td>Konventionelle Radiographie</td><td>„Eine schnelle Untersuchung mit Strahlen – wie ein Foto der Knochen. Wir sehen damit, wo genau der Bruch ist und wie schlimm er ist."</td><td>–</td></tr>
+      <tr><td><strong>CT</strong></td><td>Computertomographie</td><td>„Eine detailliertere Röntgenuntersuchung, die viele Schichten des Körpers zeigt. Wir sehen damit besser, ob weitere Verletzungen vorhanden sind. Sie liegen in einem Ring – das ist nicht schmerzhaft."</td><td>–</td></tr>
+      <tr><td><strong>Operation (TEP)</strong></td><td>Hüft-Totalendoprothese</td><td>„Wir müssen den gebrochenen Knochen operativ behandeln. Wir ersetzen das Hüftgelenk durch ein künstliches Gelenk aus Metall und Kunststoff – das nennt sich Hüftprothese. Danach können Sie so schnell wie möglich wieder gehen."</td><td>„Brauche ich eine OP?"</td></tr>
+      <tr><td><strong>Thromboseprophylaxe</strong></td><td>Venenthrombose-Vorbeugung</td><td>„Weil Sie sich nicht bewegen können, gibt es ein erhöhtes Risiko, dass sich Blutgerinnsel in den Beinen bilden. Dagegen spritzen wir Ihnen ein blutverdünnendes Mittel."</td><td>–</td></tr>
+      <tr><td><strong>Femurkopfnekrose</strong></td><td>Absterben des Hüftknochen-Kopfes</td><td>„Wenn die Blutgefäße zum Hüftknochen durch den Bruch beschädigt werden, kann der Knochen absterben. Deshalb ist es wichtig, schnell zu operieren."</td><td>–</td></tr>
+      <tr><td><strong>Piritramid (Opioid)</strong></td><td>Starkes Schmerzmittel</td><td>„Ich gebe Ihnen jetzt ein starkes Schmerzmittel in die Vene – das hilft schnell. Sie können danach etwas schläfrig werden."</td><td>–</td></tr>
+      <tr><td><strong>Frühmobilisation</strong></td><td>Frühzeitige Bewegung nach OP</td><td>„Nach der Operation möchten wir, dass Sie so schnell wie möglich wieder aufstehen und laufen – mit Physiotherapeuten. Das verhindert Lungenentzündung und Blutgerinnsel."</td><td>–</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PATIENTENREAKTIONEN -->
+<div class="full">
+  <div class="card">
+    <h3>Typische Patientenreaktionen – Musterantworten</h3>
+    <div class="fb gn">
+<span class="cm">// Direkt aus den echten Fällen!</span><br><br>
+🧑 Schmerz so stark, dass Patient nicht zu mir kommen kann (Stuttgart!)<br>
+→ <span class="hlg">„Bleiben Sie bitte liegen – ich komme zu Ihnen. Bewegen Sie sich so wenig wie möglich."</span>
+→ Kandidat stand auf und ging zum Patienten → wurde beobachtet und positiv bewertet!<br><br>
+🧑 „Mein Vater hat Lebermetastasen." (Stuttgart – emotionale Reaktion testen!)<br>
+→ <span class="hlg">„Das tut mir leid zu hören. Das muss eine sehr belastende Zeit für Sie und Ihre Familie sein. Darf ich zuerst Ihre akute Situation klären – und dann sprechen wir gerne über alles weitere."</span><br><br>
+🧑 „Ich habe mich selbst bei der Tochter gemeldet, die hat dann den RD gerufen."<br>
+→ Gut notieren! Im AA-Gespräch wurde gefragt: „Was hat der Patient nach dem Sturz gemacht?"<br><br>
+🧑 „Muss ich immer hier bleiben?" (ältere Patientin, besorgt)<br>
+→ <span class="hlg">„Ja, für jetzt schon. Wir müssen die Verletzung genau untersuchen und wahrscheinlich operieren. Aber unser Ziel ist, dass Sie so schnell wie möglich wieder mobil sind und nach Hause können."</span><br><br>
+🧑 „Habe ich jetzt immer Schmerzen?" (Angst vor der Zukunft)<br>
+→ <span class="hlg">„Nach der Operation und der Physiotherapie werden die meisten Patienten deutlich schmerzfreier und können wieder selbstständig gehen. Das ist unser Ziel."</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- FACHBEGRIFFE + ZEITPLAN -->
+<div class="sdiv"><span>Fachbegriffe &amp; Zeitplan</span></div>
+<div class="grid">
+  <div class="card">
+    <h3>Fachbegriffe aus den Prüfungen</h3>
+    <h4>Schenkelhalsfraktur direkt</h4>
+    <div>
+      <span class="tag br">Schenkelhalsfraktur</span>
+      <span class="tag br">Proximale Femurfraktur</span>
+      <span class="tag br">Garden-Klassifikation (I–IV)</span>
+      <span class="tag br">Pauwels-Klassifikation (I–III)</span>
+      <span class="tag br">DMS-Kontrolle</span>
+      <span class="tag br">Femurkopfnekrose</span>
+      <span class="tag br">Pseudoarthrose</span>
+      <span class="tag br">Osteosynthese (DHS, Gammanagel)</span>
+      <span class="tag br">TEP / Duokopfprothese</span>
+      <span class="tag br">Thromboseprophylaxe</span>
+      <span class="tag br">Kreuzblut</span>
+      <span class="tag br">Osteoporose</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Komplikationen + Notfall</h4>
+    <div>
+      <span class="tag rd">TVT (Venenthrombose)</span>
+      <span class="tag rd">Pneumonie (Immobilisierung)</span>
+      <span class="tag rd">Dekubitus</span>
+      <span class="tag rd">Synkope / Herzarrhythmie (Sturz!)</span>
+      <span class="tag rd">Implantatversagen</span>
+      <span class="tag rd">Hüftluxation (postop.)</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Sonstige aus Prüfungen</h4>
+    <div>
+      <span class="tag gr">Circulus vitiosus</span>
+      <span class="tag gr">Exostose</span>
+      <span class="tag gr">Subluxation</span>
+      <span class="tag gr">Adenom</span>
+      <span class="tag gr">Pertussis</span>
+      <span class="tag gr">Inzision</span>
+      <span class="tag gr">Distorsion</span>
+      <span class="tag gr">Tremor</span>
+      <span class="tag gr">Anticholinergikum</span>
+      <span class="tag gr">Prolaps</span>
+      <span class="tag gr">Hemikolektomie</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="or">Zeitplan &amp; Top-Tipps</h3>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-rd">Notfall-Anamnese</span></td><td><strong>20 Min</strong></td><td>Unfallmechanismus genau! Bewusstsein verloren? Schwindel vorher? DMS-Kontrolle. Dauermedikation (ASS!). Frühere Frakturen (Osteoporose!). Orientierung prüfen.</td></tr>
+      <tr><td><span class="badge badge-bl">Arztbrief</span></td><td><strong>20 Min</strong></td><td>VD + DD (Synkope / TIA als Sturzursache!). Diagnostik: EKG + Kreuzblut + Röntgen. Sofortmaßnahmen: Analgesie + Thromboseprophylaxe. Therapie: Garden-Typ → Osteosynthese oder TEP.</td></tr>
+      <tr><td><span class="badge badge-gn">AA-Gespräch</span></td><td><strong>20 Min</strong></td><td>Klassifikation (Garden + Pauwels!). Warum EKG? Warum Kreuzblut? Warum schnell OP? Komplikationen. 6 P's = Prothesenindikation. Traumatologie-Konsil!</td></tr>
+    </table>
+
+    <div class="gbox" style="margin-top:1rem">
+      <strong>Stuttgart 07/2021:</strong> „Arzt-Arzt Gespräch begann als Gespräch über neue Mitarbeiterin und Kollegen – erst dann der Fall. Prüfer fragte genau: Was hat Patient gesagt? Was haben Sie geantwortet? Welches Medikament warum?"
+    </div>
+    <div class="wbox" style="margin-top:0.8rem">
+      <strong>Karlsruhe 16.11.2023:</strong> Patient sprach anfangs Schwäbisch! → Ruhig bleiben, nachfragen, eigene Unsicherheit zeigen ist erlaubt: „Entschuldigung, ich habe das nicht ganz verstanden – könnten Sie das bitte wiederholen?"
+    </div>
+    <div class="bluebox" style="margin-top:0.8rem">
+      <strong>Empathie-Test Stuttgart:</strong> „Patient kam nicht zu mir – ich stand auf und ging zu ihm." Das wurde positiv bewertet. Auch: Reaktion auf Vaters Lebermetastasen. → Empathie ist im FSP genauso wichtig wie medizinische Kenntnisse!
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top: 1px solid var(--border);">
+  FSP Leitfaden · Schenkelhalsfraktur (Proximale Femurfraktur) + Patientensprache · Freiburg · Karlsruhe · Stuttgart · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

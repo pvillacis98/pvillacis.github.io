@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Reaktive Arthritis</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --card2: #f1f3f5;
+    --a1: #6b1a7a;    /* lila – Rheumatologie */
+    --a2: #1971c2;
+    --a3: #2f9e44;
+    --a4: #c92a2a;
+    --warn: #e67700;
+    --text: #212529;
+    --muted: #868e96;
+    --border: #dee2e6;
+    --light-purple: #f9f0ff;
+    --light-blue: #e8f0ff;
+    --light-green: #ebfbee;
+    --light-red: #fff5f5;
+    --light-orange: #fff9db;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-weight: 400; line-height: 1.7; padding: 2rem 1rem; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border); }
+  .header h1 { font-family: 'Inter', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--a1); letter-spacing: -1px; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+  .timer-badge { display: inline-block; background: var(--a1); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 0.8rem; }
+
+  .ch-header { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0 1.2rem; padding: 0.9rem 1.2rem; border-radius: 10px; }
+  .ch-purple { background: var(--light-purple); border-left: 5px solid var(--a1); }
+  .ch-blue   { background: var(--light-blue);   border-left: 5px solid var(--a2); }
+  .ch-green  { background: var(--light-green);  border-left: 5px solid var(--a3); }
+  .ch-red    { background: var(--light-red);    border-left: 5px solid var(--a4); }
+  .ch-orange { background: var(--light-orange); border-left: 5px solid var(--warn); }
+  .ch-num { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 800; opacity: 0.2; }
+  .ch-purple .ch-num { color: var(--a1); } .ch-blue .ch-num   { color: var(--a2); }
+  .ch-green .ch-num  { color: var(--a3); } .ch-red .ch-num    { color: var(--a4); }
+  .ch-orange .ch-num { color: var(--warn); }
+  .ch-t h2 { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 800; line-height: 1.1; }
+  .ch-purple .ch-t h2 { color: var(--a1); } .ch-blue .ch-t h2   { color: var(--a2); }
+  .ch-green .ch-t h2  { color: var(--a3); } .ch-red .ch-t h2    { color: var(--a4); }
+  .ch-orange .ch-t h2 { color: var(--warn); }
+  .ch-t p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 10px; padding: 1.4rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .card h3 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--a1); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light-purple); }
+  .card h3.bl { color: var(--a2); border-color: var(--light-blue); }
+  .card h3.gn { color: var(--a3); border-color: var(--light-green); }
+  .card h3.rd { color: var(--a4); border-color: var(--light-red); }
+  .card h3.or { color: var(--warn); border-color: var(--light-orange); }
+  .card h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); padding: 0.15rem 0.6rem; border-radius: 4px; font-size: 0.77rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: var(--card2); color: var(--text); }
+  .tag.pu { background: var(--light-purple); border-color: #c880e0; color: #450a55; }
+  .tag.bl { background: var(--light-blue);   border-color: #90baf0; color: #0d3a7a; }
+  .tag.gn { background: var(--light-green);  border-color: #8ce99a; color: #1b4a22; }
+  .tag.rd { background: var(--light-red);    border-color: #ffa8a8; color: var(--a4); }
+  .tag.or { background: var(--light-orange); border-color: #ffd43b; color: #7a3800; }
+  .tag.gr { background: #f8f9fa;             border-color: #ced4da; color: #495057; }
+
+  .fb { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #343a40; }
+  .fb.bl { border-left-color: var(--a2); }
+  .fb.gn { border-left-color: var(--a3); }
+  .fb.rd { border-left-color: var(--a4); }
+  .fb.or { border-left-color: var(--warn); }
+  .fb .cm { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hli { color: var(--a2);  font-weight: 600; }
+  .hlg { color: var(--a3);  font-weight: 600; }
+  .hlr { color: var(--a4);  font-weight: 600; }
+  .hlo { color: var(--warn);font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: var(--card2); padding: 0.5rem 0.8rem; text-align: left; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 2px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8f9fa; }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-pu { background: var(--light-purple); color: #450a55; }
+  .badge-bl { background: var(--light-blue);   color: #0d3a7a; }
+  .badge-gn { background: var(--light-green);  color: #1b4a22; }
+  .badge-rd { background: var(--light-red);    color: var(--a4); }
+  .badge-or { background: var(--light-orange); color: #7a3800; }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0 1rem; }
+  .sdiv span { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: var(--light-orange); border: 1px solid #ffd43b; border-left: 3px solid var(--warn); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #664d00; }
+  .wbox strong { color: #b35900; }
+  .ebox { background: var(--light-red); border: 1px solid #ffa8a8; border-left: 3px solid var(--a4); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #6b1010; }
+  .ebox strong { color: var(--a4); }
+  .gbox { background: var(--light-green); border: 1px solid #8ce99a; border-left: 3px solid var(--a3); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #1b4a22; }
+  .gbox strong { color: #2b7a3d; }
+  .bluebox { background: var(--light-blue); border: 1px solid #90baf0; border-left: 3px solid var(--a2); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #0d3a7a; }
+  .purplebox { background: var(--light-purple); border: 1px solid #c880e0; border-left: 3px solid var(--a1); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #450a55; }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: var(--a1); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+
+  .trias-box { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-top: 0.5rem; }
+  .tr-card { border-radius: 8px; padding: 0.85rem; font-size: 0.82rem; text-align: center; border: 1px solid; }
+  .tr-1 { background: var(--light-purple); border-color: #c880e0; }
+  .tr-2 { background: var(--light-blue);   border-color: #90baf0; }
+  .tr-3 { background: var(--light-orange); border-color: #ffd43b; }
+  .tr-card strong { display: block; font-size: 1.1rem; margin-bottom: 0.3rem; }
+  .tr-1 strong { color: var(--a1); }
+  .tr-2 strong { color: var(--a2); }
+  .tr-3 strong { color: var(--warn); }
+
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; font-weight: 600; }
+  .pt-table td:nth-child(3) { color: #2b7a3d; font-size: 0.83rem; }
+
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: 1fr; }
+    .trias-box { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Reaktive Arthritis</h1>
+  <div class="sub">Postinfektiöse Arthritis · Urethro-okulo-synoviales Syndrom · NSAR · Selbstlimitierend · FSP Leitfaden</div>
+  <div class="timer-badge">⏱ 15–20 Min. Arztbrief · 20 Min. AA-Gespräch · Freiburg</div>
+</div>
+
+
+<!-- KAPITEL 1: LEITSYMPTOME -->
+<div class="ch-header ch-purple">
+  <div class="ch-num">01</div>
+  <div class="ch-t">
+    <h2>Leitsymptome &amp; Pathomechanismus</h2>
+    <p>Wandernde Oligoarthritis + Vorinfektion vor 1–6 Wochen · Dolor · Calor · Tumor · Rubor · Functio laesa</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Leitsymptome – klassische Trias</h3>
+    <div class="trias-box">
+      <div class="tr-card tr-1">
+        <strong>🦵 Arthritis</strong>
+        Asymmetrische Oligoarthritis<br>
+        Untere Extremität!<br>
+        Knie, Sprunggelenk, Ellenbogen<br>
+        Wandernd / wechselnd
+      </div>
+      <div class="tr-card tr-2">
+        <strong>👁 Konjunktivitis</strong>
+        Entzündung der Bindehaut<br>
+        Oder Uveitis anterior<br>
+        Gerötete, tränende Augen<br>
+        Lichtscheu möglich
+      </div>
+      <div class="tr-card tr-3">
+        <strong>🔬 Urethritis</strong>
+        Urogenitale Entzündung<br>
+        Brennen beim Wasserlassen<br>
+        Ausfluss möglich<br>
+        Auch Zervizitis (♀)
+      </div>
+    </div>
+    <div class="purplebox">
+      <strong>Urethro-okulo-synoviales Syndrom (früher: Reiter-Syndrom)</strong> = alle drei zusammen. Muss aber nicht vollständig sein! Oft nur 1–2 Komponenten vorhanden.
+    </div>
+
+    <h4 style="margin-top:1rem">Arthritszeichen – immer beschreiben!</h4>
+    <span class="tag pu">Dolor (Schmerz)</span>
+    <span class="tag pu">Calor (Überwärmung)</span>
+    <span class="tag pu">Tumor (Schwellung)</span>
+    <span class="tag pu">Rubor (Rötung)</span>
+    <span class="tag pu">Functio laesa (Bewegungseinschränkung)</span>
+
+    <h4>Begleitsymptome</h4>
+    <span class="tag or">Fieber (bis 39°C)</span>
+    <span class="tag or">Fatigue / Abgeschlagenheit</span>
+    <span class="tag or">Enthesitis (Achillessehne!)</span>
+    <span class="tag or">Daktylitis (Wurstfinger/-zehe)</span>
+    <span class="tag or">Psoriasiforme Hautveränderungen</span>
+    <span class="tag or">Aphthen (Mundschleimhaut)</span>
+
+    <h4>Immer fragen – Vorinfektion!</h4>
+    <span class="tag bl">Halsschmerzen / Tonsillitis in den letzten 6 Wochen?</span>
+    <span class="tag bl">Durchfall / Gastroenteritis kürzlich?</span>
+    <span class="tag bl">Brennen beim Wasserlassen? Ausfluss?</span>
+    <span class="tag bl">Antibiotikum eingenommen? (welches?)</span>
+    <span class="tag bl">Rötung / Fremdkörpergefühl der Augen?</span>
+  </div>
+
+  <div class="card">
+    <h3>Typischer Prüfungspatient &amp; Pathomechanismus</h3>
+    <div style="background:var(--light-purple);border:1px solid #c880e0;border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.9;margin-bottom:0.8rem">
+      · <strong>Sonja Stehemann</strong>, 48 J., 1,68 m<br>
+      · <span style="color:var(--a1)">Buchhändlerin, verheiratet, 1 Tochter</span><br>
+      · <span style="color:var(--a1)">Seit einigen Tagen wechselnde Gelenkschmerzen (NRS 7–8/10)</span><br>
+      · <span style="color:var(--a1)">Plötzlich aufgetreten, Steifigkeit</span><br>
+      · <span style="color:var(--a1)">VE: Tonsillitis vor 1 Woche → Antibiotikum</span><br>
+      · Fieber 39°C, Fatigue, Schlafstörungen<br>
+      · Paracetamol + Tee → keine Besserung<br>
+      · Pollenallergie + Hausstauballergie<br>
+      · Z.n. Cholezystektomie<br>
+      · Alkohol: 2–3 Flaschen Bier abends (!) → ansprechen!
+    </div>
+
+    <h4>Pathomechanismus – warum Gelenke?</h4>
+    <div style="background:var(--card2);border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.8">
+      <span style="color:var(--a1);font-weight:600">Vorinfektion</span> (Tonsillitiis / GI / Urogenital)<br>
+      ↓ <span style="color:var(--muted);font-size:0.77rem">1–6 Wochen Latenz</span><br>
+      <span style="color:var(--a1);font-weight:600">Immunreaktion → Kreuzreaktion</span><br>
+      ↓<br>
+      <span style="color:var(--a1);font-weight:600">Antikörper greifen Gelenkgewebe an</span><br>
+      ↓<br>
+      <span style="color:var(--a1);font-weight:600">Entzündliche Arthritis</span><br>
+      <span style="color:var(--muted);font-size:0.77rem">Erreger sind NICHT im Gelenk nachweisbar!</span>
+    </div>
+
+    <h4>Erreger – nach Infektionsort</h4>
+    <table style="margin-top:0.3rem">
+      <tr><th>Infektionsort</th><th>Häufige Erreger</th></tr>
+      <tr><td><strong>Urogenital</strong></td><td>Chlamydia trachomatis (#1!), Gonokokken, Ureaplasma</td></tr>
+      <tr><td><strong>Gastrointestinal</strong></td><td>Yersinien, Salmonellen, Shigellen, Campylobacter</td></tr>
+      <tr><td><strong>Poststreptokokken</strong></td><td>Streptokokken (→ nach Tonsillitis!) = Sonderform PSrA</td></tr>
+    </table>
+
+    <div class="wbox">
+      <strong>Poststreptokokken-reaktive Arthritis (PSrA) – Freiburg!</strong> Tonsillitis vor 2 Wochen → 1–6 Wochen später Arthritis der Knie-, Sprung- und Ellenbogengelenke. Freiburg 01/2023 hatte genau diesen Fall: Tonsillitis als Trigger!
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 3: ARZTBRIEF -->
+<div class="ch-header ch-blue">
+  <div class="ch-num">02</div>
+  <div class="ch-t">
+    <h2>Arztbrief-Template</h2>
+    <p>Reaktive Arthritis · VD · DD · NSAR · Selbstlimitierend</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="bl">Arztbrief: Reaktive Arthritis</h3>
+
+    <h4>Aktuelle Beschwerden</h4>
+    <div class="fb">
+Frau Stehemann, eine 48-jährige Patientin (Buchhändlerin),
+stellte sich wegen <span class="hl">seit einigen Tagen bestehender,
+plötzlich aufgetretener, wechselnder Gelenkschmerzen</span>
+(NRS 7–8/10) vor.<br><br>
+Die Schmerzen bestehen in
+<span class="hl">Knie-, Sprung- und Ellenbogengelenken</span>,
+seien <span class="hl">asymmetrisch und wandernd</span>.
+Außerdem klagt sie über <span class="hl">Gelenksteifigkeit</span>.<br><br>
+Begleitsymptome: <span class="hl">Fieber 39°C, Fatigue, Schlafstörungen</span>.<br><br>
+Eigentherapie (Paracetamol + Tee) habe <span class="hl">keine Besserung</span> gebracht.<br><br>
+<span class="hl">Wichtig: Vor 1 Woche Tonsillitis</span>,
+die mit Antibiotikum behandelt wird.<br><br>
+<span class="cm">// Verneint: Durchfall, Dysurie, Ausfluss,
+Augenrötung, Hautveränderungen (vollständige Trias?)</span>
+    </div>
+
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: Reaktive Arthritis (poststreptokokken-reaktiv)</span><br>
+(Tonsillitis vor 1 Woche → Latenz 1–6 Wochen → jetzt wandernde,
+asymmetrische Oligoarthritis der unteren Extremität +
+Fieber + passende Zeitspanne)<br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlo">Rheumatoide Arthritis</span>
+  – symmetrische Polyarthritis, Morgensteifigkeit &gt;1h,
+  RF + anti-CCP positiv; eher chronisch<br>
+· <span class="hlo">Akutes rheumatisches Fieber</span>
+  – ebenfalls nach Streptokokken-Infektion!
+  Herzbeteiligung (Karditis), Hauterithem;
+  Jones-Kriterien beachten!<br>
+· <span class="hlo">Gicht (Arthritis urica)</span>
+  – Hyperurikämie, Großzehengrundgelenk (Podagra),
+  Harnsäure ↑<br>
+· <span class="hlo">Septische Arthritis</span>
+  – Hochfieber, Eiteransammlung, nur ein Gelenk,
+  Gelenkpunktion: Keimnachweis!<br>
+· <span class="hlo">Psoriasisarthritis</span>
+  – Schuppenflechte + Arthritis, distal betont<br>
+· <span class="hlo">Lyme-Arthritis</span>
+  – Zeckenstich, Erythema migrans, Borrelien-Serologie<br>
+· <span class="hlo">Virale Arthritis (Parvovirus B19, HBV/HCV)</span>
+  – Serologie
+    </div>
+
+    <h4>Diagnostik</h4>
+    <div class="fb bl">
+· Körperliche Untersuchung:
+  <span class="hli">Gelenkuntersuchung (Dolor, Calor, Tumor, Rubor, Functio laesa)</span>,
+  Augenbefund (Konjunktivitis?), Haut, Lymphknoten<br>
+· Labor: BB (Leukozytose), <span class="hli">CRP + BSG ↑</span>,
+  Harnsäure (DD Gicht), Nierenwerte, Leberwerte<br>
+· <span class="hli">Rachenabstrich + ASL-Titer</span>
+  (Antistreptolysintiter → Streptokokken-Vorinfektion belegen!)<br>
+· Stuhlkultur (DD enterogene Form: Salmonellen, Yersinien)<br>
+· Urethralabstrich / Urinkultur (Chlamydien?)<br>
+· <span class="hli">HLA-B27</span>
+  (genetische Prädisposition → schwererer Verlauf!)<br>
+· Gelenk-Röntgen (DD Gicht: Tophi; Erosionen?)<br>
+· Gelenksonographie / Gelenkpunktion (DD septische Arthritis):<br>
+  Erreger im Punktat = NICHT bei reaktiver Arthritis!<br>
+· EKG: DD akutes rheumatisches Fieber (Karditis? AV-Block?)
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb gn">
+<span class="hlg">Symptomatische Therapie (in 80% ausreichend!):</span><br>
+· <span class="hlg">NSAR (1. Wahl!)</span>: Ibuprofen oder Diclofenac
+  → Entzündung hemmen + Schmerz lindern<br>
+· Kryotherapie (Kühlung der betroffenen Gelenke)<br>
+· Schonung + ggf. physiotherapeutische Mobilisierung<br><br>
+<span class="hlg">Bei schwerem Verlauf / Uveitis / NSAR-Versagen:</span><br>
+· Glucocorticoide (kurzfristig! Nicht zu lange!)<br>
+· DMARD: Sulfasalazin, Methotrexat (Off-Label)<br>
+· Anti-TNFα (bei chronisch-refraktärem Verlauf)<br><br>
+<span class="hlg">Antiinfektive Therapie:</span><br>
+· <span class="hlg">Nur wenn Vorinfektion noch aktiv!</span>
+  (z.B. Chlamydien → Doxycyclin;
+  Streptokokken bereits behandelt → kein zusätzliches AB nötig)<br>
+· Antibiotikum beseitigt die Arthritis NICHT mehr!<br><br>
+<span class="hlg">Prognose – beruhigen!</span><br>
+· In <span class="hlg">ca. 80% selbstlimitierend innerhalb 1 Jahres!</span><br>
+· In bis zu 25%: Übergang in chronische Spondylarthritis<br>
+· Risiko: HLA-B27 positiv, Chlamydien-Infektion, pos. FA
+    </div>
+
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler:</strong><br>
+      – DD rheumatisches Fieber vergessen → auch nach Streptokokken! Unterschied: Herzbeteiligung + Jones-Kriterien<br>
+      – Erreger im Gelenk gesucht → Fehler! Bei reaktiver Arthritis: Erreger im Gelenk NICHT nachweisbar (= reaktiv, nicht septisch!)<br>
+      – Alkoholkonsum nicht angesprochen → Freiburg: 2–3 Flaschen Bier täglich → klar ansprechen!<br>
+      – Vorinfektion vergessen abzufragen → das ist das Kernelement der Diagnose!
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 4: AA-GESPRÄCH -->
+<div class="ch-header ch-green">
+  <div class="ch-num">03</div>
+  <div class="ch-t">
+    <h2>AA-Gespräch &amp; Prüfungsfragen</h2>
+    <p>Direkt aus Freiburg 07/2023 · 01/2023</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Patientenvorstellung – 5 Schritte</h3>
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="scont"><strong>Stammdaten</strong>
+      „Ich möchte Ihnen Frau Stehemann vorstellen, eine 48-jährige Buchhändlerin, die sich wegen plötzlich aufgetretener Gelenkschmerzen bei uns vorgestellt hat."</div>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="scont"><strong>Leitsymptome</strong>
+      „Seit einigen Tagen <span class="hl">wechselnde, asymmetrische Gelenkschmerzen (NRS 7–8/10)</span> in Knie, Sprunggelenk und Ellenbogen mit Steifigkeit. Klinisch: <span class="hl">Dolor, Calor, Tumor, Rubor, Functio laesa</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="scont"><strong>Vorinfektion – Schlüssel!</strong>
+      „<span class="hl">Vor 1 Woche Tonsillitis</span>, aktuell mit Antibiotikum behandelt. Begleitend: <span class="hl">Fieber 39°C, Fatigue</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="scont"><strong>VD + DD</strong>
+      „VD: <span class="hl">Reaktive Arthritis (poststreptokokken-reaktiv)</span>. DD: <span class="hlo">Rheumatisches Fieber, Rheumatoide Arthritis, Gicht, Septische Arthritis, Lyme-Arthritis</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="scont"><strong>Procedere</strong>
+      „<span class="hli">Labor (CRP, BSG, ASL-Titer, HLA-B27), Rachenabstrich, Gelenkuntersuchung</span>. Therapie: <span class="hlg">NSAR + Kryotherapie</span>. Prognose gut: <span class="hlg">80% selbstlimitierend!</span>"</div>
+    </div>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th><th>Stadt</th></tr>
+      <tr><td>VD und warum? Pathomechanismus?</td><td>Nach Streptokokken-Tonsillitis: Immunreaktion → Antikörper kreuzreagieren mit Gelenkgewebe → sterile Entzündung. Latenz: 1–6 Wochen. Erreger im Gelenk NICHT nachweisbar (= reaktiv, nicht septisch)!</td><td>Freiburg</td></tr>
+      <tr><td>Welche Gelenke? Freiburg 01/2023: Knie, Sprung, Ellenbogen!</td><td>Asymmetrische Oligoarthritis bevorzugt untere Extremität: Knie (häufigste!), Sprunggelenk, auch Ellenbogen. Wandernd / wechselnd. Bei PSrA: auch obere Extremität möglich.</td><td>Freiburg 01/2023</td></tr>
+      <tr><td>Was sind Dolor, Calor, Tumor, Rubor, Functio laesa?</td><td>Die 5 klassischen Entzündungszeichen: Dolor = Schmerz, Calor = Wärme, Tumor = Schwellung, Rubor = Rötung, Functio laesa = Funktionsverlust.</td><td>Freiburg 01/2023</td></tr>
+      <tr><td>DD zu rheumatischem Fieber? Unterschied?</td><td>Beide nach Streptokokken! Unterschied: Rheumatisches Fieber → Herzbeteiligung (Karditis, AV-Block!), Jones-Kriterien (migratorische Arthritis + Karditis + Chorea + Erythema marginatum). Reaktive Arthritis: meist keine Herzbeteiligung.</td><td>Freiburg</td></tr>
+      <tr><td>Diagnostik – was ist wichtig?</td><td>Labor: CRP, BSG ↑. ASL-Titer (Antistreptolysintiter → Streptokokken bestätigen). HLA-B27. Rachenabstrich. Gelenkuntersuchung. Punktat: steril (kein Erreger!) → wichtiges Unterscheidungsmerkmal zu septischer Arthritis!</td><td>Freiburg</td></tr>
+      <tr><td>Was ist HLA-B27 und warum relevant?</td><td>Genetischer Marker (Histokompatibilitätsantigen). Assoziation mit seronegativen Spondylarthritiden. Bei reaktiver Arthritis: HLA-B27 positiv → höheres Risiko für schweren Verlauf und chronische Spondylarthritis.</td><td>Freiburg</td></tr>
+      <tr><td>Therapie? (1. Wahl?)</td><td>NSAR (Ibuprofen, Diclofenac) = 1. Wahl! Kryotherapie. Bei Uveitis oder NSAR-Versagen: Glucocorticoide (kurzfristig!). Bei chronischem Verlauf: DMARD (Sulfasalazin, MTX).</td><td>Freiburg</td></tr>
+      <tr><td>Prognose?</td><td>In 80% der Fälle selbstlimitierend innerhalb 1 Jahres. In bis zu 25%: Chronifizierung / Übergang in Spondylarthritis. Risikofaktoren: HLA-B27 positiv, Chlamydien-Infektion, positive Familienanamnese.</td><td>Freiburg</td></tr>
+      <tr><td>Alkoholkonsum – was sagen? (Freiburg!)</td><td>Patientin trinkt 2–3 Flaschen Bier abends → ansprechen! „Das ist deutlich über der empfohlenen Menge. Alkohol kann Entzündungen fördern und die Therapie beeinflussen. Ich empfehle eine deutliche Reduktion."</td><td>Freiburg 07/2023</td></tr>
+      <tr><td>Warum hilft Paracetamol nicht (aber NSAR schon)?</td><td>Paracetamol: analgetisch + antipyretisch, aber KEIN antiinflammatorischer Effekt. NSAR (Ibuprofen, Diclofenac): hemmen COX-1 und COX-2 → Prostaglandinsynthese ↓ → Entzündung ↓ + Schmerz ↓. Bei entzündlicher Arthritis brauchen wir den antiinflammatorischen Effekt!</td><td>Freiburg</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- KAPITEL 5: PATIENTENSPRACHE -->
+<div class="ch-header ch-orange">
+  <div class="ch-num">04</div>
+  <div class="ch-t">
+    <h2>Patientensprache &amp; Empathie</h2>
+    <p>Reaktive Arthritis erklären · Prognose beruhigend vermitteln</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="or">Übersetzungstabelle</h3>
+    <table class="pt-table">
+      <tr><th>Fachbegriff</th><th>Medizinisch</th><th>Patientensprache</th></tr>
+      <tr><td><strong>Reaktive Arthritis</strong></td><td>Postinfektiöse sterile Gelenkentzündung</td><td>„Ihre Gelenkentzündung ist eine Reaktion Ihres Immunsystems auf die Halsentzündung, die Sie vor einer Woche hatten. Das Immunsystem hat reagiert und dabei versehentlich auch Ihre Gelenke entzündet."</td></tr>
+      <tr><td><strong>Sterile Arthritis</strong></td><td>Keine Keime im Gelenk</td><td>„Das Gute ist: In Ihren Gelenken sind keine Bakterien. Die Entzündung kommt nicht von einer Infektion im Gelenk selbst, sondern ist eine Überreaktion Ihres Immunsystems."</td></tr>
+      <tr><td><strong>Oligoarthritis</strong></td><td>Wenige Gelenke betroffen</td><td>„Es sind nur wenige Gelenke gleichzeitig betroffen – und die Schmerzen können von Gelenk zu Gelenk wandern."</td></tr>
+      <tr><td><strong>NSAR (Ibuprofen)</strong></td><td>Nicht-steroidale Antirheumatika</td><td>„Wir geben Ihnen ein entzündungshemmendes Schmerzmittel – stärker als Paracetamol, weil es direkt gegen die Entzündung wirkt."</td></tr>
+      <tr><td><strong>Selbstlimitierend</strong></td><td>Heilt in 80% spontan aus</td><td>„Die gute Nachricht: In den meisten Fällen heilt diese Erkrankung von alleine innerhalb einiger Monate aus. Mit der richtigen Behandlung werden Sie sich bald besser fühlen."</td></tr>
+      <tr><td><strong>Konjunktivitis</strong></td><td>Bindehautentzündung</td><td>„Manchmal kann das Immunsystem bei dieser Erkrankung auch die Augen angreifen – Sie sollten mir sagen, falls Ihre Augen rot werden oder jucken."</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3>Typische Patientenreaktionen – Musterantworten</h3>
+    <div class="fb gn">
+<span class="cm">// Aus echten Fällen + klinische Logik</span><br><br>
+🧑 „Ich trinke abends 2–3 Flaschen Bier – ist das ein Problem?" (Freiburg!)<br>
+→ <span class="hlg">„Das ist deutlich mehr als die empfohlene Menge. Alkohol kann Entzündungen im Körper verstärken und die Wirksamkeit von Medikamenten beeinflussen. Ich empfehle Ihnen, den Konsum deutlich zu reduzieren – am besten auf ein Glas gelegentlich."</span><br><br>
+🧑 „Ich habe Tee und Paracetamol genommen – warum hilft das nicht?"<br>
+→ <span class="hlg">„Paracetamol lindert Schmerzen, bekämpft aber keine Entzündung. Bei Ihrer Gelenkerkrankung brauchen wir ein Medikament, das direkt gegen die Entzündung wirkt – das nennen wir ein Antirheumatikum. Das werden wir Ihnen jetzt geben."</span><br><br>
+🧑 „Habe ich jetzt Rheuma für immer?"<br>
+→ <span class="hlg">„Das kann ich gut verstehen, dass Sie sich das Sorgen machen. In den meisten Fällen – etwa 80% – heilt diese Erkrankung innerhalb eines Jahres vollständig aus. Nur in manchen Fällen kann es länger dauern. Wir beobachten das gemeinsam."</span><br><br>
+🧑 „Meine Halsschmerzen sind doch schon weg – was hat das mit den Gelenken zu tun?"<br>
+→ <span class="hlg">„Das ist eine sehr gute Frage! Ihr Immunsystem hat auf die Halsinfektion reagiert und dabei auch Antikörper gebildet, die versehentlich die Gelenke angreifen. Das passiert manchmal als eine Art Überreaktion – auch wenn die ursprüngliche Infektion schon abgeklungen ist."</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- FACHBEGRIFFE + ZEITPLAN -->
+<div class="sdiv"><span>Fachbegriffe &amp; Zeitplan</span></div>
+<div class="grid">
+  <div class="card">
+    <h3>Fachbegriffe aus den Prüfungen</h3>
+    <h4>Reaktive Arthritis direkt</h4>
+    <div>
+      <span class="tag pu">Reaktive / postinfektiöse Arthritis</span>
+      <span class="tag pu">Poststreptokokken-reaktive Arthritis (PSrA)</span>
+      <span class="tag pu">Oligoarthritis (asymmetrisch, wandernd)</span>
+      <span class="tag pu">Dolor / Calor / Tumor / Rubor / Functio laesa</span>
+      <span class="tag pu">HLA-B27</span>
+      <span class="tag pu">ASL-Titer (Antistreptolysintiter)</span>
+      <span class="tag pu">Urethro-okulo-synoviales Syndrom</span>
+      <span class="tag pu">Konjunktivitis / Uveitis anterior</span>
+      <span class="tag pu">Enthesitis (Achillessehne)</span>
+      <span class="tag pu">Daktylitis (Wurstfinger)</span>
+      <span class="tag pu">NSAR (Ibuprofen / Diclofenac)</span>
+      <span class="tag pu">Sulfasalazin / Methotrexat (DMARD)</span>
+    </div>
+    <h4 style="margin-top:0.8rem">DD</h4>
+    <div>
+      <span class="tag or">Akutes rheumatisches Fieber</span>
+      <span class="tag or">Rheumatoide Arthritis</span>
+      <span class="tag or">Gicht / Arthritis urica</span>
+      <span class="tag or">Septische Arthritis</span>
+      <span class="tag or">Lyme-Arthritis</span>
+      <span class="tag or">Psoriasisarthritis</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Sonstige aus Prüfungen</h4>
+    <div>
+      <span class="tag gr">Exostose</span>
+      <span class="tag gr">Imperative Miktion</span>
+      <span class="tag gr">Struma nodosa</span>
+      <span class="tag gr">Makroskopisch</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="or">Zeitplan &amp; Top-Tipps</h3>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-pu">Patientengespräch</span></td><td><strong>15–20 Min</strong></td><td>Vorinfektion! (Tonsillitis / Durchfall / Dysurie). Wann? Wie behandelt? Alle Gelenke beschreiben (Dolor etc.). Augen? Haut? Alkohol ansprechen!</td></tr>
+      <tr><td><span class="badge badge-bl">Arztbrief</span></td><td><strong>15–20 Min</strong></td><td>VD PSrA. DD rheumatisches Fieber! Erreger nicht im Gelenk (=reaktiv). Labor: ASL-Titer + HLA-B27. NSAR + Kryotherapie.</td></tr>
+      <tr><td><span class="badge badge-gn">AA-Gespräch</span></td><td><strong>20 Min</strong></td><td>Pathomechanismus erklären. Dolor/Calor/Tumor/Rubor/Functio laesa. DD rheumatisches Fieber vs. reaktive Arthritis. Prognose: 80% selbstlimitierend!</td></tr>
+    </table>
+
+    <div class="purplebox" style="margin-top:1rem">
+      <strong>Kernunterschied reaktive vs. septische Arthritis:</strong><br>
+      Reaktiv: Erreger <em>nicht</em> im Gelenk, steriles Punktat, nach Infektion woanders. Septisch: Erreger direkt im Gelenk, eitrig, sofort AB + chirurgische Drainage!
+    </div>
+    <div class="gbox" style="margin-top:0.8rem">
+      <strong>Freiburg 01/2023:</strong> Patientin hatte Tonsillitis vor 2 Wochen → klassische Poststreptokokken-rA. Prüfer fokussierte auf die 5 Entzündungszeichen (Dolor, Calor, Tumor, Rubor, Functio laesa) und den Unterschied zum rheumatischen Fieber.
+    </div>
+    <div class="bluebox" style="margin-top:0.8rem">
+      <strong>ASL-Titer:</strong> Antistreptolysintiter → zeigt stattgehabte Streptokokken-Infektion. Wichtig für beide: reaktive Arthritis UND rheumatisches Fieber. Wert nach 2–4 Wochen am höchsten.
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top: 1px solid var(--border);">
+  FSP Leitfaden · Reaktive Arthritis + Patientensprache · Freiburg · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

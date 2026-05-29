@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – pAVK</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800&family=Mulish:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #080f1a;
+    --card: #0e1a2e;
+    --accent: #e85d04;
+    --accent2: #f48c06;
+    --accent3: #ffd60a;
+    --good: #52b788;
+    --info: #4cc9f0;
+    --bad: #ef233c;
+    --text: #f0e6d0;
+    --muted: #5a6a4a;
+    --border: #1e2e18;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Mulish', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.7;
+    padding: 2rem 1rem;
+  }
+
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+  }
+  .header::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    margin: 1.5rem auto 0;
+    border-radius: 2px;
+  }
+  .header h1 {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+  }
+  .header .sub {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .timer-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), #c44d04);
+    color: white;
+    padding: 0.3rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-top: 1rem;
+  }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+  }
+  .card h2 {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .card h2.orange { color: var(--accent2); border-color: rgba(244,140,6,0.3); }
+  .card h2.yellow { color: var(--accent3); border-color: rgba(255,214,10,0.3); }
+  .card h2.green { color: var(--good); border-color: rgba(82,183,136,0.3); }
+  .card h2.blue { color: var(--info); border-color: rgba(76,201,240,0.3); }
+  .card h2.red { color: var(--bad); border-color: rgba(239,35,60,0.3); }
+
+  .card h3 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin: 1rem 0 0.4rem;
+  }
+  .card h3:first-of-type { margin-top: 0; }
+
+  .tag {
+    display: inline-block;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.18rem 0.65rem;
+    border-radius: 5px;
+    font-size: 0.78rem;
+    margin: 0.1rem;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(255,255,255,0.03);
+  }
+  .tag.red { background: rgba(232,93,4,0.1); border-color: rgba(232,93,4,0.3); color: var(--accent); }
+  .tag.orange { background: rgba(244,140,6,0.1); border-color: rgba(244,140,6,0.3); color: var(--accent2); }
+  .tag.yellow { background: rgba(255,214,10,0.1); border-color: rgba(255,214,10,0.3); color: var(--accent3); }
+  .tag.green { background: rgba(82,183,136,0.1); border-color: rgba(82,183,136,0.3); color: var(--good); }
+  .tag.blue { background: rgba(76,201,240,0.1); border-color: rgba(76,201,240,0.3); color: var(--info); }
+  .tag.bad { background: rgba(239,35,60,0.1); border-color: rgba(239,35,60,0.3); color: var(--bad); }
+
+  .formula-block {
+    background: rgba(0,0,0,0.4);
+    border-left: 3px solid var(--accent);
+    padding: 0.9rem 1.1rem;
+    border-radius: 0 8px 8px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.79rem;
+    line-height: 2;
+    margin: 0.6rem 0;
+    color: #e8d0b0;
+  }
+  .formula-block.orange { border-left-color: var(--accent2); }
+  .formula-block.green { border-left-color: var(--good); color: #c0e8d0; }
+  .formula-block.blue { border-left-color: var(--info); color: #c0e0f0; }
+  .formula-block .comment {
+    color: var(--muted);
+    font-family: 'Mulish', sans-serif;
+    font-size: 0.75rem;
+    font-style: italic;
+  }
+
+  .hl { color: var(--accent); font-weight: 600; }
+  .hl2 { color: var(--accent2); font-weight: 600; }
+  .hl3 { color: var(--accent3); font-weight: 600; }
+  .hlg { color: var(--good); font-weight: 600; }
+  .hli { color: var(--info); font-weight: 600; }
+  .hlb { color: var(--bad); font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th {
+    background: rgba(255,255,255,0.04);
+    padding: 0.5rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .badge {
+    display: inline-block;
+    padding: 0.1rem 0.55rem;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+  .badge-green { background: rgba(82,183,136,0.15); color: var(--good); }
+  .badge-orange { background: rgba(244,140,6,0.15); color: var(--accent2); }
+  .badge-red { background: rgba(232,93,4,0.15); color: var(--accent); }
+  .badge-bad { background: rgba(239,35,60,0.15); color: var(--bad); }
+
+  .section-divider {
+    display: flex; align-items: center; gap: 1rem;
+    margin: 2rem 0 1.2rem;
+  }
+  .section-divider span {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.85rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+  }
+  .section-divider::before, .section-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  .warn-box {
+    background: rgba(244,140,6,0.07);
+    border: 1px solid rgba(244,140,6,0.2);
+    border-left: 3px solid var(--accent2);
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+    color: #d4b070;
+  }
+  .warn-box strong { color: var(--accent2); }
+
+  .error-box {
+    background: rgba(232,93,4,0.07);
+    border: 1px solid rgba(232,93,4,0.2);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+    color: #d4a080;
+  }
+  .error-box strong { color: var(--accent); }
+
+  .good-box {
+    background: rgba(82,183,136,0.07);
+    border: 1px solid rgba(82,183,136,0.2);
+    border-left: 3px solid var(--good);
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+    color: #a0d4b8;
+  }
+  .good-box strong { color: var(--good); }
+
+  .step { display: flex; gap: 1rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .step-num {
+    width: 28px; height: 28px; min-width: 28px;
+    background: linear-gradient(135deg, var(--accent), #c44d04);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem;
+  }
+  .step-content { flex: 1; font-size: 0.9rem; }
+  .step-content strong {
+    display: block; color: var(--accent);
+    font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700;
+  }
+
+  /* Fontaine Stadien */
+  .fontaine-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin: 0.8rem 0;
+  }
+  .fontaine-box {
+    border-radius: 8px;
+    padding: 0.8rem 0.5rem;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .f-num { font-family: 'Exo 2', sans-serif; font-size: 1.4rem; font-weight: 800; margin-bottom: 0.2rem; }
+  .f-label { font-size: 0.72rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .f-desc { font-size: 0.68rem; color: var(--muted); line-height: 1.4; }
+  .f-therapy { font-size: 0.68rem; font-family: 'JetBrains Mono', monospace; margin-top: 0.4rem; line-height: 1.5; }
+  .f1 { background: rgba(82,183,136,0.08); border-color: rgba(82,183,136,0.2); }
+  .f1 .f-num, .f1 .f-label { color: var(--good); }
+  .f2a { background: rgba(255,214,10,0.08); border-color: rgba(255,214,10,0.2); }
+  .f2a .f-num, .f2a .f-label { color: var(--accent3); }
+  .f2b { background: rgba(244,140,6,0.08); border-color: rgba(244,140,6,0.2); }
+  .f2b .f-num, .f2b .f-label { color: var(--accent2); }
+  .f3 { background: rgba(232,93,4,0.08); border-color: rgba(232,93,4,0.2); }
+  .f3 .f-num, .f3 .f-label { color: var(--accent); }
+  .f4 { background: rgba(239,35,60,0.1); border-color: rgba(239,35,60,0.3); }
+  .f4 .f-num, .f4 .f-label { color: var(--bad); }
+
+  @media (max-width: 700px) {
+    .grid, .grid-3 { grid-template-columns: 1fr; }
+    .fontaine-grid { grid-template-columns: 1fr 1fr; }
+    .header h1 { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>pAVK</h1>
+  <div class="sub">Periphere arterielle Verschlusskrankheit · Schaufensterkrankheit · FSP Leitfaden</div>
+  <div class="timer-badge">⏱ 20 Min. Arztbrief · 20 Min. AA-Gespräch</div>
+</div>
+
+<!-- LEITSYMPTOME -->
+<div class="section-divider"><span>Leitsymptome &amp; Klinik</span></div>
+<div class="grid">
+  <div class="card">
+    <h2>Leitsymptom – Claudicatio intermittens</h2>
+    <h3>Schmerzcharakter – genau fragen!</h3>
+    <span class="tag red">Krampfartig / stechend / bohrend / spannend</span>
+    <span class="tag red">Belastungsabhängig (beim Gehen!)</span>
+    <span class="tag red">Besserung in Ruhe (Stehen bleiben / Sitzen)</span>
+    <span class="tag red">Wade / Unterschenkel</span>
+    <span class="tag red">Gehstrecke angeben! (50 m / 100 m / 200 m)</span>
+
+    <h3>Begleitsymptome – immer fragen!</h3>
+    <span class="tag orange">Kühle / kalte Haut</span>
+    <span class="tag orange">Blasse / glänzende Haut</span>
+    <span class="tag orange">Haarausfall an der betroffenen Stelle</span>
+    <span class="tag orange">Parästhesien / Hypästhesien</span>
+    <span class="tag orange">Obstipation (oft begleitend)</span>
+    <span class="tag orange">Produktiver Husten (Raucher!)</span>
+
+    <h3>Verneinte Symptome (DD ausschließen)</h3>
+    <span class="tag">Rötung (Rubor) → TVT</span>
+    <span class="tag">Schwellung (Ödem) → TVT</span>
+    <span class="tag">Wärme (Calor) → Entzündung</span>
+    <span class="tag">Fieber → Erysipel</span>
+    <span class="tag">Rückenschmerzen → Diskusprolaps / Spinalkanalstenose</span>
+
+    <div class="warn-box">
+      <strong>Aus den Fällen:</strong> Prüfer fragte: „Ich habe gesagt, Calor wurde verneint – ist die Stelle kalt?" → Nicht dasselbe! Kälte der Haut ist ein typisches pAVK-Zeichen, fehlendes Calor schließt nur Entzündung aus. Beide getrennt erfragen!
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="orange">Typischer Prüfungspatient</h2>
+    <div style="background:rgba(232,93,4,0.08);border:1px solid rgba(232,93,4,0.2);border-radius:10px;padding:1rem;margin-bottom:0.8rem">
+      <div style="font-family:'Exo 2',sans-serif;font-weight:800;color:var(--accent);font-size:0.9rem;margin-bottom:0.5rem">IMMER GLEICH: Walter Vogel</div>
+      <div style="font-size:0.85rem;line-height:1.9">
+        · 60–67 Jahre, <strong>Rentner (ehem. Busfahrer)</strong><br>
+        · <span style="color:var(--accent)">30 Zigaretten/Tag seit 40 Jahren</span> (= 60 Pack Years!)<br>
+        · <strong>Myokardinfarkt vor 2–8 Jahren</strong> (mit Stent / PTCA)<br>
+        · aHT + Hyperlipidämie / Hypercholesterinämie<br>
+        · Bandscheibenvorfall LWS (OP)<br>
+        · Medikamente: ASS 100 + Statin (Atorvastatin) + Bisoprolol<br>
+        · Penicillinallergie (Exanthem)<br>
+        · Vater: aHT / MI · Mutter: DM oder Aortenaneurysma
+      </div>
+    </div>
+    <h3>Risikofaktoren</h3>
+    <span class="tag bad">Rauchen = Nr. 1!</span>
+    <span class="tag bad">Diabetes mellitus</span>
+    <span class="tag bad">Arterielle Hypertonie</span>
+    <span class="tag bad">Hyperlipidämie / Hyperlipoproteinämie</span>
+    <span class="tag bad">Adipositas</span>
+    <span class="tag bad">Bewegungsmangel</span>
+    <span class="tag bad">Stress</span>
+    <span class="tag bad">Positive Familienanamnese</span>
+  </div>
+</div>
+
+<!-- FONTAINE STADIEN -->
+<div class="section-divider"><span>Fontaine-Stadien – prüfungsrelevant!</span></div>
+<div class="full">
+  <div class="card">
+    <h2 class="orange">Stadieneinteilung nach Fontaine</h2>
+    <div class="fontaine-grid">
+      <div class="fontaine-box f1">
+        <div class="f-num">I</div>
+        <div class="f-label">Asymptomatisch</div>
+        <div class="f-desc">Zufallsbefund<br>Fehlende Pulse</div>
+        <div class="f-therapy">→ Risikofaktoren<br>behandeln<br>Rauchstopp</div>
+      </div>
+      <div class="fontaine-box f2a">
+        <div class="f-num">IIa</div>
+        <div class="f-label">Claudicatio</div>
+        <div class="f-desc">Schmerzfreie<br>Gehstrecke<br><strong>&gt;200 m</strong></div>
+        <div class="f-therapy">→ Gehtraining<br>ASS / Clopidogrel<br>Statin</div>
+      </div>
+      <div class="fontaine-box f2b">
+        <div class="f-num">IIb</div>
+        <div class="f-label">Claudicatio</div>
+        <div class="f-desc">Schmerzfreie<br>Gehstrecke<br><strong>&lt;200 m</strong></div>
+        <div class="f-therapy">→ + PTA möglich<br>rel. OP-Indikation<br>bei Leidensdruck</div>
+      </div>
+      <div class="fontaine-box f3">
+        <div class="f-num">III</div>
+        <div class="f-label">Ruheschmerz</div>
+        <div class="f-desc">Ischämischer<br>Ruheschmerz<br>(Vorfuß nachts!)</div>
+        <div class="f-therapy">→ PTA / OP!<br>Prostanoide<br>Stationär!</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr;gap:0.5rem;margin-top:0.5rem">
+      <div class="fontaine-box f4" style="display:flex;align-items:center;gap:1rem;text-align:left;padding:0.8rem">
+        <div>
+          <div class="f-num" style="font-size:1.4rem">IV</div>
+        </div>
+        <div style="flex:1">
+          <div class="f-label" style="font-size:0.85rem;color:var(--bad)">Trophische Störungen – NOTFALL!</div>
+          <div class="f-desc" style="font-size:0.8rem;color:var(--text)">Nekrosen, Ulzera, Gangrän · Wundinfektionsgefahr · Sepsisgefahr</div>
+          <div class="f-therapy" style="font-size:0.8rem;color:var(--bad)">→ Revaskularisation (PTA / Bypass) + Wundversorgung · Ultima Ratio: Amputation!</div>
+        </div>
+      </div>
+    </div>
+    <div class="warn-box">
+      <strong>Prüfungsfrage:</strong> „In welchem Stadium ist der Patient?" → Gehstrecke bestimmt das Stadium! &lt;200 m = IIb. Ruheschmerz = III. Gangrän = IV. <strong>Aus Freiburg 2023:</strong> Arzt hat operative Therapie bei Stadium IIb empfohlen, weil Patient trotz Empfehlung nicht mit Rauchen aufhören wollte → Relative Indikation!
+    </div>
+  </div>
+</div>
+
+<!-- KÖRPERLICHE UNTERSUCHUNG -->
+<div class="grid">
+  <div class="card">
+    <h2 class="blue">Körperliche Untersuchung – was du erwartest</h2>
+    <h3>Inspektion</h3>
+    <span class="tag blue">Blasse, kühle, glänzende Haut</span>
+    <span class="tag blue">Haarausfall an Unterschenkel / Fuß</span>
+    <span class="tag blue">Ulzera (Außenknöchel, Zehen)</span>
+    <span class="tag blue">Nekrosen / Gangrän (Stadium IV)</span>
+    <h3>Palpation – Pulstastung! (prüfungsrelevant)</h3>
+    <div class="formula-block blue">
+Pulse tasten (von proximal nach distal):<br>
+· A. femoralis (Leistenbeuge)<br>
+· A. poplitea (Kniekehle)<br>
+· <span class="hli">A. dorsalis pedis</span> (Fußrücken)<br>
+· <span class="hli">A. tibialis posterior</span> (hinter Innenknöchel)<br><br>
+<span class="comment">// Abgeschwächter / fehlender Puls = pAVK-Zeichen!</span>
+    </div>
+    <h3>Wichtigster Test: Knöchel-Arm-Index (ABI)</h3>
+    <div class="formula-block blue">
+ABI = RR-Knöchel / RR-Arm<br><br>
+<span class="hli">Normal:</span> 0,9–1,3<br>
+<span class="hl2">Grenzwertig:</span> 0,7–0,9 → V.a. pAVK<br>
+<span class="hl">Pathologisch:</span> &lt;0,7 → pAVK wahrscheinlich<br>
+<span class="hlb">Kritisch:</span> &lt;0,5 → kritische Ischämie
+    </div>
+    <div class="warn-box">
+      <strong>DD-Tests:</strong> Homans-Zeichen (Wadenschmerz bei Dorsalflexion) → TVT. Meyer-Zeichen (Druckschmerz Wade) → TVT. Payr-Zeichen (Druckschmerz Fußsohle) → TVT
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="green">Diagnostik – Stufenschema</h2>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Anamnese + KU + ABI</strong>
+        Pulstastung an A. dorsalis pedis + A. tibialis posterior. ABI &lt;0,9 → pAVK wahrscheinlich
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Farbkodierte Duplexsonographie (FKDS)</strong>
+        <span class="hlg">Diagnostik der Wahl!</span> Beurteilung von Aorta, Becken- und Beinarterien. Stenosen, Verschlüsse sichtbar machen.
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Laufbandergometrie</strong>
+        Objektive Quantifizierung der schmerzfreien Gehstrecke → Stadieneinteilung bestätigen
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>MR-Angiographie (MRA) / CT-Angiographie (CTA)</strong>
+        Bei therapeutischer Konsequenz. Goldstandard wenn OP geplant.
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <strong>Digitale Subtraktionsangiographie (DSA)</strong>
+        Goldstandard für Gefäßdarstellung + gleichzeitig interventionell möglich. Bei KM-Allergie → <strong>CO₂-Angiographie!</strong>
+      </div>
+    </div>
+    <h3 style="margin-top:0.5rem">Labor</h3>
+    <span class="tag green">BB, CRP, BSG</span>
+    <span class="tag green">D-Dimer (TVT ausschließen!)</span>
+    <span class="tag green">Lipidwerte (HDL, LDL, Cholesterin)</span>
+    <span class="tag green">HbA1c (DM-Kontrolle / FA für DM!)</span>
+    <span class="tag green">Kreatinin / GFR (vor KM-Gabe!)</span>
+    <span class="tag green">Gerinnungsparameter</span>
+  </div>
+</div>
+
+<!-- ARZTBRIEF -->
+<div class="section-divider"><span>Arztbrief – Formulierungen</span></div>
+<div class="full">
+  <div class="card">
+    <h2>Arztbrief-Template: pAVK</h2>
+
+    <h3>Einleitung</h3>
+    <div class="formula-block">
+Sehr geehrte Frau Kollegin, sehr geehrter Herr Kollege,<br>
+wir berichten Ihnen über den o.g. Patienten, der sich heute wegen
+seit ca. [X] Monaten bestehender Beschwerden bei uns vorstellte.
+    </div>
+
+    <h3>Aktuelle Beschwerden</h3>
+    <div class="formula-block">
+Herr [Name], ein [Alter]-jähriger Patient, stellte sich bei uns wegen
+<span class="hl">seit ca. [X] Monaten bestehender, zunehmender, krampfartiger,
+belastungsabhängiger [rechts-/linksseitiger] Wadenschmerzen</span> vor
+(NRS [X]/10 bei Belastung, [X]/10 in Ruhe).<br><br>
+Die Beschwerden seien langsam aufgetreten und hätten sich im Verlauf,
+insbesondere in den letzten [X] Wochen, <span class="hl">progredient</span> verschlechtert.<br>
+Der Patient berichtete, dass er nach einer Gehstrecke von ca.
+<span class="hl">[X] Metern</span> stehen bleiben müsse, da die Schmerzen unerträglich würden.
+In Ruhe (Sitzen / Stehen bleiben) besserten sich die Beschwerden.<br><br>
+Zusätzlich klagte er über <span class="hl">Kältegefühl und blasse Haut</span>
+im betroffenen Bein sowie <span class="hl">Haarausfall</span> an der betroffenen Stelle.<br><br>
+<span class="comment">// Verneinte Symptome:</span><br>
+Schwellung, Rötung, Wärme, Fieber, Rückenschmerzen sowie
+Kribbeln / Taubheitsgefühl wurden verneint.
+    </div>
+
+    <h3>Vegetative Anamnese</h3>
+    <div class="formula-block">
+Die vegetative Anamnese ist bis auf
+<span class="hl">schmerzbedingte Schlafstörungen (Insomnie)</span>
+sowie <span class="hl">Obstipation</span> (seit längerem) unauffällig.<br>
+Außerdem berichtete der Patient über
+<span class="hl">morgendlichen produktiven Husten</span>
+mit [gelblichem] Sputum (im Rahmen des Nikotinkonsums).
+    </div>
+
+    <h3>Vorerkrankungen / Medikamente</h3>
+    <div class="formula-block">
+Als Vorerkrankungen seien bekannt:<br>
+· <span class="hl">Myokardinfarkt</span> vor [X] Jahren
+  (behandelt mit Koronarangiographie + Stentimplantation / PTCA)<br>
+· <span class="hl">Arterielle Hypertonie</span> (seit [X] Jahren)<br>
+· <span class="hl">Hyperlipidämie / Hypercholesterinämie</span> (seit [X] Jahren)<br>
+· Lumbaler Diskusprolaps (OP vor [X] Jahren)<br><br>
+Medikamentös nimmt der Patient ein:<br>
+· ASS 100 mg [1-0-0]<br>
+· Atorvastatin (Sortis) 40 mg [0-0-1]<br>
+· Bisoprolol 5 mg [1-0-0]<br>
+· Ibuprofen [X] mg bei Bedarf<br><br>
+<span class="hl2">Allergie: Penicillin</span> (Exanthem / Pruritus)
+    </div>
+
+    <h3>Noxen</h3>
+    <div class="formula-block">
+<span class="hl">Nikotinkonsum: ca. [X] Zigaretten täglich seit [X] Jahren</span>
+(= ca. <span class="hl">[X] Pack Years</span>).<br>
+Alkoholkonsum: [gelegentlich Bier].<br>
+Drogenkonsum wurde verneint.
+    </div>
+
+    <h3>Verdachtsdiagnose</h3>
+    <div class="formula-block">
+<span class="hl">VD: Periphere arterielle Verschlusskrankheit (pAVK),
+V.a. Fontaine-Stadium IIb</span><br><br>
+Die anamnestischen Angaben (belastungsabhängige Wadenschmerzen mit
+Besserung in Ruhe nach [X] m Gehstrecke, blasse kühle Haut, langjähriger
+starker Nikotinabusus, bekannte KHK und Hyperlipidämie als Arteriosklerose-Risikofaktoren)
+deuten auf eine <span class="hl">pAVK</span> hin.
+    </div>
+
+    <h3>Differentialdiagnosen</h3>
+    <div class="formula-block">
+<span class="hl">DD:</span><br>
+· <span class="hl2">Tiefe Venenthrombose (TVT)</span> –
+  Spricht dafür: Beinschmerzen; dagegen: keine Schwellung, kein Rubor, kein Calor;<br>
+  → D-Dimer, Homans-Zeichen, Duplexsonographie<br>
+· <span class="hl2">Claudicatio spinalis (Spinalkanalstenose)</span> –
+  Spricht dafür: Rücken-OP in der Vorgeschichte; dagegen: Schmerzen bessern sich beim Hinsetzen
+  (NICHT nur Stehenbleiben), Pulse erhalten<br>
+· <span class="hl2">Polyneuropathie</span> – oft bei Diabetes; dagegen: keine puls-abhängige Komponente<br>
+· <span class="hl2">Erysipel</span> – Spricht dagegen: kein Fieber, kein Rubor, keine Überwärmung
+    </div>
+
+    <h3>Diagnostik</h3>
+    <div class="formula-block">
+Zur weiteren Abklärung schlage ich vor:<br><br>
+· Körperliche Untersuchung: Vitalparameter, <span class="hl">Pulstastung</span>
+  (A. femoralis, A. poplitea, A. dorsalis pedis, A. tibialis posterior),
+  Inspektion (Hautfarbe, Trophik)<br>
+· <span class="hl">Knöchel-Arm-Index (ABI)</span>: &lt;0,9 = pathologisch<br>
+· Labor: BB, CRP, BSG, D-Dimer, <span class="hl">Lipidwerte</span> (LDL, HDL, Cholesterin),
+  <span class="hl">HbA1c</span>, Kreatinin, Gerinnungsparameter<br>
+· <span class="hl">Farbkodierte Duplexsonographie (FKDS)</span> → Diagnostik der Wahl!<br>
+· <span class="hl">Laufbandergometrie</span> → objektive Gehstreckenquantifizierung<br>
+· Ggf. <span class="hl">MR-Angiographie (MRA) / CT-Angiographie (CTA)</span><br>
+  bei KM-Allergie: <span class="hl">CO₂-Angiographie!</span><br>
+· EKG (kardiale Mitbeteiligung)
+    </div>
+
+    <h3>Therapieempfehlung</h3>
+    <div class="formula-block orange">
+<span class="hl2">Konservativ (alle Stadien):</span><br>
+· <span class="hl">Nikotinabstinenz</span> – wichtigste Maßnahme!<br>
+· Gehtraining (Stadium II) → Kollateralkreislaufbildung<br>
+· Risikofaktoren behandeln: RR &lt;140/90, LDL-Senkung (Statin!), DM einstellen<br><br>
+<span class="hl2">Medikamentös (ab Stadium II):</span><br>
+· <span class="hl">ASS 100 mg</span> oder Clopidogrel (Thrombozytenaggregationshemmung)<br>
+· <span class="hl">Statin</span> (Atorvastatin / Rosuvastatin) → LDL &lt;55 mg/dL<br>
+· ACE-Hemmer / AT1-Antagonist (RR-Einstellung)<br>
+· Bei Stadium IIb + schlechter Lebensqualität: Naftidrofuryl oder Cilostazol<br><br>
+<span class="hl2">Interventionell / operativ (ab Stadium IIb–III):</span><br>
+· <span class="hl">PTA (perkutane transluminale Angioplastie)</span> + ggf. Stent = 1. Wahl<br>
+· <span class="hl">Bypass-Operation</span> (Venen- oder Kunststoffbypass) bei komplexen Stenosen<br>
+· Stadium III: Prostanoide (Iloprost / Alprostadil) falls Revaskularisation nicht möglich<br>
+· Stadium IV: Wundversorgung + Revaskularisation + ggf. Amputation (Ultima Ratio)<br><br>
+<span class="hl2">Konsile:</span> Gefäßchirurgie, Kardiologie, ggf. Diabetologie
+    </div>
+
+    <div class="error-box">
+      <strong>⚠️ Häufige Fehler aus den Fällen:</strong><br>
+      – Calor vs. kalte Haut verwechseln → getrennt erfragen!<br>
+      – Gehstrecke nicht genau angegeben → Stadium nicht bestimmbar<br>
+      – Vergessen zu fragen, wo die Rücken-OP war (lumbal, zervikal?) → Prüfer hat nachgefragt<br>
+      – Bei KM-Allergie: CO₂-Angiographie nennen!
+    </div>
+  </div>
+</div>
+
+<!-- PATIENTENVORSTELLUNG -->
+<div class="section-divider"><span>Patientenvorstellung (AA-Gespräch)</span></div>
+<div class="full">
+  <div class="card">
+    <h2>Struktur – 5 Schritte (~3–4 Minuten)</h2>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Stammdaten</strong>
+        „Ich möchte Ihnen Herrn [Name], einen [Alter]-jährigen [Rentner / ehem. Busfahrer], vorstellen."
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Vorstellungsgrund + Leitsymptome</strong>
+        „Der Patient stellte sich wegen seit ca. [X] Monaten bestehender, <span class="hl">zunehmender, krampfartiger, belastungsabhängiger Wadenschmerzen rechts/links</span> vor. Die schmerzfreie Gehstrecke betrage ca. [X] Meter, dann müsse er pausieren. In Ruhe besserten sich die Beschwerden. Begleitend berichtete er über blasse, kühle Haut und Haarausfall im betroffenen Bein."
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Relevante Anamnese</strong>
+        „Als Vorerkrankungen sind ein Myokardinfarkt, arterielle Hypertonie und Hyperlipidämie bekannt. Er raucht ca. [X] Zigaretten täglich seit [X] Jahren (<span class="hl">[X] Pack Years</span>). Penicillinallergie ist bekannt."
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>Verdachts- und Differentialdiagnose</strong>
+        „Meine Verdachtsdiagnose lautet <span class="hl">pAVK, Fontaine-Stadium IIb</span>. Differentialdiagnostisch kommen eine tiefe Venenthrombose sowie eine Claudicatio spinalis bei bekanntem Diskusprolaps in Betracht."
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <strong>Weiteres Procedere</strong>
+        „Zur Abklärung habe ich eine Pulstastung, einen ABI sowie eine farbkodierte Duplexsonographie veranlasst. Therapeutisch empfehle ich dringend <span class="hl">Nikotinabstinenz</span>, Gehtraining, ASS sowie eine Statin-Therapie. Bei Stadium IIb und eingeschränkter Lebensqualität wäre eine PTA zu erwägen."
+      </div>
+    </div>
+
+    <div class="good-box">
+      <strong>Aus Stuttgart 09.03.2024:</strong> Der Prüfer sagte nach der Vorstellung: „Vielen Dank für diese ausführliche Vorstellung des Falls, Herr Kollege!" Und dann: „Herzlichen Dank, Herr Kollege! Wunderbar!" → Strukturierte Vorstellung mit klarer VD + Stadium + Therapie = Top-Bewertung.
+    </div>
+  </div>
+</div>
+
+<!-- PRÜFUNGSFRAGEN -->
+<div class="section-divider"><span>Häufige Prüfungsfragen – aus allen Städten</span></div>
+<div class="grid">
+  <div class="card">
+    <h2>Kommissionsfragen – Antworten</h2>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th></tr>
+      <tr><td>Was ist pAVK? Umgangssprache?</td><td><strong>Schaufensterkrankheit</strong> – Patient muss beim Gehen stehen bleiben (wie jemand, der ein Schaufenster betrachtet), um Schmerzen zu lindern</td></tr>
+      <tr><td>Warum heißt es Schaufensterkrankheit?</td><td>Schmerzen beim Gehen → Patient bleibt stehen, schaut vermeintlich ins Schaufenster → verdeckt die Pause</td></tr>
+      <tr><td>Welches Stadium?</td><td>Gehstrecke angeben! IIa = &gt;200 m. IIb = &lt;200 m. III = Ruheschmerz. IV = Nekrose/Gangrän</td></tr>
+      <tr><td>Warum belastungsabhängiger Schmerz?</td><td>Stenose → verminderte Durchblutung → bei Belastung mehr O₂-Bedarf als Angebot → Ischämieschmerz (wie beim Herzinfarkt, aber in der Extremität)</td></tr>
+      <tr><td>Wichtigste Untersuchung?</td><td><strong>Farbkodierte Duplexsonographie (FKDS)</strong> – Diagnostik der Wahl!</td></tr>
+      <tr><td>Pulstastung – wo genau?</td><td>A. femoralis, A. poplitea, <strong>A. dorsalis pedis</strong>, <strong>A. tibialis posterior</strong></td></tr>
+      <tr><td>Was ist der ABI?</td><td>Knöchel-Arm-Index: RR-Knöchel / RR-Arm. Normal: 0,9–1,3. &lt;0,9 = pAVK</td></tr>
+      <tr><td>DD: pAVK vs. TVT?</td><td>pAVK: belastungsabhängig, kühle blasse Haut, keine Schwellung. TVT: konstant, Schwellung, Rötung, Wärme, positiver Homans</td></tr>
+      <tr><td>DD: pAVK vs. Claudicatio spinalis?</td><td>Spinal: Besserung beim Hinsetzen (Flexion), nicht nur Stehenbleiben; normale Pulse; Rückenanamnese</td></tr>
+      <tr><td>Wichtigstes Labor?</td><td>LDL, HDL, Cholesterin, <strong>HbA1c</strong> (Mutter hat DM → FA!), D-Dimer (TVT-Ausschluss)</td></tr>
+      <tr><td>KM-Allergie – welche Alternative?</td><td><strong>CO₂-Angiographie</strong></td></tr>
+      <tr><td>Was ist PTA?</td><td>Perkutane transluminale Angioplastie: Ballondilatation + ggf. Stent via Katheter – = 1. Wahl interventionell</td></tr>
+      <tr><td>Bypass – wie erklären?</td><td>Neues Gefäß (Vene oder Kunststoff) wird um die verstopfte Stelle gelegt, um Blut umzuleiten</td></tr>
+      <tr><td>Leriche-Syndrom?</td><td>Verschluss der infrarenalen Aorta → beiderseitige Beinschmerzen + erektile Dysfunktion (Impotenz)</td></tr>
+      <tr><td>Was wenn keine Therapie?</td><td>Verschlechterung bis Stadium IV → Gangrän → Amputation!</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2 class="orange">Zeitplan &amp; Fachbegriffe</h2>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-green">Vorbereitung</span></td><td><strong>5 Min</strong></td><td>Gehstrecke → Stadium bestimmen. Pack Years berechnen. Risikofaktoren notieren.</td></tr>
+      <tr><td><span class="badge badge-orange">Patientengespräch</span></td><td><strong>10 Min</strong></td><td>Wadenschmerz? Wie weit? Besserung in Ruhe? Haut kalt/blass? Rauchen (Pack Years!)? Vorerkrankungen (MI, aHT)? Rücken-OP (wo genau)?</td></tr>
+      <tr><td><span class="badge badge-red">AA-Gespräch</span></td><td><strong>5 Min</strong></td><td>Stadium nennen! Pulstastung erklären. FKDS. PTA erklären. Therapie je Stadium.</td></tr>
+    </table>
+
+    <h3 style="margin-top:1rem">Patientenreaktionen – aus den Fällen</h3>
+    <div class="formula-block orange">
+<span class="comment">// Diese Fragen kommen IMMER – vorbereiten!</span><br>
+„Was habe ich?" → <span class="hl2">Schaufensterkrankheit</span> (Verengung der Blutgefäße im Bein)<br>
+„Warum heißt das so?" → Pause beim Gehen wie beim Schaufensterbummel<br>
+„Brauche ich eine OP?" → Erst konservativ; bei Stadium IIb ev. PTA<br>
+„Wird mein Bein amputiert?" → Nur im schlimmsten Fall (Stadium IV), wenn alle Therapien scheitern<br>
+„Muss ich stationär?" → Ggf. ja, bei Stadium III–IV<br>
+„Warum fragen Sie nach der Familie?" → Erbliche Risikofaktoren für Gefäßkrankheiten
+    </div>
+
+    <h3 style="margin-top:0.8rem">Fachbegriffe aus den Prüfungen</h3>
+    <div>
+      <span class="tag red">Claudicatio intermittens</span>
+      <span class="tag red">Arteriosklerose / Atherosklerose</span>
+      <span class="tag red">Ischämie / Ischämieschmerz</span>
+      <span class="tag red">Revaskularisation</span>
+      <span class="tag red">PTA (Angioplastie)</span>
+      <span class="tag red">Bypass-Operation</span>
+      <span class="tag red">Leriche-Syndrom</span>
+      <span class="tag red">Gangrän / Nekrose</span>
+      <span class="tag orange">Duplexsonographie</span>
+      <span class="tag orange">Knöchel-Arm-Index (ABI)</span>
+      <span class="tag orange">DSA / MRA / CTA</span>
+      <span class="tag orange">CO₂-Angiographie</span>
+      <span class="tag orange">Thrombozytenaggregationshemmung</span>
+      <span class="tag orange">Fontaine-Stadien</span>
+      <span class="tag green">Nikotinabstinenz</span>
+      <span class="tag green">Gehtraining</span>
+      <span class="tag green">Hypercholesterinämie</span>
+      <span class="tag green">Hyperlipidämie</span>
+      <span class="tag">Phlebitis / TVT</span>
+      <span class="tag">Lymphödem</span>
+      <span class="tag">Polyneuropathie</span>
+      <span class="tag">Podagra</span>
+      <span class="tag">Meteorismus</span>
+      <span class="tag">Hemiplegie</span>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+  FSP Leitfaden · pAVK · Freiburg · Karlsruhe · Reutlingen · Stuttgart · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Obere GI-Blutung</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #120808;
+    --card: #1e0c0c;
+    --a1: #ef4444;   /* rot – Blutung */
+    --a2: #f97316;   /* orange – Ulkus */
+    --a3: #facc15;   /* gelb – Warnung */
+    --good: #34d399;
+    --info: #60a5fa;
+    --text: #fff0f0;
+    --muted: #6b2020;
+    --border: #2e1010;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-weight: 300; line-height: 1.7; padding: 2rem 1rem; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; }
+  .header::after { content: ''; display: block; width: 120px; height: 3px; background: linear-gradient(90deg, var(--a1), var(--a2), var(--a3)); margin: 1.5rem auto 0; border-radius: 2px; }
+  .header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.6rem; font-weight: 700; background: linear-gradient(135deg, var(--a1), var(--a2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+  .timer-badge { display: inline-block; background: linear-gradient(135deg, var(--a1), #dc2626); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 1rem; }
+
+  .ch-header { display: flex; align-items: center; gap: 1rem; margin: 3rem 0 1.5rem; padding: 1rem 1.5rem; border-radius: 12px; }
+  .ch1 { background: rgba(239,68,68,0.08); border-left: 5px solid var(--a1); }
+  .ch2 { background: rgba(249,115,22,0.08); border-left: 5px solid var(--a2); }
+  .ch3 { background: rgba(52,211,153,0.08); border-left: 5px solid var(--good); }
+  .ch4 { background: rgba(96,165,250,0.08); border-left: 5px solid var(--info); }
+  .ch-num { font-family: 'Space Grotesk', sans-serif; font-size: 2.4rem; font-weight: 700; opacity: 0.3; }
+  .ch1 .ch-num { color: var(--a1); } .ch2 .ch-num { color: var(--a2); } .ch3 .ch-num { color: var(--good); } .ch4 .ch-num { color: var(--info); }
+  .ch-t h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.7rem; font-weight: 700; line-height: 1; }
+  .ch1 .ch-t h2 { color: var(--a1); } .ch2 .ch-t h2 { color: var(--a2); } .ch3 .ch-t h2 { color: var(--good); } .ch4 .ch-t h2 { color: var(--info); }
+  .ch-t p { font-size: 0.82rem; color: var(--muted); margin-top: 0.3rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 14px; padding: 1.5rem; border: 1px solid var(--border); }
+  .card h3 { font-size: 0.95rem; font-weight: 600; color: var(--a1); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .card h3.or { color: var(--a2); border-color: rgba(249,115,22,0.2); }
+  .card h3.yw { color: var(--a3); border-color: rgba(250,204,21,0.2); }
+  .card h3.gn { color: var(--good); border-color: rgba(52,211,153,0.2); }
+  .card h3.bl { color: var(--info); border-color: rgba(96,165,250,0.2); }
+  .card h4 { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); color: var(--text); padding: 0.18rem 0.65rem; border-radius: 5px; font-size: 0.78rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.03); }
+  .tag.rd { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3); color: var(--a1); }
+  .tag.or { background: rgba(249,115,22,0.1); border-color: rgba(249,115,22,0.3); color: var(--a2); }
+  .tag.yw { background: rgba(250,204,21,0.1); border-color: rgba(250,204,21,0.3); color: var(--a3); }
+  .tag.gn { background: rgba(52,211,153,0.1); border-color: rgba(52,211,153,0.3); color: var(--good); }
+  .tag.bl { background: rgba(96,165,250,0.1); border-color: rgba(96,165,250,0.3); color: var(--info); }
+
+  .fb { background: rgba(0,0,0,0.4); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #f8d0d0; }
+  .fb.or { border-color: var(--a2); color: #f8e0c0; }
+  .fb.gn { border-color: var(--good); color: #c0f0d8; }
+  .fb.bl { border-color: var(--info); color: #c0d8f8; }
+  .fb.yw { border-color: var(--a3); color: #f8f0b0; }
+  .fb .cm { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hlo { color: var(--a2);  font-weight: 600; }
+  .hly { color: var(--a3);  font-weight: 600; }
+  .hlg { color: var(--good);font-weight: 600; }
+  .hli { color: var(--info);font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: rgba(255,255,255,0.04); padding: 0.5rem 0.8rem; text-align: left; font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 1px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-rd { background: rgba(239,68,68,0.15); color: var(--a1); }
+  .badge-or { background: rgba(249,115,22,0.15); color: var(--a2); }
+  .badge-gn { background: rgba(52,211,153,0.15); color: var(--good); }
+  .badge-bl { background: rgba(96,165,250,0.15); color: var(--info); }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 1.8rem 0 1.2rem; }
+  .sdiv span { font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: rgba(250,204,21,0.07); border: 1px solid rgba(250,204,21,0.2); border-left: 3px solid var(--a3); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #d4c080; }
+  .wbox strong { color: var(--a3); }
+  .ebox { background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.2); border-left: 3px solid var(--a1); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #d4a0a0; }
+  .ebox strong { color: var(--a1); }
+  .gbox { background: rgba(52,211,153,0.07); border: 1px solid rgba(52,211,153,0.2); border-left: 3px solid var(--good); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #a0d4b8; }
+  .gbox strong { color: var(--good); }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: linear-gradient(135deg, var(--a1), #dc2626); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+
+  /* Forrest */
+  .forrest-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.5rem; margin: 0.8rem 0; }
+  .fbox { border-radius: 8px; padding: 0.7rem; text-align: center; border: 1px solid var(--border); font-size: 0.82rem; }
+  .fbox .fl { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.2rem; }
+  .f1a { background: rgba(239,68,68,0.15); border-color: rgba(239,68,68,0.3); }  .f1a .fl { color: var(--a1); }
+  .f1b { background: rgba(239,68,68,0.1);  border-color: rgba(239,68,68,0.2); }  .f1b .fl { color: var(--a1); }
+  .f2a { background: rgba(249,115,22,0.1); border-color: rgba(249,115,22,0.2); } .f2a .fl { color: var(--a2); }
+  .f2b { background: rgba(249,115,22,0.08);border-color: rgba(249,115,22,0.15);}  .f2b .fl { color: var(--a2); }
+  .f2c { background: rgba(250,204,21,0.08);border-color: rgba(250,204,21,0.2); }  .f2c .fl { color: var(--a3); }
+  .f3  { background: rgba(52,211,153,0.08);border-color: rgba(52,211,153,0.2); }  .f3  .fl { color: var(--good); }
+
+  /* patient language */
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; }
+  .pt-table td:nth-child(3) { color: var(--good); font-size: 0.83rem; }
+  .pt-table td:nth-child(4) { color: var(--a3); font-size: 0.81rem; font-style: italic; }
+
+  @media (max-width: 700px) {
+    .grid, .forrest-grid { grid-template-columns: 1fr 1fr; }
+    .header h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Obere GI-Blutung</h1>
+  <div class="sub">Hämatemesis · Meläna · Notfall · Forrest · ÖGD · FSP Leitfaden</div>
+  <div class="timer-badge">⚠️ Notfall · ⏱ 20 Min. Arztbrief · 20 Min. AA-Gespräch</div>
+</div>
+
+
+<!-- ═══ KAPITEL 1: LEITSYMPTOME ═══ -->
+<div class="ch-header ch1">
+  <div class="ch-num">01</div>
+  <div class="ch-t">
+    <h2>Leitsymptome &amp; Ursachen</h2>
+    <p>Hämatemesis · Meläna · Typischer Patient · NSAR als Auslöser</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Leitsymptome – sofort erkennen!</h3>
+    <h4>Kardinalsymptome</h4>
+    <span class="tag rd">Hämatemesis (Bluterbrechen)</span>
+    <span class="tag rd">Hellrotes Blut → aktive Blutung</span>
+    <span class="tag rd">Kaffeesatzartiges Blut → älteres Blut</span>
+    <span class="tag rd">Meläna (teerartiger schwarzer Stuhl)</span>
+    <span class="tag rd">Epigastrische Schmerzen</span>
+
+    <h4>Schockzeichen – immer fragen!</h4>
+    <span class="tag rd">Tachykardie</span>
+    <span class="tag rd">Hypotonie / Schwindel</span>
+    <span class="tag rd">Kaltschweißigkeit</span>
+    <span class="tag rd">Schwäche / Fatigue</span>
+    <span class="tag rd">Blässe</span>
+
+    <h4>Begleitsymptome</h4>
+    <span class="tag or">Nausea / Übelkeit</span>
+    <span class="tag or">Pyrosis / Sodbrennen</span>
+    <span class="tag or">Inappetenz</span>
+    <span class="tag or">Insomnie (schmerzbedingt)</span>
+    <span class="tag or">Schwitzen / Hyperhidrose</span>
+
+    <div class="wbox">
+      <strong>Obere vs. Untere GI-Blutung:</strong> Obere (Ösophagus bis Flexura duodenojejunalis): <strong>Hämatemesis + Meläna</strong>. Untere: frisches rotes Blut im Stuhl (Hämatochezie). Meläna entsteht, weil Hämoglobin im Darm zu Hämatin verdaut wird.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Ursachen OGI-Blutung</h3>
+    <table>
+      <tr><th>Ursache</th><th>Häufigkeit</th><th>Hinweis</th></tr>
+      <tr><td><span class="hl">Ulcus duodeni</span></td><td>Häufig</td><td>Nüchternschmerz, NSAR</td></tr>
+      <tr><td><span class="hl">Ulcus ventriculi</span></td><td>Häufig</td><td>Schmerz nach Essen, Karzinomrisiko</td></tr>
+      <tr><td><span class="hlo">Ösophagusvarizen</span></td><td>Mittel</td><td>Alkohol → Leberzirrhose → Varizen</td></tr>
+      <tr><td><span class="hlo">Gastritis / Erosionen</span></td><td>Mittel</td><td>NSAR, Alkohol, Stress</td></tr>
+      <tr><td><span class="hlo">Mallory-Weiss-Syndrom</span></td><td>Selten</td><td>Nach heftigem Erbrechen / Husten</td></tr>
+      <tr><td><span class="hly">Magenkarzinom</span></td><td>Selten</td><td>Gewichtsverlust, Dysphagie</td></tr>
+    </table>
+
+    <h4 style="margin-top:0.8rem">Typischer Prüfungspatient</h4>
+    <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:8px;padding:0.8rem;font-size:0.84rem;line-height:1.9;margin-top:0.4rem">
+      · 50–55 Jahre, <strong>männlich</strong><br>
+      · <span style="color:var(--a1)">Ibuprofen / Diclofenac</span> b.B. wegen Rückenschmerzen <span style="color:var(--a1)">OHNE PPI!</span><br>
+      · <span style="color:var(--a1)">+ Steroide (Prednisolon / Methylprednisolon)</span><br>
+      · Rheumatoide Arthritis oder Rückenschmerzen als Grund<br>
+      · <span style="color:var(--a2)">aHT + Captopril</span><br>
+      · Raucher (20–30 PY) + Alkohol täglich<br>
+      · Fernfahrer / Bauarbeiter / Bauunternehmer (Stress!)<br>
+      · Verheiratet, 1–4 Kinder, Vater an MI verstorben
+    </div>
+  </div>
+</div>
+
+<!-- FORREST -->
+<div class="full">
+  <div class="card">
+    <h3>Forrest-Klassifikation – Prüfungsfrage!</h3>
+    <div class="forrest-grid">
+      <div class="fbox f1a"><div class="fl">Ia</div><div style="font-weight:700;font-size:0.82rem;color:var(--a1)">Spritzende Blutung</div><div style="font-size:0.7rem;color:var(--muted)">arteriell, aktiv</div><div style="font-size:0.72rem;margin-top:0.2rem">→ Sofort stillen!</div></div>
+      <div class="fbox f1b"><div class="fl">Ib</div><div style="font-weight:700;font-size:0.82rem;color:var(--a1)">Sickerblutung</div><div style="font-size:0.7rem;color:var(--muted)">venös, aktiv</div><div style="font-size:0.72rem;margin-top:0.2rem">→ Stillen!</div></div>
+      <div class="fbox f2a"><div class="fl">IIa</div><div style="font-weight:700;font-size:0.82rem;color:var(--a2)">Sichtbares Gefäß</div><div style="font-size:0.7rem;color:var(--muted)">kein Blut, inaktiv</div><div style="font-size:0.72rem;margin-top:0.2rem">→ Hohe Rezidivgefahr!</div></div>
+      <div class="fbox f2b"><div class="fl">IIb</div><div style="font-weight:700;font-size:0.82rem;color:var(--a2)">Koagel auf Ulkus</div><div style="font-size:0.7rem;color:var(--muted)">Blutkoagel</div><div style="font-size:0.72rem;margin-top:0.2rem">→ Mittl. Risiko</div></div>
+      <div class="fbox f2c"><div class="fl">IIc</div><div style="font-weight:700;font-size:0.82rem;color:var(--a3)">Hämatin (schwarz)</div><div style="font-size:0.7rem;color:var(--muted)">Hämatinauflagerung</div><div style="font-size:0.72rem;margin-top:0.2rem">→ Geringes Risiko</div></div>
+      <div class="fbox f3"><div class="fl">III</div><div style="font-weight:700;font-size:0.82rem;color:var(--good)">Sauberes Ulkus</div><div style="font-size:0.7rem;color:var(--muted)">keine Blutung</div><div style="font-size:0.72rem;margin-top:0.2rem">→ Konservativ</div></div>
+    </div>
+    <div class="wbox">
+      <strong>Prüfungsregel:</strong> Forrest I + IIa/IIb → endoskopische Blutstillung obligat! Forrest IIc + III → konservative Therapie (PPI) ausreichend. Forrest Ia = Notfall → sofortige Intervention!
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ KAPITEL 2: NOTFALL-MANAGEMENT ═══ -->
+<div class="ch-header ch2">
+  <div class="ch-num">02</div>
+  <div class="ch-t">
+    <h2>Notfall-Management</h2>
+    <p>Sofortmaßnahmen · Wann Bluttransfusion? · ÖGD · Blutstillung</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3>Sofortmaßnahmen – Reihenfolge!</h3>
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="scont"><strong>Venösen Zugang legen (großlumig!)</strong>
+      Zwei Zugänge empfohlen. Blutentnahme: BB, Gerinnung, <span class="hl">Blutgruppe + Kreuzblut</span> (für Transfusion!), Leber, Niere, Lipase, CRP, Laktat.</div>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="scont"><strong>Vitalparameter + Kreislaufstabilisierung</strong>
+      RR, Puls, SpO₂, Temperatur. Bei Schock: Volumenersatz (NaCl / Ringer), ggf. <span class="hl">Bluttransfusion</span>.</div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="scont"><strong>PPI i.v. sofort!</strong>
+      Esomeprazol / Pantoprazol 80 mg Bolus → 8 mg/h Dauerinfusion. Säurehemmung schützt Koagel.</div>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="scont"><strong>ÖGD notfallmäßig!</strong>
+      <span class="hl">Diagnostik + Blutstillung in einem Schritt!</span> Unterspritzen (Adrenalin), Clip (Hämoclip), Sklerosierung, Ligatur (bei Varizen).</div>
+    </div>
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="scont"><strong>Intensivstation</strong>
+      Engmaschiges Monitoring. Chirurgisches Konsil bei Versagen der Endoskopie.</div>
+    </div>
+
+    <div class="wbox" style="margin-top:0.8rem">
+      <strong>Wann Bluttransfusion? (Prüfungsfrage Freiburg + Reutlingen!)</strong><br>
+      Hb &lt;7 g/dl → Transfusion indiziert. Bei KHK/Herzinsuffizienz: Hb &lt;8–9 g/dl. <strong>Blutgruppe + Kreuzblut immer zuerst bestimmen!</strong> Ansonsten: O Rh-negativ als Notfallblut.
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ KAPITEL 3: ARZTBRIEF ═══ -->
+<div class="ch-header ch2">
+  <div class="ch-num">03</div>
+  <div class="ch-t">
+    <h2>Arztbrief-Template</h2>
+    <p>Vollständig · VD · DD · Diagnostik · Therapie</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3>Arztbrief: Obere GI-Blutung</h3>
+
+    <h4>Aktuelle Beschwerden</h4>
+    <div class="fb">
+Herr [Name], ein [Alter]-jähriger Patient, stellte sich bei uns wegen
+<span class="hl">seit [X Wochen] bestehender, progredienter, krampfartiger,
+epigastrischer Schmerzen</span> (NRS [X]/10) ohne Ausstrahlung vor.
+Die Schmerzen seien <span class="hl">nahrungsabhängig</span> und hätten sich
+nach dem Essen verschlechtert.<br><br>
+Seit <span class="hl">gestern / heute Morgen</span> klagte er über
+<span class="hl">Hämatemesis</span> ([X]-mal, [rotes Blut / kaffeesatzartig])
+sowie <span class="hl">Meläna</span> (seit [gestern / X Tagen]).<br><br>
+Begleitend berichtete er über
+<span class="hl">Nausea, Inappetenz, Schwäche und Schwitzen</span>.<br>
+Schwindel und Tachykardie wurden verneint.
+<span class="cm">// Schockzeichen aktiv abfragen!</span>
+    </div>
+
+    <h4>Medikamente – entscheidend für die VD!</h4>
+    <div class="fb">
+<span class="hlr">Ibuprofen / Diclofenac [X] mg bei Bedarf</span>
+wegen Rückenschmerzen / Rheumatoider Arthritis
+<span class="hlr">ohne Magenschutz (kein PPI!)</span>.<br>
+<span class="hlr">Prednisolon / Methylprednisolon</span> seit [X] Jahren.<br>
+<span class="cm">// NSAR + Steroide = 10–15× erhöhtes Ulkusrisiko!</span><br><br>
+Captopril [X] mg [1-1-1] (aHT).
+    </div>
+
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: Obere gastrointestinale Blutung,
+wahrscheinlich bei Ulcus ventriculi / Ulcus duodeni</span><br>
+(Epigastrische Schmerzen, Hämatemesis, Meläna,
+langjährige NSAR + Steroide-Einnahme ohne PPI, Nikotinabusus, Alkohol)<br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlo">Ulcus duodeni</span> – Nüchternschmerz, Besserung nach Essen<br>
+· <span class="hlo">Erosive Gastritis</span> – diffus, kein tiefer Defekt<br>
+· <span class="hlo">Ösophagusvarizenblutung</span> – bei Leberzirrhose (Alkohol! Ikterus?)<br>
+· <span class="hlo">Mallory-Weiss-Syndrom</span> – nach heftigem Erbrechen<br>
+· <span class="hlo">Magenkarzinom</span> – Gewichtsverlust, Dysphagie, Kachexie<br>
+· <span class="hlo">Ösophaguskarzinom</span> – Dysphagie<br>
+· <span class="hlr">KHK / Hinterwandinfarkt</span> – DD bei epigastrischen Schmerzen!
+  → EKG + Troponin
+    </div>
+
+    <h4>Diagnostik</h4>
+    <div class="fb or">
+· Vitalparameter, körperliche Untersuchung:
+  Abwehrspannung? Druckschmerz? Ikterus? Aszites? Splenomegalie?<br>
+· <span class="hlo">EKG + Troponin</span> (DD KHK – immer!)<br>
+· Labor: BB (<span class="hlo">Hb ↓!</span>), CRP, BSG,
+  <span class="hlo">Blutgruppe + Kreuzblut</span> (für Transfusion!),
+  Gerinnungsparameter (Quick, INR, aPTT),
+  Leberwerte (GOT, GPT, GGT, AP, Bilirubin),
+  Nierenwerte, Laktat<br>
+· <span class="hlo">Abdomensonographie</span>: Leber (Zirrhose?), Aszites?<br>
+· <span class="hlo">ÖGD notfallmäßig</span> = Goldstandard:
+  Diagnose + Forrest-Klassifikation + Blutstillung<br>
+· <span class="hlo">Hämoccult-Test</span> (okkultes Blut im Stuhl)<br>
+· Ggf. CT-Abdomen bei unklarer Blutungsquelle
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb gn">
+<span class="hlg">Sofortmaßnahmen (Notfall!):</span><br>
+· Stationäre Aufnahme → Intensivstation<br>
+· Großlumiger Venenzugang + Blutabnahme (Blutgruppe!)<br>
+· Kreislaufstabilisierung: Ringer-Laktat-Infusion<br>
+· Ggf. <span class="hlg">Bluttransfusion</span> (bei Hb &lt;7 g/dl)<br>
+· <span class="hlg">PPI i.v.</span> (Pantoprazol 80 mg Bolus → 8 mg/h)<br><br>
+<span class="hlg">Endoskopische Blutstillung (ÖGD):</span><br>
+· <span class="hlg">Unterspritzen</span> mit Adrenalinlösung<br>
+· <span class="hlg">Hämoclip</span> (mechanische Klammer)<br>
+· <span class="hlg">Sklerosierung / Fibrinkleber</span><br>
+· Bei Varizen: <span class="hlg">Gummibandligatur</span>
+  + Sengstaken-Blakemore-Sonde (max. 48h!)<br><br>
+<span class="hlg">Kausal:</span><br>
+· <span class="hlr">NSAR + Steroide sofort absetzen!</span><br>
+· Paracetamol als Alternative<br>
+· HP-Eradikation (Bismut-Quadrupeltherapie) wenn HP positiv<br>
+· Langfristig: PPI oral + Alkohol-/Nikotinabstinenz<br><br>
+<span class="hlg">Chirurgisch (Ultima Ratio):</span><br>
+· Ulkusumstechung + Gefäßligatur<br>
+· Wenn endoskopisch nicht beherrschbar
+    </div>
+
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler aus den Fällen:</strong><br>
+      – EKG vergessen → KHK/Hinterwandinfarkt muss immer ausgeschlossen werden!<br>
+      – Blutgruppe + Kreuzblut nicht explizit genannt → Prüfer fragte: „Was ist wichtig bei Bluttransfusion?" → Blutgruppe!<br>
+      – Leberwerte nicht bestellt → Prüfer: „Wegen Alkohol müssen wir Leberwerte + Blutfettwerte bestimmen!"<br>
+      – HP-Diagnostik vergessen → Prüfer fragte: „Welche Infektion schließen wir aus?" → H. pylori!
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ KAPITEL 4: PRÜFUNGSFRAGEN + AA-GESPRÄCH ═══ -->
+<div class="ch-header ch3">
+  <div class="ch-num">04</div>
+  <div class="ch-t">
+    <h2>AA-Gespräch &amp; Prüfungsfragen</h2>
+    <p>Direktfragen aus echten Fällen · ÖGD-Aufklärung · Patientenreaktionen</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th></tr>
+      <tr><td>VD und warum?</td><td>OGI-Blutung bei Ulcus ventriculi: epigastrische Schmerzen nach Essen, Hämatemesis + Meläna, NSAR + Steroide ohne PPI, Alkohol, Rauchen</td></tr>
+      <tr><td>DD – welche?</td><td>Ulcus duodeni, erosive Gastritis, Ösophagusvarizenblutung (Alkohol!), Mallory-Weiss, Magenkarzinom, <strong>KHK/Hinterwandinfarkt</strong></td></tr>
+      <tr><td>Wahrscheinlichste Ursache der Blutung?</td><td>Ulcus ventriculi durch langjährige NSAR + Glukokortikoide ohne Magenschutz</td></tr>
+      <tr><td>Wichtigste Untersuchung?</td><td><strong>ÖGD (notfallmäßig)</strong> = Diagnose + Blutstillung in einem Schritt</td></tr>
+      <tr><td>Ist ÖGD wirklich nötig? (Karlsruhe, Stuttgart)</td><td>Ja! Bei Hämatemesis + Meläna ist ÖGD obligat – zur Diagnose, Staging (Forrest) und gleichzeitiger Therapie</td></tr>
+      <tr><td>Wie stillt man die Blutung endoskopisch?</td><td>Unterspritzen (Adrenalin), Hämoclip, Sklerosierung, Fibrinkleber. Bei Varizen: Gummibandligatur + ggf. Sengstaken-Sonde</td></tr>
+      <tr><td>Wann Bluttransfusion?</td><td>Hb &lt;7 g/dl. Bei KHK/Herzinsuffizienz &lt;8–9 g/dl. <strong>Blutgruppe + Kreuzblut zuerst!</strong></td></tr>
+      <tr><td>Was ist wichtig bei Bluttransfusion?</td><td>Blutgruppenbestimmung, Kreuzprobe, auf Transfusionsreaktionen überwachen</td></tr>
+      <tr><td>Welche Infektion ausschließen?</td><td><strong>Helicobacter pylori!</strong> → Urease-Schnelltest (bei ÖGD) oder 13C-Atemtest. Bei positiv → HP-Eradikation</td></tr>
+      <tr><td>Therapie bei HP-positiv?</td><td>Bismut-Quadrupeltherapie (PPI + Bismut + Tetracyclin + Metronidazol) 14 Tage. Früher: Tripeltherapie (gilt als veraltet, aber wird noch akzeptiert)</td></tr>
+      <tr><td>Welche Medikamente schädigen die Schleimhaut?</td><td>NSAR (Ibuprofen, Diclofenac, ASS), <strong>Glukokortikoide (Prednisolon)</strong>, SSRI. NSAR + Steroide zusammen = 10–15× erhöhtes Risiko!</td></tr>
+      <tr><td>Obere vs. Untere GI-Blutung – Unterschied?</td><td>Obere: Hämatemesis + Meläna (verdautes Blut = schwarz). Untere: Hämatochezie (frisches rotes Blut). Frisches Blut sieht man bei unterer Blutung oder sehr starker oberer Blutung ohne Zeit zur Verdauung</td></tr>
+      <tr><td>Was sieht man bei Inspektion des Bauches?</td><td>Aufgetriebener Bauch (Aszites, Ileus), sichtbare Peristaltik, Narben, Caput medusae (bei Leberzirrhose)</td></tr>
+      <tr><td>Wann Bauchumfang vergrößert?</td><td>Aszites (Leberzirrhose, Karzinom), Ileus, Adipositas, Schwangerschaft, große Tumoren</td></tr>
+      <tr><td>Normale Hämogramm-Werte?</td><td>Hb: ♂ 13,5–17,5 g/dl / ♀ 12–16 g/dl. Leukozyten: 4–10 ×10³/μl. Thrombozyten: 150–400 ×10³/μl. Hkt: ♂ 40–50% / ♀ 36–46%</td></tr>
+      <tr><td>Was deutet auf Entzündung hin?</td><td>CRP ↑, Leukozyten ↑, BSG ↑, Fieber, Linksverschiebung im Diff.-BB</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ÖGD AUFKLÄRUNG -->
+<div class="full">
+  <div class="card">
+    <h3>ÖGD-Aufklärung – Schritt für Schritt (Prüfungsaufgabe!)</h3>
+    <p style="font-size:0.83rem;color:var(--muted);margin-bottom:0.8rem">Aus Freiburg, Karlsruhe, Stuttgart: ÖGD-Aufklärung ist eine der häufigsten Prüfungsaufgaben!</p>
+    <div class="fb bl">
+<span class="cm">// Methode aus Stuttgart 22.02.2024:</span><br>
+<span class="hli">1. Was ist es?</span><br>
+→ „Eine Magenspiegelung: Wir führen einen dünnen, biegsamen Schlauch mit Kamera und Licht durch den Mund in die Speiseröhre, den Magen und den Zwölffingerdarm ein."<br><br>
+<span class="hli">2. Warum?</span><br>
+→ „Damit können wir die Blutungsquelle direkt sehen, Gewebeproben entnehmen und die Blutung sofort stoppen."<br><br>
+<span class="hli">3. Vorbereitung</span><br>
+→ „Sie dürfen 4–6 Stunden vor der Untersuchung nichts essen oder trinken. Wir überprüfen Ihre Medikamente (z.B. Blutverdünner)."<br><br>
+<span class="hli">4. Verlauf</span><br>
+→ „Sie bekommen ein Betäubungsmittel in den Mund gesprüht und ggf. ein Beruhigungs-/Schlafmittel in die Vene. Der Schlauch wird durch den Mund eingeführt. Sie können normal atmen – nur durch die Nase."<br><br>
+<span class="hli">5. Komplikationen</span><br>
+→ „Sehr selten: Blutungen, Schleimhautverletzungen, Schluckstörungen. Bei diesem Patienten: erhöhtes Blutungsrisiko wegen Varizen / aktiver Blutung."<br><br>
+<span class="hli">6. Danach</span><br>
+→ „Sie bleiben zur Überwachung einige Stunden bei uns. Kein Autofahren nach Sedierung. Nach dem Eingriff können Sie wieder essen, sobald das Betäubungsmittel abgeklungen ist."<br><br>
+<span class="hli">7. Was ist nach der Untersuchung normal?</span><br>
+→ „Leichtes Völlegefühl oder Aufstoßen ist normal. Bei Fieber, starken Bauchschmerzen oder erneutem Bluterbrechen sofort melden!"
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ KAPITEL 5: PATIENTENSPRACHE ═══ -->
+<div class="ch-header ch4">
+  <div class="ch-num">05</div>
+  <div class="ch-t">
+    <h2>Fachbegriffe → Patientensprache</h2>
+    <p>Wie erkläre ich dem Patienten, was er hat?</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Übersetzungstabelle</h3>
+    <table class="pt-table">
+      <tr><th>Fachbegriff</th><th>Medizinisch</th><th>Patientensprache</th><th>Typischer Patientensatz</th></tr>
+      <tr><td><strong>Obere GI-Blutung</strong></td><td>Blutung aus Ösophagus/Magen/Duodenum</td><td>„Es blutet irgendwo im oberen Verdauungstrakt – in der Speiseröhre, im Magen oder am Anfang des Dünndarms."</td><td>„Was habe ich?"</td></tr>
+      <tr><td><strong>Hämatemesis</strong></td><td>Bluterbrechen</td><td>„Blut beim Erbrechen – das zeigt, dass im Magen oder der Speiseröhre eine Blutung vorliegt."</td><td>„Ich habe Blut gespuckt!"</td></tr>
+      <tr><td><strong>Meläna</strong></td><td>Teerstuhl</td><td>„Schwarzer, teeriger Stuhl – das entsteht, wenn Blut aus dem Magen verdaut wird."</td><td>„Mein Stuhl ist so schwarz."</td></tr>
+      <tr><td><strong>Ulcus ventriculi</strong></td><td>Magengeschwür</td><td>„Ein offener Wundfleck in der Magenwand – durch Magensäure und die Schmerzmedikamente entstanden."</td><td>„Hat das etwas mit meinen Tabletten zu tun?"</td></tr>
+      <tr><td><strong>ÖGD</strong></td><td>Magenspiegelung</td><td>„Wir führen einen dünnen Schlauch mit Kamera durch den Mund ein und schauen direkt in Magen und Darm."</td><td>„Schlucke ich einen Schlauch?"</td></tr>
+      <tr><td><strong>Bluttransfusion</strong></td><td>Erythrozytentransfusion</td><td>„Wir geben Ihnen Blut von einem Spender in die Vene – weil Sie durch die Blutung zu viel verloren haben."</td><td>„Brauche ich fremdes Blut?"</td></tr>
+      <tr><td><strong>PPI (Protonenpumpeninhibitor)</strong></td><td>Säureblocker</td><td>„Eine Spritze/Tablette, die die Säureproduktion im Magen stark verringert – damit das Geschwür heilen kann."</td><td>–</td></tr>
+      <tr><td><strong>HP-Eradikation</strong></td><td>Antibiotika gegen H. pylori</td><td>„Ein Magenbakterium kann das Geschwür verursachen. Mit Antibiotika und Magenschutzmitteln über 2 Wochen können wir es abtöten."</td><td>–</td></tr>
+      <tr><td><strong>Ösophagusvarizenblutung</strong></td><td>Blutung aus Krampfadern der Speiseröhre</td><td>„Erweiterte Venen in der Speiseröhre, die durch die Lebererkrankung entstanden sind und jetzt bluten."</td><td>–</td></tr>
+      <tr><td><strong>Mallory-Weiss-Syndrom</strong></td><td>Einriss am Mageneingang</td><td>„Ein kleiner Riss an der Grenze zwischen Speiseröhre und Magen – oft durch heftiges Erbrechen."</td><td>–</td></tr>
+      <tr><td><strong>Sengstaken-Sonde</strong></td><td>Ballonsonde zur Varizen-Blutstillung</td><td>„Eine Sonde mit aufblasbaren Ballons, die wir in die Speiseröhre einführen, um blutende Adern von außen zuzudrücken."</td><td>–</td></tr>
+      <tr><td><strong>Blutgruppe + Kreuzblut</strong></td><td>Blutgruppenbestimmung</td><td>„Wir bestimmen Ihre Blutgruppe, damit wir im Notfall passendes Spenderblut bereitstellen können."</td><td>–</td></tr>
+      <tr><td><strong>Forrest Ia/b</strong></td><td>Aktive spritzende/sickernde Blutung</td><td>„Es blutet gerade aktiv im Magen – wir müssen es sofort bei der Magenspiegelung stoppen."</td><td>–</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PATIENTENREAKTIONEN -->
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Typische Patientenreaktionen – Musterantworten</h3>
+    <div class="fb gn">
+<span class="cm">// Direkt aus den echten Fällen!</span><br><br>
+🧑 „Was habe ich? Habe ich Krebs?" (Stuttgart, Freiburg, Reutlingen!)<br>
+→ <span class="hlg">„Ich verstehe Ihre Sorge sehr gut. Aus den Symptomen, die Sie beschrieben haben, denken wir zunächst an eine Magenblutung, wahrscheinlich wegen eines Magengeschwürs. Um das genau zu sehen und die Blutung zu stoppen, brauchen wir eine Magenspiegelung. Ob es sich um etwas Bösartiges handelt, können wir erst nach der Gewebeprobe sagen."</span><br><br>
+🧑 „Ich habe ein Unternehmen – muss ich hierbleiben?" (Stuttgart!)<br>
+→ <span class="hlg">„Ich verstehe, dass das sehr ungünstig für Sie ist. Aber bei einer aktiven Magenblutung ist das ein Notfall – wir müssen Sie stationär aufnehmen und sofort handeln. Das ist lebenswichtig. Wir können Ihre Familie informieren."</span><br><br>
+🧑 „Ich trinke doch nur ein Glas Wein täglich – ist das wirklich schlimm?" (Freiburg!)<br>
+→ <span class="hlg">„Alkohol reizt die Magenschleimhaut direkt. In Kombination mit den Schmerzmedikamenten, die Sie einnehmen, kann schon eine kleine Menge die Wundheilung deutlich verlangsamen."</span><br><br>
+🧑 „Was ist eine Magenspiegelung?" (Fast immer!)<br>
+→ <span class="hlg">„Wir führen einen dünnen Schlauch mit einer kleinen Kamera durch den Mund ein. Sie bekommen vorher ein Betäubungsmittel in den Mund gesprüht, damit Sie kaum etwas merken. Wir können dabei direkt sehen, wo das Blut herkommt, und es sofort stoppen."</span><br><br>
+🧑 „Hat das etwas mit meinen Ibuprofen-Tabletten zu tun?" (Fast immer!)<br>
+→ <span class="hlg">„Ja – das ist sehr wahrscheinlich der Hauptauslöser. Ibuprofen schwächt den Schutzfilm der Magenwand. Wenn man dazu noch Kortison nimmt, ist das Risiko für ein Magengeschwür sehr stark erhöht. Sie müssen Ibuprofen ab sofort absetzen – wir finden eine Alternative für Ihre Rückenschmerzen."</span>
+    </div>
+  </div>
+</div>
+
+<!-- FACHBEGRIFFE + ZEITPLAN -->
+<div class="sdiv"><span>Fachbegriffe &amp; Zeitplan</span></div>
+<div class="grid">
+  <div class="card">
+    <h3>Fachbegriffe aus den Prüfungen</h3>
+    <h4>OGI-Blutung direkt</h4>
+    <div>
+      <span class="tag rd">Hämatemesis</span>
+      <span class="tag rd">Meläna</span>
+      <span class="tag rd">Hämatochezie</span>
+      <span class="tag rd">Ulcus ventriculi / duodeni</span>
+      <span class="tag rd">Ösophagusvarizenblutung</span>
+      <span class="tag rd">Mallory-Weiss-Syndrom</span>
+      <span class="tag rd">Forrest-Klassifikation</span>
+      <span class="tag rd">Epigastralgie</span>
+      <span class="tag rd">Hämoccult-Test</span>
+      <span class="tag or">ÖGD / Gastroskopie</span>
+      <span class="tag or">Forrest Ia / Ib / IIa</span>
+      <span class="tag or">HP-Eradikation</span>
+      <span class="tag or">PPI i.v.</span>
+      <span class="tag or">Bluttransfusion</span>
+      <span class="tag or">Sengstaken-Sonde</span>
+      <span class="tag or">Bismut-Quadrupeltherapie</span>
+      <span class="tag or">Helicobacter pylori</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Sonstige aus Prüfungen</h4>
+    <div>
+      <span class="tag gn">Ösophagitis</span>
+      <span class="tag gn">Anämie</span>
+      <span class="tag gn">Thrombozytopenie</span>
+      <span class="tag gn">Splenomegalie</span>
+      <span class="tag gn">Kachektisch / Kachexie</span>
+      <span class="tag gn">Cholestase</span>
+      <span class="tag gn">BMI</span>
+      <span class="tag bl">Bursitis</span>
+      <span class="tag bl">Vigilanz</span>
+      <span class="tag bl">Lues</span>
+      <span class="tag bl">Meläna (als FB-Begriff)</span>
+      <span class="tag bl">Tibia</span>
+      <span class="tag bl">Glaukom</span>
+      <span class="tag bl">Volvulus</span>
+      <span class="tag bl">Sepsis</span>
+      <span class="tag bl">Insult</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="yw">Zeitplan &amp; Top-Tipps</h3>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-rd">Patientengespräch</span></td><td><strong>20 Min</strong></td><td>Wann Blut? Wie oft? Farbe? Meläna? Schmerzen (vorher/nachher Essen?). NSAR? Steroide? Alkohol? Schockzeichen?</td></tr>
+      <tr><td><span class="badge badge-or">Arztbrief</span></td><td><strong>20 Min</strong></td><td>VD, DD (KHK nicht vergessen!), Diagnostik (EKG + ÖGD!), Therapie (PPI i.v. + Blutstillung + Bluttransfusion wenn nötig)</td></tr>
+      <tr><td><span class="badge badge-gn">AA-Gespräch</span></td><td><strong>20 Min</strong></td><td>ÖGD-Aufklärung (7 Schritte!), Forrest erklären, Bluttransfusion: wann + Blutgruppe zuerst, HP-Eradikation</td></tr>
+    </table>
+
+    <div class="gbox" style="margin-top:1rem">
+      <strong>Top-Tipp aus Stuttgart 22.02.2024 – ÖGD-Aufklärung:</strong><br>
+      „1. Was ist es? 2. Wozu? 3. Vorbereitung. 4. Verlauf. 5. Komplikationen. 6. Danach. 7. Welche Symptome sind normal?" Die Kommission unterbrach ihn sogar: „Jetzt reicht es!" – weil die Antwort so vollständig war.
+    </div>
+    <div class="wbox" style="margin-top:0.8rem">
+      <strong>Aus Freiburg 23.07.2024:</strong> AZ/EZ-Frage im AA-Gespräch! Wenn der Patient gerade keine Schmerzen mehr hat → trotzdem „leicht reduzierter AZ" schreiben wegen aktiver Blutung.
+    </div>
+    <div class="wbox" style="margin-top:0.5rem">
+      <strong>Aus Reutlingen 18.09.2024:</strong> Prüfer fragte: „Was ist wichtig bei Bluttransfusion?" → Blutgruppe + Kreuzblut immer zuerst bestimmen!
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+  FSP Leitfaden · Obere GI-Blutung + Patientensprache · Freiburg · Karlsruhe · Reutlingen · Stuttgart · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

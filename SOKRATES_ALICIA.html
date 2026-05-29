@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOKRATES & ALICIA – Schmerzanamnese</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --de: #1a56db; --de-bg: #eff6ff; --de-border: #bfdbfe;
+  --es: #057a55; --es-bg: #f0fdf4; --es-border: #a7f3d0;
+  --bg: #f8fafc; --card: #ffffff; --text: #1e293b; --muted: #64748b;
+  --border: #e2e8f0; --radius: 12px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+h1 { font-family:'DM Serif Display',serif; font-size:2rem; margin-bottom:.25rem; }
+.subtitle { color:var(--muted); font-size:.95rem; margin-bottom:2rem; }
+
+.container { max-width:900px; margin:0 auto; padding:2rem 1rem; }
+.header { text-align:center; padding:2rem 1rem; background:linear-gradient(135deg,#1e3a8a 0%,#1a56db 50%,#0ea5e9 100%); color:white; border-radius:0 0 24px 24px; margin-bottom:2rem; }
+.header h1 { color:white; font-size:2.2rem; }
+.header .subtitle { color:rgba(255,255,255,.8); }
+.badge { display:inline-block; font-size:.75rem; font-weight:600; padding:4px 12px; border-radius:20px; margin:0 4px; }
+.badge-de { background:rgba(255,255,255,.2); color:white; }
+.badge-es { background:rgba(255,255,255,.15); color:white; }
+
+/* TABS */
+.tabs { display:flex; gap:8px; margin-bottom:1.5rem; flex-wrap:wrap; }
+.tab { padding:8px 18px; border-radius:20px; border:1.5px solid var(--border); background:var(--card); color:var(--muted); font-size:.875rem; font-weight:500; cursor:pointer; transition:all .2s; font-family:'DM Sans',sans-serif; }
+.tab:hover { border-color:var(--de); color:var(--de); }
+.tab.active { background:var(--de); border-color:var(--de); color:white; }
+
+/* SECTION CARDS */
+.letter-card { background:var(--card); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.25rem; margin-bottom:1rem; display:grid; grid-template-columns:auto 1fr 1fr; gap:1.25rem; align-items:start; transition:box-shadow .2s; }
+.letter-card:hover { box-shadow:0 4px 20px rgba(26,86,219,.08); border-color:var(--de-border); }
+.letter-big { font-family:'DM Serif Display',serif; font-size:3rem; line-height:1; color:var(--de); min-width:2.5rem; text-align:center; padding-top:.25rem; }
+.letter-big.es { color:var(--es); }
+.block-title { font-weight:600; font-size:1rem; margin-bottom:.5rem; }
+.label { font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.05em; margin-bottom:.25rem; }
+.label-de { color:var(--de); }
+.label-es { color:var(--es); }
+.q-text { font-size:.875rem; line-height:1.5; color:var(--text); background:var(--de-bg); border-left:3px solid var(--de); padding:.5rem .75rem; border-radius:0 6px 6px 0; margin-bottom:.5rem; }
+.q-text.es { background:var(--es-bg); border-color:var(--es); }
+.brief-text { font-size:.8rem; color:var(--muted); font-style:italic; padding:.4rem .75rem; }
+.vocab-grid { display:flex; flex-wrap:wrap; gap:6px; margin-top:.5rem; }
+.vocab-tag { font-size:.78rem; padding:3px 10px; border-radius:10px; border:1px solid; }
+.vocab-tag.de { background:var(--de-bg); border-color:var(--de-border); color:var(--de); }
+.vocab-tag.es { background:var(--es-bg); border-color:var(--es-border); color:var(--es); }
+
+/* COMPARE VIEW */
+.compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem; }
+@media(max-width:600px){ .compare-grid{grid-template-columns:1fr} .letter-card{grid-template-columns:auto 1fr; } .letter-card > *:last-child{grid-column:2;} }
+.compare-col { background:var(--card); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.25rem; }
+.compare-col h2 { font-family:'DM Serif Display',serif; font-size:1.5rem; margin-bottom:1rem; }
+.compare-col.de h2 { color:var(--de); }
+.compare-col.es h2 { color:var(--es); }
+.compare-row { display:flex; align-items:center; gap:.75rem; padding:.6rem 0; border-bottom:1px solid var(--border); }
+.compare-row:last-child { border-bottom:none; }
+.cletter { font-family:'DM Serif Display',serif; font-size:1.8rem; line-height:1; min-width:2rem; }
+.cletter.de { color:var(--de); }
+.cletter.es { color:var(--es); }
+.cword { font-size:.875rem; }
+.cword strong { display:block; font-weight:600; }
+.cword span { color:var(--muted); font-size:.8rem; }
+
+/* FLASHCARD */
+.flash-wrap { perspective:1000px; margin-bottom:1rem; }
+.flash-card { background:var(--card); border:1.5px solid var(--border); border-radius:16px; padding:2rem; min-height:200px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; cursor:pointer; transition:box-shadow .2s; }
+.flash-card:hover { box-shadow:0 8px 30px rgba(26,86,219,.12); }
+.flash-letter { font-family:'DM Serif Display',serif; font-size:4rem; color:var(--de); line-height:1; margin-bottom:.5rem; }
+.flash-word { font-size:1.3rem; font-weight:600; margin-bottom:.25rem; }
+.flash-hint { font-size:.85rem; color:var(--muted); }
+.flash-answer { text-align:left; width:100%; }
+.flash-answer .de-block, .flash-answer .es-block { padding:.75rem 1rem; border-radius:8px; margin-bottom:.5rem; }
+.flash-answer .de-block { background:var(--de-bg); border-left:3px solid var(--de); }
+.flash-answer .es-block { background:var(--es-bg); border-left:3px solid var(--es); }
+.flash-answer .lang-label { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; margin-bottom:.2rem; }
+.flash-answer .de-block .lang-label { color:var(--de); }
+.flash-answer .es-block .lang-label { color:var(--es); }
+.flash-answer p { font-size:.875rem; line-height:1.5; }
+
+.progress-bar { height:4px; background:var(--border); border-radius:2px; margin-bottom:1.25rem; }
+.progress-fill { height:4px; background:linear-gradient(90deg,var(--de),#0ea5e9); border-radius:2px; transition:width .4s; }
+.meta-row { display:flex; justify-content:space-between; font-size:.8rem; color:var(--muted); margin-bottom:1rem; }
+
+.btn-row { display:flex; gap:.75rem; flex-wrap:wrap; }
+.btn { padding:9px 20px; border-radius:8px; border:1.5px solid var(--border); background:var(--card); color:var(--text); font-size:.875rem; font-weight:500; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all .2s; }
+.btn:hover { background:var(--bg); }
+.btn-ok { background:#f0fdf4; border-color:#a7f3d0; color:var(--es); }
+.btn-ok:hover { background:#dcfce7; }
+.btn-no { background:#fef2f2; border-color:#fecaca; color:#dc2626; }
+.btn-no:hover { background:#fee2e2; }
+.btn-flip { margin-left:auto; }
+
+.paren { font-size:.75rem; color:var(--muted); }
+.section-head { font-family:'DM Serif Display',serif; font-size:1.4rem; margin-bottom:1rem; color:var(--text); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>SOKRATES &amp; ALICIA</h1>
+  <p class="subtitle">Schmerzanamnese auf Deutsch und Español</p>
+  <div style="margin-top:.75rem">
+    <span class="badge badge-de">🇩🇪 SOKRATES</span>
+    <span class="badge badge-es">🇪🇸 ALICIA</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="tabs">
+    <button class="tab active" onclick="show('compare')">Vergleich</button>
+    <button class="tab" onclick="show('sokrates')">SOKRATES 🇩🇪</button>
+    <button class="tab" onclick="show('alicia')">ALICIA 🇪🇸</button>
+    <button class="tab" onclick="show('adjektive')">Adjektive</button>
+    <button class="tab" onclick="show('flash')">Flashcards</button>
+  </div>
+
+  <!-- VERGLEICH -->
+  <div id="sec-compare">
+    <p style="font-size:.875rem;color:var(--muted);margin-bottom:1.25rem">Beide Methoden fragen dasselbe – nur mit anderen Anfangsbuchstaben!</p>
+    <div class="compare-grid">
+      <div class="compare-col de">
+        <h2>SOKRATES</h2>
+        <div class="compare-row"><span class="cletter de">S</span><div class="cword"><strong>Stelle</strong><span>Wo ist der Schmerz?</span></div></div>
+        <div class="compare-row"><span class="cletter de">O</span><div class="cword"><strong>Onset</strong><span>Wann begann es?</span></div></div>
+        <div class="compare-row"><span class="cletter de">K</span><div class="cword"><strong>Karakter</strong><span>Wie ist der Schmerz?</span></div></div>
+        <div class="compare-row"><span class="cletter de">R</span><div class="cword"><strong>Radiation</strong><span>Strahlt er aus?</span></div></div>
+        <div class="compare-row"><span class="cletter de">A</span><div class="cword"><strong>Assoziiert</strong><span>Begleitsymptome?</span></div></div>
+        <div class="compare-row"><span class="cletter de">T</span><div class="cword"><strong>Timing</strong><span>Wie lange? Dauerhaft?</span></div></div>
+        <div class="compare-row"><span class="cletter de">E</span><div class="cword"><strong>Einflussfaktoren</strong><span>Was bessert / verschlechtert?</span></div></div>
+        <div class="compare-row"><span class="cletter de">S</span><div class="cword"><strong>Starke</strong><span>Skala 0–10?</span></div></div>
+      </div>
+      <div class="compare-col es">
+        <h2>ALICIA</h2>
+        <div class="compare-row"><span class="cletter es">A</span><div class="cword"><strong>Aparicion</strong><span>¿Cuando empezo?</span></div></div>
+        <div class="compare-row"><span class="cletter es">L</span><div class="cword"><strong>Localizacion</strong><span>¿Donde le duele?</span></div></div>
+        <div class="compare-row"><span class="cletter es">I</span><div class="cword"><strong>Irradiacion</strong><span>¿Irradia a algun lado?</span></div></div>
+        <div class="compare-row"><span class="cletter es">C</span><div class="cword"><strong>Caracter</strong><span>¿Como es el dolor?</span></div></div>
+        <div class="compare-row"><span class="cletter es">I</span><div class="cword"><strong>Intensidad</strong><span>¿Del 1 al 10?</span></div></div>
+        <div class="compare-row"><span class="cletter es">A</span><div class="cword"><strong>Agravantes / Atenuantes</strong><span>¿Que lo empeora o alivia?</span></div></div>
+        <div class="compare-row" style="opacity:.3"><span class="cletter es" style="font-size:1.2rem">—</span><div class="cword"><strong style="font-size:.8rem">Timing in A enthalten</strong></div></div>
+        <div class="compare-row" style="opacity:.3"><span class="cletter es" style="font-size:1.2rem">—</span><div class="cword"><strong style="font-size:.8rem">Intensidad = Starke</strong></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOKRATES -->
+  <div id="sec-sokrates" style="display:none">
+    <p class="section-head">SOKRATES – Schmerzanamnese Deutsch</p>
+
+    <div class="letter-card">
+      <div class="letter-big">S</div>
+      <div>
+        <div class="block-title">Stelle <span class="paren">(Lokalisation)</span></div>
+        <div class="label label-de">Frage an Patient</div>
+        <div class="q-text">„Wo genau haben Sie Schmerzen?<br>Zeigen Sie mir bitte die Stelle."</div>
+        <div class="label label-de">Im Arztbrief</div>
+        <div class="brief-text">„Der Schmerz sei im [Korperteil] lokalisiert."</div>
+      </div>
+      <div>
+        <div class="label label-de">Typische Lokalisationen</div>
+        <div class="vocab-grid">
+          <span class="vocab-tag de">im rechten Oberbauch</span>
+          <span class="vocab-tag de">retrosternal</span>
+          <span class="vocab-tag de">im linken Unterbauch</span>
+          <span class="vocab-tag de">im Epigastrium</span>
+          <span class="vocab-tag de">diffus abdominal</span>
+          <span class="vocab-tag de">im rechten Sprunggelenk</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-card">
+      <div class="letter-big">O</div>
+      <div>
+        <div class="block-title">Onset <span class="paren">(Beginn)</span></div>
+        <div class="label label-de">Frage an Patient</div>
+        <div class="q-text">„Wann haben die Schmerzen begonnen?<br>Plotzlich oder schleichend?"</div>
+        <div class="label label-de">Im Arztbrief</div>
+        <div class="brief-text">„Die Beschwerden seien seit [Zeit] / plotzlich / schleichend aufgetreten."</div>
+      </div>
+      <div>
+        <div class="label label-de">Typische Antworten</div>
+        <div class="vocab-grid">
+          <span class="vocab-tag de">seit 3 Tagen</span>
+          <span class="vocab-tag de">seit heute Morgen</span>
+          <span class="vocab-tag de">plotzlich aufgetreten</span>
+          <span class="vocab-tag de">schleichend entwickelt</span>
+          <span class="vocab-tag de">progredient seit Wochen</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-card">
+      <div class="letter-big">K</div>
+      <div>
+        <div class="block-title">Karakter <span class="paren">(Qualitat)</span></div>
+        <div class="label label-de">Frage an Patient</div>
+        <div class="q-text">„Wie ist der Schmerz?<br>Stechend, brennend, druckend, krampfartig?"</div>
+        <div class="label label-de">Im Arztbrief</div>
+        <div class="brief-text">„Der Schmerz wurde als [Adjektiv] beschrieben."</div>
+      </div>
+      <div>
+        <div class="label label-de">Adjektive → Klick auf Tab</div>
+        <div class="vocab-grid">
+          <span class="vocab-tag de">stechend</span>
+          <span class="vocab-tag de">brennend</span>
+          <span class="vocab-tag de">druckend</span>
+          <span class="vocab-tag de">dumpf</span>
+          <span class="vocab-tag de">krampfartig</span>
+          <span class="vocab-tag de">pulsierend</span>
+          <span class="vocab-tag de">kolikartig</span>
+          <span class="vocab-tag de">reissend</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-card">
+      <div class="letter-big">R</div>
+      <div>
+        <div class="block-title">Radiation <span class="paren">(Ausstrahlung)</span></div>
+        <div class="label label-de">Frage an Patient</div>
+        <div class="q-text">„Strahlt der Schmerz irgendwohin aus?<br>In den Rucken, Arm oder Kiefer?"</div>
+        <div class="label label-de">Im Arztbrief</div>
+        <div class="brief-text">„Eine Ausstrahlung in [Korperteil] wurde angegeben." /<br>„Ausstrahlung wurde verneint."</div>
+      </div>
+      <div>
+        <div class="label label-de">Klinische Hinweise</div>
+        <div class="vocab-grid">
+          <span class="vocab-tag de">linker Arm → Infarkt</span>
+          <span class="vocab-tag de">Kiefer → Infarkt</span>
+          <span class="vocab-tag de">Rucken → Pankreatitis</span>
+          <span class="vocab-tag de">re. Schulter → Gallenblase</span>
+          <span class="vocab-tag de">Bein → Ischias</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-card">
+      <div class="letter-big">A</div>
+      <div>
+        <div class="block-title">Assoziierte Symptome</div>
+        <div class="label label-de">Frage an Patient</div>
+        <div class="q-text">„Haben Sie noch andere Beschwerden?<br>Ubelkeit, Fieber, Schwindel?"</div>
+        <div class="label label-de">Im Arztbrief</div>
+        <div class="brief-text">„Begleitend seien [Symptome] aufgetreten." /<br>„[Symptom] wurde verneint."</div>
+      </div>
+      <div>
+        <div class="label label-de">Haufige Begleitsymptome</div>
+        <div class="vocab-grid">
+          <span class="vocab-tag de">Nausea</span>
+          <span class="vocab-tag de">Emesis</span>
+          <span class="vocab-tag de">Fieber</span>
+          <span class="vocab-tag de">Dyspnoe</span>
+          <span class="vocab-tag de">Vertigo</span>
+          <span class="vocab-tag de">Kaltschweissigkeit</span>
+          <span class="vocab-tag de">Diarrhoe</span>
+          <span class="vocab-tag de">Obstipation</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-card">
+      <div class="letter-big">T</div>
+      <div>
+        <div class="block-title">Timing <span class="paren">(Verlauf)</span></div>
+        <div class="label label-de">Frage an Patient</div>
+        <div class="q-text">„Ist der Schmerz dauerhaft oder kommt er<br>in Wellen? Wie lange dauert er an?"</div>
+        <div class="label label-de">Im Arztbrief</div>
+        <div class="brief-text">„Der Schmerz sei dauerhaft / intermittierend / kolikartig."</div>
+      </div>
+      <div>
+        <div class="label label-de">Typische Antworten</div>
+        <div class="vocab-grid">
+          <span class="vocab-tag de">dauerhaft</span>
+          <span class="vocab-tag de">intermittierend</span>
+          <span class="vocab-tag de">in Wellen</span>
+          <span class="vocab-tag de">kolikartig</span>
+          <span class="vocab-tag de">nur nachts</span>
+          <span class="vocab-tag de">morgens schlimmer</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-card">
+      <div class="letter-big">E</div>
+      <div>
+        <div class="block-title">Einflussfaktoren</div>
+        <div class="label label-de">Frage an Patient</div>
+        <div class="q-text">„Was macht den Schmerz schlimmer?<br>Was lindert ihn? (Essen, Bewegung, Lage?)"</div>
+        <div class="label label-de">Im Arztbrief</div>
+        <div class="brief-text">„Die Schmerzen wurden durch [Faktor] verstarkt / gelindert."</div>
+      </div>
+      <div>
+        <div class="label label-de">Typische Faktoren</div>
+        <div class="vocab-grid">
+          <span class="vocab-tag de">durch Essen verstarkt</span>
+          <span class="vocab-tag de">durch Ruhe gebessert</span>
+          <span class="vocab-tag de">durch Warme gelindert</span>
+          <span class="vocab-tag de">durch Bewegung schlimmer</span>
+          <span class="vocab-tag de">lageabhangig</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-card">
+      <div class="letter-big">S</div>
+      <div>
+        <div class="block-title">Starke <span class="paren">(NRS 0–10)</span></div>
+        <div class="label label-de">Frage an Patient</div>
+        <div class="q-text">„Wie stark ist der Schmerz auf einer Skala<br>von 0 bis 10?"</div>
+        <div class="label label-de">Im Arztbrief</div>
+        <div class="brief-text">„Die Schmerzintensitat wurde mit [X]/10 auf der NRS angegeben."</div>
+      </div>
+      <div>
+        <div class="label label-de">NRS Orientierung</div>
+        <div class="vocab-grid">
+          <span class="vocab-tag de">1–3 = leicht</span>
+          <span class="vocab-tag de">4–6 = mittelstark</span>
+          <span class="vocab-tag de">7–9 = stark</span>
+          <span class="vocab-tag de">10 = unertraglich</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALICIA -->
+  <div id="sec-alicia" style="display:none">
+    <p class="section-head">ALICIA – Anamnesis del dolor en Español</p>
+
+    <div class="letter-card">
+      <div class="letter-big es">A</div>
+      <div>
+        <div class="block-title">Aparicion <span class="paren">(Beginn)</span></div>
+        <div class="label label-es">Espanol – Pregunta</div>
+        <div class="q-text es">„¿Cuando empezo el dolor?<br>¿Fue de repente o poco a poco?"</div>
+        <div class="label label-de">Deutsch</div>
+        <div class="brief-text">„Wann begannen die Schmerzen? Plotzlich oder schleichend?"</div>
+      </div>
+      <div>
+        <div class="label label-es">Antwort → Brief</div>
+        <div class="vocab-grid">
+          <span class="vocab-tag es">de repente → plotzlich</span>
+          <span class="vocab-tag es">poco a poco → schleichend</span>
+          <span class="vocab-tag es">hace 3 dias → seit 3 Tagen</span>
+          <span class="vocab-tag es">desde esta manana → seit heute Morgen</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-card">
+      <div class="letter-big es">L</div>
+      <div>
+        <div class="block-title">Localizacion <span class="paren">(Lokalisation)</span></div>
+        <div class="label label-es">Espanol – Pregunta</div>
+        <div class="q-text es">„¿Donde le duele exactamente?<br>¿Me puede senalar el lugar?"</div>
+        <div class="label label-de">Deutsch</div>
+        <div class="brief-text">„Wo genau tut es weh? Konnen Sie mir die Stelle zeigen?"</div>
+      </div>
+      <div>
+        <div class="label label-es">Antwort → Brief</div>
+        <div class="vocab-grid">
+          <span class="vocab-tag es">en el pecho → Thoraxschmerzen</span>
+          <span class="vocab-tag es">en el estomago → Bauchschmerzen</span>
+          <span class="vocab-tag es">en el lado derecho → rechts</span>
+          <span class="vocab-tag es">en la cabeza → Cephalgie</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-card">
+      <div class="letter-big es">I</div>
+      <div>
+        <div class="block-title">Irradiacion <span class="paren">(Ausstrahlung)</span></div>
+        <div class="label label-es">Espanol – Pregunta</div>
+        <div class="q-text es">„¿El dolor se corre o se extiende<br>hacia algun lado?"</div>
+        <div class="label label-de">Deutsch</div>
+        <div class="brief-text">„Strahlt der Schmerz irgendwohin aus?"</div>
+      </div>
+      <div>
+        <div class="label label-es">Antwort → Brief</div>
+        <div class="vocab-grid">
+          <span class="vocab-tag es">al brazo izquierdo → linker Arm</span>
+          <span class="vocab-tag es">a la espalda → Rucken</span>
+          <span class="vocab-tag es">a la mandibula → Kiefer</span>
+          <span class="vocab-tag es">no irradia → keine Ausstrahlung</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-card">
+      <div class="letter-big es">C</div>
+      <div>
+        <div class="block-title">Caracter <span class="paren">(Charakter)</span></div>
+        <div class="label label-es">Espanol – Pregunta</div>
+        <div class="q-text es">„¿Como es el dolor? ¿Punzante,<br>opresivo, quemante, calambre?"</div>
+        <div class="label label-de">Deutsch</div>
+        <div class="brief-text">„Wie ist der Schmerz? Stechend, druckend, brennend?"</div>
+      </div>
+      <div>
+        <div class="label label-es">Vokabular ES → DE</div>
+        <div class="vocab-grid">
+          <span class="vocab-tag es">punzante → stechend</span>
+          <span class="vocab-tag es">opresivo → druckend</span>
+          <span class="vocab-tag es">quemante → brennend</span>
+          <span class="vocab-tag es">calambre → krampfartig</span>
+          <span class="vocab-tag es">sordo → dumpf</span>
+          <span class="vocab-tag es">pulsatil → pulsierend</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-card">
+      <div class="letter-big es">I</div>
+      <div>
+        <div class="block-title">Intensidad <span class="paren">(Starke)</span></div>
+        <div class="label label-es">Espanol – Pregunta</div>
+        <div class="q-text es">„¿Del 1 al 10, que tan fuerte<br>es el dolor?"</div>
+        <div class="label label-de">Deutsch</div>
+        <div class="brief-text">„Wie stark ist der Schmerz auf einer Skala von 0 bis 10?"</div>
+      </div>
+      <div>
+        <div class="label label-es">NRS</div>
+        <div class="vocab-grid">
+          <span class="vocab-tag es">1–3 = leve / leicht</span>
+          <span class="vocab-tag es">4–6 = moderado / mittelstark</span>
+          <span class="vocab-tag es">7–9 = intenso / stark</span>
+          <span class="vocab-tag es">10 = insoportable / unertraglich</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-card">
+      <div class="letter-big es">A</div>
+      <div>
+        <div class="block-title">Agravantes / Atenuantes</div>
+        <div class="label label-es">Espanol – Pregunta</div>
+        <div class="q-text es">„¿Que hace que el dolor empeore?<br>¿Y que lo alivia?"</div>
+        <div class="label label-de">Deutsch</div>
+        <div class="brief-text">„Was macht den Schmerz schlimmer? Was lindert ihn?"</div>
+      </div>
+      <div>
+        <div class="label label-es">Vokabular ES → DE</div>
+        <div class="vocab-grid">
+          <span class="vocab-tag es">con la comida → durch Essen</span>
+          <span class="vocab-tag es">con el movimiento → durch Bewegung</span>
+          <span class="vocab-tag es">con el reposo → durch Ruhe</span>
+          <span class="vocab-tag es">con analgesicos → durch Schmerzmittel</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADJEKTIVE -->
+  <div id="sec-adjektive" style="display:none">
+    <p class="section-head">Schmerz-Adjektive: Deutsch ↔ Español</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem">
+
+      <div class="letter-card" style="grid-template-columns:1fr;display:block">
+        <div class="label label-de" style="margin-bottom:.5rem">Deutsch → Espanol → Brief</div>
+        <div style="display:flex;flex-direction:column;gap:.5rem">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:.5rem 0;border-bottom:1px solid var(--border)">
+            <span class="vocab-tag de" style="text-align:center">stechend</span>
+            <span class="vocab-tag es" style="text-align:center">punzante</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:.5rem 0;border-bottom:1px solid var(--border)">
+            <span class="vocab-tag de" style="text-align:center">brennend</span>
+            <span class="vocab-tag es" style="text-align:center">quemante / ardiente</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:.5rem 0;border-bottom:1px solid var(--border)">
+            <span class="vocab-tag de" style="text-align:center">druckend</span>
+            <span class="vocab-tag es" style="text-align:center">opresivo</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:.5rem 0;border-bottom:1px solid var(--border)">
+            <span class="vocab-tag de" style="text-align:center">dumpf</span>
+            <span class="vocab-tag es" style="text-align:center">sordo</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:.5rem 0;border-bottom:1px solid var(--border)">
+            <span class="vocab-tag de" style="text-align:center">krampfartig</span>
+            <span class="vocab-tag es" style="text-align:center">calambre / colico</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:.5rem 0;border-bottom:1px solid var(--border)">
+            <span class="vocab-tag de" style="text-align:center">pulsierend</span>
+            <span class="vocab-tag es" style="text-align:center">pulsatil</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:.5rem 0;border-bottom:1px solid var(--border)">
+            <span class="vocab-tag de" style="text-align:center">ziehend</span>
+            <span class="vocab-tag es" style="text-align:center">tirante</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:.5rem 0;border-bottom:1px solid var(--border)">
+            <span class="vocab-tag de" style="text-align:center">kolikartig</span>
+            <span class="vocab-tag es" style="text-align:center">tipo colico</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:.5rem 0">
+            <span class="vocab-tag de" style="text-align:center">reissend</span>
+            <span class="vocab-tag es" style="text-align:center">desgarrante</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="letter-card" style="grid-template-columns:1fr;display:block">
+        <div class="label label-de" style="margin-bottom:.75rem">Im Arztbrief – Regel</div>
+        <div style="background:var(--de-bg);border-left:3px solid var(--de);padding:.75rem 1rem;border-radius:0 8px 8px 0;margin-bottom:.75rem">
+          <p style="font-size:.875rem"><strong>Nach „als" → kein -end!</strong></p>
+          <p style="font-size:.85rem;color:var(--muted);margin-top:.25rem">„als stechend beschrieben" ✅<br>„als stechende beschrieben" ❌</p>
+        </div>
+        <div style="background:var(--de-bg);border-left:3px solid var(--de);padding:.75rem 1rem;border-radius:0 8px 8px 0;margin-bottom:.75rem">
+          <p style="font-size:.875rem"><strong>Vorlage Brief:</strong></p>
+          <p style="font-size:.85rem;color:var(--muted);margin-top:.25rem">„Der Schmerz wurde als <em>[Adjektiv]</em> und <em>[Adjektiv]</em> beschrieben."</p>
+        </div>
+        <div style="background:var(--es-bg);border-left:3px solid var(--es);padding:.75rem 1rem;border-radius:0 8px 8px 0">
+          <p style="font-size:.875rem"><strong>Vorlage Espanol:</strong></p>
+          <p style="font-size:.85rem;color:var(--muted);margin-top:.25rem">„El paciente describio el dolor como <em>[adjetivo]</em>."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLASHCARDS -->
+  <div id="sec-flash" style="display:none">
+    <p class="section-head">Flashcards – SOKRATES &amp; ALICIA</p>
+    <div class="progress-bar"><div class="progress-fill" id="fprog" style="width:0%"></div></div>
+    <div class="meta-row">
+      <span id="fcount">Karte 1 von 14</span>
+      <span id="fscore">Gewusst: 0</span>
+    </div>
+
+    <div class="flash-wrap">
+      <div class="flash-card" id="fcard" onclick="flipFlash()">
+        <div id="f-front">
+          <div class="flash-letter" id="f-letter"></div>
+          <div class="flash-word" id="f-word"></div>
+          <div class="flash-hint">Tippe um die Fragen zu sehen</div>
+        </div>
+        <div id="f-back" style="display:none;width:100%">
+          <div class="flash-answer">
+            <div class="de-block">
+              <div class="lang-label">Deutsch – Frage an Patient</div>
+              <p id="f-de-q"></p>
+              <p style="font-size:.78rem;color:var(--muted);margin-top:.3rem;font-style:italic" id="f-de-brief"></p>
+            </div>
+            <div class="es-block">
+              <div class="lang-label">Espanol – Pregunta</div>
+              <p id="f-es-q"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-no" onclick="fResult(false)">Nicht gewusst</button>
+      <button class="btn btn-ok" onclick="fResult(true)">Gewusst ✓</button>
+      <button class="btn btn-flip" onclick="flipFlash()">Umdrehen ↕</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const CARDS=[
+  {l:"S",w:"Stelle / Localizacion",deQ:"Wo genau haben Sie Schmerzen? Zeigen Sie mir bitte die Stelle.",deBr:"Im Brief: Der Schmerz sei im [Korperteil] lokalisiert.",esQ:"¿Donde le duele? ¿Me puede senalar el lugar?"},
+  {l:"O",w:"Onset / Aparicion",deQ:"Wann haben die Schmerzen begonnen? Plotzlich oder schleichend?",deBr:"Im Brief: Die Beschwerden seien seit [Zeit] aufgetreten.",esQ:"¿Cuando empezo el dolor? ¿Fue de repente o poco a poco?"},
+  {l:"K",w:"Karakter / Caracter",deQ:"Wie ist der Schmerz? Stechend, brennend, druckend?",deBr:"Im Brief: Der Schmerz wurde als [Adjektiv] beschrieben.",esQ:"¿Como es el dolor? ¿Punzante, opresivo, quemante?"},
+  {l:"R",w:"Radiation / Irradiacion",deQ:"Strahlt der Schmerz irgendwohin aus?",deBr:"Im Brief: Eine Ausstrahlung in [Korperteil] wurde angegeben.",esQ:"¿El dolor se extiende hacia algun lado?"},
+  {l:"A",w:"Assoziiert / Sintomas",deQ:"Haben Sie noch andere Beschwerden? Ubelkeit, Fieber?",deBr:"Im Brief: Begleitend seien [Symptome] aufgetreten.",esQ:"¿Tiene otros sintomas? ¿Nauseas, fiebre, mareos?"},
+  {l:"T",w:"Timing / Duracion",deQ:"Ist der Schmerz dauerhaft oder kommt er in Wellen?",deBr:"Im Brief: Der Schmerz sei dauerhaft / intermittierend.",esQ:"¿El dolor es continuo o va y viene?"},
+  {l:"E",w:"Einflussfaktoren / Agravantes",deQ:"Was macht den Schmerz schlimmer? Was lindert ihn?",deBr:"Im Brief: Durch [Faktor] verstarkt / gelindert.",esQ:"¿Que empeora el dolor? ¿Que lo alivia?"},
+  {l:"S",w:"Starke / Intensidad (NRS)",deQ:"Wie stark ist der Schmerz auf einer Skala von 0 bis 10?",deBr:"Im Brief: Schmerzintensitat [X]/10 auf der NRS.",esQ:"¿Del 1 al 10, que tan fuerte es el dolor?"},
+  {l:"stechend",w:"punzante",deQ:"Der Schmerz sei stechend – wie ein Stich.",deBr:"als stechend beschrieben ✅ / als stechende ❌",esQ:"El dolor es punzante."},
+  {l:"brennend",w:"quemante",deQ:"Der Schmerz sei brennend – wie Feuer.",deBr:"als brennend beschrieben ✅",esQ:"El dolor es quemante / ardiente."},
+  {l:"druckend",w:"opresivo",deQ:"Der Schmerz sei druckend – wie Druck auf die Brust.",deBr:"als druckend beschrieben ✅",esQ:"El dolor es opresivo."},
+  {l:"krampfartig",w:"calambre / colico",deQ:"Der Schmerz sei krampfartig – in Wellen.",deBr:"als krampfartig beschrieben ✅",esQ:"El dolor es tipo calambre / colico."},
+  {l:"dumpf",w:"sordo",deQ:"Der Schmerz sei dumpf – tief, schwer lokalisierbar.",deBr:"als dumpf beschrieben ✅",esQ:"El dolor es sordo."},
+  {l:"pulsierend",w:"pulsatil",deQ:"Der Schmerz sei pulsierend – wie der Herzschlag.",deBr:"als pulsierend beschrieben ✅",esQ:"El dolor es pulsatil."},
+];
+
+let fi=0,fok=0,fflipped=false;
+
+function show(t){
+  ['compare','sokrates','alicia','adjektive','flash'].forEach(s=>{
+    document.getElementById('sec-'+s).style.display=s===t?'block':'none';
+  });
+  document.querySelectorAll('.tab').forEach((b,i)=>{
+    b.classList.toggle('active',['compare','sokrates','alicia','adjektive','flash'][i]===t);
+  });
+  if(t==='flash') updateFlash();
+}
+
+function updateFlash(){
+  const c=CARDS[fi];
+  document.getElementById('fprog').style.width=(fi/CARDS.length*100)+'%';
+  document.getElementById('fcount').textContent='Karte '+(fi+1)+' von '+CARDS.length;
+  document.getElementById('fscore').textContent='Gewusst: '+fok;
+  document.getElementById('f-letter').textContent=c.l;
+  document.getElementById('f-word').textContent=c.w;
+  document.getElementById('f-de-q').textContent=c.deQ;
+  document.getElementById('f-de-brief').textContent=c.deBr;
+  document.getElementById('f-es-q').textContent=c.esQ;
+  document.getElementById('f-front').style.display='flex';
+  document.getElementById('f-back').style.display='none';
+  fflipped=false;
+}
+
+function flipFlash(){
+  fflipped=!fflipped;
+  document.getElementById('f-front').style.display=fflipped?'none':'flex';
+  document.getElementById('f-back').style.display=fflipped?'block':'none';
+}
+
+function fResult(ok){
+  if(!fflipped){flipFlash();return;}
+  if(ok)fok++;
+  fi++;
+  if(fi>=CARDS.length){
+    const pct=Math.round(fok/CARDS.length*100);
+    alert('Fertig! Ergebnis: '+fok+'/'+CARDS.length+' – '+pct+'%\n'+(pct>=80?'Sehr gut! FSP-bereit!':'Weiter ueben!'));
+    fi=0;fok=0;
+  }
+  updateFlash();
+}
+
+updateFlash();
+</script>
+</body>
+</html>

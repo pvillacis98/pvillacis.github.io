@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – TIA &amp; Apoplex</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --card2: #f1f3f5;
+    --a1: #9a0000;    /* dunkelrot – Notfall */
+    --a2: #1971c2;    /* blau – Diagnostik */
+    --a3: #2f9e44;    /* grün – Therapie */
+    --a4: #c92a2a;    /* rot – Gefahr */
+    --warn: #e67700;
+    --text: #212529;
+    --muted: #868e96;
+    --border: #dee2e6;
+    --light-red: #fff5f5;
+    --light-blue: #e8f0ff;
+    --light-green: #ebfbee;
+    --light-orange: #fff9db;
+    --light-pink: #fff0f0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-weight: 400; line-height: 1.7; padding: 2rem 1rem; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border); }
+  .header h1 { font-family: 'Inter', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--a1); letter-spacing: -1px; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+  .timer-badge { display: inline-block; color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 0.8rem; margin-right: 0.3rem; }
+  .tb-red   { background: var(--a1); }
+  .tb-warn  { background: var(--warn); }
+
+  .ch-header { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0 1.2rem; padding: 0.9rem 1.2rem; border-radius: 10px; }
+  .ch-red    { background: var(--light-red);    border-left: 5px solid var(--a1); }
+  .ch-blue   { background: var(--light-blue);   border-left: 5px solid var(--a2); }
+  .ch-green  { background: var(--light-green);  border-left: 5px solid var(--a3); }
+  .ch-orange { background: var(--light-orange); border-left: 5px solid var(--warn); }
+  .ch-num { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 800; opacity: 0.2; }
+  .ch-red .ch-num    { color: var(--a1); } .ch-blue .ch-num   { color: var(--a2); }
+  .ch-green .ch-num  { color: var(--a3); } .ch-orange .ch-num { color: var(--warn); }
+  .ch-t h2 { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 800; line-height: 1.1; }
+  .ch-red .ch-t h2    { color: var(--a1); } .ch-blue .ch-t h2   { color: var(--a2); }
+  .ch-green .ch-t h2  { color: var(--a3); } .ch-orange .ch-t h2 { color: var(--warn); }
+  .ch-t p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 10px; padding: 1.4rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .card h3 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--a1); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light-red); }
+  .card h3.bl { color: var(--a2); border-color: var(--light-blue); }
+  .card h3.gn { color: var(--a3); border-color: var(--light-green); }
+  .card h3.or { color: var(--warn); border-color: var(--light-orange); }
+  .card h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); padding: 0.15rem 0.6rem; border-radius: 4px; font-size: 0.77rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: var(--card2); color: var(--text); }
+  .tag.rd { background: var(--light-red);    border-color: #ffb3b3; color: #7a0000; }
+  .tag.bl { background: var(--light-blue);   border-color: #90baf0; color: #0d3a7a; }
+  .tag.gn { background: var(--light-green);  border-color: #8ce99a; color: #1b4a22; }
+  .tag.or { background: var(--light-orange); border-color: #ffd43b; color: #7a3800; }
+  .tag.gr { background: #f8f9fa;             border-color: #ced4da; color: #495057; }
+
+  .fb { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #343a40; }
+  .fb.bl { border-left-color: var(--a2); }
+  .fb.gn { border-left-color: var(--a3); }
+  .fb.or { border-left-color: var(--warn); }
+  .fb .cm { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hli { color: var(--a2);  font-weight: 600; }
+  .hlg { color: var(--a3);  font-weight: 600; }
+  .hlr { color: var(--a4);  font-weight: 600; }
+  .hlo { color: var(--warn);font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: var(--card2); padding: 0.5rem 0.8rem; text-align: left; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 2px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8f9fa; }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-rd { background: var(--light-red);    color: #7a0000; }
+  .badge-bl { background: var(--light-blue);   color: #0d3a7a; }
+  .badge-gn { background: var(--light-green);  color: #1b4a22; }
+  .badge-or { background: var(--light-orange); color: #7a3800; }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0 1rem; }
+  .sdiv span { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: var(--light-orange); border: 1px solid #ffd43b; border-left: 3px solid var(--warn); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #664d00; }
+  .wbox strong { color: #b35900; }
+  .ebox { background: var(--light-red);    border: 1px solid #ffb3b3; border-left: 3px solid var(--a1); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #7a0000; }
+  .ebox strong { color: var(--a1); }
+  .gbox { background: var(--light-green);  border: 1px solid #8ce99a; border-left: 3px solid var(--a3); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #1b4a22; }
+  .gbox strong { color: #2b7a3d; }
+  .bluebox { background: var(--light-blue); border: 1px solid #90baf0; border-left: 3px solid var(--a2); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #0d3a7a; }
+  .redbox { background: #fff5f5; border: 1px solid #ffb3b3; border-left: 3px solid var(--a1); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #7a0000; }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: var(--a1); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .snum.gn { background: var(--a3); }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+
+  .fast-box { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-top: 0.6rem; }
+  .fast-item { border-radius: 8px; padding: 0.8rem 0.6rem; text-align: center; border: 1px solid; font-size: 0.82rem; }
+  .fi-f { background: var(--light-red);    border-color: #ffb3b3; }
+  .fi-a { background: var(--light-orange); border-color: #ffd43b; }
+  .fi-s { background: var(--light-blue);   border-color: #90baf0; }
+  .fi-t { background: var(--light-red);    border-color: #ff8080; }
+  .fast-item strong { display: block; font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 800; margin-bottom: 0.2rem; }
+  .fi-f strong, .fi-t strong { color: var(--a1); }
+  .fi-a strong { color: var(--warn); }
+  .fi-s strong { color: var(--a2); }
+
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; font-weight: 600; }
+  .pt-table td:nth-child(3) { color: #2b7a3d; font-size: 0.83rem; }
+
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: 1fr; }
+    .fast-box { grid-template-columns: 1fr 1fr; }
+    .header h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>TIA &amp; Apoplex</h1>
+  <div class="sub">Transitorische ischämische Attacke · Ischämischer Schlaganfall · Time is Brain!</div>
+  <span class="timer-badge tb-red">⚡ Neurologischer Notfall!</span>
+  <span class="timer-badge tb-warn">⏱ Thrombolyse: &lt;4,5 h!</span>
+</div>
+
+
+<!-- KAPITEL 1: LEITSYMPTOME + FAST -->
+<div class="ch-header ch-red">
+  <div class="ch-num">01</div>
+  <div class="ch-t">
+    <h2>Leitsymptome &amp; FAST-Test</h2>
+    <p>Plötzlich · Fokal-neurologisch · Vertigo · Dysarthrie · Amaurose · Parästhesien</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3>FAST-Test – Schlaganfall-Screening</h3>
+    <div class="fast-box">
+      <div class="fast-item fi-f">
+        <strong>F</strong>
+        <strong style="font-size:0.8rem">Facial</strong>
+        Einseitige Gesichtslähmung, schiefes Lächeln. „Können Sie die Stirn runzeln / das Augenlid schließen?"
+      </div>
+      <div class="fast-item fi-a">
+        <strong>A</strong>
+        <strong style="font-size:0.8rem">Arm</strong>
+        Armschwäche: Arm kann nicht angehoben oder gehalten werden. „Heben Sie beide Arme an."
+      </div>
+      <div class="fast-item fi-s">
+        <strong>S</strong>
+        <strong style="font-size:0.8rem">Speech</strong>
+        Sprach-/Sprechstörung: Dysarthrie, Aphasie, kann Wörter nicht finden. „Sagen Sie: Zitroneneis."
+      </div>
+      <div class="fast-item fi-t">
+        <strong>T</strong>
+        <strong style="font-size:0.8rem">Time!</strong>
+        <span style="color:var(--a1);font-weight:700">Zeit ist Gehirn!</span> Bei einem positiven Zeichen: sofortiger Notarzt / stationäre Aufnahme!
+      </div>
+    </div>
+    <div class="ebox" style="margin-top:0.8rem">
+      <strong>BE-FAST (erweitert):</strong> B = Balance (Gangunsicherheit) · E = Eyes (Sehstörungen) · F-A-S-T wie oben. Freiburg 12/2022 fragte explizit: „FAST-Test kennen?" + Klinische Prüfung währen Anamnese (Arm anheben, Stirn runzeln, Augenlid schließen – Patient hat alles gemacht → positives Zeichen).
+    </div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Leitsymptome – plötzlich aufgetreten!</h3>
+    <h4>Typische TIA/Apoplex-Symptome</h4>
+    <span class="tag rd">Dysarthrie (Sprechstörung – verwaschen)</span>
+    <span class="tag rd">Aphasie (Sprachstörung – Wörter nicht finden)</span>
+    <span class="tag rd">Vertigo / Schwindel (plötzlich!)</span>
+    <span class="tag rd">Amaurose / Sehstörung (ein Auge!)</span>
+    <span class="tag rd">Parästhesien (einseitig: Arm, Gesicht)</span>
+    <span class="tag rd">Hemiparese / Armlähmung (einseitig)</span>
+    <span class="tag rd">Ataxie / Gangstörung</span>
+    <span class="tag rd">Bewusstlosigkeit / Sturz</span>
+
+    <h4>Zeitverlauf – der wichtigste Unterschied!</h4>
+    <div style="background:var(--light-red);border:1px solid #ffb3b3;border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.9;margin-top:0.3rem">
+      <strong style="color:var(--a1)">TIA:</strong><br>
+      · Symptome verschwinden vollständig (Minuten bis &lt;24h)<br>
+      · <span style="color:var(--a1)">Kein bleibender Infarkt im MRT (DWI negativ)</span><br>
+      · Wiederkehrende Episoden möglich<br><br>
+      <strong style="color:var(--a1)">Apoplex (Hirninfarkt):</strong><br>
+      · Symptome bleiben (&gt;24h oder dauerhaft)<br>
+      · <span style="color:var(--a1)">Bleibende Gewebsschädigung im MRT nachweisbar</span><br>
+      · Sofortiges Handeln → Thrombolyse &lt;4,5 h!
+    </div>
+
+    <div class="wbox">
+      <strong>90-Tage-Risiko nach TIA:</strong> Ca. 10% Schlaganfall! Besonders in den ersten Tagen/Wochen extrem erhöht. → TIA ist ein Notfall und medizinischer Warnschuss! Sofortige Diagnostik und stationäre Aufnahme.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Typischer Prüfungspatient</h3>
+    <div style="background:var(--light-red);border:1px solid #ffb3b3;border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.9;margin-bottom:0.8rem">
+      · <strong>Arnd Kustermann/Kartmann</strong>, 79–80 J.<br>
+      · Rentner, früher Schreiner/Tischler<br>
+      · Verheiratet, 5 Kinder, 6–7 Enkelkinder<br>
+      · <span style="color:var(--a1)">Seit 2 Wochen rezidivierende Attacken</span><br>
+      · <span style="color:var(--a1)">Vertigo + Dysarthrie + Amaurose li. Auge + Parästhesien (li. Arm/Gesicht)</span><br>
+      · Symptome dauern Minuten, dann weg<br>
+      · Sturz bei einer Attacke (Treppe / auf Arm)<br>
+      · <span style="color:var(--a1)">VE: aHT + DM Typ 2 + Vorhofflimmern + Prostatahyperplasie</span><br>
+      · ASS 100 mg + Ramipril + Metformin + Prostagutt<br>
+      · Vater: Apoplex mit 76 J. gestorben<br>
+      · Mutter: DM + Myokardinfarkt<br>
+      · Alkohol: 1 Glas Rotwein täglich (abends)
+    </div>
+    <h4>Risikofaktoren – vollständig nennen!</h4>
+    <span class="tag rd">Arterielle Hypertonie (#1!)</span>
+    <span class="tag rd">Vorhofflimmern (#1! – Emboliequelle!)</span>
+    <span class="tag rd">Diabetes mellitus</span>
+    <span class="tag rd">Alter (&gt;65 J.)</span>
+    <span class="tag rd">Positive Familienanamnese (Vater: Apoplex)</span>
+    <span class="tag or">Dyslipidämie / Atherosklerose</span>
+    <span class="tag or">Rauchen</span>
+    <span class="tag or">Adipositas</span>
+    <span class="tag or">Alkoholmissbrauch</span>
+    <span class="tag or">Karotisstenose</span>
+    <div class="ebox" style="margin-top:0.8rem">
+      <strong>⚠️ Vorhofflimmern = häufigste Ursache!</strong> Freiburg 12/2022: „Welche ist die Ursache für TIA?" → Vorhofflimmern! Thrombus bildet sich im linken Vorhof → kardiale Embolie → Hirngefäßverschluss.
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 2: ARZTBRIEF -->
+<div class="ch-header ch-blue">
+  <div class="ch-num">02</div>
+  <div class="ch-t">
+    <h2>Arztbrief-Template</h2>
+    <p>TIA · VD · DD · Sofortdiagnostik · Sekundärprophylaxe</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="bl">Arztbrief: TIA / Apoplex</h3>
+
+    <h4>Aktuelle Beschwerden</h4>
+    <div class="fb">
+Herr Kustermann, ein 79-jähriger Patient, stellte sich bei uns
+in der Notaufnahme wegen
+<span class="hl">seit 2 Wochen wiederholt plötzlich aufgetretener
+neurologischer Episoden</span> vor:<br><br>
+· <span class="hl">Dysarthrie</span> (Sprechstörung)<br>
+· <span class="hl">Vertigo</span> (Schwindel)<br>
+· <span class="hl">Amaurose des linken Auges</span> (kurzfeitige Erblindung)<br>
+· <span class="hl">Parästhesien im linken Arm und im linken Gesicht</span><br><br>
+Die Beschwerden hätten jeweils <span class="hl">wenige Minuten</span> gedauert
+und seien danach <span class="hl">vollständig zurückgegangen</span>.<br>
+Bei einer der Episoden sei der Patient <span class="hl">gestürzt</span>
+(auf den linken Arm; kein Kopftrauma).<br><br>
+<span class="cm">// Verneint: Bewusstlosigkeit, Schmerzen, Cephalgie, Dyspnoe</span>
+    </div>
+
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: TIA (transitorische ischämische Attacke)</span><br>
+(Rezidivierende fokal-neurologische Defizite mit vollständiger Rückbildung,
+Risikofaktoren: aHT + Vorhofflimmern + DM + Alter + FA,
+typische TIA-Symptome: Dysarthrie, Vertigo, Amaurose, Parästhesien)<br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlr">Apoplex (ischämischer Schlaganfall)</span>
+  – Symptome persistent? Infarkt im MRT? → CCT sofort!<br>
+· <span class="hlo">Zerebrale Blutung</span>
+  – Hämorrhagischer Schlaganfall → CCT nativ (hyperdens!)<br>
+· <span class="hlo">Basilaristhrombose</span>
+  – Lebensbedrohlich! Vigilanzminderung + Hirnstamm<br>
+· <span class="hlo">Migräne mit Aura</span>
+  – Jüngere Patienten, langsam, mit KS<br>
+· <span class="hlo">Epileptischer Anfall (Todd-Parese)</span>
+  – Postiktale Parese nach Krampfanfall<br>
+· <span class="hlo">Hypoglykämie</span>
+  – Sofort Glukose messen!<br>
+· <span class="hlo">HWS-Prolaps / vertebrobasiläre Insuffizienz</span>
+  – Freiburg erwähnte diesen! Schwindel bei Kopfdrehung
+    </div>
+
+    <h4>Diagnostik – TIME IS BRAIN!</h4>
+    <div class="fb bl">
+<span class="hli">Sofort (innerhalb von Minuten):</span><br>
+· <span class="hli">FAST-Test</span>: Gesicht, Arm, Sprache prüfen<br>
+· Neurologische Untersuchung: Kraft, Reflexe, Sensibilität,
+  Hirnnervenstatus, Augenmotilität, Gangbild<br>
+· <span class="hli">Blutzucker sofort!</span>
+  (DD Hypoglykämie → schnell ausschließen)<br>
+· <span class="hli">CT Schädel nativ</span>
+  = erste Bildgebung → Blutung ausschließen!<br>
+· Dann: <span class="hli">MRT Schädel (DWI)</span>
+  → Infarkt sichtbar? → TIA vs. Apoplex<br>
+· <span class="hli">EKG</span>
+  → Vorhofflimmern? Herzrhythmusstörung? (Emboliequelle!)<br>
+· <span class="hli">Echokardiographie (Echo)</span>
+  → Thrombus im Herz? PFO? Klappenthrombus?<br>
+· <span class="hli">Dopplersonographie A. carotis</span>
+  → Karotisstenose! (Freiburg 12/2022 erwähnte das explizit!)<br>
+· Labor: BB, CRP, Gerinnung (INR, PTT),
+  Blutzucker, HbA1c, Elektrolyte, Lipidstatus, Kreatinin
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb gn">
+<span class="hlg">Sofortmaßnahmen – ALLE Patienten:</span><br>
+· <span class="hlg">Stationäre Aufnahme (Stroke Unit) – OBLIGAT!</span><br>
+· Monitoring: EKG, RR, SpO₂, Glukose, Temperatur<br>
+· Sauerstoff bei SpO₂ &lt;95%<br>
+· <span class="hlg">Thrombolyse bei Apoplex &lt;4,5 h:</span>
+  Alteplase (rt-PA) i.v.
+  <span class="cm">// Nur wenn Blutung ausgeschlossen!</span><br>
+· Thrombektomie bei proximalem Verschluss &lt;6 h<br><br>
+<span class="hlg">Sekundärprophylaxe:</span><br><br>
+<span class="hlg">MIT Vorhofflimmern (dieser Patient!):</span><br>
+· <span class="hlg">Antikoagulation: DOAK oder Marcumar</span>
+  (z.B. Apixaban, Rivaroxaban, Dabigatran)<br>
+· KEIN ASS zusätzlich!<br>
+· Kardiologisches Konsil veranlassen<br><br>
+<span class="hlg">OHNE Vorhofflimmern:</span><br>
+· <span class="hlg">ASS 100 mg täglich</span>
+  (oder Clopidogrel bei ASS-Unverträglichkeit)<br><br>
+<span class="hlg">Immer bei allen:</span><br>
+· Statin (Atorvastatin → LDL-Senkung + Plaquesstabilisierung)<br>
+· Blutdruckeinstellung (Ziel: 120–140/70–90 mmHg)<br>
+· Blutzucker optimieren (HbA1c)<br>
+· Nikotinverzicht, Alkohol reduzieren<br>
+· Physiotherapie + Logopädie bei Defiziten<br>
+· Duplexsonographie + ggf. Karotisendarteriektomie bei Stenose
+    </div>
+
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler aus den Fällen:</strong><br>
+      – Patient will nach Hause → Nicht entlassen! Stationäre Aufnahme obligat (90-Tage-Risiko!). Freiburg fragte: „Nehmen Sie den Patienten stationär auf?" → Ja!<br>
+      – Patient soll nicht Auto fahren! Freiburg: „Er soll auch nicht selbst fahren."<br>
+      – Dopplersonographie A. carotis vergessen → Freiburg 12/2022 explizit genannt!<br>
+      – EKG + Echo vergessen → wichtigste Emboliequelle (Vorhofflimmern!) ausschließen<br>
+      – ASS bei Vorhofflimmern = falsch! Bei VHF → DOAK/Marcumar statt ASS<br>
+      – Heparin vs. DOAK: Freiburg 12/2022 fragte: „Welche Therapie gegen Vorhofflimmern?" → Antikoagulation (DOAK)
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 3: AA-GESPRÄCH -->
+<div class="ch-header ch-green">
+  <div class="ch-num">03</div>
+  <div class="ch-t">
+    <h2>AA-Gespräch &amp; Prüfungsfragen</h2>
+    <p>Direkt aus Freiburg 07/2025 · 07/2024 · 11/2022 · Stuttgart 01/2021</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Patientenvorstellung – 5 Schritte</h3>
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="scont"><strong>Notfall betonen!</strong>
+      „Ich möchte Ihnen Herrn Kustermann vorstellen, einen 79-jährigen Patienten, der sich in der Notaufnahme wegen <span class="hl">seit 2 Wochen rezidivierend auftretender fokal-neurologischer Episoden</span> vorgestellt hat."</div>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="scont"><strong>Leitsymptome + Zeitverlauf</strong>
+      „Jede Episode: <span class="hl">Dysarthrie + Vertigo + Amaurose li. Auge + Parästhesien li. Arm/Gesicht – Dauer wenige Minuten, dann vollständig rückläufig</span>. Bei einer Episode Sturz."</div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="scont"><strong>Risikofaktoren</strong>
+      „Kardiovaskuläre RF: <span class="hl">aHT + Vorhofflimmern + DM Typ 2 + Alter + positive FA (Vater Apoplex)</span>. Medikation: ASS (aber bei VHF → Antikoagulation notwendig!)."</div>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="scont"><strong>VD + DD</strong>
+      „VD: <span class="hl">TIA (wahrscheinlich kardioembolisch bei Vorhofflimmern)</span>. DD: <span class="hlr">Apoplex, zerebrale Blutung, Basilaristhrombose, Migräne, Hypoglykämie</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="scont"><strong>Sofortmaßnahmen</strong>
+      „Stationäre Aufnahme (Stroke Unit) veranlasst. <span class="hli">CCT nativ, MRT-DWI, EKG, Echo, Doppler A. carotis, Labor</span>. Antikoagulation bei VHF besprochen."</div>
+    </div>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th><th>Stadt</th></tr>
+      <tr><td>VD und Unterschied TIA vs. Apoplex? (Freiburg!)</td><td>TIA: fokal-neurologisches Defizit &lt;24h, vollständig rückläufig, kein Infarkt im MRT. Apoplex: bleibendes Defizit, Infarkt im MRT nachweisbar. Beide = Notfall!</td><td>Freiburg + Stuttgart</td></tr>
+      <tr><td>Ursache für TIA? Warum Vorhofflimmern? (Freiburg 12/2022!)</td><td>Vorhofflimmern → Thrombus im linken Vorhrohr → kardiale Embolie → Hirnarterienverschluss → TIA oder Schlaganfall. Häufigste Ursache embolischer Schlaganfälle!</td><td>Freiburg 12/2022</td></tr>
+      <tr><td>Muss der Patient stationär aufgenommen werden? (Freiburg!)</td><td>JA! Obligat! 90-Tage-Risiko für Schlaganfall nach TIA ca. 10%. Besonders in den ersten Tagen sehr hohes Risiko. → Stroke Unit, Monitoring, Diagnostik. Patient darf NICHT Auto fahren!</td><td>Freiburg 03/2025</td></tr>
+      <tr><td>HNO-Konsil wegen Vertigo? (Freiburg!)</td><td>Ja, möglich. Aber hier: Patient hat viele kardiovaskuläre RF → Vertigo eher zentralen Ursprungs (vertebrobasiläre TIA). HNO: DD peripherer Schwindel (BPPV, M. Menière). Bei klar zentraler Ursache: Neurologie Konsil wichtiger.</td><td>Freiburg 03/2025</td></tr>
+      <tr><td>Kardiologisches Konsil? (Freiburg!)</td><td>JA! EKG + Echokardiographie: Thrombus im linken Vorhof? PFO (persistierendes Foramen ovale)? Klappenthrombus? Vorhofflimmern bestätigen → Antikoagulation einleiten.</td><td>Freiburg 03/2025</td></tr>
+      <tr><td>Dopplersonographie – warum? (Freiburg 12/2022!)</td><td>A. carotis interna + A. vertebralis: Karotisstenose? Atherosklerotische Plaques? Stenose &gt;70% → Thrombendarteriektomie! Wichtige Emboliequelle bei TIA ohne VHF.</td><td>Freiburg 12/2022</td></tr>
+      <tr><td>Therapie bei Vorhofflimmern? (Freiburg 12/2022!)</td><td><strong>Antikoagulation: DOAK</strong> (Apixaban, Rivaroxaban, Dabigatran) oder Marcumar. KEIN ASS bei VHF (unzureichend)! Ziel: CHA₂DS₂-VASc-Score → Antikoagulationsindikation bestimmen.</td><td>Freiburg 12/2022</td></tr>
+      <tr><td>1 Glas Rotwein täglich – zu viel? (Freiburg!)</td><td>Ein Glas Rotwein täglich (~10g Alkohol) liegt formal noch im Grenzbereich. Im Kontext eines TIA / kardiovaskulären Risikopatienten: Reduktion empfohlen. Klar schädlich ab &gt;40g/Tag.</td><td>Freiburg 03/2025</td></tr>
+      <tr><td>Risikofaktoren nennen?</td><td>Modifizierbar: aHT (#1!), Vorhofflimmern (#1!), DM, Rauchen, Adipositas, Dyslipidämie, Karotisstenose, Alkohol. Nicht modifizierbar: Alter, Geschlecht (♂), genetische Disposition, FA.</td><td>Alle</td></tr>
+      <tr><td>Was macht man bei Apoplex akut? Time is Brain!</td><td>CT Schädel nativ (Blutung ausschließen!) → bei Ischämie + &lt;4,5h: <strong>Thrombolyse (Alteplase i.v.)</strong>. Bei proximalem Verschluss: <strong>Thrombektomie &lt;6h</strong>. Stroke Unit! Vitalüberwachung.</td><td>Stuttgart 01/2021</td></tr>
+      <tr><td>Apoplex – was sehen wir im CT?</td><td>Frisch (&lt;6h): oft normal (Frühzeichen: verstrichene Sulci, Hyperdenses Mediazeichen). Nach 12–24h: Hypodensität im Infarktareal. Blutung: sofort hyperdens sichtbar.</td><td>Alle</td></tr>
+      <tr><td>HWS-Prolaps als DD? (Freiburg!)</td><td>Mögliche DD für Vertigo! Vertebrobasiläre Insuffizienz bei HWS-Degeneration: Schwindel durch Kopfdrehung (komprimiert A. vertebralis). Aber: Bei diesem Patienten mit vielen RF → TIA wahrscheinlicher.</td><td>Freiburg 03/2025</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- KAPITEL 4: SEKUNDÄRPROPHYLAXE + PATIENTENSPRACHE -->
+<div class="ch-header ch-orange">
+  <div class="ch-num">04</div>
+  <div class="ch-t">
+    <h2>Patientensprache &amp; Empathie</h2>
+    <p>Typische Reaktionen · Diagnose erklären · Stationäre Aufnahme begründen</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="or">Übersetzungstabelle</h3>
+    <table class="pt-table">
+      <tr><th>Fachbegriff</th><th>Medizinisch</th><th>Patientensprache</th></tr>
+      <tr><td><strong>TIA</strong></td><td>Transitorische ischämische Attacke</td><td>„Ein kurzer Durchblutungsausfall im Gehirn, der sich von selbst wieder erholt hat. Er ist ein ernstes Warnsignal, dass ein richtiger Schlaganfall drohen könnte."</td></tr>
+      <tr><td><strong>Apoplex / Schlaganfall</strong></td><td>Ischämischer Hirninfarkt</td><td>„Ein Schlaganfall passiert, wenn ein Blutgefäß im Gehirn verstopft wird und das Hirngewebe nicht mehr ausreichend Blut bekommt. Teile des Gehirns können dauerhaft geschädigt werden."</td></tr>
+      <tr><td><strong>Vorhofflimmern</strong></td><td>Herzrhythmusstörung → Emboliequelle</td><td>„Bei Ihrer Herzrhythmusstörung schlägt das Herz unregelmäßig. Dabei können sich Blutgerinnsel im Herz bilden, die dann ins Gehirn wandern und einen Schlaganfall auslösen können."</td></tr>
+      <tr><td><strong>Antikoagulation (DOAK)</strong></td><td>Gerinnungshemmung</td><td>„Ein Medikament, das verhindert, dass sich Blutgerinnsel in Ihrem Herz bilden. Es verdünnt das Blut und schützt Sie so vor einem weiteren Schlaganfall."</td></tr>
+      <tr><td><strong>Thrombolyse</strong></td><td>Medikamentöse Auflösung des Thrombus</td><td>„Ein starkes Medikament, das wir in die Vene geben, um das Blutgerinnsel im Gehirn aufzulösen. Es muss innerhalb von 4,5 Stunden nach dem Schlaganfall gegeben werden."</td></tr>
+      <tr><td><strong>Stroke Unit</strong></td><td>Spezielle Schlaganfall-Überwachungsstation</td><td>„Eine spezialisierte Station im Krankenhaus, auf der Sie genau überwacht werden und sofort behandelt werden können, wenn sich ein neuer Schlaganfall ankündigt."</td></tr>
+      <tr><td><strong>Dopplersonographie A. carotis</strong></td><td>Ultraschall der Halsschlagadern</td><td>„Ein Ultraschall der Halsschlagadern – damit sehen wir, ob die Blutgefäße verengt sind und den Blutfluss zum Gehirn behindern."</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3>Typische Patientenreaktionen – Musterantworten</h3>
+    <div class="fb gn">
+<span class="cm">// Direkt aus den echten Fällen!</span><br><br>
+🧑 „Ich möchte mit meiner Frau nach Hause gehen." (Freiburg 03/2025!)<br>
+→ <span class="hlg">„Das kann ich gut verstehen. Aber ich muss Ihnen sagen: Was Sie in den letzten 2 Wochen erlebt haben, ist ein ernstes Warnsignal. Wenn Sie jetzt nach Hause gehen, ohne dass wir die Ursache abklären und behandeln, könnte ein schwerer Schlaganfall folgen. Ich brauche Sie hier nur für einige Stunden – danach sprechen wir über das weitere Vorgehen."</span><br>
+→ Patient soll auch nicht selbst Auto fahren!<br><br>
+🧑 „Ich habe Angst, dass ich einen Hirntumor oder Schlaganfall habe." (Freiburg 07/2024!)<br>
+→ <span class="hlg">„Diese Sorge nehme ich sehr ernst. Deshalb machen wir jetzt sofort eine Bildgebung des Gehirns – damit können wir sowohl einen Tumor als auch einen Schlaganfall sicher ausschließen oder bestätigen. Wir handeln sehr schnell."</span><br><br>
+🧑 Patient sagt er ist „nur gegen Politik allergisch." (Freiburg 03/2025 – charmanter Patient!)<br>
+→ Lächeln, empathisch bleiben: <span class="hlg">„Das kenne ich gut. Dann vermerke ich: keine bekannten medizinischen Allergien."</span><br><br>
+🧑 „Wie viel Wein darf ich trinken?"<br>
+→ <span class="hlg">„Ein Glas Rotwein täglich überschreitet die empfohlene Menge formal noch nicht – aber angesichts Ihres Herzrhythmusproblems und dieses Ereignisses würde ich Ihnen empfehlen, den Konsum zu reduzieren oder ganz zu verzichten. Alkohol beeinflusst auch den Herzrhythmus."</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- FACHBEGRIFFE + ZEITPLAN -->
+<div class="sdiv"><span>Fachbegriffe &amp; Zeitplan</span></div>
+<div class="grid">
+  <div class="card">
+    <h3>Fachbegriffe aus den Prüfungen</h3>
+    <h4>TIA / Apoplex direkt</h4>
+    <div>
+      <span class="tag rd">TIA (transitorische ischämische Attacke)</span>
+      <span class="tag rd">Apoplex / Hirninfarkt</span>
+      <span class="tag rd">FAST-Test (BE-FAST)</span>
+      <span class="tag rd">Thrombolyse (Alteplase, rt-PA)</span>
+      <span class="tag rd">Thrombektomie</span>
+      <span class="tag rd">Stroke Unit</span>
+      <span class="tag rd">Penumbra</span>
+      <span class="tag rd">Amaurose (Erblindung)</span>
+      <span class="tag rd">Dysarthrie / Aphasie</span>
+      <span class="tag rd">Hemiparese / Hemiplegie</span>
+      <span class="tag rd">Dopplersonographie A. carotis</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Kardiovaskulär / Sekundärprophylaxe</h4>
+    <div>
+      <span class="tag or">Vorhofflimmern (VHF)</span>
+      <span class="tag or">DOAK / Marcumar (Antikoagulation)</span>
+      <span class="tag or">CHA₂DS₂-VASc-Score</span>
+      <span class="tag or">Karotisstenose → Endarteriektomie</span>
+      <span class="tag or">Statin (LDL-Senkung)</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Sonstige aus Prüfungen</h4>
+    <div>
+      <span class="tag gr">Anosmie</span>
+      <span class="tag gr">Refluxösophagitis</span>
+      <span class="tag gr">Kardiomegalie</span>
+      <span class="tag gr">Ätiologie</span>
+      <span class="tag gr">Sympathikolyse</span>
+      <span class="tag gr">Struma nodosa</span>
+      <span class="tag gr">Hydrozephalus</span>
+      <span class="tag gr">Hallux valgus</span>
+      <span class="tag gr">Hyperhidrose</span>
+      <span class="tag gr">Duodenalsonde</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="or">Zeitplan &amp; Top-Tipps</h3>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-rd">Patientengespräch</span></td><td><strong>20 Min</strong></td><td>Zeitverlauf! Vollständig rückläufig? Vorhofflimmern bekannt? Wann Symptome begannen (Thrombolysefenster!). Sturz? Fahrtauglichkeit ansprechen.</td></tr>
+      <tr><td><span class="badge badge-bl">Arztbrief</span></td><td><strong>20 Min</strong></td><td>TIA vs. Apoplex. CCT sofort (Blutung ausschließen!). EKG + Echo + Doppler. Bei VHF: DOAK statt ASS. Stationäre Aufnahme.</td></tr>
+      <tr><td><span class="badge badge-gn">AA-Gespräch</span></td><td><strong>20 Min</strong></td><td>Ursache = Vorhofflimmern. Stationäre Aufnahme begründen. Doppler A. carotis. HNO/Kardiologie-Konsil. Time is Brain! 90-Tage-Risiko.</td></tr>
+    </table>
+
+    <div class="ebox" style="margin-top:1rem">
+      <strong>Time is Brain – Die wichtigste Regel!</strong> Jede Minute Schlaganfall = 1,9 Millionen Neuronen sterben. Thrombolyse: &lt;4,5h. Thrombektomie: &lt;6h. Patient darf nicht warten, nicht nach Hause, nicht Auto fahren!
+    </div>
+    <div class="gbox" style="margin-top:0.8rem">
+      <strong>Freiburg 03/2025:</strong> Patient sagte: „Ich will nach Hause." → Kandidat erklärte ruhig: „Sie müssen hier bleiben – er soll auch nicht selbst fahren." → Prüferin war zufrieden. Empathisch aber bestimmt!
+    </div>
+    <div class="bluebox" style="margin-top:0.8rem">
+      <strong>ASS vs. DOAK:</strong> Häufiger Fehler! Bei Vorhofflimmern → DOAK/Marcumar (kein ASS!). Ohne VHF → ASS 100 mg. Beide niemals kombinieren ohne kardiologische Indikation.
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top: 1px solid var(--border);">
+  FSP Leitfaden · TIA &amp; Apoplex + Patientensprache · Freiburg · Stuttgart · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

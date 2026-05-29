@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Pankreatitis</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #120a00;
+    --card: #1e1200;
+    --a1: #fb923c;   /* orange – akute Pankr. */
+    --a2: #a78bfa;   /* violett – chronische */
+    --a3: #f43f5e;   /* rot – Notfall */
+    --good: #34d399;
+    --info: #60a5fa;
+    --warn: #fbbf24;
+    --text: #fff0e0;
+    --muted: #6b4020;
+    --border: #2e1a00;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); font-weight: 300; line-height: 1.7; padding: 2rem 1rem; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; }
+  .header::after { content: ''; display: block; width: 120px; height: 3px; background: linear-gradient(90deg, var(--a1), var(--a2), var(--a3)); margin: 1.5rem auto 0; border-radius: 2px; }
+  .header h1 { font-family: 'Syne', sans-serif; font-size: 2.8rem; font-weight: 800; background: linear-gradient(135deg, var(--a1), #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -1px; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+  .timer-badge { display: inline-block; background: linear-gradient(135deg, var(--a1), #ea580c); color: #120a00; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 1rem; }
+
+  .ch-header { display: flex; align-items: center; gap: 1rem; margin: 3rem 0 1.5rem; padding: 1rem 1.5rem; border-radius: 12px; }
+  .ch1 { background: rgba(251,146,60,0.08); border-left: 5px solid var(--a1); }
+  .ch2 { background: rgba(167,139,250,0.08); border-left: 5px solid var(--a2); }
+  .ch3 { background: rgba(52,211,153,0.08);  border-left: 5px solid var(--good); }
+  .ch4 { background: rgba(251,191,36,0.08);  border-left: 5px solid var(--warn); }
+  .ch-num { font-family: 'Syne', sans-serif; font-size: 2.4rem; font-weight: 800; opacity: 0.3; }
+  .ch1 .ch-num { color: var(--a1); } .ch2 .ch-num { color: var(--a2); } .ch3 .ch-num { color: var(--good); } .ch4 .ch-num { color: var(--warn); }
+  .ch-t h2 { font-family: 'Syne', sans-serif; font-size: 1.7rem; font-weight: 800; line-height: 1; }
+  .ch1 .ch-t h2 { color: var(--a1); } .ch2 .ch-t h2 { color: var(--a2); } .ch3 .ch-t h2 { color: var(--good); } .ch4 .ch-t h2 { color: var(--warn); }
+  .ch-t p { font-size: 0.82rem; color: var(--muted); margin-top: 0.3rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 14px; padding: 1.5rem; border: 1px solid var(--border); }
+  .card h3 { font-size: 0.95rem; font-weight: 600; color: var(--a1); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .card h3.vio { color: var(--a2); border-color: rgba(167,139,250,0.2); }
+  .card h3.gn  { color: var(--good); border-color: rgba(52,211,153,0.2); }
+  .card h3.yw  { color: var(--warn); border-color: rgba(251,191,36,0.2); }
+  .card h3.rd  { color: var(--a3); border-color: rgba(244,63,94,0.2); }
+  .card h3.bl  { color: var(--info); border-color: rgba(96,165,250,0.2); }
+  .card h4 { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); color: var(--text); padding: 0.18rem 0.65rem; border-radius: 5px; font-size: 0.78rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.03); }
+  .tag.or { background: rgba(251,146,60,0.1); border-color: rgba(251,146,60,0.3); color: var(--a1); }
+  .tag.vio { background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.3); color: var(--a2); }
+  .tag.gn { background: rgba(52,211,153,0.1); border-color: rgba(52,211,153,0.3); color: var(--good); }
+  .tag.yw { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); color: var(--warn); }
+  .tag.rd { background: rgba(244,63,94,0.1); border-color: rgba(244,63,94,0.3); color: var(--a3); }
+  .tag.bl { background: rgba(96,165,250,0.1); border-color: rgba(96,165,250,0.3); color: var(--info); }
+
+  .fb { background: rgba(0,0,0,0.4); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #f0d8b8; }
+  .fb.vio { border-color: var(--a2); color: #d8d0f8; }
+  .fb.gn  { border-color: var(--good); color: #c0f0d8; }
+  .fb.yw  { border-color: var(--warn); color: #f0e8b0; }
+  .fb.rd  { border-color: var(--a3); color: #f0c0c8; }
+  .fb .cm { color: var(--muted); font-family: 'Inter', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hlv { color: var(--a2);  font-weight: 600; }
+  .hlg { color: var(--good);font-weight: 600; }
+  .hlw { color: var(--warn);font-weight: 600; }
+  .hlr { color: var(--a3);  font-weight: 600; }
+  .hli { color: var(--info);font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: rgba(255,255,255,0.04); padding: 0.5rem 0.8rem; text-align: left; font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 1px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-or  { background: rgba(251,146,60,0.15); color: var(--a1); }
+  .badge-vio { background: rgba(167,139,250,0.15); color: var(--a2); }
+  .badge-gn  { background: rgba(52,211,153,0.15); color: var(--good); }
+  .badge-yw  { background: rgba(251,191,36,0.15); color: var(--warn); }
+  .badge-rd  { background: rgba(244,63,94,0.15); color: var(--a3); }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 1.8rem 0 1.2rem; }
+  .sdiv span { font-family: 'Syne', sans-serif; font-size: 0.8rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: rgba(251,191,36,0.07); border: 1px solid rgba(251,191,36,0.2); border-left: 3px solid var(--warn); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #d4c080; }
+  .wbox strong { color: var(--warn); }
+  .ebox { background: rgba(244,63,94,0.07); border: 1px solid rgba(244,63,94,0.2); border-left: 3px solid var(--a3); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #d4a0a8; }
+  .ebox strong { color: var(--a3); }
+  .gbox { background: rgba(52,211,153,0.07); border: 1px solid rgba(52,211,153,0.2); border-left: 3px solid var(--good); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #a0d4b8; }
+  .gbox strong { color: var(--good); }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: linear-gradient(135deg, var(--a1), #ea580c); color: #120a00; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .snum.rd { background: var(--a3); color: white; }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+  .scont strong.rd { color: var(--a3); }
+
+  /* Compare akut vs chronisch */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin: 0.8rem 0; }
+  .cbox { border-radius: 8px; padding: 0.9rem; border: 1px solid var(--border); }
+  .cbox-or { background: rgba(251,146,60,0.07); border-color: rgba(251,146,60,0.2); }
+  .cbox-vio { background: rgba(167,139,250,0.07); border-color: rgba(167,139,250,0.2); }
+  .cbox-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 0.95rem; margin-bottom: 0.5rem; }
+
+  /* pt table */
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; }
+  .pt-table td:nth-child(3) { color: var(--good); font-size: 0.83rem; }
+  .pt-table td:nth-child(4) { color: var(--warn); font-size: 0.81rem; font-style: italic; }
+
+  @media (max-width: 700px) {
+    .grid, .two-col { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Pankreatitis</h1>
+  <div class="sub">Akute &amp; chronische Pankreatitis · Bauchspeicheldrüsenentzündung · FSP Leitfaden</div>
+  <div class="timer-badge">⏱ 20 Min. Arztbrief · 20 Min. AA-Gespräch</div>
+</div>
+
+
+<!-- ═══ KAPITEL 1: LEITSYMPTOME ═══ -->
+<div class="ch-header ch1">
+  <div class="ch-num">01</div>
+  <div class="ch-t">
+    <h2>Leitsymptome &amp; Klinik</h2>
+    <p>Akute vs. chronische Pankreatitis · Typischer Patient</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Leitsymptome – immer abfragen</h3>
+    <h4>Schmerzcharakter</h4>
+    <span class="tag or">Gürtelförmige Oberbauchschmerzen!</span>
+    <span class="tag or">Ausstrahlung in den Rücken</span>
+    <span class="tag or">Epigastrisch / Mittelbauch</span>
+    <span class="tag or">Plötzlicher Beginn</span>
+    <span class="tag or">Progredient (schlimmer werdend)</span>
+    <span class="tag or">Prall-elastischer Bauch (Gummibauch)</span>
+
+    <h4>Auslöser – immer fragen! (Prüfungsrelevant)</h4>
+    <span class="tag yw">Nach fettigem Essen</span>
+    <span class="tag yw">Nach Alkohol (Schnaps / Bier)</span>
+    <span class="tag yw">Nach Verdauungsschnaps</span>
+
+    <h4>Begleitsymptome</h4>
+    <span class="tag">Nausea / Übelkeit</span>
+    <span class="tag">Emesis (Erbrechen, Essensreste)</span>
+    <span class="tag">Meteorismus / Blähungen</span>
+    <span class="tag">Inappetenz</span>
+    <span class="tag">Fieber (bei schwerem Verlauf)</span>
+    <span class="tag">Diarrhö (chronische Form!)</span>
+
+    <div class="wbox">
+      <strong>Aus Freiburg 2023:</strong> Prüfer fragte direkt: „Was hat der Patient gegessen?" und „Was arbeitet der Patient?" → Diese Details sind prüfungsrelevant! Fettes Mittagessen + Alkohol = klassischer Auslöser.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Akut vs. Chronisch – Unterschiede</h3>
+    <div class="two-col">
+      <div class="cbox cbox-or">
+        <div class="cbox-title" style="color:var(--a1)">Akute Pankreatitis</div>
+        <div style="font-size:0.82rem;line-height:1.9">
+          Plötzlich aufgetretene Schmerzen<br>
+          Nach fettigem Essen / Alkohol<br>
+          <span style="color:var(--a1)">Lipase ↑↑↑ (3× Norm)</span><br>
+          Erster Anfall<br>
+          Ohne Gewichtsverlust<br>
+          Ohne Steatorrhö
+        </div>
+      </div>
+      <div class="cbox cbox-vio">
+        <div class="cbox-title" style="color:var(--a2)">Chronische Pankreatitis</div>
+        <div style="font-size:0.82rem;line-height:1.9">
+          Rezidivierende Schmerzen<br>
+          Frühere akute Pankreatitis!<br>
+          <span style="color:var(--a2)">Fettstuhl (Steatorrhö)</span><br>
+          Gewichtsverlust<br>
+          Diabetes mellitus möglich<br>
+          Alkoholabusus langjährig
+        </div>
+      </div>
+    </div>
+
+    <h4>Typischer Prüfungspatient</h4>
+    <div style="background:rgba(251,146,60,0.08);border:1px solid rgba(251,146,60,0.2);border-radius:8px;padding:0.8rem;font-size:0.84rem;line-height:1.9;margin-top:0.4rem">
+      · 38–41 Jahre, <strong>männlich</strong><br>
+      · <span style="color:var(--a3)">Täglich 4–7 Bier + Schnaps</span><br>
+      · <span style="color:var(--a3)">40 Zigaretten/Tag seit 20+ Jahren</span><br>
+      · <strong>Maschinenschlosser / Gipser</strong> (körperliche Arbeit)<br>
+      · <strong>Bruder</strong> leidet an <span style="color:var(--a3)">Leberzirrhose</span><br>
+      · Übergewichtig (BMI ↑)<br>
+      · Ggf. Cholelithiasis / DM Typ 2<br>
+      · Verheiratet, 2 gesunde Kinder
+    </div>
+  </div>
+</div>
+
+<!-- URSACHEN -->
+<div class="full">
+  <div class="card">
+    <h3>Ursachen (Ätiologie) – Prüfungsfrage!</h3>
+    <table>
+      <tr><th>Ursache</th><th>Häufigkeit</th><th>Mechanismus</th><th>Prüfungsrelevanz</th></tr>
+      <tr><td><span class="hl">Alkohol (Äthyltoxisch)</span></td><td>30–50%</td><td>Direkte Toxizität → Enzymaktivierung</td><td>⭐ Häufigste Ursache beim jungen Mann!</td></tr>
+      <tr><td><span class="hl">Gallensteine (biliär)</span></td><td>30–50%</td><td>Stein verstopft Papille → Sekretstau</td><td>⭐ Häufig! → ERCP indiziert</td></tr>
+      <tr><td>Idiopathisch</td><td>~15%</td><td>Keine Ursache gefunden</td><td>DD wenn kein Alkohol/Steine</td></tr>
+      <tr><td>Medikamente</td><td>selten</td><td>Azathioprin, Steroide, ACE-Hemmer, Furosemid, Östrogene</td><td>Medikamentenliste prüfen!</td></tr>
+      <tr><td>Hypertriglyzeridämie</td><td>selten</td><td>Triglyzeride &gt;1000 mg/dl → toxisch</td><td>Labor: Triglyzeride!</td></tr>
+      <tr><td>Mumps / Viren</td><td>selten</td><td>Virale Entzündung</td><td>Prüfer fragte explizit: „Welche Ursachen außer Alkohol?"</td></tr>
+    </table>
+    <div class="wbox">
+      <strong>Wie entsteht biliäre Pankreatitis? (Stuttgart wurde gefragt!)</strong> Gallenstein wandert in den Ductus choledochus → verstopft die Papilla Vateri → Pankreassekret kann nicht abfließen → Stau → Enzymaktivierung im Pankreas → Selbstverdauung (Autodigestion).
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ KAPITEL 2: ARZTBRIEF ═══ -->
+<div class="ch-header ch1">
+  <div class="ch-num">02</div>
+  <div class="ch-t">
+    <h2>Arztbrief-Template</h2>
+    <p>Akute Pankreatitis · Verdachtsdiagnose · DD · Diagnostik · Therapie</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3>Arztbrief: Akute Pankreatitis</h3>
+
+    <h4>Aktuelle Beschwerden</h4>
+    <div class="fb">
+Herr [Name], ein [Alter]-jähriger Patient, stellte sich bei uns wegen
+<span class="hl">seit [gestern / X Tagen] bestehender, plötzlich aufgetretener,
+gürtelförmiger Oberbauchschmerzen</span> mit
+<span class="hl">Ausstrahlung in den Rücken</span> vor (NRS [X]/10).<br><br>
+Die Schmerzen seien nach einem
+<span class="hl">fettigen Mittagessen</span> / nach
+<span class="hl">Alkoholkonsum</span> aufgetreten und
+hätten sich im Verlauf progredient verschlechtert.<br><br>
+Begleitend berichtete er über
+<span class="hl">Nausea, einmalige Emesis</span> (Essensreste, nicht blutig)
+sowie <span class="hl">Meteorismus und Inappetenz</span>.<br><br>
+<span class="cm">// Verneinte Symptome:</span><br>
+Fieber, Meläna, Hämatemesis, Diarrhö, Ikterus
+sowie ähnliche vorherige Beschwerden wurden verneint.
+    </div>
+
+    <h4>Noxen – entscheidend!</h4>
+    <div class="fb">
+<span class="hlr">Nikotinkonsum:</span> ca. 40 Zigaretten täglich seit &gt;20 Jahren.<br>
+<span class="hlr">Alkoholkonsum:</span> täglich 4–7 Bierflaschen sowie gelegentlich Schnaps
+seit &gt;15 Jahren.<br>
+Drogenkonsum wurde verneint.
+    </div>
+
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: Akute Pankreatitis</span><br>
+<span class="cm">// 2 von 3 Diagnosekriterien erforderlich:
+  1. typische Klinik  2. Lipase ↑↑↑ (≥3× Norm)  3. Bildgebung</span><br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlw">Akute Cholezystitis</span> – rechtsseitig, nach fettigem Essen, Murphy-Zeichen<br>
+· <span class="hlw">Cholelithiasis / Gallenkolik</span> – kolikartig, rechter Oberbauch<br>
+· <span class="hlw">Ulcus duodeni / ventriculi</span> – Nüchternschmerz, NSAR-Anamnese<br>
+· <span class="hlw">Cholezystitis / Choledocholithiasis</span> – Ikterus, AP↑, Bilirubin↑<br>
+· <span class="hlr">Hinterwandinfarkt</span> – epigastrische Schmerzen! → EKG + Troponin obligat!<br>
+· <span class="hlr">Mesenterialinfarkt</span> – akutes Abdomen, Ischämieschmerz<br>
+· <span class="hlw">Gastritis / GERD</span><br>
+· <span class="hlw">Aortendissektion</span> – bei Ausstrahlung in den Rücken
+    </div>
+
+    <h4>Diagnostik</h4>
+    <div class="fb">
+· Körperliche Untersuchung: Vitalparameter,
+  <span class="hl">Palpation Abdomen</span> (Gummibauch? Abwehrspannung?),
+  Ikterus?, Darmgeräusche,<br>
+  <span class="hl">Grey-Turner-Zeichen</span> (Flanken) /
+  <span class="hl">Cullen-Zeichen</span> (Nabel) – bei Nekrose!<br><br>
+· Labor: BB, CRP, BSG, <span class="hl">Lipase ↑↑↑</span> (wichtigster Marker!),
+  Amylase (weniger spezifisch),<br>
+  <span class="hl">Bilirubin</span> (Ikterus?), AP, GGT (biliäre Genese?),
+  GOT/GPT, <span class="hl">Triglyzeride</span>, Kalzium,<br>
+  Glukose, Kreatinin, Harnstoff, Hämatokrit,
+  <span class="hl">Troponin</span> (DD Hinterwandinfarkt!)<br><br>
+· <span class="hl">EKG</span> (DD Hinterwandinfarkt – immer!)<br>
+· <span class="hl">Abdomensonographie</span> = Basisdiagnostik:
+  Gallensteine? Pankreasschwellung? Freie Flüssigkeit?<br>
+· <span class="hl">CT Abdomen</span> (mit KM): nur bei unklarem Sono, frühestens nach 3 Tagen!
+  Nekroseherde nachweisen.<br>
+· Ggf. <span class="hl">ERCP</span>: bei biliärer Genese mit Cholangitis oder Choledocholithiasis
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb gn">
+<span class="hlg">Stationäre Aufnahme – Intensivstation!</span><br><br>
+<span class="hlg">1. Volumen- und Elektrolytsubstitution:</span><br>
+· i.v. Ringer-Laktat 200–250 ml/h → wichtigste Maßnahme!<br>
+· Engmaschige Flüssigkeitsbilanz<br><br>
+<span class="hlg">2. Analgesie:</span><br>
+· NSAR / Tramadol / Buprenorphin / Pethidin<br>
+· <span class="hlr">Morphin kontraindiziert!</span>
+  (Papillenspasmus → verschlimmert biliäre Genese)<br><br>
+<span class="hlg">3. Ernährung:</span><br>
+· Nulldiät nur bei starker Übelkeit / schwerem Verlauf<br>
+· Milde Form: <span class="hlg">frühzeitig oral ernähren</span> (nicht mehr pauschal Nulldiät!)<br>
+· Schwerer Verlauf: parenterale Ernährung → dann enterale Ernährung<br>
+· <span class="hlr">Strikte Alkoholkarenz!</span><br><br>
+<span class="hlg">4. Monitoring &amp; Sonstiges:</span><br>
+· O₂-Gabe (SpO₂ ≥96%)<br>
+· PPI (Stressulkusprophylaxe)<br>
+· Antiemetika<br>
+· Antibiotika: nur bei nachgewiesenen Nekrosen / Infektion (nicht prophylaktisch!)<br><br>
+<span class="hlg">5. Interventionell / operativ (bei Komplikationen):</span><br>
+· ERCP + Sphinkterotomie: bei biliärer Genese + Cholangitis / Choledocholithiasis<br>
+· Endoskopische Drainagen / Nekrosektomie: bei infizierten Nekrosen<br>
+· <span class="hlr">OP (Nekrosektomie + Peritoneallavage)</span>: ultima ratio<br><br>
+<span class="hlg">6. Lebensführung (Prüferfrage!):</span><br>
+· Alkohol- und Nikotinabstinenz<br>
+· Gewichtsreduktion<br>
+· Fettarme Ernährung<br>
+· Psychotherapeutische Unterstützung
+    </div>
+
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler aus den Fällen:</strong><br>
+      – Morphin als Analgetikum nennen → Morphin ist kontraindiziert (Papillenspasmus)!<br>
+      – EKG vergessen → Hinterwandinfarkt muss immer ausgeschlossen werden!<br>
+      – CT sofort anordnen → CT frühestens nach 3 Tagen (vorher kein Mehrwert)<br>
+      – Procalcitonin vergessen → Stuttgart-Prüfer fragte explizit danach!
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ KAPITEL 3: CHRONISCHE PANKREATITIS ═══ -->
+<div class="ch-header ch2">
+  <div class="ch-num">03</div>
+  <div class="ch-t">
+    <h2>Chronische Pankreatitis</h2>
+    <p>Rezidivierend · Steatorrhö · Pankreasinsuffizienz · Alkohol</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3 class="vio">Besondere Merkmale – chronisch</h3>
+    <h4>Zusätzliche Leitsymptome</h4>
+    <span class="tag vio">Rezidivierende Schmerzen (Schübe)</span>
+    <span class="tag vio">Steatorrhö (Fettstuhl)</span>
+    <span class="tag vio">Gewichtsverlust</span>
+    <span class="tag vio">Maldigestion (Fettstuhl, Diarrhö)</span>
+    <span class="tag vio">Diabetes mellitus (endokrine Insuffizienz)</span>
+    <span class="tag vio">Ikterus (Gallengangsstenose)</span>
+    <span class="tag vio">Frühere akute Pankreatitis!</span>
+
+    <h4>Exokrine vs. Endokrine Insuffizienz</h4>
+    <table>
+      <tr><th>Funktion</th><th>Störung</th><th>Symptome</th></tr>
+      <tr><td><span class="hlv">Exokrin</span></td><td>Enzyme ↓ → Maldigestion</td><td>Steatorrhö, Diarrhö, Gewichtsverlust</td></tr>
+      <tr><td><span class="hlv">Endokrin</span></td><td>Insulin ↓ → DM</td><td>Hyperglykämie, Polyurie, Polydipsie</td></tr>
+    </table>
+
+    <div class="wbox">
+      <strong>Aus Stuttgart 25.01.2025:</strong> Prüfer fragte nach DM (Patient hatte BZ 200–250 mmol/dl, messe 1× alle 2 Monate) → Chronische Pankreatitis → endokrine Insuffizienz → DM als Folge!
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="vio">Diagnostik &amp; Therapie chronisch</h3>
+    <h4>Diagnostik</h4>
+    <div class="fb vio">
+· <span class="hlv">Elastase-1 im Stuhl</span>
+  (&lt;100 μg/g = exokrine Insuffizienz)<br>
+· <span class="hlv">Abdomensonographie</span>: Verkalkungen,
+  Pseudozysten, Gangdilatation<br>
+· CT / MRT / MRCP / ERCP<br>
+· HbA1c (endokrine Insuffizienz?)<br>
+· Triglyzeride, Kalzium (Ursache?)<br>
+· Ggf. Molekulargenetik
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb vio">
+<span class="hlv">Essentiell: Alkohol- und Nikotinabstinenz!</span><br><br>
+· Schmerztherapie (WHO-Stufenschema)<br>
+· Bei exokriner Insuffizienz:<br>
+  <span class="hlv">Pankreatin-Substitution</span> (Enzymersatz)<br>
+· Bei endokriner Insuffizienz: Insulin / OAD<br>
+· Ernährungsberatung + Vitaminsubstitution<br>
+· Interventionell: Stenteinlage, Lithotripsie<br>
+· Operativ: Pankreaskopfresektion
+  (bei dauerhafter Schmerzbedürftigkeit)<br><br>
+<span class="hlv">Komplikationen:</span><br>
+Pseudozysten · Pankreaskarzinom! · Milzvenenthrombose<br>
+Gallengangsstenose · Fistelbildung
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ KAPITEL 4: PATIENTENVORSTELLUNG ═══ -->
+<div class="ch-header ch3">
+  <div class="ch-num">04</div>
+  <div class="ch-t">
+    <h2>Patientenvorstellung &amp; AA-Gespräch</h2>
+    <p>5 Schritte · Direktfragen aus echten Prüfungen</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Struktur – 5 Schritte (~3–4 Minuten)</h3>
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="scont"><strong>Stammdaten</strong>
+      „Ich möchte Ihnen Herrn [Name], einen [Alter]-jährigen [Maschinenschlosser / Gipser], vorstellen."</div>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="scont"><strong>Vorstellungsgrund + Leitsymptome</strong>
+      „Der Patient stellte sich wegen <span class="hl">seit [gestern] bestehender, plötzlich aufgetretener, gürtelförmiger Oberbauchschmerzen mit Ausstrahlung in den Rücken</span> vor (NRS [X]/10). Die Schmerzen traten nach einem fettigen Mittagessen auf. Begleitend berichtete er über Nausea und einmalige Emesis."</div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="scont"><strong>Relevante Risikofaktoren</strong>
+      „Der Patient gibt einen langjährigen, schweren <span class="hlr">Alkoholkonsum</span> an (täglich 4–7 Bierflaschen seit &gt;15 Jahren) sowie <span class="hlr">40 Zigaretten täglich</span>. Der Bruder leide an Leberzirrhose."</div>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="scont"><strong>Verdachts- und Differentialdiagnose</strong>
+      „Meine Verdachtsdiagnose lautet <span class="hl">akute Pankreatitis</span>. Differentialdiagnostisch kommen akute Cholezystitis, Ulcus duodeni sowie ein <span class="hlr">Hinterwandinfarkt</span> in Betracht – den wir mit EKG und Troponin ausschließen müssen."</div>
+    </div>
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="scont"><strong>Weiteres Procedere</strong>
+      „Zur Abklärung habe ich Labor (insbesondere <span class="hl">Lipase</span>), EKG, Abdomensonographie veranlasst und den Patienten zur Intensivüberwachung stationär aufgenommen. Therapeutisch starte ich mit <span class="hlg">i.v. Volumensubstitution, Analgesie</span> (kein Morphin!) und Nahrungskarenz bei Erbrechen."</div>
+    </div>
+    <div class="gbox">
+      <strong>Aus Stuttgart 25.11.2024:</strong> „Im dritten Teil wurden hauptsächlich Fragen zur Diagnostik in der Reihenfolge gestellt: körperliche Untersuchung → Labor → apparative Diagnostik." → Diese Reihenfolge immer einhalten!
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ KAPITEL 5: PATIENTENSPRACHE ═══ -->
+<div class="ch-header ch4">
+  <div class="ch-num">05</div>
+  <div class="ch-t">
+    <h2>Fachbegriffe → Patientensprache</h2>
+    <p>Wie erkläre ich dem Patienten, was er hat?</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="yw">Übersetzungstabelle</h3>
+    <table class="pt-table">
+      <tr><th>Fachbegriff</th><th>Medizinisch</th><th>Patientensprache</th><th>Typischer Patientensatz</th></tr>
+      <tr><td><strong>Akute Pankreatitis</strong></td><td>Bauchspeicheldrüsenentzündung</td><td>„Ihre Bauchspeicheldrüse ist entzündet. Das ist ein Organ hinter dem Magen, das Verdauungssäfte und Insulin produziert. Durch Alkohol und fettes Essen kann es sich entzünden und sich selbst angreifen."</td><td>„Was habe ich?"</td></tr>
+      <tr><td><strong>Lipase / Amylase</strong></td><td>Pankreasenzyme</td><td>„Blutwerte, die zeigen, ob die Bauchspeicheldrüse entzündet ist. Bei einer Pankreatitis sind sie stark erhöht."</td><td>„Was zeigen die Blutuntersuchungen?"</td></tr>
+      <tr><td><strong>Gürtelförmige Schmerzen</strong></td><td>Radiäre Ausstrahlung</td><td>„Die Schmerzen gehen vom Oberbauch wie ein Gürtel um den ganzen Körper in den Rücken."</td><td>–</td></tr>
+      <tr><td><strong>ERCP</strong></td><td>Endoskopische retrograde Cholangiopankreatikographie</td><td>„Eine Untersuchung, bei der wir einen Schlauch durch den Mund in den Darm einführen und dabei einen Stein aus dem Gallengang entfernen können."</td><td>„Was ist ERCP?"</td></tr>
+      <tr><td><strong>Abdomensonographie</strong></td><td>Bauchultraschall</td><td>„Ein Ultraschall des Bauches – keine Strahlen, kein Schmerz. Damit sehen wir Gallensteine und den Zustand der Bauchspeicheldrüse."</td><td>„Was ist der Ultraschall?"</td></tr>
+      <tr><td><strong>CT-Abdomen</strong></td><td>Computertomographie des Bauches</td><td>„Eine Röntgenuntersuchung, die viele Schichten des Bauches zeigt. Damit können wir sehen, ob Teile der Bauchspeicheldrüse abgestorben sind."</td><td>„Brauche ich eine CT?"</td></tr>
+      <tr><td><strong>Nekrose</strong></td><td>Gewebeabsterben</td><td>„Ein Teil des Organs ist abgestorben – das kann bei einer schweren Entzündung passieren."</td><td>„Ist das gefährlich?"</td></tr>
+      <tr><td><strong>Parenterale Ernährung</strong></td><td>Ernährung über die Vene</td><td>„Wir geben Ihnen alle Nährstoffe direkt in die Blutader, damit der Darm sich erholen kann."</td><td>„Ich darf nichts essen?"</td></tr>
+      <tr><td><strong>Steatorrhö (Fettstuhl)</strong></td><td>Fettreicher Stuhl</td><td>„Der Stuhl enthält viel unverdautes Fett – glänzend, schlechter Geruch – weil die Bauchspeicheldrüse nicht mehr genug Verdauungsenzyme produziert."</td><td>„Mein Stuhl ist so fettig."</td></tr>
+      <tr><td><strong>Pankreasinsuffizienz</strong></td><td>Bauchspeicheldrüsenschwäche</td><td>„Die Bauchspeicheldrüse kann nicht mehr genug Verdauungssäfte oder Insulin produzieren."</td><td>–</td></tr>
+      <tr><td><strong>Cholelithiasis</strong></td><td>Gallensteine</td><td>„Steine in der Gallenblase oder in den Gallengängen. Diese können einen Abfluss blockieren und die Bauchspeicheldrüse entzünden."</td><td>„Habe ich Gallensteine?"</td></tr>
+      <tr><td><strong>Procalcitonin</strong></td><td>Entzündungsmarker</td><td>„Ein Blutwert, der zeigt, ob eine schwere bakterielle Entzündung oder Sepsis vorliegt."</td><td>–</td></tr>
+      <tr><td><strong>Alkoholabstinenz</strong></td><td>Alkoholverzicht</td><td>„Sie müssen dauerhaft auf Alkohol verzichten. Jeder weitere Alkoholkonsum kann die Bauchspeicheldrüse weiter schädigen und zu lebensgefährlichen Komplikationen führen."</td><td>„Muss ich aufhören zu trinken?"</td></tr>
+      <tr><td><strong>Leberzirrhose</strong></td><td>Vernarbte Leber (Endstadium)</td><td>„Eine schwere Lebererkrankung, bei der das Lebergewebe durch Narbengewebe ersetzt wird – häufig durch langjährigen Alkoholkonsum."</td><td>„Mein Bruder hat das auch."</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PATIENTENREAKTIONEN -->
+<div class="full">
+  <div class="card">
+    <h3 class="yw">Typische Patientenreaktionen – Musterantworten</h3>
+    <div class="fb yw">
+<span class="cm">// Direkt aus den Fällen!</span><br><br>
+🧑 „Was habe ich?"<br>
+→ <span class="hlw">„Ich habe den Verdacht, dass Ihre Bauchspeicheldrüse entzündet ist –
+das nennt man akute Pankreatitis. Das Organ liegt hinter dem Magen und produziert
+Verdauungssäfte. Durch Alkohol und fettes Essen kann es sich entzünden und sich
+selbst angreifen. Das erklärt Ihre starken Schmerzen."</span><br><br>
+🧑 „Sollte ich hier bleiben?"<br>
+→ <span class="hlw">„Ja, leider müssen Sie stationär aufgenommen werden.
+Bei einer Bauchspeicheldrüsenentzündung kann der Verlauf unvorhersehbar sein.
+Wir müssen Sie engmaschig überwachen und Ihnen Flüssigkeit und Schmerzmittel
+direkt in die Vene geben."</span><br><br>
+🧑 „Was werden Sie für mich machen?"<br>
+→ <span class="hlw">„Wir legen Ihnen zunächst einen Venenzugang, geben Ihnen Flüssigkeit
+und ein Schmerzmittel. Wir nehmen Blut ab – besonders ein Enzym namens Lipase –
+und machen einen Ultraschall des Bauches und ein EKG."</span><br><br>
+🧑 „Muss ich aufhören zu trinken?"<br>
+→ <span class="hlw">„Ich verstehe, dass das schwierig ist. Aber Alkohol ist die Hauptursache
+Ihrer Erkrankung. Jedes Glas Alkohol kann die Entzündung weiter anheizen und
+langfristig zur dauerhaften Schädigung der Bauchspeicheldrüse führen.
+Wir können Sie dabei unterstützen – mit einer Beratung und wenn nötig einer Therapie."</span><br><br>
+🧑 „Hat das etwas damit zu tun, dass mein Bruder Leberzirrhose hat?"<br>
+→ <span class="hlw">„Das ist ein wichtiger Hinweis. Es deutet darauf hin, dass in Ihrer Familie
+ein hoher Alkoholkonsum vorliegt. Eine genetische Empfindlichkeit kann ebenfalls
+eine Rolle spielen. Ich werde das in meiner Beurteilung berücksichtigen."</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- PRÜFUNGSFRAGEN -->
+<div class="sdiv"><span>Prüfungsfragen – aus allen Städten</span></div>
+<div class="grid">
+  <div class="card">
+    <h3>Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th></tr>
+      <tr><td>An was denken Sie? Was spricht dafür?</td><td>Akute Pankreatitis: gürtelförmige Schmerzen mit Rückenausstrahlung nach fettigem Essen/Alkohol, Nausea/Emesis, Lipase ↑↑</td></tr>
+      <tr><td>Wie gehen Sie vor?</td><td>KU → Labor (Lipase!) → EKG → Sono Abdomen → Stationär + Infusion + Analgesie</td></tr>
+      <tr><td>Wie schließen Sie den Herzinfarkt aus?</td><td><strong>EKG + Troponin!</strong> Hinterwandinfarkt kann sich als epigastrische Schmerzen präsentieren</td></tr>
+      <tr><td>Welche Therapiemaßnahmen?</td><td>Infusion (Ringer-Laktat), Analgesie (kein Morphin!), Nahrungskarenz bei Erbrechen, PPI, O₂, Intensivüberwachung</td></tr>
+      <tr><td>Warum kein Morphin?</td><td>Morphin verursacht <strong>Papillenspasmus</strong> → Abflusshemmung → verschlimmert biliäre Ursache</td></tr>
+      <tr><td>Welche Komplikationen?</td><td>Nekrosen, Pseudozysten, Abszess, SIRS, Sepsis, Nierenversagen, Lungenversagen, Schock</td></tr>
+      <tr><td>Was machen wir bei nekrotisierenden Verläufen?</td><td>CT-gesteuerte Punktion zum Keimnachweis → Antibiotika (Carbapenem) → endoskopische Nekrosektomie → OP als Ultima Ratio</td></tr>
+      <tr><td>Ursachen außer Alkohol und Gallensteine?</td><td>Medikamente (Azathioprin, Steroide), Viren (Mumps), Hypertriglyzeridämie, Hyperkalzämie, hereditär, idiopathisch</td></tr>
+      <tr><td>Wie entsteht biliäre Pankreatitis?</td><td>Gallenstein → Papilla Vateri verstopft → Pankreassekret staut sich → Enzymaktivierung im Organ → Autodigestion</td></tr>
+      <tr><td>Was ist Lebensführungstherapie hier?</td><td>Alkohol- und Nikotinabstinenz + Gewichtsreduktion + fettarme Ernährung + Psychotherapie</td></tr>
+      <tr><td>Diabetes in diesem Kontext?</td><td>Endokrine Pankreasinsuffizienz bei chronischer Pankreatitis → Insulin-produzierende Betazellen zerstört → DM Typ 3c</td></tr>
+      <tr><td>Was ist Procalcitonin?</td><td>Marker für bakterielle Entzündung / Sepsis → erhöht bei schwerer infizierter Nekrose → Indikation für Antibiotika</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3 class="yw">Zeitplan &amp; Fachbegriffe</h3>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-or">Patientengespräch</span></td><td><strong>20 Min</strong></td><td>Schmerz (gürtelförmig? Rücken?), Auslöser (was gegessen? Alkohol?), Beruf, Noxen genau, Bruder mit Leberzirrhose?</td></tr>
+      <tr><td><span class="badge badge-gn">Arztbrief</span></td><td><strong>20 Min</strong></td><td>VD, DD (Hinterwandinfarkt!), Diagnostik (Lipase + EKG!), Therapie (kein Morphin!)</td></tr>
+      <tr><td><span class="badge badge-vio">AA-Gespräch</span></td><td><strong>20 Min</strong></td><td>Reihenfolge: KU → Labor → Apparativ. Ursachen, Komplikationen, Lebensführung!</td></tr>
+    </table>
+
+    <h3 class="yw" style="margin-top:1.2rem">Fachbegriffe aus den Prüfungen</h3>
+    <div>
+      <span class="tag or">Pankreatitis</span>
+      <span class="tag or">Bauchspeicheldrüse / Pankreas</span>
+      <span class="tag or">Lipase / Amylase</span>
+      <span class="tag or">Gürtelförmige Schmerzen</span>
+      <span class="tag or">Epigastrisch</span>
+      <span class="tag or">Nausea / Emesis</span>
+      <span class="tag or">Meteorismus</span>
+      <span class="tag or">Inappetenz</span>
+      <span class="tag or">Autodigestion</span>
+      <span class="tag or">ERCP</span>
+      <span class="tag or">Abdomensonographie</span>
+      <span class="tag or">Procalcitonin</span>
+      <span class="tag vio">Chronische Pankreatitis</span>
+      <span class="tag vio">Steatorrhö</span>
+      <span class="tag vio">Pankreasinsuffizienz</span>
+      <span class="tag vio">Pseudozyste</span>
+      <span class="tag vio">Pankreasenzyme / Pankreatin</span>
+      <span class="tag gn">Cholezystitis</span>
+      <span class="tag gn">Cholelithiasis / Gallensteine</span>
+      <span class="tag gn">Choledocholithiasis</span>
+      <span class="tag rd">Hinterwandinfarkt</span>
+      <span class="tag rd">Mesenterialinfarkt</span>
+      <span class="tag rd">Nekrose / Nekrosektomie</span>
+      <span class="tag rd">Leberzirrhose</span>
+      <span class="tag rd">Aszites</span>
+      <span class="tag">Cullen-Zeichen</span>
+      <span class="tag">Grey-Turner-Zeichen</span>
+      <span class="tag">Aszites</span>
+      <span class="tag">Parkinson / Schüttellähmung</span>
+      <span class="tag">Apoplex / Schlaganfall</span>
+      <span class="tag">Antitussivum</span>
+      <span class="tag">Konjunktivitis</span>
+      <span class="tag">Dialyse</span>
+      <span class="tag">Alveolen</span>
+    </div>
+
+    <div class="gbox" style="margin-top:1rem">
+      <strong>Tipp aus Reutlingen 27.11.2024:</strong> „Sie haben viele Fragen zu Kleinigkeiten gestellt: Seit wann ist die Patientin geschieden? Mit wem leben die Kinder? Ist die Patientin mit dem Krankenwagen gekommen?" → Notizen sind sehr wichtig! Alles aufschreiben, auch scheinbar unwichtige Details.
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+  FSP Leitfaden · Akute &amp; Chronische Pankreatitis + Patientensprache · Freiburg · Karlsruhe · Reutlingen · Stuttgart
+</div>
+
+</div>
+</body>
+</html>

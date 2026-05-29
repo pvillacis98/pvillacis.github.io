@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Osteoporose</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --card2: #f1f3f5;
+    --a1: #5e4012;    /* knochen-braun */
+    --a2: #1971c2;    /* blau – Diagnostik */
+    --a3: #2f9e44;    /* grün – Therapie */
+    --a4: #c92a2a;    /* rot – Fraktur/Notfall */
+    --warn: #e67700;
+    --text: #212529;
+    --muted: #868e96;
+    --border: #dee2e6;
+    --light-bone: #fef9f0;
+    --light-blue: #e8f0ff;
+    --light-green: #ebfbee;
+    --light-red: #fff5f5;
+    --light-orange: #fff9db;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-weight: 400; line-height: 1.7; padding: 2rem 1rem; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border); }
+  .header h1 { font-family: 'Inter', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--a1); letter-spacing: -1px; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+  .timer-badge { display: inline-block; background: var(--a1); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 0.8rem; }
+
+  .ch-header { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0 1.2rem; padding: 0.9rem 1.2rem; border-radius: 10px; }
+  .ch-bone   { background: var(--light-bone);   border-left: 5px solid var(--a1); }
+  .ch-blue   { background: var(--light-blue);   border-left: 5px solid var(--a2); }
+  .ch-green  { background: var(--light-green);  border-left: 5px solid var(--a3); }
+  .ch-red    { background: var(--light-red);    border-left: 5px solid var(--a4); }
+  .ch-orange { background: var(--light-orange); border-left: 5px solid var(--warn); }
+  .ch-num { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 800; opacity: 0.2; }
+  .ch-bone .ch-num   { color: var(--a1); } .ch-blue .ch-num  { color: var(--a2); }
+  .ch-green .ch-num  { color: var(--a3); } .ch-red .ch-num   { color: var(--a4); }
+  .ch-orange .ch-num { color: var(--warn); }
+  .ch-t h2 { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 800; line-height: 1.1; }
+  .ch-bone .ch-t h2   { color: var(--a1); } .ch-blue .ch-t h2  { color: var(--a2); }
+  .ch-green .ch-t h2  { color: var(--a3); } .ch-red .ch-t h2   { color: var(--a4); }
+  .ch-orange .ch-t h2 { color: var(--warn); }
+  .ch-t p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 10px; padding: 1.4rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .card h3 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--a1); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light-bone); }
+  .card h3.bl { color: var(--a2); border-color: var(--light-blue); }
+  .card h3.gn { color: var(--a3); border-color: var(--light-green); }
+  .card h3.rd { color: var(--a4); border-color: var(--light-red); }
+  .card h3.or { color: var(--warn); border-color: var(--light-orange); }
+  .card h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); padding: 0.15rem 0.6rem; border-radius: 4px; font-size: 0.77rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: var(--card2); color: var(--text); }
+  .tag.bn { background: var(--light-bone);   border-color: #d4a84b; color: #4a2f00; }
+  .tag.bl { background: var(--light-blue);   border-color: #90baf0; color: #1a3666; }
+  .tag.gn { background: var(--light-green);  border-color: #8ce99a; color: #1b4a22; }
+  .tag.rd { background: var(--light-red);    border-color: #ffa8a8; color: var(--a4); }
+  .tag.or { background: var(--light-orange); border-color: #ffd43b; color: #b35900; }
+  .tag.gr { background: #f8f9fa;             border-color: #ced4da; color: #495057; }
+
+  .fb { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #343a40; }
+  .fb.bl { border-left-color: var(--a2); }
+  .fb.gn { border-left-color: var(--a3); }
+  .fb.rd { border-left-color: var(--a4); }
+  .fb.or { border-left-color: var(--warn); }
+  .fb .cm { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hli { color: var(--a2);  font-weight: 600; }
+  .hlg { color: var(--a3);  font-weight: 600; }
+  .hlr { color: var(--a4);  font-weight: 600; }
+  .hlo { color: var(--warn);font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: var(--card2); padding: 0.5rem 0.8rem; text-align: left; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 2px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8f9fa; }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-bn { background: var(--light-bone);   color: #4a2f00; }
+  .badge-bl { background: var(--light-blue);   color: #1a3666; }
+  .badge-gn { background: var(--light-green);  color: #1b4a22; }
+  .badge-rd { background: var(--light-red);    color: var(--a4); }
+  .badge-or { background: var(--light-orange); color: #b35900; }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0 1rem; }
+  .sdiv span { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: var(--light-orange); border: 1px solid #ffd43b; border-left: 3px solid var(--warn); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #664d00; }
+  .wbox strong { color: #b35900; }
+  .ebox { background: var(--light-red);    border: 1px solid #ffa8a8; border-left: 3px solid var(--a4); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #6b1010; }
+  .ebox strong { color: var(--a4); }
+  .gbox { background: var(--light-green);  border: 1px solid #8ce99a; border-left: 3px solid var(--a3); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #1b4a22; }
+  .gbox strong { color: #2b7a3d; }
+  .bluebox { background: var(--light-blue); border: 1px solid #90baf0; border-left: 3px solid var(--a2); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #1a3666; }
+  .bluebox strong { color: var(--a2); }
+  .bonebox { background: var(--light-bone); border: 1px solid #d4a84b; border-left: 3px solid var(--a1); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #4a2f00; }
+  .bonebox strong { color: var(--a1); }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: var(--a1); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .snum.gn { background: var(--a3); }
+  .snum.bl { background: var(--a2); }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; font-weight: 600; }
+  .pt-table td:nth-child(3) { color: #2b7a3d; font-size: 0.83rem; }
+  .pt-table td:nth-child(4) { color: #b35900; font-size: 0.81rem; font-style: italic; }
+
+  .tscore-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-top: 0.5rem; }
+  .tscore-card { border-radius: 7px; padding: 0.7rem; text-align: center; border: 1px solid; font-size: 0.8rem; }
+  .ts-0 { background: #f0fff4; border-color: #8ce99a; }
+  .ts-1 { background: var(--light-orange); border-color: #ffd43b; }
+  .ts-2 { background: #fff0e0; border-color: #f0a060; }
+  .ts-3 { background: var(--light-red); border-color: #ffa8a8; }
+  .tscore-card strong { display: block; font-size: 0.85rem; margin-bottom: 0.2rem; }
+  .ts-0 strong { color: var(--a3); }
+  .ts-1 strong { color: #b35900; }
+  .ts-2 strong { color: #c06000; }
+  .ts-3 strong { color: var(--a4); }
+
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: 1fr; }
+    .tscore-grid { grid-template-columns: 1fr 1fr; }
+    .header h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Osteoporose</h1>
+  <div class="sub">Knochenschwund · Wirbelfraktur · DXA · Bisphosphonate · Primär vs. sekundär · FSP Leitfaden</div>
+  <div class="timer-badge">⏱ 20 Min. Arztbrief · 20 Min. AA-Gespräch</div>
+</div>
+
+
+<!-- KAPITEL 1: LEITSYMPTOME -->
+<div class="ch-header ch-bone">
+  <div class="ch-num">01</div>
+  <div class="ch-t">
+    <h2>Leitsymptome &amp; typischer Patient</h2>
+    <p>Rückenschmerzen ohne Trauma · Wirbelkörperfraktur · Insuffizienzfraktur</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Leitsymptome – immer abfragen</h3>
+    <h4>Hauptsymptom</h4>
+    <span class="tag bn">Rückenschmerzen (oft plötzlich, ohne adäquates Trauma)</span>
+    <span class="tag bn">BWS-Schmerzen / Klopfschmerz über Wirbelsäule</span>
+    <span class="tag bn">Schmerz bei Bewegung schlimmer (NRS 7/10)</span>
+    <span class="tag bn">Keine Ausstrahlung (Fraktur) vs. Ausstrahlung (DD: Diskusprolaps)</span>
+    <span class="tag bn">Schleichend = chronische Osteoporose</span>
+    <span class="tag bn">Plötzlich nach Fehlbewegung = Wirbelkörperfraktur!</span>
+
+    <h4>Zeichen fortgeschrittener Osteoporose</h4>
+    <span class="tag rd">Körpergrößenabnahme (&gt;4 cm)</span>
+    <span class="tag rd">Rundrücken / Kyphose (Tannenbaumphänomen!)</span>
+    <span class="tag rd">Rippen-Becken-Abstand &lt;2 cm</span>
+    <span class="tag rd">Frühere Fraktur ohne adäquates Trauma</span>
+
+    <h4>Immer erfragen</h4>
+    <span class="tag bl">Frühere Frakturen? (Handgelenk, Hüfte, Wirbelsäule)</span>
+    <span class="tag bl">Wie viel Milch / Kalziumreiche Ernährung?</span>
+    <span class="tag bl">Wie viel Sonnenlicht täglich? (Vitamin D!)</span>
+    <span class="tag bl">Sport / Bewegung?</span>
+    <span class="tag bl">Kortikosteroide in der Vergangenheit?</span>
+
+    <div class="wbox">
+      <strong>Osteoporose ist lange symptomlos!</strong> Erst wenn die Knochen so porös werden, dass sie brechen, entstehen Beschwerden. Typisch: Wirbelkörperfraktur ohne adäquates Trauma. → Immer nach früheren Frakturen fragen!
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Typischer Prüfungspatient</h3>
+    <div style="background:var(--light-bone);border:1px solid #d4a84b;border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.9;margin-bottom:0.8rem">
+      · <strong>Rainer/Reiner Züblin / Hober</strong>, 55 Jahre alt<br>
+      · 1,83 m, 81–83 kg, <span style="color:var(--a1)">Verwaltungsangestellter</span><br>
+      · <span style="color:var(--a1)">Plötzliche BWS-Schmerzen nach Fehlbewegung</span><br>
+      · <span style="color:var(--a1)">Bekannte Osteoporose, aber keine Therapie!</span><br>
+      · <span style="color:var(--a1)">DM Typ 2 → Metformin</span> (Risikofaktor sekundäre Osteoporose!)<br>
+      · Z.n. <span style="color:var(--a1)">Oberschenkelfraktur</span> (TEP / Nagelosteosynthese)<br>
+      · Nussallergie (Schluckbeschwerden!)<br>
+      · Raucher (20 PY) – Risikofaktor!<br>
+      · Alkohol: 1–2 Gläser täglich<br>
+      · Vater: Apoplex; Mutter: <span style="color:var(--a1)">Osteoporose</span> → positive FA!
+    </div>
+    <h4>Risikofaktoren – vollständig abfragen!</h4>
+    <span class="tag bn">Weiblich + Postmenopause (#1)</span>
+    <span class="tag bn">Höheres Alter (&gt;50 J.)</span>
+    <span class="tag bn">Positive Familienanamnese</span>
+    <span class="tag bn">Frühere Frakturen</span>
+    <span class="tag bn">Rauchen (&gt;10 Zig./Tag)</span>
+    <span class="tag bn">Alkohol (&gt;50 g/Tag)</span>
+    <span class="tag bn">Niedriger BMI / Untergewicht</span>
+    <span class="tag bn">Glukokortikoid-Langzeittherapie</span>
+    <span class="tag bn">Mangelnde körperliche Aktivität</span>
+    <span class="tag bn">Kalzium- / Vitamin-D-Mangel</span>
+    <span class="tag bn">DM Typ 2, Hyperthyreose, CED</span>
+  </div>
+</div>
+
+
+<!-- KAPITEL 2: PRIMÄR VS. SEKUNDÄR -->
+<div class="ch-header ch-orange">
+  <div class="ch-num">02</div>
+  <div class="ch-t">
+    <h2>Primäre vs. Sekundäre Osteoporose</h2>
+    <p>Karlsruhe fragte explizit: „Handelt es sich um primäre oder sekundäre Osteoporose?"</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3 class="or">Primäre Osteoporose (~60%)</h3>
+    <p style="font-size:0.83rem;color:var(--muted);margin-bottom:0.8rem">Kein spezifischer Auslöser – altersbedingt</p>
+    <div class="fb or">
+<span class="hlo">Typ I: Postmenopausale Osteoporose</span><br>
+· Frauen 50–70 J. nach Menopause<br>
+· <span class="hlo">Östrogenabfall → Osteoklasten-Aktivierung ↑</span><br>
+· Vorwiegend Wirbelkörper + distaler Radius<br><br>
+<span class="hlo">Typ II: Senile Osteoporose</span><br>
+· Männer UND Frauen &gt;70 J.<br>
+· Langsamer altersphysiologischer Knochenverlust<br>
+· Hüfte, Wirbelkörper, langer Röhrenknochen<br><br>
+<span class="cm">// Prüfungsfall: 55-jähriger Mann → sekundär wahrscheinlicher!</span><br>
+→ DM Typ 2 + Rauchen + Alkohol → eher sekundäre Ursache suchen!
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="rd">Sekundäre Osteoporose (~40%)</h3>
+    <p style="font-size:0.83rem;color:var(--muted);margin-bottom:0.8rem">Karlsruhe fragte: „Wie bestätigen Sie sekundäre Osteoporose?"</p>
+    <h4>Häufige Ursachen – kennen!</h4>
+    <span class="tag rd">Hyperparathyreoidismus → Parathormon ↑ + Sonographie</span>
+    <span class="tag rd">Hyperthyreose → TSH ↓</span>
+    <span class="tag rd">Diabetes mellitus Typ 2</span>
+    <span class="tag rd">Cushing-Syndrom (Kortisol ↑)</span>
+    <span class="tag rd">Hypogonadismus (Testosteron ↓ beim Mann)</span>
+    <span class="tag rd">CED (Malabsorption)</span>
+    <span class="tag rd">Rheumatoide Arthritis (Entzündung)</span>
+    <span class="tag rd">Chronische Nierenerkrankung</span>
+    <span class="tag rd">Glukokortikoid-Langzeittherapie (#1 iatrogen!)</span>
+    <span class="tag rd">Multiples Myelom / Knochenmetastasen</span>
+
+    <div class="ebox">
+      <strong>Prüfungsfall Karlsruhe:</strong> 55-jähriger Mann → Prüfer fragte: „Primär oder sekundär?" → Antwort: Sekundär wahrscheinlicher! (jüngerer Mann, DM Typ 2). Ursache ausschließen: → Hyperparathyreoidismus (PTH + Sonographie!). Prüfer fragte auch: „Was noch ausschließen?" → <strong>KHK (EKG!)</strong> bei Rückenschmerzen + Mann.
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 3: ARZTBRIEF -->
+<div class="ch-header ch-blue">
+  <div class="ch-num">03</div>
+  <div class="ch-t">
+    <h2>Arztbrief-Template</h2>
+    <p>Osteoporose + Wirbelkörperfraktur · VD · DD · DXA · Therapie</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="bl">Arztbrief: Osteoporose / Wirbelfraktur</h3>
+
+    <h4>Aktuelle Beschwerden</h4>
+    <div class="fb">
+Herr Hober/Züblin, ein [Alter]-jähriger Patient, stellte sich bei uns wegen
+<span class="hl">seit gestern bestehender, plötzlich aufgetretener, ziehend-stechender
+BWS-Schmerzen</span> ohne Ausstrahlung (NRS 7/10 bei Bewegung, 4/10 in Ruhe) vor.<br><br>
+Der Patient berichtete, es habe <span class="hl">kein Trauma, keinen Sturz und keine
+erkennbaren Auslöser</span> gegeben – die Schmerzen seien nach einer
+<span class="hl">Fehlbewegung</span> aufgetreten.<br><br>
+Bei der weiteren Befragung:
+<span class="hl">Vor einigen Jahren Osteoporose diagnostiziert</span>,
+jedoch bisher <span class="hl">keine Therapie eingeleitet</span>.<br>
+Z.n. <span class="hlr">Oberschenkelfraktur</span> (Nagelosteosynthese) → Vorherige Insuffizienzfraktur!<br><br>
+<span class="cm">// Verneinte Alarmsymptome:</span><br>
+Sensibilitätsstörungen, Lähmungen, Blase-/Darmprobleme wurden verneint.
+    </div>
+
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: Osteoporose mit V.a. Wirbelkörperfraktur (BWS)</span><br>
+(Bekannte Osteoporose, plötzlicher Rückenschmerz ohne Trauma,
+frühere Insuffizienzfraktur, Risikofaktoren: Rauchen, DM, Alter, FA)<br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlo">LWS-/BWS-Diskusprolaps</span>
+  – Ausstrahlung ins Bein, Neurologie; MRT<br>
+· <span class="hlo">Spondylodiszitis</span>
+  – Entzündung, Fieber, CRP ↑; MRT<br>
+· <span class="hlo">Knochenmetastasen / Multiples Myelom</span>
+  – Nachtschmerz, B-Symptomatik, Tumoranamnese<br>
+· <span class="hlo">KHK / Herzinfarkt</span>
+  – Rückenschmerzen als Hinterwandinfarkt!
+  → EKG obligat (Karlsruhe-Tipp: „Gibt es noch etwas auszuschließen?")<br>
+· <span class="hlo">Hyperparathyreoidismus</span>
+  – PTH ↑, Hyperkalzämie<br>
+· <span class="hlo">Muskelzerrung / Spondylarthrose</span>
+  – degenerativ, Röntgen
+    </div>
+
+    <h4>Diagnostik</h4>
+    <div class="fb bl">
+· Körperliche Untersuchung:
+  <span class="hli">Klopfschmerz über Wirbelsäule</span> (typisch Wirbelkörperfraktur!),
+  Körpergröße messen (Abnahme &gt;4 cm?),
+  neurologische Untersuchung (Sensibilität, Motorik, Reflexe),
+  Tannenbaumphänomen?, Rippen-Becken-Abstand?<br>
+· <span class="hli">EKG</span> + Troponin (DD Hinterwandinfarkt – immer!)<br>
+· Labor: BB, CRP, BSG,
+  <span class="hli">Kalzium</span> (Hyperkalzämie bei primärem HPT?),
+  <span class="hli">PTH</span> (DD Hyperparathyreoidismus!),
+  <span class="hli">TSH</span> (DD Hyperthyreose),
+  Testosteron (Mann),
+  Vitamin D (25-OH-D3),
+  <span class="hli">Serum-Eiweißelektrophorese</span> (DD Multiples Myelom!),
+  Phosphat, GFR, AP<br>
+· <span class="hli">Röntgen BWS / LWS in 2 Ebenen</span>:
+  Wirbelkörperfraktur? Keilwirbel? Fischwirbel?<br>
+· <span class="hli">DXA (Osteodensitometrie)</span> = Goldstandard für Knochendichte!<br>
+· Ggf. <span class="hli">MRT der WS</span>: bei V.a. Spondylodiszitis / Metastasen
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb gn">
+<span class="hlg">1. Basistherapie (immer!):</span><br>
+· <span class="hlg">Calcium 1000–1500 mg/Tag</span> (Milchprodukte / Tabletten)<br>
+· <span class="hlg">Vitamin D3 1000 IE/Tag</span> + Sonnenlicht 15–30 Min./Tag<br>
+· <span class="hlg">Körperliche Aktivität</span>: Gleichgewichts- + Krafttraining
+  (Muskelaufbau = Sturzprävention!)<br>
+· Eiweißreiche Ernährung (&gt;1 g/kgKG/Tag)<br>
+· <span class="hlr">Alkohol ↓, Nikotinkarenz</span><br>
+· Kortikosteroide prüfen und wenn möglich reduzieren<br><br>
+<span class="hlg">2. Medikamentöse Therapie:</span><br>
+· 1. Wahl: <span class="hlg">Bisphosphonate</span>
+  (Alendronat, Risedronat, Zoledronat → hemmen Osteoklasten)
+  <span class="cm">// Merke: Einnahme morgens nüchtern, 30 Min vor Essen,
+  aufrecht sitzen nach Einnahme!</span><br>
+· Alternative: <span class="hlg">Denosumab</span> (monoklonaler Antikörper gegen RANKL)<br>
+· Bei hohem Frakturrisiko: <span class="hlg">Teriparatid</span>
+  (PTH-Analogon, osteoanabolisch)<br>
+· Vor Therapie: GFR + Kalzium kontrollieren!
+  Zahnarzt (Kieferosteonekrose-Risiko!)<br><br>
+<span class="hlg">3. Akuttherapie bei Wirbelkörperfraktur:</span><br>
+· Analgesie (NSAR + PPI, ggf. Opioide)<br>
+· Stationäre Aufnahme bei starken Schmerzen<br>
+· Orthese / Korsett<br>
+· Physiotherapie nach Schmerzlinderung
+    </div>
+
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler aus den Fällen:</strong><br>
+      – EKG vergessen → KHK als DD bei Rückenschmerzen + Mann! (Karlsruhe)<br>
+      – Primär vs. sekundär nicht unterschieden → Karlsruhe fragte explizit!<br>
+      – Therapie zu allgemein → Bisphosphonate + Calcium + Vitamin D nennen!<br>
+      – DXA (Osteodensitometrie) als Goldstandard nicht erwähnt<br>
+      – PTH nicht bestimmt → DD Hyperparathyreoidismus!
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 4: DXA T-SCORE -->
+<div class="ch-header ch-bone">
+  <div class="ch-num">04</div>
+  <div class="ch-t">
+    <h2>DXA &amp; T-Score – Prüfungswissen!</h2>
+    <p>Goldstandard der Knochendichtemessung · Klassifikation</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3>T-Score-Klassifikation (WHO)</h3>
+    <div class="tscore-grid">
+      <div class="tscore-card ts-0">
+        <strong>Normal</strong>
+        T-Score ≥ –1<br>
+        Knochendichte normal
+      </div>
+      <div class="tscore-card ts-1">
+        <strong>Osteopenie</strong>
+        T-Score –1 bis –2,5<br>
+        Vorstufe der Osteoporose
+      </div>
+      <div class="tscore-card ts-2">
+        <strong>Osteoporose</strong>
+        T-Score ≤ –2,5<br>
+        Therapieindikation!
+      </div>
+      <div class="tscore-card ts-3">
+        <strong>Manifest</strong>
+        T-Score ≤ –2,5<br>
+        + Fraktur ohne Trauma
+      </div>
+    </div>
+    <div class="bonebox">
+      <strong>DXA = Dual-Röntgen-Absorptiometrie:</strong> Messung der Knochenflächendichte in g/cm². Messorte: LWK 1–4 und Femur beidseits. Der <strong>T-Score</strong> = Abweichung in Standardabweichungen von der Peak Bone Mass (30. Lebensjahr). Therapiebeginn ab T-Score ≤ –2,5 oder bei 3-Jahres-Frakturrisiko &gt;5%.
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 5: AA-GESPRÄCH -->
+<div class="ch-header ch-green">
+  <div class="ch-num">05</div>
+  <div class="ch-t">
+    <h2>AA-Gespräch &amp; Prüfungsfragen</h2>
+    <p>Karlsruhe 16.04.2024 · 26.01.2022 · Primär vs. sekundär · KHK als DD</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Patientenvorstellung – 5 Schritte</h3>
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="scont"><strong>Stammdaten</strong>
+      „Ich möchte Ihnen Herrn Hober, einen 55-jährigen Verwaltungsangestellten, vorstellen."</div>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="scont"><strong>Leitsymptome</strong>
+      „Der Patient stellte sich wegen <span class="hl">seit gestern plötzlich aufgetretener BWS-Schmerzen</span> (NRS 7/10 bei Bewegung) nach einer Fehlbewegung vor – <span class="hl">ohne adäquates Trauma</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="scont"><strong>Risikofaktoren</strong>
+      „Wichtige Vorgeschichte: <span class="hl">bekannte Osteoporose ohne Therapie</span>, Z.n. Oberschenkelfraktur, DM Typ 2, Raucher (20 PY), Alkohol, positive Familienanamnese (Mutter: Osteoporose)."</div>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="scont"><strong>VD + DD</strong>
+      „Meine Verdachtsdiagnose lautet <span class="hl">Osteoporose mit Wirbelkörperfraktur BWS</span>. DD: <span class="hlo">LWS-Diskusprolaps, Knochenmetastasen, KHK (EKG!), Hyperparathyreoidismus, Spondylodiszitis</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="scont"><strong>Procedere</strong>
+      „Ich habe <span class="hli">EKG, Labor (PTH, TSH, Kalzium, Eiweißelektrophorese), Röntgen BWS in 2 Ebenen</span> und eine <span class="hli">DXA-Messung</span> veranlasst. Therapeutisch: <span class="hlg">Calcium + Vitamin D + Bisphosphonate</span>."</div>
+    </div>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th><th>Stadt</th></tr>
+      <tr><td>Was hat der Patient? VD?</td><td>Osteoporose mit Wirbelkörperfraktur (Insuffizienzfraktur). Keine adäquate Trauma → pathologische Fraktur durch Knochendichteverlust</td><td>Alle</td></tr>
+      <tr><td>Primäre oder sekundäre Osteoporose? (Karlsruhe!)</td><td>Bei 55-jährigem Mann → eher <strong>sekundäre Osteoporose</strong> wahrscheinlicher! (Primär typisch: Frauen nach Menopause). Ursache suchen: DM, Hyperparathyreoidismus, Hypogonadismus, Glukokortikoid-Therapie</td><td>Karlsruhe 01/2022</td></tr>
+      <tr><td>Mögliche Ursache der sekundären Osteoporose? Wie bestätigen?</td><td><strong>Hyperparathyreoidismus:</strong> PTH-Bestimmung + Sonographie (Nebenschilddrüsenvergrößerung). Hyperthyreose: TSH. Hypogonadismus: Testosteron. DM bereits bekannt. Multiples Myelom: Eiweißelektrophorese</td><td>Karlsruhe 01/2022</td></tr>
+      <tr><td>Noch etwas ausschließen bei Rückenschmerzen + Mann? (Karlsruhe!)</td><td><strong>KHK / Myokardinfarkt (Hinterwand)!</strong> → EKG + Troponin obligat. Hinterwandinfarkt kann als Rückenschmerz imponieren!</td><td>Karlsruhe 01/2022</td></tr>
+      <tr><td>Welche Risikofaktoren liegen vor?</td><td>Rauchen (20 PY), Alkohol, DM Typ 2, positive FA (Mutter: Osteoporose), frühere Fraktur (Oberschenkel), Alter, männlich aber &gt;50 J.</td><td>Karlsruhe 04/2024</td></tr>
+      <tr><td>Welche diagnostische Maßnahme ist Goldstandard?</td><td><strong>DXA (Dual-Röntgen-Absorptiometrie)</strong> = Osteodensitometrie. T-Score ≤ –2,5 = Osteoporose. Messorte: LWK 1–4 + Femur beidseits.</td><td>Alle</td></tr>
+      <tr><td>Therapie der Osteoporose?</td><td><strong>Basistherapie:</strong> Calcium 1000 mg/Tag + Vitamin D3 1000 IE/Tag + körperliche Aktivität + Nikotinkarenz + Alkohol ↓. <strong>Medikamentös:</strong> Bisphosphonate (z.B. Alendronat) = 1. Wahl. Teriparatid (osteoanabolisch) bei hohem Risiko</td><td>Karlsruhe 01/2022</td></tr>
+      <tr><td>Wie wirken Bisphosphonate?</td><td>Hemmen Osteoklasten (Knochenabbau ↓) → Knochendichte ↑. Einnahme: morgens nüchtern, 30 Min. vor dem Essen, mit viel Wasser, danach aufrecht bleiben (Ösophagusreizung!)</td><td>Alle</td></tr>
+      <tr><td>Was ist Teriparatid?</td><td>PTH-Analogon → stimuliert Osteoblasten (Knochenaufbau ↑) = osteoanabolisch. Bei T-Score ≤ –2,5 + hohem Frakturrisiko. Max. 24 Monate Therapie.</td><td>Alle</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- KAPITEL 6: PATIENTENSPRACHE -->
+<div class="ch-header ch-orange">
+  <div class="ch-num">06</div>
+  <div class="ch-t">
+    <h2>Fachbegriffe → Patientensprache</h2>
+    <p>Wie erkläre ich dem Patienten, was er hat?</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="or">Übersetzungstabelle</h3>
+    <table class="pt-table">
+      <tr><th>Fachbegriff</th><th>Medizinisch</th><th>Patientensprache</th><th>Typischer Patientensatz</th></tr>
+      <tr><td><strong>Osteoporose</strong></td><td>Systemische Skeletterkrankung mit Knochendichteverlust</td><td>„Ihre Knochen haben an Stabilität verloren – sie sind poröser geworden, wie ein Schwamm. Dadurch können schon kleine Bewegungen einen Knochenbruch verursachen."</td><td>„Was habe ich?"</td></tr>
+      <tr><td><strong>Wirbelkörperfraktur</strong></td><td>Insuffizienzfraktur eines Wirbels</td><td>„Einer Ihrer Wirbel hat sich durch die schwachen Knochen eingebrochen – wie eine poröse Brücke, die unter dem eigenen Gewicht nachgibt."</td><td>„Warum habe ich Rückenschmerzen ohne Sturz?"</td></tr>
+      <tr><td><strong>DXA / Knochendichtemessung</strong></td><td>Osteodensitometrie</td><td>„Eine schmerzlose Untersuchung mit schwachen Strahlen – wie ein Röntgenbild, aber speziell für die Knochen. Damit messen wir, wie dicht und stabil Ihre Knochen sind."</td><td>„Was werden Sie für mich tun?"</td></tr>
+      <tr><td><strong>Bisphosphonate</strong></td><td>Osteoklasten-Hemmer</td><td>„Tabletten, die die Zellen bremsen, die den Knochen abbauen. So wird der Knochenverlust verlangsamt oder gestoppt."</td><td>–</td></tr>
+      <tr><td><strong>Calcium + Vitamin D</strong></td><td>Basissubstitution</td><td>„Calcium ist der Baustoff der Knochen, Vitamin D hilft dem Körper, Calcium aufzunehmen. Beide brauchen Sie täglich – durch Ernährung und ggf. Tabletten."</td><td>–</td></tr>
+      <tr><td><strong>Tannenbaumphänomen</strong></td><td>Hauteinfaltungen am Rücken durch Größenabnahme</td><td>„Wenn die Wirbel einbrechen, wird man kleiner – der Rücken zeigt dann tiefe Falten, weil die Haut zu lang ist für den kürzeren Rücken."</td><td>–</td></tr>
+      <tr><td><strong>Kyphose / Rundrücken</strong></td><td>Verstärkte Krümmung der BWS</td><td>„Die Einbrüche mehrerer Wirbel können dazu führen, dass der Rücken sich nach vorne krümmt – der sogenannte Rundrücken."</td><td>–</td></tr>
+      <tr><td><strong>Sturzprophylaxe</strong></td><td>Sturzprävention</td><td>„Maßnahmen, die verhindern, dass Sie hinfallen – zum Beispiel Gleichgewichtsübungen, rutschfeste Matten, gute Beleuchtung in der Wohnung."</td><td>–</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PATIENTENREAKTIONEN -->
+<div class="full">
+  <div class="card">
+    <h3>Typische Patientenreaktionen – Musterantworten</h3>
+    <div class="fb gn">
+<span class="cm">// Direkt aus den echten Fällen!</span><br><br>
+🧑 „Was werden Sie für mich tun?" (Karlsruhe!)<br>
+→ <span class="hlg">„Ich werde Sie zunächst gründlich untersuchen und dann einige Bluttests und Bildgebung veranlassen, um die genaue Ursache Ihrer Rückenschmerzen zu klären. Wenn sich der Verdacht auf Osteoporose mit einer Fraktur bestätigt, besprechen wir sofort die passende Behandlung."</span><br><br>
+🧑 „Ich dachte, Osteoporose betrifft nur Frauen!"<br>
+→ <span class="hlg">„Osteoporose ist tatsächlich häufiger bei Frauen nach den Wechseljahren, aber sie trifft auch Männer – besonders bei Risikofaktoren wie Diabetes, Rauchen oder familiärer Belastung. Bei Ihnen wurden diese Faktoren festgestellt."</span><br><br>
+🧑 „Ich hatte doch keine Osteoporose-Behandlung obwohl die Diagnose schon gestellt wurde."<br>
+→ <span class="hlg">„Das ist wichtig, das jetzt anzugehen. Ohne Behandlung kann die Knochendichte weiter abnehmen und das Risiko für weitere Brüche steigt. Wir werden das heute korrigieren und eine Therapie einleiten."</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- FACHBEGRIFFE + ZEITPLAN -->
+<div class="sdiv"><span>Fachbegriffe &amp; Zeitplan</span></div>
+<div class="grid">
+  <div class="card">
+    <h3>Fachbegriffe aus den Prüfungen</h3>
+    <h4>Osteoporose direkt</h4>
+    <div>
+      <span class="tag bn">Osteoporose / Osteopenie</span>
+      <span class="tag bn">Wirbelkörperfraktur / Insuffizienzfraktur</span>
+      <span class="tag bn">Tannenbaumphänomen</span>
+      <span class="tag bn">Kyphose</span>
+      <span class="tag bn">DXA / Osteodensitometrie</span>
+      <span class="tag bn">T-Score</span>
+      <span class="tag bn">Bisphosphonate (Alendronat)</span>
+      <span class="tag bn">Calcium + Vitamin D3</span>
+      <span class="tag bn">Teriparatid (PTH-Analogon)</span>
+      <span class="tag bn">Denosumab</span>
+      <span class="tag bn">Sturzprophylaxe</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Sekundäre Osteoporose / DD</h4>
+    <div>
+      <span class="tag rd">Hyperparathyreoidismus (PTH ↑)</span>
+      <span class="tag rd">Hyperthyreose (TSH ↓)</span>
+      <span class="tag rd">Cushing-Syndrom</span>
+      <span class="tag rd">Multiples Myelom</span>
+      <span class="tag rd">Spondylodiszitis</span>
+      <span class="tag rd">KHK (EKG bei Rückenschmerzen!)</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Sonstige aus Prüfungen</h4>
+    <div>
+      <span class="tag gr">Makroglossie</span>
+      <span class="tag gr">Katarakt</span>
+      <span class="tag gr">Mastitis</span>
+      <span class="tag gr">Urethra</span>
+      <span class="tag gr">Aszites</span>
+      <span class="tag gr">Lymphangitis</span>
+      <span class="tag gr">Laxantien</span>
+      <span class="tag gr">Ulcus duodeni</span>
+      <span class="tag gr">Endokarditis</span>
+      <span class="tag gr">Humerusfraktur</span>
+      <span class="tag gr">Hyperthyreose</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="or">Zeitplan &amp; Top-Tipps</h3>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-bn">Patientengespräch</span></td><td><strong>20 Min</strong></td><td>Rückenschmerzen ohne Trauma? Frühere Frakturen? Körpergröße abgenommen? Osteoporose bekannt + behandelt? Kortikosteroide? Vitamin D / Calcium? Sport?</td></tr>
+      <tr><td><span class="badge badge-bl">Arztbrief</span></td><td><strong>20 Min</strong></td><td>VD Osteoporose + Wirbelkörperfraktur. DD: KHK (EKG!), HPT, Myelom. Diagnostik: DXA + Labor (PTH, TSH, Kalzium, Eiweißelektrophorese). Therapie: Calcium + Vit. D + Bisphosphonate.</td></tr>
+      <tr><td><span class="badge badge-gn">AA-Gespräch</span></td><td><strong>20 Min</strong></td><td>Primär vs. sekundär! KHK immer nennen! Hyperparathyreoidismus → PTH + Sono. DXA-Wert erklären. Bisphosphonate erklären. Sturzprävention!</td></tr>
+    </table>
+
+    <div class="gbox" style="margin-top:1rem">
+      <strong>Karlsruhe 26.01.2022:</strong> Prüfer fragte: „Gibt es noch etwas auszuschließen?" → <strong>KHK / Herzinfarkt</strong>! BWS-Schmerzen beim Mann → Hinterwandinfarkt möglich → EKG immer! Das war die Schlüsselantwort.
+    </div>
+    <div class="wbox" style="margin-top:0.8rem">
+      <strong>Primär vs. sekundär:</strong> 55-jähriger Mann = sekundäre Osteoporose wahrscheinlicher als primäre. Ursache prüfen: DM (vorhanden!), Hyperparathyreoidismus (PTH bestimmen), Hypogonadismus (Testosteron).
+    </div>
+    <div class="bluebox" style="margin-top:0.8rem">
+      <strong>Bisphosphonate – Einnahme korrekt:</strong> Morgens nüchtern, 30–60 Min. vor dem Frühstück, mit einem vollen Glas Wasser, danach <strong>aufrecht sitzen</strong> (Ösophagusreizung!). Wöchentlich (Alendronat) oder jährlich i.v. (Zoledronat).
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top: 1px solid var(--border);">
+  FSP Leitfaden · Osteoporose + Patientensprache · Karlsruhe · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

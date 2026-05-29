@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Reizdarmsyndrom</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700;800&family=Lato:wght@300;400;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #0f0d1a;
+    --card: #181530;
+    --a1: #a78bfa;   /* Haupt - violett */
+    --a2: #34d399;   /* grün */
+    --a3: #f59e0b;   /* warn - amber */
+    --bad: #f43f5e;
+    --info: #60a5fa;
+    --text: #ede8ff;
+    --muted: #4a4070;
+    --border: #251f40;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Lato', sans-serif; background: var(--bg); color: var(--text); font-weight: 300; line-height: 1.7; padding: 2rem 1rem; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; }
+  .header::after { content: ''; display: block; width: 100px; height: 3px; background: linear-gradient(90deg, var(--a1), var(--a2)); margin: 1.5rem auto 0; border-radius: 2px; }
+  .header h1 { font-family: 'Nunito Sans', sans-serif; font-size: 2.6rem; font-weight: 800; background: linear-gradient(135deg, var(--a1), var(--a2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.5px; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+  .timer-badge { display: inline-block; background: linear-gradient(135deg, var(--a1), #7c3aed); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 1rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 14px; padding: 1.5rem; border: 1px solid var(--border); }
+  .card h2 { font-family: 'Nunito Sans', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--a1); margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+  .card h2.gn { color: var(--a2); border-color: rgba(52,211,153,0.2); }
+  .card h2.am { color: var(--a3); border-color: rgba(245,158,11,0.2); }
+  .card h2.rd { color: var(--bad); border-color: rgba(244,63,94,0.2); }
+  .card h2.bl { color: var(--info); border-color: rgba(96,165,250,0.2); }
+
+  .card h3 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h3:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); color: var(--text); padding: 0.18rem 0.65rem; border-radius: 5px; font-size: 0.78rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.03); }
+  .tag.vi { background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.3); color: var(--a1); }
+  .tag.gn { background: rgba(52,211,153,0.1); border-color: rgba(52,211,153,0.3); color: var(--a2); }
+  .tag.am { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); color: var(--a3); }
+  .tag.rd { background: rgba(244,63,94,0.1); border-color: rgba(244,63,94,0.3); color: var(--bad); }
+  .tag.bl { background: rgba(96,165,250,0.1); border-color: rgba(96,165,250,0.3); color: var(--info); }
+
+  .fb { background: rgba(0,0,0,0.4); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #d8d0f8; }
+  .fb.gn { border-color: var(--a2); color: #c0f0d8; }
+  .fb.am { border-color: var(--a3); color: #f0e0b8; }
+  .fb.rd { border-color: var(--bad); color: #f0c8d0; }
+  .fb .cm { color: var(--muted); font-family: 'Lato', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1); font-weight: 600; }
+  .hlg { color: var(--a2); font-weight: 600; }
+  .hla { color: var(--a3); font-weight: 600; }
+  .hlr { color: var(--bad); font-weight: 600; }
+  .hli { color: var(--info); font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: rgba(255,255,255,0.04); padding: 0.5rem 0.8rem; text-align: left; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 1px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-vi { background: rgba(167,139,250,0.15); color: var(--a1); }
+  .badge-gn { background: rgba(52,211,153,0.15); color: var(--a2); }
+  .badge-am { background: rgba(245,158,11,0.15); color: var(--a3); }
+  .badge-rd { background: rgba(244,63,94,0.15); color: var(--bad); }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 2rem 0 1.2rem; }
+  .sdiv span { font-family: 'Nunito Sans', sans-serif; font-size: 0.8rem; color: var(--muted); white-space: nowrap; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: rgba(245,158,11,0.07); border: 1px solid rgba(245,158,11,0.2); border-left: 3px solid var(--a3); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #d4c080; }
+  .wbox strong { color: var(--a3); }
+  .ebox { background: rgba(244,63,94,0.07); border: 1px solid rgba(244,63,94,0.2); border-left: 3px solid var(--bad); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #d4a0a8; }
+  .ebox strong { color: var(--bad); }
+  .gbox { background: rgba(52,211,153,0.07); border: 1px solid rgba(52,211,153,0.2); border-left: 3px solid var(--a2); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #a0d4b8; }
+  .gbox strong { color: var(--a2); }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: linear-gradient(135deg, var(--a1), #7c3aed); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+
+  /* ROM Kriterien Box */
+  .rom-box { background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.2); border-radius: 10px; padding: 1rem; margin: 0.8rem 0; }
+  .rom-title { font-family: 'Nunito Sans', sans-serif; color: var(--a1); font-weight: 800; font-size: 0.95rem; margin-bottom: 0.8rem; }
+  .rom-item { display: flex; gap: 0.7rem; align-items: flex-start; margin-bottom: 0.5rem; font-size: 0.87rem; }
+  .rom-num { min-width: 24px; height: 24px; background: var(--a1); color: #0f0d1a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800; margin-top: 0.1rem; }
+
+  /* Alarmsignale */
+  .alarm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin: 0.8rem 0; }
+  .alarm-box { border-radius: 8px; padding: 0.7rem 0.9rem; display: flex; align-items: center; gap: 0.6rem; font-size: 0.84rem; }
+  .alarm-red { background: rgba(244,63,94,0.1); border: 1px solid rgba(244,63,94,0.25); color: #f0b0b8; }
+  .alarm-icon { font-size: 1rem; }
+
+  /* Patientensprache */
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; }
+  .pt-table td:nth-child(3) { color: var(--a2); font-size: 0.83rem; }
+  .pt-table td:nth-child(4) { color: var(--a3); font-size: 0.81rem; font-style: italic; }
+
+  @media (max-width: 700px) {
+    .grid, .alarm-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Reizdarmsyndrom</h1>
+  <div class="sub">Colon irritabile · Ausschlussdiagnose · FSP Leitfaden · Freiburg · Karlsruhe · Stuttgart</div>
+  <div class="timer-badge">⏱ 20 Min. Arztbrief · 20 Min. AA-Gespräch</div>
+</div>
+
+<!-- LEITSYMPTOME -->
+<div class="sdiv"><span>Leitsymptome &amp; Klinik</span></div>
+<div class="grid">
+  <div class="card">
+    <h2>Klassische Symptome – immer abfragen</h2>
+    <h3>Leitsymptome</h3>
+    <span class="tag vi">Diffuse Bauchschmerzen (kein fester Ort!)</span>
+    <span class="tag vi">Postprandial (nach dem Essen)</span>
+    <span class="tag vi">Besserung nach Stuhlgang!</span>
+    <span class="tag vi">Wechsel: Diarrhö ↔ Obstipation</span>
+    <span class="tag vi">Meteorismus / Blähungen</span>
+    <span class="tag vi">Völlegefühl / Druckgefühl</span>
+    <span class="tag vi">Schleimiger Stuhl (ohne Blut!)</span>
+
+    <h3>Begleitsymptome</h3>
+    <span class="tag am">Nausea (Übelkeit)</span>
+    <span class="tag am">Sodbrennen (Pyrosis)</span>
+    <span class="tag am">Stuhldrang, unvollständige Entleerung</span>
+    <span class="tag am">Schlafstörungen</span>
+    <span class="tag am">Stress / psychische Belastung</span>
+
+    <h3>Subtypen</h3>
+    <table>
+      <tr><th>Typ</th><th>Merkmal</th></tr>
+      <tr><td><span class="hl">RDS-D</span></td><td>Diarrhö im Vordergrund (&gt;3/Tag, breiig)</td></tr>
+      <tr><td><span class="hl">RDS-O</span></td><td>Obstipation (&lt;3/Woche, schafskotartig)</td></tr>
+      <tr><td><span class="hl">RDS-M</span></td><td>Gemischt – Wechsel zwischen beiden</td></tr>
+    </table>
+
+    <div class="wbox">
+      <strong>Merksatz:</strong> „Besserung nach Stuhlgang + Veränderung der Stuhlfrequenz + Veränderung der Stuhlkonsistenz" → Reizdarmsyndrom. Mindestens 2 der 3 Kriterien müssen erfüllt sein!
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="rd">Alarmsignale – GEGEN Reizdarmsyndrom!</h2>
+    <p style="font-size:0.83rem;color:var(--muted);margin-bottom:0.8rem">Diese Symptome sprechen für eine organische Erkrankung → sofortige Abklärung!</p>
+
+    <div class="alarm-grid">
+      <div class="alarm-box alarm-red"><div class="alarm-icon">🩸</div><div><strong>Blut im Stuhl</strong><br><span style="font-size:0.75rem">→ Karzinom? CED?</span></div></div>
+      <div class="alarm-box alarm-red"><div class="alarm-icon">🌡️</div><div><strong>Fieber</strong><br><span style="font-size:0.75rem">→ Infekt? CED?</span></div></div>
+      <div class="alarm-box alarm-red"><div class="alarm-icon">⚖️</div><div><strong>Gewichtsverlust</strong><br><span style="font-size:0.75rem">→ Karzinom?</span></div></div>
+      <div class="alarm-box alarm-red"><div class="alarm-icon">🌙</div><div><strong>Nächtliche Diarrhö</strong><br><span style="font-size:0.75rem">→ Organisch!</span></div></div>
+      <div class="alarm-box alarm-red"><div class="alarm-icon">👨‍👩‍👦</div><div><strong>FA Karzinom</strong><br><span style="font-size:0.75rem">→ Koloskopie!</span></div></div>
+      <div class="alarm-box alarm-red"><div class="alarm-icon">😴</div><div><strong>Beschwerde­freiheit im Schlaf</strong><br><span style="font-size:0.75rem">spricht FÜR RDS</span></div></div>
+    </div>
+
+    <div class="ebox">
+      <strong>Aus Stuttgart:</strong> Prüfer fragte: „Hatte sie Blut im Stuhl?" → Kandidatin hatte nicht danach gefragt! Immer explizit nach Blut im Stuhl, nächtlichen Beschwerden und Gewichtsverlust fragen – diese Fragen trennen RDS von Karzinom und CED!
+    </div>
+  </div>
+</div>
+
+<!-- ROM KRITERIEN + TYPISCHER PATIENT -->
+<div class="grid">
+  <div class="card">
+    <h2>Diagnosekriterien (S3-Leitlinie)</h2>
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.7rem">Alle 3 Punkte müssen erfüllt sein:</p>
+    <div class="rom-box">
+      <div class="rom-title">Diagnosekriterien Reizdarmsyndrom</div>
+      <div class="rom-item">
+        <div class="rom-num">1</div>
+        <div><strong>Chronische Beschwerden &gt;3 Monate</strong><br>Bauchschmerzen, Blähungen, Stuhlveränderungen</div>
+      </div>
+      <div class="rom-item">
+        <div class="rom-num">2</div>
+        <div><strong>Relevante Beeinträchtigung der Lebensqualität</strong><br>Arbeit, Alltag, Sozialleben betroffen</div>
+      </div>
+      <div class="rom-item">
+        <div class="rom-num">3</div>
+        <div><strong>Keine organische Ursache</strong><br>Alle anderen Erkrankungen ausgeschlossen!</div>
+      </div>
+    </div>
+    <div class="wbox">
+      <strong>Wichtig:</strong> Das Reizdarmsyndrom ist eine <strong>Ausschlussdiagnose!</strong> Erst wenn alle organischen Ursachen ausgeschlossen sind, darf die Diagnose gestellt werden. Nie direkt als VD nennen ohne DD-Ausschluss!
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="am">Typischer Prüfungspatient</h2>
+    <div style="background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:10px;padding:1rem;margin-bottom:0.8rem;font-size:0.84rem;line-height:1.9">
+      · 40–55 Jahre, <strong>Frau (doppelt so häufig wie Männer!)</strong><br>
+      · <span style="color:var(--a3)">Beruf mit viel Stress</span>: Buchhändlerin, Managerin, Angestellte<br>
+      · Seit <strong>3–6 Monaten</strong> Bauchschmerzen, postprandial<br>
+      · Wechsel Diarrhö / Obstipation<br>
+      · <span style="color:var(--a2)">Besserung nach Stuhlgang</span><br>
+      · Z.n. <span style="color:var(--bad)">Cholezystektomie</span> (Prüferfrage: Warum?)<br>
+      · Auffälliger Blutdruck (aHT grenzwertig)<br>
+      · Verdauungsenzyme / Prokinetika bereits eingenommen
+    </div>
+    <h3>Ätiologie / Triggerfaktoren</h3>
+    <span class="tag vi">Stress / psychosoziale Belastung</span>
+    <span class="tag vi">Veränderte Darmmotilität</span>
+    <span class="tag vi">Gestörte Darm-Hirn-Achse</span>
+    <span class="tag vi">Verändertes Darmmikrobiom</span>
+    <span class="tag vi">Post-infektiös (nach Gastroenteritis)</span>
+    <span class="tag vi">Nahrungsmittelunverträglichkeiten</span>
+  </div>
+</div>
+
+<!-- ARZTBRIEF -->
+<div class="sdiv"><span>Arztbrief – Formulierungen</span></div>
+<div class="full">
+  <div class="card">
+    <h2>Arztbrief-Template: Reizdarmsyndrom</h2>
+
+    <h3>Einleitung</h3>
+    <div class="fb">
+Sehr geehrte Frau Kollegin, sehr geehrter Herr Kollege,<br>
+wir berichten Ihnen über die o.g. Patientin / den o.g. Patienten,
+die/der sich heute wegen seit ca. [X] Monaten bestehender Beschwerden bei uns vorstellte.
+    </div>
+
+    <h3>Aktuelle Beschwerden</h3>
+    <div class="fb">
+Frau/Herr [Name], eine/ein [Alter]-jährige/r Patient/in, stellte sich bei uns wegen
+<span class="hl">seit ca. [X] Monaten bestehender, intermittierender, diffuser,
+postprandialer Abdominalschmerzen</span> (NRS [X]/10) vor.<br><br>
+Die Schmerzen seien <span class="hl">drückend und krampfartig</span>,
+ohne klare Lokalisation und <span class="hl">ohne Ausstrahlung</span>.
+Sie besserten sich <span class="hl">nach Darmentleerung (Stuhlgang)</span>.<br><br>
+Begleitend berichtete sie/er über
+<span class="hl">Meteorismus (Blähungen)</span>,
+<span class="hl">Völlegefühl</span> sowie einen
+<span class="hl">Wechsel zwischen Diarrhö und Obstipation</span>.<br><br>
+<span class="cm">// Verneinte Alarmsymptome – immer dokumentieren!</span><br>
+Blut im Stuhl, Fieber, Gewichtsverlust, nächtliche Beschwerden
+sowie Erbrechen wurden verneint.
+    </div>
+
+    <h3>Vegetative Anamnese</h3>
+    <div class="fb">
+Die vegetative Anamnese ist bis auf
+<span class="hl">Obstipation</span> (seit [X] Monaten) sowie
+<span class="hl">schmerzbedingte Schlafstörungen</span> unauffällig.
+Die Patientin berichtete von erheblichem <span class="hl">beruflichem Stress</span>.
+    </div>
+
+    <h3>Vorerkrankungen / Operationen</h3>
+    <div class="fb">
+Als Vorerkrankungen seien bekannt:
+<span class="hl">arterielle Hypertonie</span> (seit [X] Jahren),
+<span class="hl">Diabetes mellitus</span>.<br>
+Z.n. <span class="hla">Cholezystektomie</span> vor [X] Jahren, komplikationslos.<br><br>
+<span class="cm">// Hinweis: nach Cholezystektomie häufiger Diarrhö → DD bedenken!</span>
+    </div>
+
+    <h3>Verdachtsdiagnose</h3>
+    <div class="fb">
+<span class="hl">VD: Reizdarmsyndrom (Colon irritabile)</span>,
+V.a. <span class="hl">gemischter Typ (RDS-M)</span><br><br>
+Die anamnestischen Angaben (seit &gt;3 Monaten bestehende diffuse
+postprandiale Bauchschmerzen mit Besserung nach Stuhlgang,
+Wechsel zwischen Diarrhö und Obstipation, Meteorismus,
+keine Alarmsymptome, psychosozialer Stress)
+deuten auf ein <span class="hl">Reizdarmsyndrom</span> hin.<br><br>
+<span class="cm">// Erst nach Ausschluss organischer Erkrankungen!</span>
+    </div>
+
+    <h3>Differentialdiagnosen</h3>
+    <div class="fb">
+<span class="hl">DD:</span><br>
+· <span class="hla">Morbus Crohn</span> – Spricht dagegen: kein Fieber, kein Blut im Stuhl, keine B-Symptomatik<br>
+  Fragen: Aphten im Mund? Gelenkschmerzen? Hautveränderungen?<br>
+· <span class="hla">Colitis ulcerosa</span> – immer Rektum betroffen, blutig-schleimiger Stuhl<br>
+· <span class="hla">Kolorektales Karzinom</span> – Alter &gt;50, positive FA, Gewichtsverlust, Blut; → <strong>Koloskopie!</strong><br>
+· <span class="hla">Zöliakie</span> – glutenabhängig, Antikörper (Anti-tTG) im Labor<br>
+· <span class="hla">Laktoseintoleranz</span> – Milchprodukte als Auslöser? H₂-Atemtest<br>
+· <span class="hla">Cholezystitis / Cholelithiasis</span> – rechtsseitiger Oberbauch, fettige Mahlzeiten<br>
+· <span class="hla">Post-Cholezystektomie-Syndrom</span> – Diarrhö nach Gallenblasen-OP
+    </div>
+
+    <h3>Diagnostik</h3>
+    <div class="fb">
+<span class="cm">// Ziel: Ausschluss organischer Erkrankungen!</span><br><br>
+· Körperliche Untersuchung: Druckschmerz? Abwehrspannung?
+  <span class="hl">Digital-rektale Untersuchung</span><br>
+· Labor: BB, CRP, BSG, <span class="hl">Kalprotectin im Stuhl</span>
+  <span class="cm">// erhöht bei CED, normal bei RDS!</span>,
+  <span class="hl">Zöliakie-Antikörper (Anti-tTG)</span>, Schilddrüsenwerte (TSH), HbA1c,
+  Albumin, Lipase / Amylase<br>
+· <span class="hl">Abdomensonographie</span>: Gallenblase, Leber, Pankreas, Darm<br>
+· <span class="hl">Koloskopie</span> mit Stufenbiopsien: Karzinom und CED ausschließen!<br>
+· Ggf. Stuhldiagnostik: Erreger, okkultes Blut (Hämoccult)<br>
+· Ggf. gynäkologische Untersuchung (Ovarialpathologie)
+    </div>
+
+    <h3>Therapie</h3>
+    <div class="fb gn">
+<span class="hlg">1. Aufklärung und Psychoedukation:</span><br>
+→ „Die Erkrankung ist real, aber nicht lebensbedrohlich. Keine erhöhte Krebsgefahr."<br><br>
+<span class="hlg">2. Lebensstiländerung:</span><br>
+· Stressreduktion (Yoga, Entspannungstechniken, Psychotherapie)<br>
+· Kleinere, häufigere Mahlzeiten<br>
+· <span class="hl">Ballaststoffreiche Ernährung</span> (bei Obstipation-Typ)<br>
+· Auslöser identifizieren und meiden (Nahrungstagebuch)<br>
+· Ausreichende Flüssigkeitszufuhr<br><br>
+<span class="hlg">3. Medikamentös (symptomorientiert):</span><br>
+· Krampfartige Schmerzen: <span class="hl">Spasmolytika</span> (Mebeverin / Butylscopolamin)<br>
+· Diarrhö: <span class="hl">Antidiarrhoika</span> (Loperamid)<br>
+· Obstipation: <span class="hl">Macrogol / Lactulose</span><br>
+· Blähungen / Meteorismus: <span class="hl">Simethicon / Probiotika</span><br>
+· Sodbrennen: Prokinetika, PPI<br><br>
+<span class="hlg">4. Psychosomatische Behandlung</span> bei relevanter psychischer Belastung<br><br>
+<span class="hlg">5. Kontrolltermin:</span> nach 4–6 Wochen
+    </div>
+
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler aus den Fällen:</strong><br>
+      – VD „Reizdarmsyndrom" ohne DD-Ausschluss nennen → Prüfer: „Wie schließen Sie ein Karzinom aus?"<br>
+      – Blut im Stuhl und Gewichtsverlust nicht explizit gefragt<br>
+      – Was ist Calprotectin? → Biomarker im Stuhl → bei CED erhöht, bei RDS normal<br>
+      – Cholezystektomie-Frage: Warum OP? → „Gallensteine / Cholezystitis" → jetzt: Post-Cholezystektomie-Syndrom als DD!
+    </div>
+  </div>
+</div>
+
+<!-- PATIENTENVORSTELLUNG -->
+<div class="sdiv"><span>Patientenvorstellung (AA-Gespräch)</span></div>
+<div class="full">
+  <div class="card">
+    <h2>Struktur – 5 Schritte (~3–4 Minuten)</h2>
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="scont"><strong>Stammdaten</strong>„Ich möchte Ihnen Frau/Herrn [Name], eine/einen [Alter]-jährige/n [Beruf], vorstellen."</div>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="scont"><strong>Vorstellungsgrund + Leitsymptome</strong>
+      „Die Patientin stellte sich wegen seit ca. [X] Monaten bestehender, <span class="hl">diffuser postprandialer Bauchschmerzen</span> vor, die sich <span class="hlg">nach dem Stuhlgang bessern</span>. Begleitend berichtete sie über Meteorismus und einen Wechsel zwischen Diarrhö und Obstipation. <span class="hlr">Blut im Stuhl, Fieber und Gewichtsverlust wurden verneint.</span>"</div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="scont"><strong>Relevante Anamnese (kurz!)</strong>
+      „Als Vorerkrankungen sind aHT und DM bekannt. Z.n. Cholezystektomie vor [X] Jahren. Die Patientin steht unter erheblichem beruflichem Stress."</div>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="scont"><strong>Verdachts- und Differentialdiagnose</strong>
+      „Meine Verdachtsdiagnose lautet <span class="hl">Reizdarmsyndrom (Colon irritabile)</span> – allerdings nur nach Ausschluss organischer Erkrankungen. Differentialdiagnostisch kommen Morbus Crohn, Colitis ulcerosa, kolorektales Karzinom sowie eine Zöliakie in Betracht."</div>
+    </div>
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="scont"><strong>Weiteres Procedere</strong>
+      „Zur Abklärung habe ich Labor mit Kalprotectin und Zöliakie-Antikörpern, Abdomensonographie und eine <span class="hl">Koloskopie</span> zum Ausschluss eines Karzinoms veranlasst. Therapeutisch empfehle ich zunächst Stressreduktion, Ernährungsanpassung und symptomorientierte Medikamente."</div>
+    </div>
+    <div class="gbox">
+      <strong>Aus Freiburg 13.02.2024:</strong> Prüfer fragte: „Hatte der Patient Stress? Warum?" → Antwort: Berufsstress + Familienstress → psychosozialer Faktor ist wichtig für Ätiologie UND Therapie (Psychotherapie, Entspannung)!
+    </div>
+  </div>
+</div>
+
+<!-- PATIENTENSPRACHE -->
+<div class="sdiv"><span>Fachbegriffe → Patientensprache</span></div>
+<div class="full">
+  <div class="card">
+    <h2 class="gn">Übersetzungstabelle: Fachbegriff → einfaches Deutsch</h2>
+    <table class="pt-table">
+      <tr><th>Fachbegriff</th><th>Medizinisch</th><th>Patientensprache</th><th>Typischer Patientensatz</th></tr>
+      <tr><td><strong>Reizdarmsyndrom</strong></td><td>Colon irritabile / IBS</td><td>„Ihr Darm reagiert überempfindlich auf Stress und bestimmte Nahrungsmittel – eine organische Erkrankung haben wir ausgeschlossen."</td><td>„Was habe ich denn?"</td></tr>
+      <tr><td><strong>Ausschlussdiagnose</strong></td><td>Diagnose per Ausschluss</td><td>„Wir können die Diagnose Reizdarmsyndrom erst stellen, nachdem alle anderen möglichen Ursachen ausgeschlossen wurden."</td><td>„Warum so viele Untersuchungen?"</td></tr>
+      <tr><td><strong>Meteorismus</strong></td><td>Blähungen/Gasansammlung</td><td>„Luft im Darm, die zu einem aufgeblähten Bauchgefühl führt."</td><td>„Ich habe ständig Blähungen."</td></tr>
+      <tr><td><strong>Obstipation</strong></td><td>Verstopfung</td><td>„Schwierigkeiten beim Stuhlgang – weniger als 3 Mal pro Woche."</td><td>„Ich kann kaum auf Toilette gehen."</td></tr>
+      <tr><td><strong>Diarrhö</strong></td><td>Durchfall</td><td>„Mehr als 3 wässrige oder breiige Stuhlgänge pro Tag."</td><td>„Ich muss ständig auf Toilette."</td></tr>
+      <tr><td><strong>Koloskopie</strong></td><td>Dickdarmspiegelung</td><td>„Wir führen einen dünnen Schlauch mit Kamera durch den After in den Darm ein – unter Schlafmittel, Sie bekommen nichts mit. So können wir den Darm von innen ansehen."</td><td>„Muss ich einen Schlauch schlucken?"</td></tr>
+      <tr><td><strong>Kalprotectin</strong></td><td>Entzündungsmarker im Stuhl</td><td>„Ein Entzündungswert im Stuhlgang. Wenn er erhöht ist, deutet das auf eine echte Darmentzündung hin. Bei Reizdarmsyndrom ist er normal."</td><td>„Was ist dieser Stuhltest?"</td></tr>
+      <tr><td><strong>Spasmolytikum (Mebeverin)</strong></td><td>Krampflösendes Mittel</td><td>„Tabletten, die die Krämpfe im Darm lösen und die Schmerzen lindern."</td><td>„Welche Tabletten soll ich nehmen?"</td></tr>
+      <tr><td><strong>Zöliakie</strong></td><td>Glutenunverträglichkeit</td><td>„Eine Unverträglichkeit gegen Gluten – ein Eiweißstoff in Weizen, Roggen und Gerste. Der Darm reagiert darauf mit Entzündungen."</td><td>„Was ist eine Glutenunverträglichkeit?"</td></tr>
+      <tr><td><strong>Morbus Crohn</strong></td><td>Chronisch-entzündliche Darmerkrankung</td><td>„Eine chronische Entzündung des Darms, die den gesamten Magen-Darm-Trakt befallen kann. Das müssen wir mit einer Darmspiegelung ausschließen."</td><td>„Habe ich vielleicht Crohn?"</td></tr>
+      <tr><td><strong>Colitis ulcerosa</strong></td><td>CED des Dickdarms</td><td>„Eine chronische Entzündung des Dickdarms, die oft mit Blut im Stuhl einhergeht."</td><td>–</td></tr>
+      <tr><td><strong>Probiotika</strong></td><td>Lebende Bakterienkulturen</td><td>„Präparate mit nützlichen Bakterien, die die gesunde Darmflora unterstützen können."</td><td>„Hilft Joghurt?"</td></tr>
+      <tr><td><strong>Psychosomatisch</strong></td><td>Körperlich-seelische Verbindung</td><td>„Stress und seelische Belastungen können körperliche Beschwerden wie Bauchschmerzen verursachen – das ist real, nicht eingebildet!"</td><td>„Sind die Schmerzen nur in meinem Kopf?"</td></tr>
+      <tr><td><strong>Postprandial</strong></td><td>Nach dem Essen</td><td>„Die Beschwerden treten nach dem Essen auf."</td><td>–</td></tr>
+      <tr><td><strong>Digital-rektale Untersuchung</strong></td><td>Tastuntersuchung per Finger</td><td>„Ich untersuche den Enddarm mit dem Finger – das dauert nur einen Moment und ist wichtig, um Veränderungen zu tasten."</td><td>„Was machen Sie da genau?"</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PATIENTENREAKTIONEN -->
+<div class="full">
+  <div class="card">
+    <h2 class="gn">Typische Patientenreaktionen – Musterantworten</h2>
+    <div class="fb gn">
+<span class="cm">// Diese Situationen kamen in echten Prüfungen vor!</span><br><br>
+🧑 „Habe ich Krebs? Ich habe Angst vor Krebs!"<br>
+→ <span class="hlg">„Ich verstehe Ihre Sorge sehr gut. Bisher gibt es keine Zeichen, die auf einen Tumor hindeuten – kein Blut im Stuhl, kein Gewichtsverlust, kein Fieber. Aber um das sicher auszuschließen, werde ich eine Darmspiegelung veranlassen. Das ist zu Ihrer Sicherheit."</span><br><br>
+🧑 „Ich will keinen Schlauch schlucken!" (Dachte, Koloskopie = Gastroskopie)<br>
+→ <span class="hlg">„Beim Darmschlauch geht der Schlauch von unten – durch den After – nicht durch den Mund. Sie bekommen außerdem ein Beruhigungs- und Schlafmittel davor, sodass Sie nichts davon merken."</span><br><br>
+🧑 „Warum fragen Sie nach Stress? Mein Problem ist im Bauch!"<br>
+→ <span class="hlg">„Stress hat einen direkten Einfluss auf den Darm – das nennt man die Darm-Hirn-Achse. Stress kann tatsächlich körperliche Bauchschmerzen verursachen. Das ist nicht eingebildet – das ist medizinisch belegt."</span><br><br>
+🧑 „Was ist das Reizdarmsyndrom überhaupt?"<br>
+→ <span class="hlg">„Beim Reizdarmsyndrom reagiert Ihr Darm überempfindlich auf bestimmte Reize wie Stress, bestimmte Nahrungsmittel oder Hormonschwankungen. Es ist keine gefährliche Erkrankung, aber sie kann die Lebensqualität stark einschränken. Mit der richtigen Behandlung können wir die Beschwerden deutlich verbessern."</span><br><br>
+🧑 „Ich habe eine Cholezystektomie gehabt – hat das damit zu tun?"<br>
+→ <span class="hlg">„Das ist eine sehr gute Frage. Nach einer Gallenblasenoperation kann die Verdauung manchmal empfindlicher werden, weil mehr Gallenflüssigkeit in den Darm fließt. Das kann zu Durchfall führen. Wir werden das in der Diagnostik berücksichtigen."</span>
+    </div>
+  </div>
+</div>
+
+<!-- PRÜFUNGSFRAGEN -->
+<div class="sdiv"><span>Prüfungsfragen – aus allen Städten</span></div>
+<div class="grid">
+  <div class="card">
+    <h2>Kommissionsfragen – Antworten</h2>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th></tr>
+      <tr><td>VD und warum?</td><td><strong>Reizdarmsyndrom</strong>: &gt;3 Monate Beschwerden, Besserung nach Stuhlgang, Wechsel Diarrhö/Obstipation, kein Alarm, Stress</td></tr>
+      <tr><td>Was spricht gegen Morbus Crohn?</td><td>Kein Fieber, kein Blut im Stuhl, kein Gewichtsverlust, keine B-Symptomatik, kein Rektumbefall</td></tr>
+      <tr><td>Diagnostische Maßnahmen?</td><td>Labor (Kalprotectin, Zöliakie-AK, CRP), Sono Abdomen, <strong>Koloskopie</strong> + Biopsien</td></tr>
+      <tr><td>Was ist Kalprotectin?</td><td>Entzündungsprotein aus Granulozyten → <strong>im Stuhl gemessen</strong>. Bei CED erhöht (&gt;50 μg/g), bei RDS normal! Guter Marker zur Unterscheidung CED vs. RDS</td></tr>
+      <tr><td>Wie macht man eine Koloskopie?</td><td>Vorbereitung (Darmspülung 1–2 Tage vorher), Sedierung (Propofol), Endoskop durch Anus bis Zökum, Biopsien, Dauer ~30 Min.</td></tr>
+      <tr><td>Therapie RDS?</td><td>Psychoedukation + Stressreduktion + Ernährung (ballaststoffreich) + Mebeverin (Spasmolytikum) + symptomatisch (Loperamid/Macrogol) + Probiotika</td></tr>
+      <tr><td>Warum Cholezystektomie?</td><td>Gallensteine / Cholezystitis. Nach Cholezystektomie: mehr Gallenflüssigkeit → Post-Cholezystektomie-Diarrhö als DD!</td></tr>
+      <tr><td>Hatte der Patient Stress? Bedeutung?</td><td>Ja – Berufsstress und Familienstress. Stress aktiviert Stressachse → Darmmotilität verändert → Beschwerden. Psychotherapie und Stressreduktion sind Teil der Therapie!</td></tr>
+      <tr><td>Was spricht für RDS?</td><td>Beschwerde im Schlaf: <strong>keine</strong> (bei RDS schläft der Patient gut!). Keine Alarmsymptome. Chronisch &gt;3 Mon. Psychosozialer Stress.</td></tr>
+      <tr><td>Allgemeine Maßnahmen?</td><td>Nahrungstagebuch, Ballaststoffe erhöhen, Stress abbauen, Psychotherapie, regelmäßige Mahlzeiten, ausreichend Flüssigkeit</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2 class="am">Zeitplan &amp; Fachbegriffe</h2>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-vi">Vorbereitung</span></td><td><strong>5 Min</strong></td><td>Alarmsymptome im Kopf behalten: Blut? Fieber? Gewicht? Nacht?</td></tr>
+      <tr><td><span class="badge badge-am">Patientengespräch</span></td><td><strong>10 Min</strong></td><td>Schmerz wann (postprandial?)? Besserung nach Stuhlgang? Stuhlcharakter? Blut? Gewicht? Stress? Auslöser?</td></tr>
+      <tr><td><span class="badge badge-gn">AA-Gespräch</span></td><td><strong>5 Min</strong></td><td>RDS = Ausschlussdiagnose! Kalprotectin erklären. Koloskopie begründen. Therapie: Mebeverin + Stress.</td></tr>
+    </table>
+
+    <h3 style="margin-top:1rem">Fachbegriffe aus den Prüfungen</h3>
+    <div>
+      <span class="tag vi">Reizdarmsyndrom</span>
+      <span class="tag vi">Colon irritabile</span>
+      <span class="tag vi">Ausschlussdiagnose</span>
+      <span class="tag vi">Kalprotectin</span>
+      <span class="tag vi">Spasmolytikum</span>
+      <span class="tag vi">Mebeverin</span>
+      <span class="tag vi">Meteorismus</span>
+      <span class="tag vi">Obstipation</span>
+      <span class="tag vi">Diarrhö</span>
+      <span class="tag vi">postprandial</span>
+      <span class="tag gn">Koloskopie</span>
+      <span class="tag gn">Stufenbiopsie</span>
+      <span class="tag gn">Probiotika</span>
+      <span class="tag gn">Psychoedukation</span>
+      <span class="tag gn">Zöliakie</span>
+      <span class="tag am">Morbus Crohn</span>
+      <span class="tag am">Colitis ulcerosa</span>
+      <span class="tag am">Kolorektales Karzinom</span>
+      <span class="tag am">Cholezystektomie</span>
+      <span class="tag rd">Hämoccult</span>
+      <span class="tag rd">B-Symptomatik</span>
+      <span class="tag">Intubation</span>
+      <span class="tag">Gastroskopie</span>
+      <span class="tag">Appendektomie</span>
+      <span class="tag">Antipyretika</span>
+      <span class="tag">Neoplasma</span>
+      <span class="tag">kachektisch</span>
+    </div>
+
+    <div class="gbox" style="margin-top:1rem">
+      <strong>Tipp aus Stuttgart:</strong> „Der Chefarzt ließ mich nicht reden und stellte nur Fragen." → Das ist normal! Beim AA-Gespräch: kurze klare Antworten. Wenn du etwas vergessen hast zu fragen: „Das ist wichtig – ich werde das bei der körperlichen Untersuchung nochmal erfragen."
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+  FSP Leitfaden · Reizdarmsyndrom (Colon irritabile) + Patientensprache · Freiburg · Karlsruhe · Stuttgart · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Nephrolithiasis</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --card2: #f1f3f5;
+    --a1: #5c3a1a;    /* bernstein – Steine */
+    --a2: #1971c2;    /* blau – Diagnostik */
+    --a3: #2f9e44;    /* grün – Therapie */
+    --a4: #c92a2a;    /* rot – Komplikationen */
+    --warn: #e67700;
+    --text: #212529;
+    --muted: #868e96;
+    --border: #dee2e6;
+    --light-amber: #fff8e1;
+    --light-blue: #e8f0ff;
+    --light-green: #ebfbee;
+    --light-red: #fff5f5;
+    --light-orange: #fff9db;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-weight: 400; line-height: 1.7; padding: 2rem 1rem; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border); }
+  .header h1 { font-family: 'Inter', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--a1); letter-spacing: -1px; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+  .timer-badge { display: inline-block; background: var(--a1); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 0.8rem; }
+
+  .ch-header { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0 1.2rem; padding: 0.9rem 1.2rem; border-radius: 10px; }
+  .ch-amber  { background: var(--light-amber);  border-left: 5px solid var(--a1); }
+  .ch-blue   { background: var(--light-blue);   border-left: 5px solid var(--a2); }
+  .ch-green  { background: var(--light-green);  border-left: 5px solid var(--a3); }
+  .ch-red    { background: var(--light-red);    border-left: 5px solid var(--a4); }
+  .ch-orange { background: var(--light-orange); border-left: 5px solid var(--warn); }
+  .ch-num { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 800; opacity: 0.2; }
+  .ch-amber .ch-num  { color: var(--a1); } .ch-blue .ch-num   { color: var(--a2); }
+  .ch-green .ch-num  { color: var(--a3); } .ch-red .ch-num    { color: var(--a4); }
+  .ch-orange .ch-num { color: var(--warn); }
+  .ch-t h2 { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 800; line-height: 1.1; }
+  .ch-amber .ch-t h2  { color: var(--a1); } .ch-blue .ch-t h2   { color: var(--a2); }
+  .ch-green .ch-t h2  { color: var(--a3); } .ch-red .ch-t h2    { color: var(--a4); }
+  .ch-orange .ch-t h2 { color: var(--warn); }
+  .ch-t p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 10px; padding: 1.4rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .card h3 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--a1); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light-amber); }
+  .card h3.bl { color: var(--a2); border-color: var(--light-blue); }
+  .card h3.gn { color: var(--a3); border-color: var(--light-green); }
+  .card h3.rd { color: var(--a4); border-color: var(--light-red); }
+  .card h3.or { color: var(--warn); border-color: var(--light-orange); }
+  .card h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); padding: 0.15rem 0.6rem; border-radius: 4px; font-size: 0.77rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: var(--card2); color: var(--text); }
+  .tag.am { background: var(--light-amber);  border-color: #e8c060; color: #4a2800; }
+  .tag.bl { background: var(--light-blue);   border-color: #90baf0; color: #0d3a7a; }
+  .tag.gn { background: var(--light-green);  border-color: #8ce99a; color: #1b4a22; }
+  .tag.rd { background: var(--light-red);    border-color: #ffa8a8; color: var(--a4); }
+  .tag.or { background: var(--light-orange); border-color: #ffd43b; color: #7a3800; }
+  .tag.gr { background: #f8f9fa;             border-color: #ced4da; color: #495057; }
+
+  .fb { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #343a40; }
+  .fb.bl { border-left-color: var(--a2); }
+  .fb.gn { border-left-color: var(--a3); }
+  .fb.rd { border-left-color: var(--a4); }
+  .fb.or { border-left-color: var(--warn); }
+  .fb .cm { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hli { color: var(--a2);  font-weight: 600; }
+  .hlg { color: var(--a3);  font-weight: 600; }
+  .hlr { color: var(--a4);  font-weight: 600; }
+  .hlo { color: var(--warn);font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: var(--card2); padding: 0.5rem 0.8rem; text-align: left; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 2px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8f9fa; }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-am { background: var(--light-amber);  color: #4a2800; }
+  .badge-bl { background: var(--light-blue);   color: #0d3a7a; }
+  .badge-gn { background: var(--light-green);  color: #1b4a22; }
+  .badge-rd { background: var(--light-red);    color: var(--a4); }
+  .badge-or { background: var(--light-orange); color: #7a3800; }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0 1rem; }
+  .sdiv span { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: var(--light-orange); border: 1px solid #ffd43b; border-left: 3px solid var(--warn); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #664d00; }
+  .wbox strong { color: #b35900; }
+  .ebox { background: var(--light-red);    border: 1px solid #ffa8a8; border-left: 3px solid var(--a4); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #6b1010; }
+  .ebox strong { color: var(--a4); }
+  .gbox { background: var(--light-green);  border: 1px solid #8ce99a; border-left: 3px solid var(--a3); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #1b4a22; }
+  .gbox strong { color: #2b7a3d; }
+  .bluebox { background: var(--light-blue); border: 1px solid #90baf0; border-left: 3px solid var(--a2); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #0d3a7a; }
+  .amberbox { background: var(--light-amber); border: 1px solid #e8c060; border-left: 3px solid var(--a1); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #4a2800; }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: var(--a1); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .snum.gn { background: var(--a3); }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+
+  .steine-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 0.5rem; }
+  .stein-card { border-radius: 8px; padding: 0.75rem; font-size: 0.79rem; border: 1px solid; }
+  .sc-1 { background: var(--light-amber);  border-color: #e8c060; }
+  .sc-2 { background: var(--light-blue);   border-color: #90baf0; }
+  .sc-3 { background: var(--light-orange); border-color: #ffd43b; }
+  .stein-card strong { display: block; font-size: 0.82rem; margin-bottom: 0.2rem; }
+  .sc-1 strong { color: var(--a1); }
+  .sc-2 strong { color: var(--a2); }
+  .sc-3 strong { color: var(--warn); }
+
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; font-weight: 600; }
+  .pt-table td:nth-child(3) { color: #2b7a3d; font-size: 0.83rem; }
+  .pt-table td:nth-child(4) { color: #7a3800; font-size: 0.81rem; font-style: italic; }
+
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: 1fr; }
+    .steine-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Nephrolithiasis</h1>
+  <div class="sub">Harnsteine · Nierenkolik · Hämaturie · Sonographie · ESWL · Urosepsis · FSP Leitfaden</div>
+  <div class="timer-badge">⏱ 20 Min. Arztbrief · 20 Min. AA-Gespräch · Freiburg</div>
+</div>
+
+
+<!-- KAPITEL 1: LEITSYMPTOME -->
+<div class="ch-header ch-amber">
+  <div class="ch-num">01</div>
+  <div class="ch-t">
+    <h2>Leitsymptome &amp; typischer Patient</h2>
+    <p>Flankenschmerz · Kolik · Hämaturie · Übelkeit · Fieber (→ Pyelonephritis!)</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Leitsymptome – vollständig abfragen</h3>
+    <h4>Kernsymptome der Nierenkolik</h4>
+    <span class="tag am">Flankenschmerz (plötzlich, kolikartig, wellenförmig)</span>
+    <span class="tag am">Ausstrahlung: Flanke → Leiste → Hoden / Labien</span>
+    <span class="tag am">Hämaturie (makro- oder mikroskopisch!)</span>
+    <span class="tag am">Übelkeit / Erbrechen (reflektorisch)</span>
+    <span class="tag am">Dysurie / Algurie (Brennen beim Wasserlassen)</span>
+    <span class="tag am">Pollakisurie (häufig, wenig Urin)</span>
+    <span class="tag am">Nykturie (nachts Wasserlassen)</span>
+    <span class="tag am">Unruhiger Patient! (kann keine ruhige Position finden)</span>
+
+    <h4>Alarmsymptome – Komplikation!</h4>
+    <span class="tag rd">Fieber ≥38°C + Schüttelfrost → Pyelonephritis / Urosepsis!</span>
+    <span class="tag rd">Anurie (Urostase mit beidseitiger Obstruktion)</span>
+    <span class="tag rd">Schwäche / Schock → Urosepsis!</span>
+
+    <h4>Immer fragen</h4>
+    <span class="tag bl">Ähnliche Beschwerden früher? (Rezidiv-Anamnese!)</span>
+    <span class="tag bl">Trinkmenge täglich? (Risikofaktor Dehydratation)</span>
+    <span class="tag bl">Ernährung (oxalatreich: Spinat, Nüsse, Schokolade?)</span>
+    <span class="tag bl">Gicht / Hyperurikämie? (→ Harnsäuresteine)</span>
+    <span class="tag bl">Hyperparathyreoidismus bekannt? (→ Calciumsteine)</span>
+    <span class="tag bl">Harnwegsinfekte in der Vergangenheit? (→ Struvitsteine)</span>
+
+    <div class="amberbox">
+      <strong>Leitsymptom vs. Begleitsymptom!</strong> Freiburg 06/2021: Prüfer fragte: „Was waren die Leitsymptome?" – Kandidat verwechselte LS mit Begleitsymptomen. Unterschied: Leitsymptom = Flankenschmerz + Hämaturie. Begleitsymptom = Übelkeit, Erbrechen, Fieber.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Typischer Prüfungspatient</h3>
+    <div style="background:var(--light-amber);border:1px solid #e8c060;border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.9;margin-bottom:0.8rem">
+      <strong>Jörg Müller / Karl-Heinz Krämia</strong>, 75–79 J.<br>
+      · Rentner (früher Buchhalter / Büroangestellter)<br>
+      · <span style="color:var(--a1)">Stechende Flankenschmerzen links seit 2 Tagen (NRS 8/10)</span><br>
+      · <span style="color:var(--a1)">Ausstrahlung in die linke Leiste</span><br>
+      · <span style="color:var(--a1)">Fieber 39°C + Schüttelfrost</span><br>
+      · Hämaturie, Dysurie, Nykturie, Pollakisurie<br>
+      · VE: <span style="color:var(--a1)">DM Typ 2 + COPD + BPH (Prostatahyperplasie)</span><br>
+      · Raucher (20 Zig/Tag, 30–40 Jahre)<br>
+      · Metformin + Spiriva (oder Prostagutt)<br>
+      · Bruder: DM; Eltern verstorben
+    </div>
+    <h4>Risikofaktoren für Nephrolithiasis</h4>
+    <span class="tag am">Männliches Geschlecht (♂:♀ = 3:1)</span>
+    <span class="tag am">Alter 30–60 J. (Häufigkeitsgipfel)</span>
+    <span class="tag am">Zu wenig Trinken (&lt;1,5 L/Tag)</span>
+    <span class="tag am">Eiweißreiche / oxalatreiche Ernährung</span>
+    <span class="tag am">Hyperurikämie / Gicht</span>
+    <span class="tag am">Hyperparathyreoidismus</span>
+    <span class="tag am">Diabetes mellitus</span>
+    <span class="tag am">Rezidivierende Harnwegsinfekte</span>
+    <span class="tag am">Harnabflussstörung (BPH!)</span>
+    <span class="tag am">Positive Familienanamnese</span>
+
+    <div class="wbox">
+      <strong>BPH als Risikofaktor!</strong> Freiburg 04/2024: Patient hat seit 1 Jahr BPH. Der Urologe empfahl, mit dem Rauchen aufzuhören. → BPH verursacht Harnabflussstörung → Urostase → erhöhtes Steinrisiko + Infektionsrisiko!
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 2: STEINARTEN -->
+<div class="ch-header ch-orange">
+  <div class="ch-num">02</div>
+  <div class="ch-t">
+    <h2>Steinarten – Prüfungswissen!</h2>
+    <p>Calciumoxalat (80%) · Harnsäure (10%) · Struvit (2%) · Röntgenpositivität</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="or">Steinarten – Überblick</h3>
+    <div class="steine-grid">
+      <div class="stein-card sc-1">
+        <strong>Calciumoxalatstein (80%!)</strong>
+        Häufigster Stein!<br>
+        Ursache: Hyperkalzämie, oxalatreiche Ernährung (Spinat, Nüsse, Schokolade)<br>
+        Röntgen: positiv (gut sichtbar!)<br>
+        Prophylaxe: Viel trinken, Ernährung anpassen, Alkalicitrate
+      </div>
+      <div class="stein-card sc-2">
+        <strong>Harnsäurestein (10%)</strong>
+        Ursache: Hyperurikämie, Gicht, eiweißreiche Ernährung<br>
+        Röntgen: <strong>negativ!</strong> (nicht sichtbar)<br>
+        Therapie: Alkalisierung des Harns (Alkalicitrate), Allopurinol<br>
+        Einziger Stein: auflösbar ohne OP!
+      </div>
+      <div class="stein-card sc-3">
+        <strong>Struvitstein (2%)</strong>
+        Ursache: Harnwegsinfekte (Urease-Bakterien: Proteus!)<br>
+        → Stein erzeugt Infektion, Infektion erzeugt Stein<br>
+        Röntgen: leicht positiv<br>
+        Therapie: Antibiotika + Steinentfernung!
+      </div>
+    </div>
+    <div class="amberbox" style="margin-top:0.8rem">
+      <strong>Teufelskreis Struvitsteine:</strong> Harnwegsinfektion → Struvitstein → Harnwegsinfektion → mehr Steine! Dieser Kreislauf muss durchbrochen werden: Antibiotika + frühzeitige Steinentfernung.
+    </div>
+    <div class="bluebox" style="margin-top:0.5rem">
+      <strong>Röntgen-Merkregel:</strong> Calciumhaltige Steine (Oxalat + Phosphat) → röntgenpositiv. Harnsäuresteine → röntgennegativ. → Bei fehlendem Stein im Röntgen aber klinischem Verdacht: CT nativ oder Sonographie!
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 3: ARZTBRIEF -->
+<div class="ch-header ch-blue">
+  <div class="ch-num">03</div>
+  <div class="ch-t">
+    <h2>Arztbrief-Template</h2>
+    <p>Nephrolithiasis · Pyelonephritis · VD · DD · Diagnostik · Therapie</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="bl">Arztbrief: Nephrolithiasis</h3>
+
+    <h4>Aktuelle Beschwerden</h4>
+    <div class="fb">
+Herr Müller, ein [Alter]-jähriger Patient, stellte sich bei uns wegen
+<span class="hl">seit 2 Tagen bestehender, plötzlich aufgetretener,
+kolikartiger, stechender Flankenschmerzen links</span>
+(NRS 8/10) vor.<br><br>
+Die Schmerzen strahlen in die <span class="hl">linke Leiste</span> aus.
+Der Patient berichtete über <span class="hl">Fieber (39°C) und Schüttelfrost</span>.<br><br>
+Begleitsymptome: <span class="hl">Hämaturie, Dysurie, Pollakisurie, Nykturie</span>,
+Übelkeit, Schweißausbrüche.<br><br>
+<span class="cm">// Hinweis: Fieber + Schüttelfrost + Flankenschmerz
+= dringender V.a. Pyelonephritis / Urosepsis!</span><br><br>
+<span class="cm">// Verneint: Bewusstlosigkeit, Anurie, Trauma, Reise</span>
+    </div>
+
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: Nephrolithiasis (Harnstein links) mit V.a. Pyelonephritis</span><br>
+(Kolikartige Flankenschmerzen + Hämaturie + Ausstrahlung in die Leiste
++ Fieber + Schüttelfrost + Risikofaktoren: DM, BPH, Rauchen, Alter)<br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlo">Pyelonephritis</span>
+  – Fieber + Flankenschmerz + Leukozyturie; hier wahrscheinlich gleichzeitig!<br>
+· <span class="hlo">Zystitis / Harnwegsinfektion</span>
+  – Dysurie ohne Flankenschmerz; eher unkompliziert<br>
+· <span class="hlo">Appendizitis</span>
+  – rechtsseitig, McBurney-Punkt, Fieber; hier links → unwahrscheinlicher<br>
+· <span class="hlo">Divertikulitis</span>
+  – linksseitig, Kolonsymptome, CRP ↑; möglich bei älterem Patient<br>
+· <span class="hlo">Hodentorsion</span>
+  – bei Ausstrahlung in Hoden; sofortiger Notfall! (bes. junge Männer)<br>
+· <span class="hlo">Gynäkologisch (Adnexitis, Extrauteringravidität)</span>
+  – bei Frauen: β-HCG bestimmen!<br>
+· <span class="hlo">Aortenaneurysma</span>
+  – bei älterem Patient mit starkem Flankenschmerz + Schock; sofortiger Notfall!
+    </div>
+
+    <h4>Diagnostik</h4>
+    <div class="fb bl">
+· <span class="hli">Körperliche Untersuchung</span>:
+  Nierenklopfschmerz (positiv!),
+  Abdomenpalpation (Druckschmerz, Abwehrspannung?),
+  Hodenpalpation (DD Hodentorsion)<br>
+· <span class="hli">Urinuntersuchung</span>: U-Stix
+  (Hämaturie, Leukozyten, Nitrit → HWI?),
+  Urinsediment + -kultur (Keimnachweis!), pH-Wert<br>
+· Labor: BB, CRP, BSG,
+  <span class="hli">Nierenretentionswerte (Kreatinin, Harnstoff)</span>,
+  Glukose, Elektrolyte, Harnsäure, Kalzium, PTH<br>
+· <span class="hli">Sonographie Nieren + Blase</span>
+  = 1. Wahl! → Nierenstein (echoreiche Struktur mit Schallschatten),
+  Harnstauungsniere?, Harnleiterdilatation?<br>
+  <span class="cm">// Freiburg: „Was sehen Sie im Ultraschall?"
+  → Stein: echoreich + Schallschatten; Stauung: dilatiertes Nierenbecken;
+  Pyelonephritis: vergrößerte Niere, unklare Grenze Cortex/Mark</span><br>
+· <span class="hli">CT nativ (Abdomen)</span>:
+  bei unklarem Sono-Befund, Verdacht auf Urosepsis, Fieber, Einzelniere
+  → zeigt fast alle Steinarten (auch Harnsäuresteine!)<br>
+· EKG (bei älterem Patient + DD kardiologisch)<br>
+· Urologie-Konsil!
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb gn">
+<span class="hlg">Sofortmaßnahmen:</span><br>
+· Stationäre Aufnahme (Fieber + Schüttelfrost = Notfall!)<br>
+· i.v. Zugang + Flüssigkeitsgabe (Hydrierung → Steinabgang fördern)<br>
+· <span class="hlg">Analgesie: Metamizol i.v.</span> (1. Wahl bei starken Schmerzen!)
+  oder Diclofenac (bei normaler Nierenfunktion)<br>
+· Antiemese: Metoclopramid bei Übelkeit<br>
+· <span class="hlg">Antibiotika bei Fieber (Pyelonephritis / Urosepsis!):</span>
+  Ceftriaxon i.v. oder Ciprofloxacin<br><br>
+<span class="hlg">Konservative Therapie (Stein &lt;7 mm, komplikationslos):</span><br>
+· Reichlich trinken (&gt;2,5 L/Tag!)<br>
+· Alphablocker (Tamsulosin) → Steinabgang fördern<br>
+· Körperliche Bewegung (Steine lockern)<br><br>
+<span class="hlg">Interventionelle Therapie (Stein &gt;7 mm oder kein Spontanabgang):</span><br>
+· <span class="hlg">ESWL (Extrakorporale Stoßwellenlithotripsie)</span>:
+  kleine Steine (&lt;10 mm), proximal → Stoßwellen zertrümmern Stein<br>
+· <span class="hlg">URS (Ureterorenoskopie)</span>:
+  größere Steine (&gt;10 mm), mittlere/distale Lage → Laserlithotripsie<br>
+· <span class="hlg">PCNL (Perkutane Nephrolithotomie)</span>:
+  große Nierensteine (&gt;20 mm) → perkutaner Zugang<br>
+· Offene OP: selten, letzte Option<br><br>
+<span class="hlg">Sekundärprophylaxe (immer besprechen!):</span><br>
+· ≥2,5 L Trinkmenge täglich!<br>
+· Ernährung anpassen (je nach Steinart)<br>
+· Nikotinkarenz (Freiburg: Urologe empfahl Rauchstopp!)<br>
+· Spezifisch: Alkalicitrate (Harnsäure-/Oxalatsteine),
+  Allopurinol (Harnsäuresteine)
+    </div>
+
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler aus den Fällen:</strong><br>
+      – Urosepsis nicht erkannt: Fieber + Schüttelfrost + Flankenschmerz → stationär + sofort Antibiotika!<br>
+      – Sonographie als erste Bildgebung vergessen → ist 1. Wahl!<br>
+      – Beim CT: erklärt, wann CT besser als Sono ist (Fieber, Einzelniere, unklar)<br>
+      – Leitsymptome mit Begleitsymptomen verwechselt (Freiburg!)<br>
+      – Metaphylaxe (Rezidivprophylaxe) vergessen: 2,5 L/Tag + Ernährungsberatung immer!
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 4: AA-GESPRÄCH -->
+<div class="ch-header ch-green">
+  <div class="ch-num">04</div>
+  <div class="ch-t">
+    <h2>AA-Gespräch &amp; Prüfungsfragen</h2>
+    <p>Direkt aus Freiburg 06/2021 · 04/2024 · echte Fragen</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Patientenvorstellung – 5 Schritte</h3>
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="scont"><strong>Stammdaten</strong>
+      „Ich möchte Ihnen Herrn Müller vorstellen, einen [Alter]-jährigen Rentner (früher Buchhalter), der sich in unserer Notaufnahme vorgestellt hat."</div>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="scont"><strong>Leitsymptome</strong>
+      „<span class="hl">Leitsymptome</span>: seit 2 Tagen <span class="hl">kolikartige Flankenschmerzen links</span> (NRS 8/10) mit Ausstrahlung in die Leiste, <span class="hl">Hämaturie</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="scont"><strong>Alarmsymptome!</strong>
+      „<span class="hlr">Fieber 39°C + Schüttelfrost</span> → V.a. Pyelonephritis / Urosepsis! Außerdem: Dysurie, Nykturie, Pollakisurie."</div>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="scont"><strong>VD + DD</strong>
+      „VD: <span class="hl">Nephrolithiasis mit Pyelonephritis</span>. DD: <span class="hlo">Pyelonephritis allein, Zystitis, Appendizitis, Divertikulitis, Aortenaneurysma</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="scont"><strong>Procedere</strong>
+      „Stationäre Aufnahme. <span class="hli">U-Stix + Labor + Sono Nieren</span> sofort. Ggf. <span class="hli">CT nativ</span> bei unklarem Befund. <span class="hlg">Analgesie (Metamizol) + Antibiotika</span>. Urologie-Konsil."</div>
+    </div>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th><th>Stadt</th></tr>
+      <tr><td>VD und warum? Leitsymptome?</td><td>Nephrolithiasis: Kolikartige Flankenschmerzen + Hämaturie + Ausstrahlung in Leiste + Risikofaktoren (DM, BPH, Alter, Rauchen). LEITSYMPTOME: Flankenschmerz + Hämaturie! Nicht Übelkeit/Fieber (Begleitsymptome!)</td><td>Freiburg</td></tr>
+      <tr><td>Wie kommt es zu Eiterniere (Pyonephrose)? (Freiburg!)</td><td>Harnstein → Harnabflussstörung → Harnstau → Infektion des gestauten Urins → Pyelonephritis → Pyonephrose (eitriger Nierenbecken-Kelch). Ohne Drainage → Urosepsis!</td><td>Freiburg 06/2021</td></tr>
+      <tr><td>Was sehen wir im Ultraschall? (Freiburg!)</td><td>Nierenstein: <strong>echoreiche Struktur mit echofreiem Schallschatten</strong>. Harnstauungsniere: dilatiertes Nierenbecken/-kelch. Pyelonephritis: vergrößerte Niere, keine deutliche Grenze zwischen Cortex und Nierenbecken.</td><td>Freiburg 06/2021</td></tr>
+      <tr><td>Wann brauchen wir CT statt Sono? (Freiburg!)</td><td>CT nativ bei: Fieber / V.a. Urosepsis, Einzelniere, unklar im Sono, V.a. Harnleitersteine (schwer im Sono sichtbar), Komplikationen. CT zeigt fast alle Steinarten (auch Harnsäuresteine die im Röntgen negativ sind!)</td><td>Freiburg 06/2021</td></tr>
+      <tr><td>Wann brauchen wir MRT? (Freiburg!)</td><td>MRT: bei Schwangerschaft (keine Strahlung!), bei Kontrastmittelallergie, bei Kindern, zur Differenzierung bei unklar. Für akute Nierenkolik selten erste Wahl – dauert zu lang.</td><td>Freiburg 06/2021</td></tr>
+      <tr><td>Risikofaktoren für Nephrolithiasis?</td><td>Männlich, Alter 30–60 J., zu wenig Trinken, eiweißreiche Ernährung, Hyperurikämie/Gicht, Hyperparathyreoidismus, DM, Harnwegsinfekte, BPH/Harnabflussstörung, positive FA</td><td>Freiburg 04/2024</td></tr>
+      <tr><td>Will der Patient mit dem Rauchen aufhören? (Freiburg 04/2024!)</td><td>Der Urologe hatte bereits mit dem Patienten über Rauchen gesprochen und einen Rauchstopp empfohlen. Rauchen erhöht das Infektions- und Steinrisiko (Durchblutungsstörung, BPH-Progression). → Motivierende Gesprächsführung!</td><td>Freiburg 04/2024</td></tr>
+      <tr><td>Therapie je nach Steingröße?</td><td>&lt;7mm: konservativ (trinken + Tamsulosin). 7–10mm proximal: ESWL. &gt;10mm oder distal: URS + Laserlithotripsie. &gt;20mm Nierenstein: PCNL. Bei Infektion: zuerst Harnableitung + Antibiotika!</td><td>Alle</td></tr>
+      <tr><td>Was ist ESWL? Wie erklären Sie dem Patienten? (Freiburg!)</td><td>Extrakorporale Stoßwellenlithotripsie: Stoßwellen von außen auf den Stein gerichtet → Stein wird in kleine Bruchstücke zertrümmert → spontaner Abgang mit dem Urin. Kein Schnitt! Ambulant möglich. Cave: KI bei Schwangerschaft, Gerinnungsstörung.</td><td>Alle</td></tr>
+      <tr><td>Metaphylaxe / Rezidivprophylaxe?</td><td>≥2,5 L Flüssigkeit täglich! (Zitronensaft-Tipp: 1 Zitrone in 500 mL → Alkalicidrat). Ernährung anpassen. Steinartspezifisch: Alkalicitrate (Oxalat/Harnsäure), Allopurinol (Harnsäure). Nikotinverzicht. Urologische Kontrollen.</td><td>Alle</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- KAPITEL 5: KOMPLIKATIONEN -->
+<div class="ch-header ch-red">
+  <div class="ch-num">05</div>
+  <div class="ch-t">
+    <h2>Komplikationen – Gefahr erkennen!</h2>
+    <p>Pyelonephritis · Urosepsis · Harnstauungsniere · Pyonephrose</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="rd">Komplikationskaskade</h3>
+    <div class="fb rd">
+<span class="hlr">Nephrolithiasis</span><br>
+↓ Stein obstruiert Harnleiter<br>
+<span class="hlr">Harnstauungsniere (Hydronephrose)</span><br>
+↓ Harnrückstau + Keimaszension<br>
+<span class="hlr">Infizierte Harnstauungsniere</span><br>
+↓ Eiterbildung im Nierenbecken<br>
+<span class="hlr">Pyonephrose (Eiterniere)</span><br>
+↓ Keimübertritt in Blutbahn<br>
+<span class="hlr">Urosepsis ⚡ = lebensbedrohlich!</span>
+    </div>
+    <div class="ebox">
+      <strong>⚠️ Fieber + Schüttelfrost + Flankenschmerz = Notfall!</strong><br>
+      Sofortige Diagnostik (CT nativ), Antibiotika i.v., Harnableitung (Doppel-J-Katheter oder perkutane Nephrostomie) bei infizierter Harnstauungsniere. Keine Zeit verlieren!
+    </div>
+    <h4 style="margin-top:1rem">Weitere Komplikationen</h4>
+    <span class="tag rd">Fornixruptur: Einriss des Nierenbeckens → Urinom</span>
+    <span class="tag rd">Anurie bei beidseitiger Obstruktion oder Einzelniere</span>
+    <span class="tag rd">Rezidivneigung (40% innerhalb von 5 Jahren)</span>
+  </div>
+</div>
+
+
+<!-- KAPITEL 6: PATIENTENSPRACHE -->
+<div class="ch-header ch-orange">
+  <div class="ch-num">06</div>
+  <div class="ch-t">
+    <h2>Fachbegriffe → Patientensprache</h2>
+    <p>Wie erkläre ich dem Patienten, was er hat?</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="or">Übersetzungstabelle</h3>
+    <table class="pt-table">
+      <tr><th>Fachbegriff</th><th>Medizinisch</th><th>Patientensprache</th><th>Typischer Patientensatz</th></tr>
+      <tr><td><strong>Nephrolithiasis</strong></td><td>Nierenstein</td><td>„Sie haben wahrscheinlich einen kleinen harten Stein in der Niere oder im Harnleiter, der den Abfluss des Urins blockiert. Das verursacht diese heftigen kolikartigen Schmerzen."</td><td>„Was habe ich?"</td></tr>
+      <tr><td><strong>Hämaturie</strong></td><td>Blut im Urin</td><td>„Der Stein verletzt beim Weiterwandern die Schleimhaut des Harnleiters leicht – das ist der Grund, warum sich Ihr Urin rötlich verfärbt. Das ist typisch für Nierensteine."</td><td>–</td></tr>
+      <tr><td><strong>Sonographie</strong></td><td>Ultraschalluntersuchung</td><td>„Wir schauen mit Ultraschall in Ihre Nieren – das ist völlig schmerzfrei. Wir können damit den Stein und mögliche Harnstauung direkt sehen."</td><td>„Welche Untersuchungen machen Sie?"</td></tr>
+      <tr><td><strong>CT nativ</strong></td><td>Computertomographie ohne Kontrastmittel</td><td>„Ein detailliertes Röntgenbild, das Schichten durch den Bauch zeigt. Damit können wir den Stein genau lokalisieren und seine Größe messen."</td><td>–</td></tr>
+      <tr><td><strong>ESWL</strong></td><td>Extrakorporale Stoßwellenlithotripsie</td><td>„Wir richten von außen auf den Körper spezielle Stoßwellen genau auf den Stein. Der Stein wird in kleine Stücke zermahlen, die Sie dann mit dem Urin herausspülen. Kein Schnitt nötig."</td><td>„Brauche ich eine OP?"</td></tr>
+      <tr><td><strong>Pyelonephritis</strong></td><td>Nierenbeckenentzündung</td><td>„Die Bakterien haben sich bis in die Niere vorgearbeitet und dort eine Entzündung verursacht. Deswegen haben Sie Fieber und Schüttelfrost. Wir behandeln das mit Antibiotika."</td><td>–</td></tr>
+      <tr><td><strong>Metaphylaxe / Rezidivprophylaxe</strong></td><td>Vorbeugung neuer Steine</td><td>„Damit sich keine neuen Steine bilden, müssen Sie täglich mindestens 2,5 Liter trinken – am besten Wasser mit Zitronensaft. Außerdem passen wir Ihre Ernährung an."</td><td>–</td></tr>
+      <tr><td><strong>Dysurie / Algurie</strong></td><td>Schmerzhaftes Wasserlassen</td><td>„Das Brennen beim Wasserlassen entsteht, weil der Stein die empfindliche Schleimhaut des Harnleiters reizt."</td><td>–</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PATIENTENREAKTIONEN -->
+<div class="full">
+  <div class="card">
+    <h3>Typische Patientenreaktionen – Musterantworten</h3>
+    <div class="fb gn">
+<span class="cm">// Direkt aus den echten Fällen!</span><br><br>
+🧑 „Was habe ich?" (Freiburg!)<br>
+→ <span class="hlg">„Nach dem, was Sie mir erzählt haben, vermute ich, dass Sie einen Nierenstein haben. Dieser Stein hat sich in Ihrem Harnleiter festgesetzt und verursacht diese heftigen Schmerzen. Außerdem sehe ich Zeichen einer Nierenentzündung – das erklärte das Fieber. Wir werden das jetzt mit Ultraschall und Labor genau abklären."</span><br><br>
+🧑 „Soll ich hierbleiben?" (Freiburg!)<br>
+→ <span class="hlg">„Ja, Sie müssen bei uns bleiben. Mit dem Fieber und den Schmerzen wäre es nicht sicher, Sie jetzt nach Hause zu schicken. Wir müssen sicherstellen, dass sich keine Nierenentzündung oder schlimmeres entwickelt. Sobald die Schmerzen besser sind und der Befund klar ist, besprechen wir das weitere Vorgehen."</span><br><br>
+🧑 Keinerlei Fragen vom Patienten (Freiburg 04/2024!)<br>
+→ <span class="hlg">Am Ende aktiv fragen: „Haben Sie selbst noch Fragen? Gibt es etwas, das Ihnen Sorgen bereitet?"</span> → Empathie zeigen, auch wenn der Patient schweigt.<br><br>
+🧑 Patient ist sehr unruhig / kann nicht still sitzen<br>
+→ <span class="hlg">„Ich sehe, dass Sie sich sehr unwohl fühlen – das ist bei Nierenkoliken ganz typisch, weil man mit diesen Schmerzen keine ruhige Position findet. Ich gebe Ihnen sofort ein Schmerzmittel."</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- FACHBEGRIFFE + ZEITPLAN -->
+<div class="sdiv"><span>Fachbegriffe &amp; Zeitplan</span></div>
+<div class="grid">
+  <div class="card">
+    <h3>Fachbegriffe aus den Prüfungen</h3>
+    <h4>Nephrolithiasis direkt</h4>
+    <div>
+      <span class="tag am">Nephrolithiasis / Urolithiasis</span>
+      <span class="tag am">Nierenkolik / Harnleiterkolik</span>
+      <span class="tag am">Hämaturie (Makro-/Mikro-)</span>
+      <span class="tag am">Dysurie / Algurie / Pollakisurie</span>
+      <span class="tag am">Nyrenklopfschmerz</span>
+      <span class="tag am">Harnstauungsniere (Hydronephrose)</span>
+      <span class="tag am">ESWL (Stoßwellenlithotripsie)</span>
+      <span class="tag am">URS (Ureterorenoskopie)</span>
+      <span class="tag am">PCNL (Perkutane Nephrolithotomie)</span>
+      <span class="tag am">Metaphylaxe / Rezidivprophylaxe</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Komplikationen</h4>
+    <div>
+      <span class="tag rd">Pyelonephritis</span>
+      <span class="tag rd">Pyonephrose (Eiterniere)</span>
+      <span class="tag rd">Urosepsis</span>
+      <span class="tag rd">Fornixruptur / Urinom</span>
+      <span class="tag rd">Anurie</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Sonstige aus Prüfungen</h4>
+    <div>
+      <span class="tag gr">Infaust</span>
+      <span class="tag gr">Transfusion</span>
+      <span class="tag gr">Bronchospasmus</span>
+      <span class="tag gr">Antiphlogistisch</span>
+      <span class="tag gr">Suggilation</span>
+      <span class="tag gr">Hyperhidrose</span>
+      <span class="tag gr">Anurie</span>
+      <span class="tag gr">Iatrogen</span>
+      <span class="tag gr">Endotracheal</span>
+      <span class="tag gr">Larynx / Trachea</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="or">Zeitplan &amp; Top-Tipps</h3>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-am">Patientengespräch</span></td><td><strong>15–20 Min</strong></td><td>Schmerzcharakter + Ausstrahlung. Hämaturie? Fieber + Schüttelfrost (→ Notfall!). Trinkmenge. Frühere Steine? BPH? Ernährung.</td></tr>
+      <tr><td><span class="badge badge-bl">Arztbrief</span></td><td><strong>15–20 Min</strong></td><td>Leitsymptome klar benennen! VD + DD (Pyelonephritis immer!). Sono = 1. Wahl. CT bei Fieber. Analgesie + Antibiotika. Metaphylaxe!</td></tr>
+      <tr><td><span class="badge badge-gn">AA-Gespräch</span></td><td><strong>15–20 Min</strong></td><td>Leitsymptom vs. Begleitsymptom! Was sehen wir im Sono? Wann CT? Wann MRT? Eiterniere erklären. ESWL vs. URS vs. PCNL je nach Größe.</td></tr>
+    </table>
+
+    <div class="ebox" style="margin-top:1rem">
+      <strong>Freiburg 06/2021:</strong> Prüfer fragte LS → Kandidat verwechselte mit Begleitsymptomen. Lernregel: <strong>Leitsymptome = Flankenschmerz + Hämaturie</strong>. Fieber/Übelkeit/Nykturie = Begleitsymptome.
+    </div>
+    <div class="gbox" style="margin-top:0.8rem">
+      <strong>Sonographie immer zuerst!</strong> 1. Wahl bei akuter Nierenkolik. CT erst bei Fieber, unklar, Einzelniere. MRT: Schwangerschaft, KM-Allergie, Kinder.
+    </div>
+    <div class="bluebox" style="margin-top:0.8rem">
+      <strong>Fieber + Schüttelfrost = stationäre Aufnahme obligat!</strong> V.a. Pyelonephritis / Urosepsis → sofort Antibiotika i.v. + Sono/CT + ggf. Harnableitung (Doppel-J-Katheter). Keine Entlassung ohne Fieberfreiheit!
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top: 1px solid var(--border);">
+  FSP Leitfaden · Nephrolithiasis (Harnsteine) + Patientensprache · Freiburg · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

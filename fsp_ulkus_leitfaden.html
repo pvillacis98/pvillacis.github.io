@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Ulkuskrankheit</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@700;800&family=Karla:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #0d1a0f;
+    --card: #142018;
+    --a1: #4ade80;   /* Ulkus ventriculi - grün */
+    --a2: #fb923c;   /* Ulkus duodeni - orange */
+    --a3: #f43f5e;   /* Blutung - rot */
+    --info: #60a5fa;
+    --warn: #fbbf24;
+    --text: #e8f5e0;
+    --muted: #3d6040;
+    --border: #1e3820;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Karla', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.7;
+    padding: 2rem 1rem;
+  }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; }
+  .header::after { content: ''; display: block; width: 120px; height: 3px; background: linear-gradient(90deg, var(--a1), var(--a2), var(--a3)); margin: 1.5rem auto 0; border-radius: 2px; }
+  .header h1 { font-family: 'Urbanist', sans-serif; font-size: 2.8rem; font-weight: 800; background: linear-gradient(135deg, var(--a1), var(--a2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -1px; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+  .timer-badge { display: inline-block; background: linear-gradient(135deg, var(--a1), #22c55e); color: #0d1a0f; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 1rem; }
+
+  .chapter-header { display: flex; align-items: center; gap: 1rem; margin: 3rem 0 1.5rem; padding: 1rem 1.5rem; border-radius: 12px; }
+  .ch1 { background: rgba(74,222,128,0.08); border-left: 5px solid var(--a1); }
+  .ch2 { background: rgba(251,146,60,0.08); border-left: 5px solid var(--a2); }
+  .ch3 { background: rgba(244,63,94,0.08); border-left: 5px solid var(--a3); }
+  .ch4 { background: rgba(251,191,36,0.08); border-left: 5px solid var(--warn); }
+  .chapter-num { font-family: 'Urbanist', sans-serif; font-size: 2.5rem; font-weight: 800; opacity: 0.3; }
+  .ch1 .chapter-num { color: var(--a1); } .ch2 .chapter-num { color: var(--a2); } .ch3 .chapter-num { color: var(--a3); } .ch4 .chapter-num { color: var(--warn); }
+  .ch-t h2 { font-family: 'Urbanist', sans-serif; font-size: 1.8rem; font-weight: 800; line-height: 1; }
+  .ch1 .ch-t h2 { color: var(--a1); } .ch2 .ch-t h2 { color: var(--a2); } .ch3 .ch-t h2 { color: var(--a3); } .ch4 .ch-t h2 { color: var(--warn); }
+  .ch-t p { font-size: 0.82rem; color: var(--muted); margin-top: 0.3rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 14px; padding: 1.5rem; border: 1px solid var(--border); }
+  .card h3 { font-size: 0.95rem; font-weight: 700; color: var(--a1); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .card h3.or { color: var(--a2); border-color: rgba(251,146,60,0.2); }
+  .card h3.rd { color: var(--a3); border-color: rgba(244,63,94,0.2); }
+  .card h3.yw { color: var(--warn); border-color: rgba(251,191,36,0.2); }
+  .card h3.bl { color: var(--info); border-color: rgba(96,165,250,0.2); }
+  .card h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); color: var(--text); padding: 0.18rem 0.65rem; border-radius: 5px; font-size: 0.78rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.03); }
+  .tag.gn { background: rgba(74,222,128,0.1); border-color: rgba(74,222,128,0.3); color: var(--a1); }
+  .tag.or { background: rgba(251,146,60,0.1); border-color: rgba(251,146,60,0.3); color: var(--a2); }
+  .tag.rd { background: rgba(244,63,94,0.1); border-color: rgba(244,63,94,0.3); color: var(--a3); }
+  .tag.yw { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); color: var(--warn); }
+  .tag.bl { background: rgba(96,165,250,0.1); border-color: rgba(96,165,250,0.3); color: var(--info); }
+
+  .fb { background: rgba(0,0,0,0.4); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #c8e8c0; }
+  .fb.or { border-color: var(--a2); color: #f0d8b8; }
+  .fb.rd { border-color: var(--a3); color: #f0c0c8; }
+  .fb.yw { border-color: var(--warn); color: #e8d898; }
+  .fb .cm { color: var(--muted); font-family: 'Karla', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hlo { color: var(--a2);  font-weight: 600; }
+  .hlr { color: var(--a3);  font-weight: 600; }
+  .hlw { color: var(--warn);font-weight: 600; }
+  .hli { color: var(--info);font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: rgba(255,255,255,0.04); padding: 0.5rem 0.8rem; text-align: left; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 1px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-gn { background: rgba(74,222,128,0.15); color: var(--a1); }
+  .badge-or { background: rgba(251,146,60,0.15); color: var(--a2); }
+  .badge-rd { background: rgba(244,63,94,0.15); color: var(--a3); }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0 1rem; }
+  .sdiv span { font-family: 'Urbanist', sans-serif; font-size: 0.8rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: rgba(251,191,36,0.07); border: 1px solid rgba(251,191,36,0.2); border-left: 3px solid var(--warn); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #d4c080; }
+  .wbox strong { color: var(--warn); }
+  .ebox { background: rgba(244,63,94,0.07); border: 1px solid rgba(244,63,94,0.2); border-left: 3px solid var(--a3); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #d4a0a0; }
+  .ebox strong { color: var(--a3); }
+  .gbox { background: rgba(74,222,128,0.07); border: 1px solid rgba(74,222,128,0.2); border-left: 3px solid var(--a1); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #a0d4b0; }
+  .gbox strong { color: var(--a1); }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: linear-gradient(135deg, var(--a1), #22c55e); color: #0d1a0f; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .snum.or { background: var(--a2); }
+  .snum.rd { background: var(--a3); color: white; }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+  .scont strong.or { color: var(--a2); }
+  .scont strong.rd { color: var(--a3); }
+
+  /* Ulkus vs Duodeni visual */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 0.8rem 0; }
+  .cbox { border-radius: 8px; padding: 0.9rem; border: 1px solid var(--border); }
+  .cbox-title { font-family: 'Urbanist', sans-serif; font-size: 1rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .cb-gn { background: rgba(74,222,128,0.07); border-color: rgba(74,222,128,0.2); }
+  .cb-gn .cbox-title { color: var(--a1); }
+  .cb-or { background: rgba(251,146,60,0.07); border-color: rgba(251,146,60,0.2); }
+  .cb-or .cbox-title { color: var(--a2); }
+
+  /* patient language */
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; }
+  .pt-table td:nth-child(3) { color: #fbbf24; font-size: 0.82rem; }
+  .pt-table td:nth-child(4) { color: var(--info); font-size: 0.81rem; font-style: italic; }
+
+  @media (max-width: 700px) {
+    .grid, .compare-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Ulkuskrankheit</h1>
+  <div class="sub">Ulcus ventriculi · Ulcus duodeni · OGI-Blutung · H. pylori · FSP Leitfaden</div>
+  <div class="timer-badge">⏱ 20 Min. Arztbrief · 20 Min. AA-Gespräch</div>
+</div>
+
+
+<!-- ═══════════ KAPITEL 1: SYMPTOME & KLINIK ═══════════ -->
+<div class="chapter-header ch1">
+  <div class="chapter-num">01</div>
+  <div class="ch-t">
+    <h2>Symptome &amp; Klinik</h2>
+    <p>Ulcus ventriculi vs. Ulcus duodeni · Risikofaktoren · Typischer Patient</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Leitsymptom: Epigastrische Schmerzen</h3>
+    <h4>Schmerzcharakter</h4>
+    <span class="tag gn">Epigastrisch (Oberbauch)</span>
+    <span class="tag gn">Drückend / krampfartig / stechend</span>
+    <span class="tag gn">Intermittierend (kommen und gehen)</span>
+    <span class="tag gn">Nahrungsabhängigkeit! (immer fragen)</span>
+
+    <h4>Begleitsymptome</h4>
+    <span class="tag or">Nausea / Übelkeit</span>
+    <span class="tag or">Sodbrennen / Aufstoßen</span>
+    <span class="tag or">Appetitlosigkeit (Inappetenz)</span>
+    <span class="tag or">Schlafstörungen (Nüchternschmerz!)</span>
+    <span class="tag rd">Hämatemesis (Blut beim Erbrechen)</span>
+    <span class="tag rd">Meläna (teerartiger Stuhl)</span>
+
+    <h4>Alarmsymptome → sofortige Endoskopie!</h4>
+    <span class="tag rd">Hämatemesis</span>
+    <span class="tag rd">Meläna</span>
+    <span class="tag rd">Gewichtsverlust</span>
+    <span class="tag rd">Dysphagie</span>
+    <span class="tag rd">Anämiezeichen (Blässe, Schwindel)</span>
+
+    <div class="wbox">
+      <strong>Schlüsselfrage:</strong> „Werden die Schmerzen nach dem Essen besser oder schlimmer?" → Ventriculi: nach Essen schlimmer. Duodeni: nach Essen besser (Nüchternschmerz!). Diese Frage trennt beide Formen!
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Ulcus ventriculi vs. Ulcus duodeni</h3>
+    <div class="compare-grid">
+      <div class="cbox cb-gn">
+        <div class="cbox-title">Ulcus ventriculi</div>
+        <div style="font-size:0.82rem;line-height:1.8">
+          <span style="color:var(--a1)">Schmerz nach Essen</span><br>
+          Kleine Kurvatur / Antrum<br>
+          Karzinomrisiko! (~10%)<br>
+          → Biopsie obligat!<br>
+          HP in ~75%<br>
+          Kontroll-ÖGD nach 4–6 Wo.
+        </div>
+      </div>
+      <div class="cbox cb-or">
+        <div class="cbox-title">Ulcus duodeni</div>
+        <div style="font-size:0.82rem;line-height:1.8">
+          <span style="color:var(--a2)">Nüchternschmerz</span><br>
+          (nachts, morgens früh!)<br>
+          Bulbus duodeni<br>
+          Fast nie maligne<br>
+          HP in &gt;90%<br>
+          Biopsie nicht zwingend
+        </div>
+      </div>
+    </div>
+
+    <h4>Typischer Prüfungspatient</h4>
+    <div style="background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.2);border-radius:8px;padding:0.8rem;font-size:0.84rem;line-height:1.9;margin-top:0.4rem">
+      · 35–50 Jahre, <strong>Apotheker / Angestellter mit Stress</strong><br>
+      · Seit Jahren <strong>Ibuprofen / ASS</strong> wegen Rückenschmerzen<br>
+      · <strong>Rauchen + Alkohol</strong><br>
+      · <span style="color:var(--a3)">Keine PPI-Prophylaxe!</span><br>
+      · aHT + Hyperlipidämie (→ Metoprolol + Statin)<br>
+      · Voroperation: <strong>Appendektomie, Discusprolaps-OP</strong>
+    </div>
+    <div class="wbox" style="margin-top:0.8rem">
+      <strong>Aus Freiburg 2023:</strong> Patient war Apotheker und nahm Valium eigenständig ein. → Sensibles Thema ansprechen: „Ich verstehe, dass Sie als Apotheker Erfahrung haben, aber Valium sollte nur unter ärztlicher Aufsicht eingenommen werden."
+    </div>
+  </div>
+</div>
+
+<!-- RISIKOFAKTOREN -->
+<div class="full">
+  <div class="card">
+    <h3>Risikofaktoren – immer systematisch abfragen!</h3>
+    <table>
+      <tr><th>Risikofaktor</th><th>Mechanismus</th><th>Prüfungsrelevanz</th></tr>
+      <tr><td><span class="hl">Ibuprofen / ASS / NSAR</span></td><td>Prostaglandine ↓ → Schleimhautschutz ↓, Säure ↑</td><td>⭐ Häufigste Ursache! Ibuprofen immer stoppen!</td></tr>
+      <tr><td><span class="hl">Helicobacter pylori</span></td><td>Säuresekretion ↑, Schleimbildung ↓</td><td>⭐ Wichtigste Ursache! HP-Test + Eradikation</td></tr>
+      <tr><td><span class="hlo">Rauchen</span></td><td>Schleimhautdurchblutung ↓, Heilung ↓</td><td>Immer fragen</td></tr>
+      <tr><td><span class="hlo">Alkohol</span></td><td>Direkte Schleimhautschädigung, Säure ↑</td><td>Immer fragen</td></tr>
+      <tr><td><span class="hlo">Stress</span></td><td>Kortisol ↑ → Schleimhautschutz ↓</td><td>Beruf? Stress bei der Arbeit?</td></tr>
+      <tr><td><span class="hlo">Kaffee / scharfes Essen</span></td><td>Säureproduktion ↑</td><td>Nahrungsauslöser fragen</td></tr>
+      <tr><td>Glucocorticoide</td><td>In Kombination mit NSAR: 10–15× erhöhtes Risiko!</td><td>Medikamentenliste genau prüfen</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- ═══════════ KAPITEL 2: ARZTBRIEF ═══════════ -->
+<div class="chapter-header ch2">
+  <div class="chapter-num">02</div>
+  <div class="ch-t">
+    <h2>Arztbrief-Template</h2>
+    <p>Ulcus ventriculi · Ulcus duodeni · OGI-Blutung</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3>Arztbrief: Ulkuskrankheit (Standard)</h3>
+    <div class="fb">
+Herr [Name], ein [Alter]-jähriger Patient, stellte sich bei uns wegen
+<span class="hl">seit [X] Tagen / Wochen bestehender, intermittierender, krampfartiger,
+epigastrischer Oberbauchschmerzen</span> vor (NRS [X]/10).<br><br>
+Die Schmerzen seien <span class="hl">nahrungsabhängig</span>:<br>
+[Ulcus ventriculi:] Die Schmerzen würden sich <span class="hl">nach Nahrungsaufnahme verschlimmern</span>
+und im Nüchternzustand verbessern.<br>
+[Ulcus duodeni:] Der Patient berichtete über
+<span class="hlo">Nüchternschmerzen</span> (insbesondere nachts und morgens früh),
+die sich nach dem Essen <span class="hlo">besserten</span>.<br><br>
+Begleitend klagte er über <span class="hl">Nausea, Sodbrennen und Inappetenz</span>.<br><br>
+<span class="cm">// Verneinte Symptome:</span><br>
+Hämatemesis, Meläna, Dysphagie und Gewichtsverlust wurden verneint.
+    </div>
+
+    <h4>Risikofaktoren / Medikamente – entscheidend!</h4>
+    <div class="fb">
+<span class="hlr">Wichtig:</span> Der Patient nehme regelmäßig
+<span class="hl">Ibuprofen [X] mg bei Bedarf</span> wegen Rückenschmerzen
+<span class="hlr">ohne Magenschutz (kein PPI)</span> ein.<br>
+Außerdem nehme er ASS 100 mg [1-0-0] ein (kardioprotektiv).<br><br>
+Als Vorerkrankungen seien bekannt:<br>
+· <span class="hl">Arterielle Hypertonie</span> (seit [X] Jahren)<br>
+· Hyperlipidämie · Rückenschmerzen (Diskusprolaps LWS)<br>
+· Ggf. Commotio cerebri / Appendektomie<br><br>
+Nikotinkonsum: [X] Zigaretten täglich seit [X] Jahren ([X] Pack Years).<br>
+Alkohol: [täglich / gelegentlich].<br>
+Der Patient stehe unter erheblichem <span class="hl">beruflichem Stress</span>.
+    </div>
+
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: Ulcus ventriculi / Ulcus duodeni</span>
+<span class="cm">// Je nach Schmerzcharakter</span><br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlw">Gastritis</span> – ähnliche Symptomatik, kein tiefer Wanddefekt<br>
+· <span class="hlw">Pankreatitis</span> – gürtelförmige Schmerzen, Lipase/Amylase ↑<br>
+· <span class="hlw">Cholelithiasis / Cholezystitis</span> – rechtsseitiger Oberbauch, fettige Mahlzeiten<br>
+· <span class="hlw">Gastroösophageale Refluxkrankheit (GERD)</span> – Sodbrennen, retrosternal<br>
+· <span class="hlr">Magenkarzinom</span> – immer ausschließen (besonders beim Ulcus ventriculi!)<br>
+· <span class="hlw">KHK / Herzinfarkt</span> – DD bei retrosternaler Ausstrahlung! → EKG, Troponin<br>
+· Depression / psychosomatisch
+    </div>
+
+    <h4>Diagnostik</h4>
+    <div class="fb">
+Zur weiteren Abklärung schlage ich vor:<br><br>
+· Körperliche Untersuchung: Vitalparameter, <span class="hl">Druckschmerz im Epigastrium</span>,
+  Abwehrspannung (Perforation?), Darmgeräusche<br>
+· Labor: BB (<span class="hl">Hb ↓ bei Blutung!</span>), CRP, BSG, <span class="hl">Lipase / Amylase</span>
+  (DD Pankreatitis), Leberenzyme (GOT, GPT, gGT), <span class="hlr">Troponin</span> (DD KHK!)<br>
+· <span class="hl">Abdomensonographie</span>: Leber, Gallenblase, Pankreas<br>
+· <span class="hl">ÖGD (Ösophago-Gastro-Duodenoskopie)</span> = Goldstandard!<br>
+  → Biopsien aus Ulkusrand (Karzinom ausschließen), HP-Urease-Schnelltest<br>
+· Ggf. <span class="hl">Röntgen-Thorax</span>: Freie Luft unter dem Zwerchfell (Perforation?)<br>
+· EKG (DD Herzinfarkt!)
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb or">
+<span class="hlo">1. NSAR sofort absetzen!</span> (Ibuprofen → stoppen, Paracetamol als Alternative)<br><br>
+<span class="hlo">2. Protonenpumpeninhibitor (PPI):</span><br>
+· Z.B. Omeprazol / Pantoprazol 40 mg [1-0-0]<br>
+· Säurehemmung → Wundheilung<br><br>
+<span class="hlo">3. Bei HP-Nachweis: Eradikationstherapie!</span><br>
+· <span class="hl">Erstlinie: Bismut-Quadrupeltherapie</span>
+  (PPI + Bismut + Tetracyclin + Metronidazol)<br>
+· Alternativ: Französische Tripeltherapie (PPI + Clarithromycin + Amoxicillin)<br>
+· Dauer: 7–14 Tage<br><br>
+<span class="hlo">4. Allgemeine Maßnahmen:</span><br>
+· <span class="hl">Rauchstopp</span>, Alkoholkarenz, Stressreduktion<br>
+· Kaffee und scharfes Essen meiden<br>
+· Regelmäßige kleine Mahlzeiten<br><br>
+<span class="hlo">5. Kontrollendoskopie:</span><br>
+· Ulcus ventriculi: <span class="hl">immer nach 4–6 Wochen</span> (Karzinom ausschließen!)<br>
+· Ulcus duodeni: nur bei Komplikationen oder HP-Negativität
+    </div>
+
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler aus den Fällen:</strong><br>
+      – Ibuprofen weiterlaufen lassen → sofort absetzen!<br>
+      – Kein Troponin bei DD KHK → Prüfer fragt: „Warum Röntgen-Thorax?" → Pneumoperitoneum (Perforation)!<br>
+      – Vergessen: Kontrollendoskopie beim Ulcus ventriculi ist obligat – Karzinom ausschließen!<br>
+      – Triple-Therapie als Erstlinie nennen → veraltet! Aktuell: Bismut-Quadrupeltherapie
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════ KAPITEL 3: OGI-BLUTUNG ═══════════ -->
+<div class="chapter-header ch3">
+  <div class="chapter-num">03</div>
+  <div class="ch-t">
+    <h2>OGI-Blutung – Notfall!</h2>
+    <p>Hämatemesis · Meläna · Forrest-Klassifikation · Blutstillung</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3 class="rd">Alarmsymptome – sofort handeln!</h3>
+    <span class="tag rd">Hämatemesis (Blut beim Erbrechen)</span>
+    <span class="tag rd">Meläna (teerartiger, schwarzer Stuhl)</span>
+    <span class="tag rd">Hämatochezie (rotes Blut im Stuhl)</span>
+    <span class="tag rd">Anämiezeichen: Blässe, Schwindel, Tachykardie</span>
+    <span class="tag rd">Schock: Hypotension, Tachykardie, Kaltschweißigkeit</span>
+
+    <h4>Sofortmaßnahmen bei akuter OGI-Blutung</h4>
+    <div class="step">
+      <div class="snum rd">1</div>
+      <div class="scont"><strong class="rd">Venösen Zugang legen</strong>
+      Großlumiger Zugang. Blutentnahme: BB, Gerinnung, Kreuzblut (Bluttransfusion!)</div>
+    </div>
+    <div class="step">
+      <div class="snum rd">2</div>
+      <div class="scont"><strong class="rd">Vitalparameter + Kreislaufstabilisierung</strong>
+      RR, Puls, SpO₂. Bei Schock: Volumenersatz, ggf. Bluttransfusion</div>
+    </div>
+    <div class="step">
+      <div class="snum rd">3</div>
+      <div class="scont"><strong class="rd">PPI i.v. sofort</strong>
+      Esomeprazol / Pantoprazol 80 mg Bolus → 8 mg/h Infusion</div>
+    </div>
+    <div class="step">
+      <div class="snum rd">4</div>
+      <div class="scont"><strong class="rd">ÖGD notfallmäßig!</strong>
+      Diagnose UND gleichzeitige Blutstillung: Unterspritzen (Adrenalin), Clip, Sklerosierung</div>
+    </div>
+    <div class="step">
+      <div class="snum rd">5</div>
+      <div class="scont"><strong class="rd">Intensivstation</strong>
+      Monitoring, engmaschige Kontrollen, chirurgisches Konsil bei Versagen</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="rd">Differentialdiagnosen OGI-Blutung</h3>
+    <table>
+      <tr><th>DD</th><th>Hinweis</th></tr>
+      <tr><td><span class="hl">Ulcus ventriculi / duodeni</span></td><td>Häufigste Ursache! NSAR-Anamnese</td></tr>
+      <tr><td><span class="hlo">Ösophagusvarizenblutung</span></td><td>Leberzirrhose, Alkohol, Splenomegalie</td></tr>
+      <tr><td><span class="hlo">Mallory-Weiss-Syndrom</span></td><td>Nach heftigem Erbrechen, Alkohol</td></tr>
+      <tr><td><span class="hlr">Magenkarzinom</span></td><td>Gewichtsverlust, Dysphagie, Alter</td></tr>
+      <tr><td>Gastritis</td><td>Diffus, kein tiefer Defekt</td></tr>
+      <tr><td>Ösophaguskarzinom</td><td>Dysphagie, Gewichtsverlust</td></tr>
+    </table>
+
+    <h4 style="margin-top:0.8rem">Forrest-Klassifikation (Prüfungsfrage!)</h4>
+    <table>
+      <tr><th>Klasse</th><th>Befund</th><th>Risiko</th></tr>
+      <tr><td><span class="hlr">Ia</span></td><td>Spritzende arterielle Blutung</td><td class="hlr">Sehr hoch</td></tr>
+      <tr><td><span class="hlr">Ib</span></td><td>Sickerblutung</td><td class="hlr">Hoch</td></tr>
+      <tr><td><span class="hlo">IIa</span></td><td>Sichtbares Gefäß (kein Blut)</td><td class="hlo">Mittel</td></tr>
+      <tr><td><span class="hlo">IIb</span></td><td>Koagelbedecktes Ulkus</td><td class="hlo">Mittel</td></tr>
+      <tr><td><span class="hl">IIc</span></td><td>Schwarzer Ulkusgrund (Hämatin)</td><td class="hl">Gering</td></tr>
+      <tr><td><span class="hl">III</span></td><td>Reines Ulkus ohne Blutungszeichen</td><td class="hl">Sehr gering</td></tr>
+    </table>
+    <div class="wbox">
+      <strong>Forrest I + IIa/b:</strong> Endoskopische Blutstillung obligat! Forrest IIc + III: Konservative Therapie ausreichend.
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════ KAPITEL 4: PATIENTENSPRACHE ═══════════ -->
+<div class="chapter-header ch4">
+  <div class="chapter-num">04</div>
+  <div class="ch-t">
+    <h2>Fachbegriffe → Patientensprache</h2>
+    <p>Wie erkläre ich dem Patienten, was er hat?</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="yw">Übersetzungstabelle: Fachbegriff → einfaches Deutsch</h3>
+    <table class="pt-table">
+      <tr>
+        <th>Fachbegriff</th>
+        <th>Medizinisch</th>
+        <th>Patientensprache</th>
+        <th>Typischer Patientensatz</th>
+      </tr>
+      <tr><td><strong>Ulcus ventriculi</strong></td><td>Magenulkus</td><td>„Ein Wundfleck (offene Stelle) in der Magenwand, die durch Magensäure entstanden ist."</td><td>„Was genau habe ich am Magen?"</td></tr>
+      <tr><td><strong>Ulcus duodeni</strong></td><td>Zwölffingerdarmulkus</td><td>„Eine offene Stelle am Anfang des Dünndarms, kurz hinter dem Magen."</td><td>–</td></tr>
+      <tr><td><strong>ÖGD / Gastroskopie</strong></td><td>Ösophago-Gastro-Duodenoskopie</td><td>„Eine Magenspiegelung: Wir führen einen dünnen, flexiblen Schlauch mit einer Kamera durch den Mund bis in den Magen ein. Sie bekommen vorher ein Betäubungsmittel und sind entspannt."</td><td>„Magenspiegelung – was ist das?"</td></tr>
+      <tr><td><strong>Helicobacter pylori (HP)</strong></td><td>Magenbakterium</td><td>„Ein kleines Bakterium, das in der Magenwand lebt und Geschwüre verursachen kann. Mit Antibiotika können wir es abtöten."</td><td>„Bin ich angesteckt?"</td></tr>
+      <tr><td><strong>Eradikationstherapie</strong></td><td>HP-Behandlung</td><td>„Eine Kombination aus Antibiotika und Magenschutzmitteln über 7–14 Tage, die das Magenbakterium vollständig beseitigt."</td><td>„Wie lange muss ich die Tabletten nehmen?"</td></tr>
+      <tr><td><strong>PPI / Protonenpumpeninhibitor</strong></td><td>Säureblocker</td><td>„Tabletten, die die Säureproduktion im Magen stark verringern und die Wunde heilen lassen."</td><td>„Wozu bekomme ich diese Tabletten?"</td></tr>
+      <tr><td><strong>Hämatemesis</strong></td><td>Bluterbrechen</td><td>„Blut beim Erbrechen – das ist ein Zeichen, dass im Magen geblutet wird."</td><td>„Ich habe Blut gespuckt!"</td></tr>
+      <tr><td><strong>Meläna</strong></td><td>Teerstuhl</td><td>„Schwarzer, teerartiger Stuhl – das entsteht, wenn Blut aus dem Magen oder dem oberen Darm verdaut wird."</td><td>„Mein Stuhl ist schwarz."</td></tr>
+      <tr><td><strong>Epigastrisch</strong></td><td>Oberbauch</td><td>„Der Bereich direkt unterhalb des Brustbeins, oberhalb des Bauchnabels – da wo der Magen liegt."</td><td>–</td></tr>
+      <tr><td><strong>Nüchternschmerz</strong></td><td>Schmerz bei leerem Magen</td><td>„Schmerzen, wenn Sie nichts gegessen haben – besonders morgens früh oder nachts. Das ist typisch für ein Zwölffingerdarmgeschwür."</td><td>„Die Schmerzen kommen immer nachts."</td></tr>
+      <tr><td><strong>Perforation</strong></td><td>Durchbruch der Magenwand</td><td>„Das Geschwür hat sich durch die Magenwand gefressen – das ist ein Notfall. Es entsteht dann eine Bauchfellentzündung."</td><td>„Ist das lebensgefährlich?"</td></tr>
+      <tr><td><strong>Peritonitis</strong></td><td>Bauchfellentzündung</td><td>„Eine schwere Entzündung der Bauchhöhle – entsteht, wenn der Mageninhalt in den Bauch läuft."</td><td>–</td></tr>
+      <tr><td><strong>Endoskopische Blutstillung</strong></td><td>Blutstillung per Gastroskop</td><td>„Wir können die Blutung direkt bei der Magenspiegelung stoppen – durch Einspritzen von Medikamenten oder kleine Klammern."</td><td>„Brauche ich eine Operation?"</td></tr>
+      <tr><td><strong>NSAR</strong></td><td>Ibuprofen / ASS / Diclofenac</td><td>„Schmerzmedikamente wie Ibuprofen können die Magenwand schädigen, weil sie den natürlichen Schutzfilm im Magen abbauen."</td><td>„Warum darf ich kein Ibuprofen nehmen?"</td></tr>
+      <tr><td><strong>Magenkarzinom</strong></td><td>Magenkrebs</td><td>„Ein bösartiger Tumor im Magen. Deshalb müssen wir bei einem Magengeschwür immer eine Gewebeprobe entnehmen, um das auszuschließen."</td><td>„Habe ich Krebs?"</td></tr>
+      <tr><td><strong>Kontrollendoskopie</strong></td><td>Nachsorge-ÖGD</td><td>„Wir schauen nach 4–6 Wochen nochmal nach, ob das Geschwür vollständig abgeheilt ist."</td><td>„Muss ich nochmal zur Spiegelung?"</td></tr>
+      <tr><td><strong>Lipase / Amylase</strong></td><td>Bauchspeicheldrüsenenzyme</td><td>„Blutwerte, die uns zeigen, ob die Bauchspeicheldrüse entzündet ist – das wäre eine andere mögliche Ursache für die Schmerzen."</td><td>–</td></tr>
+      <tr><td><strong>Inappetenz</strong></td><td>Appetitlosigkeit</td><td>„Kein Hunger haben, kein Appetit."</td><td>„Ich kann nichts mehr essen."</td></tr>
+      <tr><td><strong>Stressulkus</strong></td><td>Durch Stress verursachtes Ulkus</td><td>„Wenn man lange unter großem körperlichen oder seelischen Druck steht, kann das Geschwüre im Magen auslösen."</td><td>„Hat mein Stress damit etwas zu tun?"</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PATIENTENREAKTIONEN -->
+<div class="full">
+  <div class="card">
+    <h3 class="yw">Typische Patientenreaktionen – Musterantworten</h3>
+    <div class="fb yw">
+<span class="cm">// Diese Situationen kamen in echten Prüfungen vor!</span><br><br>
+🧑 „Ich nehme Ibuprofen als Apotheker eigenständig – ich weiß, was ich tue."<br>
+→ <span class="hlw">„Ich verstehe, dass Sie als Apotheker viel über Medikamente wissen. Aber gerade
+bei einem Magengeschwür ist Ibuprofen kontraindiziert – es greift den Magenschutz
+an und kann die Heilung verhindern. Als kurzfristige Alternative empfehle ich Ihnen
+Paracetamol."</span><br><br>
+🧑 „Was habe ich denn? Sagen Sie mir die Diagnose!"<br>
+→ <span class="hlw">„Ich habe den Verdacht auf ein Magengeschwür. Das ist eine offene Stelle in der
+Magenwand. Um das zu bestätigen, müssen wir eine Magenspiegelung machen."</span><br><br>
+🧑 „Eine Magenspiegelung? Ist das schmerzhaft?"<br>
+→ <span class="hlw">„Wir machen das unter Beruhigungsmittel, sodass Sie entspannt sind und kaum
+etwas merken. Der Schlauch ist sehr dünn und flexibel."</span><br><br>
+🧑 „Muss ich aufhören zu rauchen? Das werde ich nicht tun."<br>
+→ <span class="hlw">„Ich verstehe das. Aber Rauchen verlangsamt die Heilung des Geschwürs erheblich.
+Ich würde Ihnen zumindest empfehlen, es zu reduzieren. Wir können Sie dabei unterstützen."</span><br><br>
+🧑 „Brauche ich eine Operation?"<br>
+→ <span class="hlw">„In den meisten Fällen reichen Medikamente vollständig aus. Eine Operation ist nur
+in sehr seltenen Fällen nötig – zum Beispiel, wenn das Geschwür ein Loch in den Magen
+gemacht hat oder stark blutet."</span><br><br>
+🧑 „Habe ich Krebs?"<br>
+→ <span class="hlw">„Das kann ich Ihnen heute noch nicht sagen. Deshalb werden wir bei der
+Magenspiegelung eine kleine Gewebeprobe entnehmen, die dann untersucht wird.
+In den meisten Fällen handelt es sich nicht um Krebs – aber wir müssen das sicher ausschließen."</span>
+    </div>
+  </div>
+</div>
+
+<!-- PRÜFUNGSFRAGEN -->
+<div class="sdiv"><span>Prüfungsfragen – aus allen Städten</span></div>
+<div class="grid">
+  <div class="card">
+    <h3>Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th></tr>
+      <tr><td>Risikofaktoren Ulkus?</td><td>NSAR / Ibuprofen (#1!), HP, Rauchen, Alkohol, Stress, Kaffee, scharfes Essen, Alter &gt;65 J.</td></tr>
+      <tr><td>Wichtigste Diagnostik?</td><td><strong>ÖGD (Gastroskopie)</strong> = Goldstandard + Biopsie (HP, Karzinom)</td></tr>
+      <tr><td>Warum Biopsie beim Magenulkus?</td><td>~10% der Ulcera ventriculi &gt;2 cm sind maligne → Magenkarzinom ausschließen!</td></tr>
+      <tr><td>Warum Röntgen-Thorax?</td><td>Freie Luft unter dem Zwerchfell = <strong>Pneumoperitoneum</strong> → Perforation!</td></tr>
+      <tr><td>Therapie bei HP-positiv?</td><td><strong>Bismut-Quadrupeltherapie</strong>: PPI + Bismut + Tetracyclin + Metronidazol (14 Tage)</td></tr>
+      <tr><td>Was statt Ibuprofen?</td><td><strong>Paracetamol</strong> bei Rückenschmerzen + Physiotherapie</td></tr>
+      <tr><td>Wie beweist man obere GI-Blutung?</td><td>Hämoccult-Test + <strong>Hb ↓ im BB</strong> + ÖGD</td></tr>
+      <tr><td>Was kann im BB gesehen werden?</td><td>Anämie (Hb ↓), Leukozytose (Infektion), Thrombozyten (Gerinnungsstatus)</td></tr>
+      <tr><td>Kontrollendoskopie – wann?</td><td>Ulcus ventriculi: <strong>immer nach 4–6 Wochen</strong>. Ulcus duodeni: nur bei Komplikationen</td></tr>
+      <tr><td>Was ist Meläna?</td><td>Teerartiger, schwarzer Stuhl durch Verdauung von Blut aus dem oberen GI-Trakt</td></tr>
+      <tr><td>DD bei retrosternaler Ausstrahlung?</td><td><strong>KHK / Herzinfarkt!</strong> → EKG + Troponin obligat</td></tr>
+      <tr><td>Was ist das Zollinger-Ellison-Syndrom?</td><td>Gastrinom (Tumor in Pankreas/Duodenum) → Gastrin ↑↑ → exzessive Säureproduktion → multiple Ulzera</td></tr>
+      <tr><td>Nach Abheilung – was noch?</td><td>Kontrollendoskopie + HP-Atemtest / Stuhlantigentest → Eradikationserfolg prüfen!</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3 class="yw">Zeitplan &amp; Fachbegriffe</h3>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-gn">Vorbereitung</span></td><td><strong>5 Min</strong></td><td>Schmerzcharakter? Nach Essen besser oder schlechter? Ibuprofen? PPI?</td></tr>
+      <tr><td><span class="badge badge-or">Patientengespräch</span></td><td><strong>10 Min</strong></td><td>Schmerz (wann, wie?), Meläna/Hämatemesis?, Medikamente (NSAR!), Stress, Rauchen, Alkohol</td></tr>
+      <tr><td><span class="badge badge-rd">AA-Gespräch</span></td><td><strong>5 Min</strong></td><td>VD + DD + ÖGD-Aufklärung + Ibuprofen absetzen + Therapie (PPI, HP-Eradikation)</td></tr>
+    </table>
+
+    <h3 class="yw" style="margin-top:1.2rem">Fachbegriffe aus den Prüfungen</h3>
+    <div>
+      <span class="tag gn">Ulcus ventriculi / duodeni</span>
+      <span class="tag gn">Epigastrisch</span>
+      <span class="tag gn">Hämatemesis</span>
+      <span class="tag gn">Meläna</span>
+      <span class="tag gn">ÖGD / Gastroskopie</span>
+      <span class="tag gn">Helicobacter pylori</span>
+      <span class="tag gn">Eradikation</span>
+      <span class="tag gn">PPI (Protonenpumpeninhibitor)</span>
+      <span class="tag or">Gastritis</span>
+      <span class="tag or">Pankreatitis</span>
+      <span class="tag or">Cholezystitis</span>
+      <span class="tag or">Cholelithiasis</span>
+      <span class="tag or">Meteorismus</span>
+      <span class="tag or">Obstipation</span>
+      <span class="tag or">Inappetenz</span>
+      <span class="tag or">Sodbrennen</span>
+      <span class="tag rd">Magenkarzinom</span>
+      <span class="tag rd">Peritonitis</span>
+      <span class="tag rd">Perforation</span>
+      <span class="tag rd">Pneumoperitoneum</span>
+      <span class="tag rd">Forrest-Klassifikation</span>
+      <span class="tag rd">Blutstillung / Sklerosierung</span>
+      <span class="tag">Divertikulitis</span>
+      <span class="tag">Schizophrenie</span>
+      <span class="tag">Ikterus</span>
+      <span class="tag">Atrophie</span>
+      <span class="tag">Fibrose</span>
+      <span class="tag">Koloskopie</span>
+      <span class="tag">Palliative Therapie</span>
+      <span class="tag">Akromegalie</span>
+      <span class="tag">Urämie</span>
+    </div>
+
+    <div class="gbox" style="margin-top:1rem">
+      <strong>Tipp aus Stuttgart 23.03.2024:</strong> „Eine Minute vor dem Patienten nehmen und alle Anamnesepunkte aufschreiben – das kostet zwar Zeit, verhindert aber, wichtige Fragen zu vergessen. Die Kommission war damit einverstanden!"
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+  FSP Leitfaden · Ulkuskrankheit + OGI-Blutung + Patientensprache · Freiburg · Stuttgart · Karlsruhe · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

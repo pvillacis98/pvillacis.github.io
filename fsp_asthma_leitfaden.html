@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Asthma bronchiale</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #0a1628;
+    --card: #0f2040;
+    --accent: #38bdf8;
+    --accent2: #fb923c;
+    --accent3: #f43f5e;
+    --good: #34d399;
+    --warn: #fbbf24;
+    --text: #e2eeff;
+    --muted: #5a7fa8;
+    --border: #1e3a5f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.7;
+    padding: 2rem 1rem;
+  }
+
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+  }
+  .header::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    margin: 1.5rem auto 0;
+    border-radius: 2px;
+  }
+  .header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--good));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1.5px;
+  }
+  .header .sub {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .timer-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), #0ea5e9);
+    color: #0a1628;
+    padding: 0.3rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    letter-spacing: 0.3px;
+  }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+  }
+  .card h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: -0.3px;
+  }
+  .card h2.orange { color: var(--accent2); }
+  .card h2.red { color: var(--accent3); }
+  .card h2.green { color: var(--good); }
+  .card h2.warn { color: var(--warn); }
+
+  .card h3 {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin: 1rem 0 0.5rem;
+  }
+  .card h3:first-of-type { margin-top: 0; }
+
+  .tag {
+    display: inline-block;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.18rem 0.65rem;
+    border-radius: 5px;
+    font-size: 0.79rem;
+    margin: 0.12rem;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(255,255,255,0.03);
+  }
+  .tag.blue { background: rgba(56,189,248,0.1); border-color: rgba(56,189,248,0.3); color: var(--accent); }
+  .tag.orange { background: rgba(251,146,60,0.1); border-color: rgba(251,146,60,0.3); color: var(--accent2); }
+  .tag.red { background: rgba(244,63,94,0.1); border-color: rgba(244,63,94,0.3); color: var(--accent3); }
+  .tag.green { background: rgba(52,211,153,0.1); border-color: rgba(52,211,153,0.3); color: var(--good); }
+  .tag.warn { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); color: var(--warn); }
+
+  .formula-block {
+    background: rgba(0,0,0,0.3);
+    border-left: 3px solid var(--accent);
+    padding: 0.9rem 1.1rem;
+    border-radius: 0 8px 8px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.79rem;
+    line-height: 2;
+    margin: 0.6rem 0;
+    color: #c0d8f0;
+  }
+  .formula-block.orange { border-left-color: var(--accent2); }
+  .formula-block.green { border-left-color: var(--good); }
+  .formula-block.red { border-left-color: var(--accent3); }
+  .formula-block .comment {
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-style: italic;
+  }
+
+  .hl { color: var(--accent); font-weight: 600; }
+  .hl2 { color: var(--accent2); font-weight: 600; }
+  .hl3 { color: var(--accent3); font-weight: 600; }
+  .hlg { color: var(--good); font-weight: 600; }
+  .hlw { color: var(--warn); font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.5rem; }
+  th {
+    background: rgba(255,255,255,0.04);
+    padding: 0.5rem 0.8rem;
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.84rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .badge {
+    display: inline-block;
+    padding: 0.1rem 0.55rem;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+  .badge-blue { background: rgba(56,189,248,0.15); color: var(--accent); }
+  .badge-orange { background: rgba(251,146,60,0.15); color: var(--accent2); }
+  .badge-red { background: rgba(244,63,94,0.15); color: var(--accent3); }
+  .badge-green { background: rgba(52,211,153,0.15); color: var(--good); }
+  .badge-warn { background: rgba(251,191,36,0.15); color: var(--warn); }
+
+  .section-divider {
+    display: flex; align-items: center; gap: 1rem;
+    margin: 2rem 0 1.2rem;
+  }
+  .section-divider span {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem; color: var(--muted); white-space: nowrap; font-weight: 700;
+  }
+  .section-divider::before, .section-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  .warn-box {
+    background: rgba(251,191,36,0.07);
+    border: 1px solid rgba(251,191,36,0.2);
+    border-left: 3px solid var(--warn);
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+    color: #d4c090;
+  }
+  .warn-box strong { color: var(--warn); }
+
+  .error-box {
+    background: rgba(244,63,94,0.07);
+    border: 1px solid rgba(244,63,94,0.2);
+    border-left: 3px solid var(--accent3);
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+    color: #d4a0a8;
+  }
+  .error-box strong { color: var(--accent3); }
+
+  .good-box {
+    background: rgba(52,211,153,0.07);
+    border: 1px solid rgba(52,211,153,0.2);
+    border-left: 3px solid var(--good);
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+    color: #a0d4c0;
+  }
+  .good-box strong { color: var(--good); }
+
+  .step { display: flex; gap: 1rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .step-num {
+    width: 30px; height: 30px; min-width: 30px;
+    background: linear-gradient(135deg, var(--accent), #0ea5e9);
+    color: #0a1628;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem; font-weight: 700; margin-top: 0.05rem;
+  }
+  .step-content { flex: 1; font-size: 0.9rem; }
+  .step-content strong {
+    display: block; color: var(--accent);
+    font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 600;
+  }
+
+  /* Stufentherapie visual */
+  .stufen {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    margin: 0.8rem 0;
+  }
+  .stufe {
+    border-radius: 8px;
+    padding: 0.7rem 0.5rem;
+    text-align: center;
+    border: 1px solid var(--border);
+    font-size: 0.75rem;
+  }
+  .stufe-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+  .stufe-label { font-size: 0.68rem; color: var(--muted); margin-bottom: 0.4rem; }
+  .stufe-drug { font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; line-height: 1.5; }
+
+  .s1 { background: rgba(52,211,153,0.08); border-color: rgba(52,211,153,0.2); }
+  .s1 .stufe-num { color: var(--good); }
+  .s2 { background: rgba(56,189,248,0.08); border-color: rgba(56,189,248,0.2); }
+  .s2 .stufe-num { color: var(--accent); }
+  .s3 { background: rgba(251,146,60,0.08); border-color: rgba(251,146,60,0.2); }
+  .s3 .stufe-num { color: var(--accent2); }
+  .s4 { background: rgba(251,191,36,0.08); border-color: rgba(251,191,36,0.2); }
+  .s4 .stufe-num { color: var(--warn); }
+  .s5 { background: rgba(244,63,94,0.08); border-color: rgba(244,63,94,0.2); }
+  .s5 .stufe-num { color: var(--accent3); }
+
+  @media (max-width: 700px) {
+    .grid, .grid-3 { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2.2rem; }
+    .stufen { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Asthma bronchiale</h1>
+  <div class="sub">FSP Leitfaden · Freiburg &amp; Stuttgart · Exazerbation · Stufentherapie</div>
+  <div class="timer-badge">⏱ 20 Min. Arztbrief · 20 Min. AA-Gespräch</div>
+</div>
+
+<!-- SYMPTOME -->
+<div class="section-divider"><span>Leitsymptome &amp; Klinik</span></div>
+<div class="grid">
+  <div class="card">
+    <h2>Klassische Symptome – immer abfragen</h2>
+    <h3>Leitsymptome</h3>
+    <span class="tag blue">Dyspnoe (exspiratorisch!)</span>
+    <span class="tag blue">Giemen / Pfeifen beim Atmen</span>
+    <span class="tag blue">Trockener Husten</span>
+    <span class="tag blue">Engegefühl in der Brust</span>
+    <span class="tag blue">Tachypnoe</span>
+
+    <h3>Charakteristika</h3>
+    <span class="tag green">Anfallsartig</span>
+    <span class="tag green">Episodisch (symptomfreie Phasen!)</span>
+    <span class="tag green">Nachts / frühmorgens schlimmer</span>
+    <span class="tag green">Reversibel</span>
+
+    <h3>Auslöser – immer erfragen!</h3>
+    <span class="tag orange">Allergene (Pollen, Hausstaubmilben)</span>
+    <span class="tag orange">Infekte (Erkältung!)</span>
+    <span class="tag orange">Körperliche Anstrengung</span>
+    <span class="tag orange">Kalte Luft</span>
+    <span class="tag orange">Stress</span>
+    <span class="tag orange">ASS / Betablocker</span>
+    <span class="tag orange">Tabakrauch</span>
+
+    <div class="warn-box">
+      <strong>Aus Fall Freiburg 17.03.2026:</strong> Patient putzt sich nach Spray die Zähne → das ist das ICS! Nach Kortikosteroid-Inhalator immer Zähne putzen wegen Mundsoor. Zeigt: Medikamente identifizieren auch wenn Patient den Namen nicht kennt!
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="orange">Asthma vs. COPD – die wichtigste DD</h2>
+    <table>
+      <tr><th>Merkmal</th><th>Asthma</th><th>COPD</th></tr>
+      <tr><td>Alter</td><td class="hl">Kinder/Junge</td><td>ab 50. LJ</td></tr>
+      <tr><td>Ätiologie</td><td class="hl">Allergie / Infekt</td><td class="hl2">Rauchen!</td></tr>
+      <tr><td>Verlauf</td><td class="hl">Episodisch, symptomfreie Phasen</td><td>Chronisch progredient</td></tr>
+      <tr><td>Dyspnoe</td><td>Anfallsartig</td><td>Belastungsdyspnoe</td></tr>
+      <tr><td>Obstruktion</td><td class="hlg">Reversibel ✓</td><td class="hl3">Irreversibel ✗</td></tr>
+      <tr><td>DLCO</td><td class="hlg">Normal</td><td class="hl3">↓ (Emphysem)</td></tr>
+      <tr><td>FeNO</td><td class="hl">Erhöht</td><td>Normal</td></tr>
+      <tr><td>Eosinophile</td><td class="hl">Erhöht</td><td>Normal</td></tr>
+      <tr><td>ICS-Ansprechen</td><td class="hlg">Gut ✓</td><td>Weniger gut</td></tr>
+      <tr><td>Therapie-Besonderheit</td><td>ICS + LABA</td><td>LAMA! (Tiotropium)</td></tr>
+    </table>
+    <div class="warn-box">
+      <strong>Prüfungsfrage Freiburg:</strong> „Beziehung zwischen arterieller Hypertonie und COPD?" → <strong>ACE-Hemmer-Husten!</strong> (Ramipril → trockener Husten → wichtige DD bei Asthma-Verdacht)
+    </div>
+  </div>
+</div>
+
+<!-- ASTHMAFORMEN -->
+<div class="full">
+  <div class="card">
+    <h2>Asthmaformen – Prüfungsfrage: „Welche Formen gibt es?"</h2>
+    <table>
+      <tr><th>Form</th><th>Synonym</th><th>Kriterium</th><th>Häufigkeit</th><th>Besonderheit</th></tr>
+      <tr>
+        <td><span class="hl">Allergisches Asthma</span></td>
+        <td>Extrinsisch</td>
+        <td>IgE-Antikörper nachweisbar + Allergenbezug</td>
+        <td>~30%</td>
+        <td>Häufigste Form bei Kindern; Allergen-Immuntherapie (AIT) möglich</td>
+      </tr>
+      <tr>
+        <td><span class="hl2">Nicht-allergisches Asthma</span></td>
+        <td>Intrinsisch</td>
+        <td>Kein IgE-Nachweis, Auslöser: Infekte</td>
+        <td>30–50% Erwachsene</td>
+        <td>Eher ab 40. LJ; schlechteres Ansprechen auf AIT</td>
+      </tr>
+      <tr>
+        <td><span class="hlg">Mischform</span></td>
+        <td>–</td>
+        <td>Beides kombiniert</td>
+        <td>~40%</td>
+        <td>Häufigste Form insgesamt</td>
+      </tr>
+      <tr>
+        <td><span class="hlw">Belastungsasthma</span></td>
+        <td>Anstrengungsinduziert</td>
+        <td>Obstruktion nur bei körperlicher Belastung</td>
+        <td>–</td>
+        <td>Aufwärmphase! SABA vor Sport</td>
+      </tr>
+      <tr>
+        <td><span class="hl3">Analgetika-Asthma</span></td>
+        <td>Samter-Trias</td>
+        <td>ASS/NSAR-Intoleranz + Asthma + Polyposis nasi</td>
+        <td>–</td>
+        <td>Kein ASS / Ibuprofen!</td>
+      </tr>
+    </table>
+    <div class="good-box">
+      <strong>Antwort auf Prüfungsfrage:</strong> „Hauptformen: allergisches (extrinsisches) und nicht-allergisches (intrinsisches) Asthma, plus Mischformen. Weitere: Belastungsasthma, Analgetika-Asthma, GERD-assoziiertes Asthma, eosinophiles Asthma."
+    </div>
+  </div>
+</div>
+
+<!-- ARZTBRIEF -->
+<div class="section-divider"><span>Arztbrief – Formulierungen</span></div>
+<div class="full">
+  <div class="card">
+    <h2>Arztbrief-Template: Asthma bronchiale / Exazerbation</h2>
+
+    <h3>Einleitung</h3>
+    <div class="formula-block">
+Sehr geehrte Frau Kollegin, sehr geehrter Herr Kollege,<br>
+wir berichten Ihnen über den o.g. Patienten, der sich heute wegen seit
+[X Tagen / Wochen] bestehender Beschwerden notfallmäßig in unserer Praxis vorstellte.
+    </div>
+
+    <h3>Aktuelle Beschwerden</h3>
+    <div class="formula-block">
+Herr [Name], ein [Alter]-jähriger Patient, stellte sich bei uns wegen
+<span class="hl">seit ca. [X] Wochen bestehenden, anfallsartigen, exspiratorischen Dyspnoe</span>
+mit <span class="hl">Giemen, Engegefühl in der Brust</span> und
+<span class="hl">trockenem Husten</span> vor.<br><br>
+<span class="comment">// Auslöser nennen:</span><br>
+Die Beschwerden seien nach einer <span class="hl">Atemwegsinfektion vor [X] Wochen</span> aufgetreten
+und hätten seitdem nicht vollständig abgeklungen. [Oder: Auslöser: Allergen / Anstrengung / Kälte]<br><br>
+Zusätzlich berichtete er über <span class="hl">Schlafstörungen (Insomnie)</span>
+infolge des nächtlichen Hustens sowie <span class="hl">Müdigkeit</span>.<br><br>
+<span class="comment">// Verneinte Symptome:</span><br>
+Fieber, Auswurf sowie Brustschmerzen wurden verneint.<br>
+<span class="comment">// Falls Auswurf vorhanden:</span><br>
+Der Patient berichtete über [gelbliches / schleimiges] Sputum.
+    </div>
+
+    <h3>Vegetative Anamnese</h3>
+    <div class="formula-block">
+Die vegetative Anamnese ist bis auf
+<span class="hl">Schlafstörungen (Insomnie)</span>
+infolge des nächtlichen Hustens unauffällig.
+    </div>
+
+    <h3>Vorerkrankungen / Medikamente</h3>
+    <div class="formula-block">
+Als Vorerkrankungen seien bekannt:
+<span class="hl">arterielle Hypertonie</span> (seit [X] Jahren),
+<span class="hl">Diabetes mellitus</span>, Prostatahyperplasie.<br><br>
+Medikamentös nimmt der Patient ein:<br>
+· Ramipril [X] mg [1-0-0]<br>
+· Metformin [X] mg<br>
+· <span class="hl">Inhalatives Kortikosteroid (ICS)</span> – nach Anwendung Zähne putzen<br>
+<span class="comment">// ACE-Hemmer → Hustenauslöser! Immer erwähnen als mögliche Ursache</span><br>
+<span class="comment">// Betablocker? → Kontraindiziert bei Asthma! Wichtige Frage</span>
+    </div>
+
+    <h3>Allergien &amp; Noxen</h3>
+    <div class="formula-block">
+Allergie: <span class="hl">Hausstaubmilbenallergie</span> (Niesen, Atembeschwerden) /
+<span class="hl">Pollenallergie</span> (Engegefühl in der Brust).<br>
+Nikotinkonsum: [Ehemaliger Raucher, ca. [X] pack years] / Nichtraucher.<br>
+Alkohol- und Drogenkonsum: verneint / [X].
+    </div>
+
+    <h3>Familienanamnese</h3>
+    <div class="formula-block">
+Der Bruder leide an <span class="hl">Asthma bronchiale</span> seit [X] Jahren.<br>
+Der Vater sei an <span class="hl">Lungenkarzinom</span> verstorben.<br>
+<span class="comment">// Wichtig: FA Asthma / Atopie = Risikofaktor. Lungenkarzinom → DD ansprechen!</span>
+    </div>
+
+    <h3>Verdachtsdiagnose</h3>
+    <div class="formula-block">
+<span class="hl">VD: Asthma bronchiale, V. a. akute Exazerbation</span><br><br>
+Die anamnestischen Angaben (anfallsartige exspiratorische Dyspnoe mit Giemen,
+trockener Husten, Engegefühl, Auslöser durch Atemwegsinfektion / Allergen,
+positive Familienanamnese für Asthma, bekannte Allergie) deuten auf ein
+<span class="hl">Asthma bronchiale mit akuter Exazerbation</span> hin.
+    </div>
+
+    <h3>Differentialdiagnosen</h3>
+    <div class="formula-block">
+<span class="hl">DD:</span><br>
+· <span class="hl2">COPD</span> – Spricht dafür: Raucheranamnese, Alter;
+  dagegen: episodischer Verlauf, Reversibilität<br>
+· <span class="hl2">ACE-Hemmer-induzierter Husten</span> (Ramipril!) – trockener Husten<br>
+· <span class="hl2">Pneumonie</span> – Spricht dafür: nach Infekt; dagegen: kein Fieber, kein eitriger Auswurf<br>
+· <span class="hl2">Lungenkarzinom</span> – Spricht dafür: Positive FA, Raucher, Gewichtsverlust<br>
+· <span class="hl2">Herzinsuffizienz (Asthma cardiale)</span> – Spricht dafür: Dyspnoe; dagegen: keine Ödeme<br>
+· <span class="hl2">Lungenembolie</span> – plötzliche Dyspnoe, Tachykardie
+    </div>
+
+    <h3>Diagnostik</h3>
+    <div class="formula-block">
+Zur weiteren Abklärung schlage ich vor:<br><br>
+· Körperliche Untersuchung: Vitalparameter, <span class="hl">Auskultation</span>
+  (Giemen, Brummen, verlängertes Exspirium), Perkussion (hypersonorer Klopfschall),
+  Pulsoxymetrie (SpO₂)<br>
+· <span class="hl">Spirometrie / Lungenfunktion</span>: FEV1, Tiffeneau-Index (FEV1/VC),
+  <span class="hl">Bronchospasmolysetest</span> (Reversibilität nach Salbutamol?)<br>
+· <span class="hl">Peak-Flow-Messung</span> (Verlaufsbeurteilung)<br>
+· Labor: BB, CRP, Differenzialblutbild (<span class="hl">Eosinophilie?</span>),
+  Gesamt-IgE, spezifische IgE-AK<br>
+· <span class="hl">Röntgen-Thorax</span> (Pneumonie ausschließen, Überblähungszeichen?)<br>
+· Allergiediagnostik: Prick-Test, spezifische IgE-AK<br>
+· Ggf. <span class="hl">Methacholin-Provokationstest</span> (bei fehlender Obstruktion in Ruhe)
+    </div>
+
+    <h3>Therapieempfehlung</h3>
+    <div class="formula-block orange">
+<span class="hl2">Akut (Exazerbation):</span><br>
+· <span class="hl">SABA inhalativ: Salbutamol</span> (kurzwirksames β2-Sympathomimetikum, Wirkung nach 20–30 s)<br>
+· Atemerleichternde Position (aufrecht sitzen, Arme aufgestützt)<br>
+· <span class="hl">Systemische Glucocorticoide</span> (Prednisolon p.o. oder i.v.) – NICHT inhalativ bei Akuttherapie!<br>
+· Sauerstoffgabe bei SpO₂ &lt; 94%<br>
+· Ggf. Ipratropiumbromid (SAMA) additiv<br><br>
+<span class="hl2">Langzeit (Stufentherapie, siehe unten):</span><br>
+· ICS als Basistherapie (ab Stufe 2)<br>
+· Bei unzureichender Kontrolle: ICS + LABA als Fixkombination<br>
+· Allergenkarenz, Allergen-Immuntherapie (AIT) bei allergischem Asthma<br>
+· Raucherentwöhnung, Patientenschulung
+    </div>
+
+    <div class="error-box">
+      <strong>⚠️ Wichtige Kontraindikationen / Fehler vermeiden:</strong><br>
+      – <strong>Betablocker sind bei Asthma kontraindiziert!</strong> (Bronchokonstriktion)<br>
+      – <strong>ASS / NSAR</strong> bei Analgetika-Asthma meiden<br>
+      – Bei Akuttherapie: ICS nur <strong>oral/i.v.</strong>, nicht inhalativ (zu langsamer Wirkeintritt)<br>
+      – LABA <strong>nie als Monotherapie</strong> – immer mit ICS kombinieren!
+    </div>
+  </div>
+</div>
+
+<!-- STUFENTHERAPIE -->
+<div class="section-divider"><span>Stufentherapie – Überblick</span></div>
+<div class="full">
+  <div class="card">
+    <h2 class="warn">Stufentherapie Asthma bronchiale (NVL 2020)</h2>
+    <div class="stufen">
+      <div class="stufe s1">
+        <div class="stufe-num">1</div>
+        <div class="stufe-label">Intermittierend</div>
+        <div class="stufe-drug">Bedarf:<br>SABA<br>(Salbutamol)<br>oder ICS+Formoterol</div>
+      </div>
+      <div class="stufe s2">
+        <div class="stufe-num">2</div>
+        <div class="stufe-label">Leicht persistierend</div>
+        <div class="stufe-drug">Dauer:<br>ICS<br>(niedrige Dosis)<br>+ SABA Bedarf</div>
+      </div>
+      <div class="stufe s3">
+        <div class="stufe-num">3</div>
+        <div class="stufe-label">Mittelgradig</div>
+        <div class="stufe-drug">Dauer:<br>ICS + LABA<br>(Fixkombi,<br>niedrig)</div>
+      </div>
+      <div class="stufe s4">
+        <div class="stufe-num">4</div>
+        <div class="stufe-label">Schwer</div>
+        <div class="stufe-drug">Dauer:<br>ICS + LABA<br>(mittel-hoch)<br>+ LAMA</div>
+      </div>
+      <div class="stufe s5">
+        <div class="stufe-num">5</div>
+        <div class="stufe-label">Sehr schwer</div>
+        <div class="stufe-drug">+ Biologicals:<br>Omalizumab<br>Anti-IL5<br>Dupilumab</div>
+      </div>
+    </div>
+    <div class="warn-box">
+      <strong>Abkürzungen merken:</strong> SABA = Salbutamol (kurz) · ICS = Kortison inhalativ (z.B. Budesonid) · LABA = Formoterol/Salmeterol (lang) · LAMA = Tiotropium (Anticholinergikum)
+    </div>
+    <div class="good-box" style="margin-top:0.8rem">
+      <strong>SMART-Konzept:</strong> ICS + Formoterol als <em>eine</em> Fixkombination für Dauer- UND Bedarfstherapie. Ab Stufe 1 möglich. Vorteil: Kein versehentliches LABA-Monopräparat.
+    </div>
+  </div>
+</div>
+
+<!-- PATIENTENVORSTELLUNG -->
+<div class="section-divider"><span>Patientenvorstellung (AA-Gespräch)</span></div>
+<div class="full">
+  <div class="card">
+    <h2>Struktur – 5 Schritte (~3–4 Minuten)</h2>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Stammdaten</strong>
+        „Ich möchte Ihnen Herrn [Name], einen [Alter]-jährigen [Beruf / Rentner], vorstellen."
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Vorstellungsgrund + Leitsymptome</strong>
+        „Der Patient stellte sich wegen seit [X] Wochen bestehender, anfallsartiger, <span class="hl">exspiratorischer Dyspnoe mit Giemen, Engegefühl in der Brust</span> und trockenem Husten vor. Die Beschwerden seien nach einer Atemwegsinfektion aufgetreten und hätten seitdem nicht vollständig abgeklungen."
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Relevante Anamnese (kurz!)</strong>
+        „Als Vorerkrankungen sind arterielle Hypertonie und Diabetes mellitus bekannt. Medikamentös nimmt er Ramipril und ein inhalatives Steroid ein. Er hat eine <span class="hl">Hausstaubmilbenallergie</span>. Früher rauchte er [X] pack years. Der Bruder leide ebenfalls an Asthma."
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>Verdachts- und Differentialdiagnose</strong>
+        „Meine Verdachtsdiagnose lautet <span class="hl">Asthma bronchiale mit akuter Exazerbation</span>. Differentialdiagnostisch kommen eine COPD, ein ACE-Hemmer-induzierter Husten sowie eine Pneumonie in Betracht. Ein Lungenkarzinom muss bei positiver Familienanamnese ausgeschlossen werden."
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <strong>Weiteres Procedere</strong>
+        „Zur Abklärung habe ich eine Spirometrie mit Bronchospasmolysetest sowie einen Röntgen-Thorax veranlasst. Akut würde ich mit inhalativem Salbutamol und systemischen Glucocorticoiden beginnen."
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <strong>Aus Fall Stuttgart 14.10.2024:</strong> Kandidat schrieb „komische Geräusche" – der OA lachte und fragte nach dem Fachbegriff. Antwort: <strong>Giemen / Stridor / Brummen</strong>. Fachbegriffe sind entscheidend – selbst wenn man sie kurz vergisst, sollte man sie parat haben.
+    </div>
+  </div>
+</div>
+
+<!-- PRÜFUNGSFRAGEN -->
+<div class="section-divider"><span>Häufige Prüfungsfragen</span></div>
+<div class="grid">
+  <div class="card">
+    <h2>Kommissionsfragen aus allen Fällen</h2>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th></tr>
+      <tr><td>Welche Asthmaformen gibt es?</td><td>Allergisch (extrinsisch), nicht-allergisch (intrinsisch), Mischform, Belastungsasthma, Analgetika-Asthma</td></tr>
+      <tr><td>Zusammenhang Asthma + Allergie?</td><td>Allergen → IgE-Antikörper → Mastzellaktivierung → Bronchokonstriktion = <strong>allergisches Asthma</strong></td></tr>
+      <tr><td>Zusammenhang aHT + COPD / Asthma?</td><td><strong>ACE-Hemmer (Ramipril)</strong> → trockener Husten (Bradykinin ↑) → wichtige DD!</td></tr>
+      <tr><td>Was erwarte ich bei der KU?</td><td>Giemen/Brummen (Auskultation), verlängertes Exspirium, hypersonorer Klopfschall, Tachypnoe</td></tr>
+      <tr><td>Könnte es Krebs sein?</td><td>Muss ausgeschlossen werden bei: pos. FA, Raucher, Hämoptysen, Gewichtsverlust → <strong>CT-Thorax</strong></td></tr>
+      <tr><td>Wie Pneumonie ausschließen?</td><td>Röntgen-Thorax (kein Infiltrat), Labor (CRP, BB) – kein Fieber, kein eitriger Auswurf</td></tr>
+      <tr><td>Akuttherapie Asthmaanfall?</td><td><strong>Salbutamol inhalativ</strong> + Sitzen + Glucocorticoide oral/i.v. + O₂ bei SpO₂ &lt;94%</td></tr>
+      <tr><td>Warum Zähne putzen nach Spray?</td><td>ICS (Kortison) → Mundsoor-Prophylaxe! Kandida-Infektion der Mundschleimhaut verhindern</td></tr>
+      <tr><td>Diagnostik Lungenfunktion?</td><td>Spirometrie: FEV1↓, Tiffeneau-Index↓. Bronchospasmolysetest: FEV1 steigt ≥12% + ≥200 mL nach Salbutamol = Asthma</td></tr>
+      <tr><td>Was ist Giemen / Stridor?</td><td>Giemen = exspiratorisches Atemgeräusch bei Obstruktion. Stridor = inspiratorisches Atemgeräusch bei Verengung der oberen Atemwege</td></tr>
+      <tr><td>Was darf man NICHT geben?</td><td><strong>Betablocker</strong> (Bronchokonstriktion!), Sedativa (Atemdepression), Mukolytika (akut)</td></tr>
+      <tr><td>Biologicals bei Asthma?</td><td>Stufe 5: Omalizumab (Anti-IgE), Mepolizumab (Anti-IL5), Dupilumab (Anti-IL4R)</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2 class="orange">Zeitplan &amp; Fachbegriffe</h2>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-green">Vorbereitung</span></td><td><strong>5 Min</strong></td><td>VD/DD skizzieren. Auslöser identifizieren. Medikamente analysieren.</td></tr>
+      <tr><td><span class="badge badge-blue">Patientengespräch</span></td><td><strong>10 Min</strong></td><td>Dyspnoe? Giemen? Husten (trocken/produktiv)? Auslöser? Allergie? Nächte? Vorbeschwerden?</td></tr>
+      <tr><td><span class="badge badge-orange">AA-Gespräch</span></td><td><strong>5 Min</strong></td><td>Vorstellung (3 Min) + Formen / DD / Therapie / KU-Befunde</td></tr>
+    </table>
+
+    <h3 style="margin-top:1rem">Atemgeräusche – Fachbegriffe</h3>
+    <div>
+      <span class="tag blue">Giemen (exspiratorisch)</span>
+      <span class="tag blue">Brummen</span>
+      <span class="tag blue">Stridor (inspiratorisch)</span>
+      <span class="tag blue">Pfeifen</span>
+      <span class="tag blue">Silent Lung (lebensbedrohlich!)</span>
+    </div>
+
+    <h3 style="margin-top:0.8rem">Fachbegriffe aus den Prüfungen</h3>
+    <div>
+      <span class="tag">Dyspnoe</span>
+      <span class="tag">Bronchospasmus</span>
+      <span class="tag">Bronchokonstriktion</span>
+      <span class="tag">Exazerbation</span>
+      <span class="tag">Spirometrie</span>
+      <span class="tag">Tiffeneau-Index</span>
+      <span class="tag">Bronchospasmolysetest</span>
+      <span class="tag">Immunoglobulin (IgE)</span>
+      <span class="tag">Eosinophilie</span>
+      <span class="tag">Salbutamol / SABA</span>
+      <span class="tag">Budesonid / ICS</span>
+      <span class="tag">Formoterol / LABA</span>
+      <span class="tag">Tiotropium / LAMA</span>
+      <span class="tag orange">Pankreatitis</span>
+      <span class="tag orange">Cholestase</span>
+      <span class="tag orange">Hepatomegalie</span>
+      <span class="tag orange">hereditär</span>
+      <span class="tag orange">Larynx</span>
+    </div>
+
+    <div class="good-box" style="margin-top:1rem">
+      <strong>Aus Stuttgart 14.10.2024:</strong> „Hauptsache ist deutsch und flüssig reden." Patient spielte schwäbischen Dialekt – Kandidat fragte einfach nach. Nachfragen ist erlaubt und zeigt kommunikative Kompetenz!
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+  FSP Leitfaden · Asthma bronchiale · Freiburg &amp; Stuttgart 2024–2026 · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

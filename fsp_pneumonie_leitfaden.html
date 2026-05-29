@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Pneumonie</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700;800&family=Hind:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #0e1c2a;
+    --card: #132333;
+    --accent: #38bdf8;
+    --accent2: #f87171;
+    --accent3: #a78bfa;
+    --good: #4ade80;
+    --warn: #fbbf24;
+    --text: #e2f0ff;
+    --muted: #4a7090;
+    --border: #1e3a50;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hind', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.7;
+    padding: 2rem 1rem;
+  }
+
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+  }
+  .header::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    margin: 1.5rem auto 0;
+    border-radius: 2px;
+  }
+  .header h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+  }
+  .header .sub {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .timer-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), #0ea5e9);
+    color: #0e1c2a;
+    padding: 0.3rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-top: 1rem;
+  }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+  }
+  .card h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .card h2.red { color: var(--accent2); }
+  .card h2.purple { color: var(--accent3); }
+  .card h2.green { color: var(--good); }
+  .card h2.warn { color: var(--warn); }
+
+  .card h3 {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin: 1rem 0 0.5rem;
+  }
+  .card h3:first-of-type { margin-top: 0; }
+
+  .tag {
+    display: inline-block;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.18rem 0.65rem;
+    border-radius: 5px;
+    font-size: 0.79rem;
+    margin: 0.12rem;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(255,255,255,0.03);
+  }
+  .tag.blue { background: rgba(56,189,248,0.1); border-color: rgba(56,189,248,0.3); color: var(--accent); }
+  .tag.red { background: rgba(248,113,113,0.1); border-color: rgba(248,113,113,0.3); color: var(--accent2); }
+  .tag.purple { background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.3); color: var(--accent3); }
+  .tag.green { background: rgba(74,222,128,0.1); border-color: rgba(74,222,128,0.3); color: var(--good); }
+  .tag.warn { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); color: var(--warn); }
+
+  .formula-block {
+    background: rgba(0,0,0,0.3);
+    border-left: 3px solid var(--accent);
+    padding: 0.9rem 1.1rem;
+    border-radius: 0 8px 8px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.79rem;
+    line-height: 2;
+    margin: 0.6rem 0;
+    color: #b8d8f0;
+  }
+  .formula-block.red { border-left-color: var(--accent2); }
+  .formula-block.green { border-left-color: var(--good); }
+  .formula-block.warn { border-left-color: var(--warn); }
+  .formula-block .comment {
+    color: var(--muted);
+    font-family: 'Hind', sans-serif;
+    font-size: 0.75rem;
+    font-style: italic;
+  }
+
+  .hl { color: var(--accent); font-weight: 600; }
+  .hl2 { color: var(--accent2); font-weight: 600; }
+  .hl3 { color: var(--accent3); font-weight: 600; }
+  .hlg { color: var(--good); font-weight: 600; }
+  .hlw { color: var(--warn); font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.5rem; }
+  th {
+    background: rgba(255,255,255,0.04);
+    padding: 0.5rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.84rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .badge {
+    display: inline-block;
+    padding: 0.1rem 0.55rem;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+  .badge-blue { background: rgba(56,189,248,0.15); color: var(--accent); }
+  .badge-red { background: rgba(248,113,113,0.15); color: var(--accent2); }
+  .badge-green { background: rgba(74,222,128,0.15); color: var(--good); }
+  .badge-warn { background: rgba(251,191,36,0.15); color: var(--warn); }
+
+  .section-divider {
+    display: flex; align-items: center; gap: 1rem;
+    margin: 2rem 0 1.2rem;
+  }
+  .section-divider span {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.9rem; color: var(--muted); white-space: nowrap; font-weight: 700;
+  }
+  .section-divider::before, .section-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  .warn-box {
+    background: rgba(251,191,36,0.07);
+    border: 1px solid rgba(251,191,36,0.2);
+    border-left: 3px solid var(--warn);
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+    color: #d4c080;
+  }
+  .warn-box strong { color: var(--warn); }
+
+  .error-box {
+    background: rgba(248,113,113,0.07);
+    border: 1px solid rgba(248,113,113,0.2);
+    border-left: 3px solid var(--accent2);
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+    color: #d4a0a0;
+  }
+  .error-box strong { color: var(--accent2); }
+
+  .good-box {
+    background: rgba(74,222,128,0.07);
+    border: 1px solid rgba(74,222,128,0.2);
+    border-left: 3px solid var(--good);
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+    color: #a0d4b0;
+  }
+  .good-box strong { color: var(--good); }
+
+  .step { display: flex; gap: 1rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .step-num {
+    width: 30px; height: 30px; min-width: 30px;
+    background: linear-gradient(135deg, var(--accent), #0ea5e9);
+    color: #0e1c2a;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem; font-weight: 800; margin-top: 0.05rem;
+  }
+  .step-content { flex: 1; font-size: 0.9rem; }
+  .step-content strong {
+    display: block; color: var(--accent);
+    font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 600;
+  }
+
+  /* CRB-65 Score visual */
+  .crb-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin: 0.8rem 0;
+  }
+  .crb-box {
+    border-radius: 8px;
+    padding: 0.7rem 0.5rem;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .crb-letter { font-family: 'Raleway', sans-serif; font-size: 1.4rem; font-weight: 800; margin-bottom: 0.2rem; }
+  .crb-desc { font-size: 0.7rem; color: var(--muted); line-height: 1.4; }
+  .c-box { background: rgba(56,189,248,0.08); border-color: rgba(56,189,248,0.2); }
+  .c-box .crb-letter { color: var(--accent); }
+  .r-box { background: rgba(167,139,250,0.08); border-color: rgba(167,139,250,0.2); }
+  .r-box .crb-letter { color: var(--accent3); }
+  .b-box { background: rgba(251,191,36,0.08); border-color: rgba(251,191,36,0.2); }
+  .b-box .crb-letter { color: var(--warn); }
+  .a-box { background: rgba(248,113,113,0.08); border-color: rgba(248,113,113,0.2); }
+  .a-box .crb-letter { color: var(--accent2); }
+
+  @media (max-width: 700px) {
+    .grid, .grid-3, .crb-grid { grid-template-columns: 1fr 1fr; }
+    .header h1 { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Pneumonie</h1>
+  <div class="sub">Lungenentzündung · FSP Leitfaden · Freiburg · Karlsruhe · Reutlingen · Stuttgart</div>
+  <div class="timer-badge">⏱ 20 Min. Arztbrief · 20 Min. AA-Gespräch</div>
+</div>
+
+<!-- LEITSYMPTOME -->
+<div class="section-divider"><span>Leitsymptome &amp; Klinik</span></div>
+<div class="grid">
+  <div class="card">
+    <h2>Klassische Symptome – immer abfragen</h2>
+    <h3>Leitsymptome (typische / alveoläre Pneumonie)</h3>
+    <span class="tag blue">Fieber ≥38,5°C (plötzlich!)</span>
+    <span class="tag blue">Schüttelfrost</span>
+    <span class="tag blue">Produktiver Husten</span>
+    <span class="tag blue">Gelblich-grünes Sputum</span>
+    <span class="tag blue">Dyspnoe / Tachypnoe</span>
+    <span class="tag blue">Tachykardie / Herzrasen</span>
+    <span class="tag blue">Pleuraschmerzen (atemabhängig!)</span>
+
+    <h3>Vegetative Anamnese – typisch</h3>
+    <span class="tag">Nachtschweiß / Hyperhidrose</span>
+    <span class="tag">Inappetenz (Appetitlosigkeit)</span>
+    <span class="tag">Insomnie (hustensbedingt)</span>
+    <span class="tag">Fatigue / Abgeschlagenheit</span>
+    <span class="tag">Gewichtsverlust</span>
+
+    <h3>Atypische Pneumonie (interstitiell) – anders!</h3>
+    <span class="tag purple">Trockener Husten</span>
+    <span class="tag purple">Leichtes Fieber</span>
+    <span class="tag purple">Kopf- und Gliederschmerzen</span>
+    <span class="tag purple">Subakuter Beginn</span>
+    <span class="tag purple">Erreger: Mykoplasmen, Viren</span>
+
+    <div class="warn-box">
+      <strong>Immer fragen:</strong> Atemabhängige Brustschmerzen? → Pleuritis als Komplikation! Kontakt mit ähnlich erkrankten Personen? Reiseanamnese? (→ Tuberkulose ausschließen)
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="red">Risikofaktoren – der typische FSP-Patient</h2>
+    <h3>Aus den Fällen: Immer dieselbe Konstellation!</h3>
+    <div style="background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.2);border-radius:10px;padding:0.9rem;margin-bottom:0.8rem">
+      <div style="font-size:0.82rem;color:var(--accent2);font-weight:600;margin-bottom:0.5rem">⚠️ TYPISCHER PRÜFUNGSPATIENT</div>
+      <div style="font-size:0.85rem;line-height:1.8">
+        · <strong>Prostatakarzinom</strong> → Strahlentherapie / Zytostatika → Immunsuppression<br>
+        · <strong>Diabetes mellitus Typ 2</strong> + Metformin<br>
+        · <strong>Arterielle Hypertonie</strong> + Ramipril + HCT<br>
+        · <strong>Penicillinallergie</strong> (Exanthem oder Dyspnoe)<br>
+        · Mutter verstorben an <strong>Pankreaskarzinom</strong>
+      </div>
+    </div>
+
+    <h3>Allgemeine Risikofaktoren</h3>
+    <span class="tag red">Immunsuppression (Strahlen-/Chemotherapie)</span>
+    <span class="tag red">Diabetes mellitus</span>
+    <span class="tag red">COPD / Rauchen</span>
+    <span class="tag red">Herzinsuffizienz</span>
+    <span class="tag red">Alter &gt;60 Jahre</span>
+    <span class="tag red">Alkoholismus</span>
+    <span class="tag red">Bettlägerigkeit</span>
+
+    <div class="warn-box">
+      <strong>Prüfungsfrage:</strong> „Was ist besonders bei diesem Patienten?" → Strahlentherapie + Diabetes = <strong>doppelte Immunsuppression</strong> → erhöhtes Pneumonierisiko → stationäre Aufnahme indiziert!
+    </div>
+  </div>
+</div>
+
+<!-- KÖRPERLICHE UNTERSUCHUNG -->
+<div class="full">
+  <div class="card">
+    <h2 class="purple">Körperliche Untersuchung – was du erwartest</h2>
+    <table>
+      <tr><th>Untersuchung</th><th>Befund bei Pneumonie</th><th>Merkhilfe</th></tr>
+      <tr>
+        <td><strong>Inspektion</strong></td>
+        <td>Tachypnoe, Einsatz der Atemhilfsmuskulatur, ggf. Zyanose, Schonhaltung (zur betroffenen Seite geneigt)</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td><strong>Palpation</strong></td>
+        <td><span class="hl">Stimmfremitus verstärkt</span> über dem betroffenen Bereich</td>
+        <td>Patient sagt „99" beim Palpieren</td>
+      </tr>
+      <tr>
+        <td><strong>Perkussion</strong></td>
+        <td><span class="hl">Gedämpfter Klopfschall</span> (Konsolidierung des Lungengewebes)</td>
+        <td>Gegenteil von COPD! (dort: hypersonor)</td>
+      </tr>
+      <tr>
+        <td><strong>Auskultation</strong></td>
+        <td><span class="hl">Feuchte Rasselgeräusche</span>, Bronchialatmen (bei Lobärpneumonie), verlängertes Exspirium</td>
+        <td>„Knistern wie Schnee unter Schuhen"</td>
+      </tr>
+      <tr>
+        <td><strong>Bronchophonie</strong></td>
+        <td><span class="hl">Verstärkt</span> – Patient flüstert „66", gut hörbar über Konsolidierung</td>
+        <td>Patient flüstert „66"</td>
+      </tr>
+      <tr>
+        <td><strong>Sonographie</strong></td>
+        <td>B-Linien, Hepatisation der Lunge, Pleuraerguss</td>
+        <td>Aus Stuttgart 13.01.2025 gefragt!</td>
+      </tr>
+    </table>
+    <div class="warn-box">
+      <strong>Merksatz für die Prüfung:</strong> Pneumonie = gedämpfter Klopfschall + feuchte RGs + verstärkter Stimmfremitus + verstärkte Bronchophonie. Bei COPD ist es umgekehrt: hypersonorer Klopfschall + abgeschwächte Geräusche.
+    </div>
+  </div>
+</div>
+
+<!-- CRB-65 -->
+<div class="section-divider"><span>CRB-65 Score – stationär oder ambulant?</span></div>
+<div class="full">
+  <div class="card">
+    <h2 class="warn">CRB-65 Score – prüfungsrelevant!</h2>
+    <div class="crb-grid">
+      <div class="crb-box c-box">
+        <div class="crb-letter">C</div>
+        <div class="crb-desc">Confusion<br>Bewusstseinsstörung</div>
+      </div>
+      <div class="crb-box r-box">
+        <div class="crb-letter">R</div>
+        <div class="crb-desc">Respiratory rate<br>Atemfrequenz ≥30/min</div>
+      </div>
+      <div class="crb-box b-box">
+        <div class="crb-letter">B</div>
+        <div class="crb-desc">Blood pressure<br>RRsys &lt;90 oder<br>RRdia ≤60 mmHg</div>
+      </div>
+      <div class="crb-box a-box">
+        <div class="crb-letter">65</div>
+        <div class="crb-desc">Alter<br>≥65 Jahre</div>
+      </div>
+    </div>
+    <table>
+      <tr><th>Punkte</th><th>Entscheidung</th><th>Begründung</th></tr>
+      <tr><td><span class="badge badge-green">0</span></td><td>Ambulant behandeln möglich</td><td>Geringes Risiko</td></tr>
+      <tr><td><span class="badge badge-warn">1–2</span></td><td>Stationäre Aufnahme erwägen</td><td>Mittleres Risiko</td></tr>
+      <tr><td><span class="badge badge-red">3–4</span></td><td>Intensivstation erwägen</td><td>Hohes Risiko</td></tr>
+    </table>
+    <div class="warn-box">
+      <strong>Aus Prüfungsberichten (Freiburg, Karlsruhe):</strong> Prüfer fragten explizit nach dem CRB-65-Score als Begründung für stationäre Aufnahme. Auch ohne hohen Score: Bei Immunsuppression (Strahlentherapie, Diabetes) immer stationär aufnehmen!
+    </div>
+    <div class="good-box" style="margin-top:0.8rem">
+      <strong>Merksatz:</strong> „Ich nehme den Patienten stationär auf wegen: Alter ([X] J.), Immunsuppression durch Strahlentherapie, Diabetes mellitus und CRB-65-Score von [X] Punkten."
+    </div>
+  </div>
+</div>
+
+<!-- ARZTBRIEF -->
+<div class="section-divider"><span>Arztbrief – Formulierungen</span></div>
+<div class="full">
+  <div class="card">
+    <h2>Arztbrief-Template: Pneumonie</h2>
+
+    <h3>Einleitung</h3>
+    <div class="formula-block">
+Sehr geehrte Frau Kollegin, sehr geehrter Herr Kollege,<br>
+wir berichten Ihnen über den o.g. Patienten / die o.g. Patientin,
+der/die sich heute notfallmäßig in unserer Praxis vorstellte.
+    </div>
+
+    <h3>Aktuelle Beschwerden</h3>
+    <div class="formula-block">
+Herr/Frau [Name], ein/eine [Alter]-jährige/r Patient/in, stellte sich bei uns wegen
+<span class="hl">seit [gestern / X Tagen] plötzlich aufgetretenem, hohem Fieber (bis [X]°C)</span>
+mit <span class="hl">Schüttelfrost</span> vor.<br><br>
+Darüber hinaus klagte er/sie über:<br>
+· <span class="hl">Produktiven Husten</span> mit <span class="hl">gelblich-grünlichem Sputum</span>
+  (seit [X] Tagen / Wochen)<br>
+· <span class="hl">Atemabhängige Thoraxschmerzen</span>
+  (NRS [X]/10, rechts-/linksseitig, ohne Ausstrahlung)<br>
+  <span class="comment">// → Hinweis auf Pleuritis als Komplikation!</span><br>
+· <span class="hl">Dyspnoe</span> in Ruhe und bei Belastung<br>
+· <span class="hl">Tachykardie / Herzrasen</span><br>
+· <span class="hl">Nachtschweiß und Hyperhidrose</span><br><br>
+<span class="comment">// Verneinte Symptome:</span><br>
+Kontakt mit ähnlich erkrankten Personen, Auslandsreisen sowie [Hämoptysie / Zyanose] wurden verneint.
+    </div>
+
+    <h3>Vegetative Anamnese</h3>
+    <div class="formula-block">
+Die vegetative Anamnese ist bis auf
+<span class="hl">Inappetenz, hustensbedingte Insomnie</span>
+und <span class="hl">Nachtschweiß</span> unauffällig.
+    </div>
+
+    <h3>Vorerkrankungen / Medikamente</h3>
+    <div class="formula-block">
+Als Vorerkrankungen seien bekannt:<br>
+· <span class="hl">Prostatakarzinom / Mammakarzinom</span> (seit [X] Jahren,
+  aktuell in <span class="hl">Strahlentherapie</span>)<br>
+· <span class="hl">Arterielle Hypertonie</span> (seit [X] Jahren, gut eingestellt)<br>
+· <span class="hl">Diabetes mellitus Typ 2</span> (seit [X] Jahren, gut eingestellt)<br><br>
+Medikamentös nimmt der Patient/die Patientin ein:<br>
+· Ramipril [X] mg [1-0-0]<br>
+· HCT [X] mg [1-0-0]<br>
+· Metformin [X] mg [1-0-0]<br>
+· ACC 600 mg (vom Hausarzt, seit [X] Tagen)<br>
+· Paracodein-Tropfen bei Bedarf (vom Hausarzt, wenig wirksam)<br><br>
+<span class="hl2">Penicillinallergie:</span> äußert sich als [Exanthem / Pruritus / Dyspnoe]!
+    </div>
+
+    <h3>Impfstatus / Reiseanamnese</h3>
+    <div class="formula-block">
+Der Patient sei gegen COVID-19 geimpft (geboostet).
+<span class="hl">Impfung gegen Influenza und Pneumokokken</span>: [vollständig / nicht bekannt].<br>
+<span class="comment">// Wichtig bei Immunsuppression: Pneumokokken- und Influenza-Impfung empfehlen!</span><br>
+Die Reiseanamnese war unauffällig.
+    </div>
+
+    <h3>Verdachtsdiagnose</h3>
+    <div class="formula-block">
+<span class="hl">VD: Ambulant erworbene Pneumonie (Community-acquired Pneumonia, CAP)</span><br>
+<span class="comment">// ggf. präzisieren: Lobärpneumonie / Pneumonie mit Pleuritis</span><br><br>
+Die anamnestischen Angaben (plötzlicher Fieberanstieg, Schüttelfrost, produktiver Husten mit
+eitrigem Sputum, atemabhängige Thoraxschmerzen, Tachykardie, Immunsuppression durch
+Strahlentherapie und Diabetes mellitus) deuten auf eine
+<span class="hl">ambulant erworbene Pneumonie</span> hin.
+    </div>
+
+    <h3>Differentialdiagnosen</h3>
+    <div class="formula-block">
+<span class="hl">DD:</span><br>
+· <span class="hlw">Influenza / COVID-19</span> – Spricht dafür: Fieber, Husten, Gliederschmerzen;
+  → Nasen-Rachen-Abstrich<br>
+· <span class="hlw">Akute Bronchitis</span> – kein Infiltrat, kein hohes Fieber<br>
+· <span class="hlw">Tuberkulose</span> – bei Immunsuppression immer bedenken; Nachtschweiss;
+  → Reiseanamnese, Sputum, BK<br>
+· <span class="hl2">Lungenembolie</span> – Spricht dafür: plötzliche Dyspnoe, Tachykardie;
+  dagegen: Fieber, purulentes Sputum; → D-Dimere, CT-Angio<br>
+· <span class="hl2">Lungenmetastasen</span> – bei bekanntem Karzinom möglich;
+  ggf. CT-Thorax zum Ausschluss<br>
+· <span class="hl3">Spannungspneumothorax</span> – plötzlicher einseitiger Thoraxschmerz;<br>
+· <span class="hl3">Herzinsuffizienz / Lungenödem</span> – Rasselgeräusche bibasal, Orthopnoe
+    </div>
+
+    <h3>Diagnostik</h3>
+    <div class="formula-block">
+Zur weiteren Abklärung schlage ich vor:<br><br>
+· <span class="hl">Körperliche Untersuchung</span>: Vitalparameter, Auskultation (Rasselgeräusche?),
+  Perkussion (gedämpfter Klopfschall?), Stimmfremitus, Bronchophonie, Pulsoxymetrie (SpO₂)<br>
+· Labor: BB (<span class="hl">Leukozytose</span>), CRP, BSG, PCT, BGA, Laktat,
+  <span class="hl">Blutkulturen</span> (2× vor Antibiotikagabe!)<br>
+· <span class="hl">Sputumkultur mit Antibiogramm</span>
+  <span class="comment">// Wichtig: falsch-negative und falsch-positive Ergebnisse möglich!</span><br>
+· <span class="hl">Röntgen-Thorax</span> (2 Ebenen): Infiltrat? Konsolidierung?
+  Pleuraerguss?<br>
+· Ggf. <span class="hl">CT-Thorax</span>: bei unklarem Röntgenbefund,
+  Immunsuppression, V.a. Metastasen<br>
+· Ggf. <span class="hl">Sonographie Thorax</span>: Pleuraerguss, Hepatisation<br>
+· <span class="hl">Nasen-Rachen-Abstrich</span>: COVID-19, Influenza<br>
+· <span class="hl">CRB-65-Score</span> zur Schweregradabschätzung
+    </div>
+
+    <h3>Therapieempfehlung</h3>
+    <div class="formula-block red">
+<span class="hl2">Allgemeine Maßnahmen:</span><br>
+· Stationäre Aufnahme (Immunsuppression + CRB-65 + Alter)<br>
+· Körperliche Schonung, Bettruhe<br>
+· Ausreichende Flüssigkeitszufuhr<br>
+· Antipyretika (Paracetamol) bei Fieber &gt;38,5°C<br>
+· Sauerstoffgabe bei SpO₂ &lt;94%<br>
+· Mukolytika (z.B. ACC 600 mg)<br><br>
+<span class="hl2">Antibiotikatherapie:</span><br>
+<span class="comment">// CAVE: Penicillinallergie! → Kein Amoxicillin / Ampicillin!</span><br>
+· <span class="hl">Makrolid</span>: Clarithromycin oder Azithromycin (Penicillin-Alternative)<br>
+· Oder: <span class="hl">Fluorchinolon</span>: Levofloxacin / Moxifloxacin<br>
+· Oder: <span class="hl">Ceftriaxon</span> i.v. (Cephalosporin – kein Kreuzallergie mit Penicillin in der Regel)<br>
+· Schwere Pneumonie: Piperacillin + Tazobactam + Makrolid<br><br>
+<span class="hl2">Impfempfehlung (langfristig):</span><br>
+· Pneumokokken-Impfung<br>
+· Jährliche Influenza-Impfung
+    </div>
+
+    <div class="error-box">
+      <strong>⚠️ Häufige Fehler aus den Prüfungen:</strong><br>
+      – ACC 600 ≠ ASS! Eine Kandidatin sagte ASS statt ACC → Kommission hat korrigiert<br>
+      – Penicillinallergie vergessen → keine Amoxicillin-Gabe!<br>
+      – Sputumkultur: Prüfer fragte „100% sicher?" → Nein! Falsch-negative/-positive möglich<br>
+      – CRB-65-Score nicht nennen → Prüfer in Freiburg hat explizit danach gefragt
+    </div>
+  </div>
+</div>
+
+<!-- PATIENTENVORSTELLUNG -->
+<div class="section-divider"><span>Patientenvorstellung (AA-Gespräch)</span></div>
+<div class="full">
+  <div class="card">
+    <h2>Struktur – 5 Schritte (~3–4 Minuten)</h2>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Stammdaten</strong>
+        „Ich möchte Ihnen Herrn [Name], einen [Alter]-jährigen [Beruf / Rentner], vorstellen."
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Vorstellungsgrund + Leitsymptome</strong>
+        „Der Patient stellte sich wegen <span class="hl">seit gestern bestehendem, plötzlich aufgetretenem, hohem Fieber (bis [X]°C) mit Schüttelfrost</span> vor. Begleitend berichtete er über produktiven Husten mit gelblichem Sputum, atemabhängige Thoraxschmerzen rechts sowie Dyspnoe und Tachykardie."
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Relevante Anamnese (kurz!)</strong>
+        „Als Vorerkrankungen sind ein <span class="hl">Prostatakarzinom (aktuell in Strahlentherapie)</span>, Diabetes mellitus Typ 2 und arterielle Hypertonie bekannt. Es besteht eine <span class="hl2">Penicillinallergie</span>. Auslandsreisen und Kontakt zu ähnlich Erkrankten wurden verneint."
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>Verdachts- und Differentialdiagnose</strong>
+        „Meine Verdachtsdiagnose lautet <span class="hl">ambulant erworbene Pneumonie</span>. Differentialdiagnostisch kommen Influenza, COVID-19, Tuberkulose sowie – bei bekanntem Karzinom – Lungenmetastasen in Betracht. Eine Lungenembolie muss ausgeschlossen werden."
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <strong>Weiteres Procedere</strong>
+        „Der Patient muss aufgrund der Immunsuppression durch Strahlentherapie, des Diabetes mellitus und des CRB-65-Scores <span class="hl">stationär aufgenommen</span> werden. Ich habe Labor mit Blutkulturen, Sputumkultur, Röntgen-Thorax und Pulsoxymetrie veranlasst. Antibiotisch würde ich wegen der Penicillinallergie ein Makrolid oder Levofloxacin einleiten."
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <strong>Aus Freiburg 17.09.2024:</strong> Prüferin fragte nach Notfällen, die zuerst auszuschließen sind. Antwort: „In der Notaufnahme muss ich zunächst dringende Fälle ausschließen: Lungenembolie (D-Dimer), Lungenödem / Herzinsuffizienz, Spannungspneumothorax." Erst dann weiter zur Pneumonie als VD!
+    </div>
+  </div>
+</div>
+
+<!-- PRÜFUNGSFRAGEN -->
+<div class="section-divider"><span>Häufige Prüfungsfragen aus allen Städten</span></div>
+<div class="grid">
+  <div class="card">
+    <h2>Kommissionsfragen – Antworten</h2>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th></tr>
+      <tr><td>VD und Begründung?</td><td>Ambulant erworbene Pneumonie: plötzliches Fieber, Schüttelfrost, purulentes Sputum, Tachykardie, Immunsuppression</td></tr>
+      <tr><td>Was ist besonders bei diesem Patienten?</td><td><strong>Strahlentherapie + Diabetes = Immunsuppression</strong> → erhöhtes Risiko, schwererer Verlauf → stationär!</td></tr>
+      <tr><td>Stationäre Aufnahme? Warum?</td><td>Immunsuppression, Alter, CRB-65-Score, Vorerkrankungen, ggf. lebt alleine</td></tr>
+      <tr><td>Was erwarten Sie bei der KU?</td><td>Gedämpfter Klopfschall + feuchte RGs + verstärkter Stimmfremitus + verstärkte Bronchophonie</td></tr>
+      <tr><td>Was erwarten Sie im Labor?</td><td><strong>Leukozytose</strong> (neutrophil), CRP↑, BSG↑, PCT↑, BGA (O₂-Sättigung)</td></tr>
+      <tr><td>Warum Sputumkultur? 100% sicher?</td><td>Erregernachweis für gezieltes Antibiotikum. Nein – falsch-negative und falsch-positive Ergebnisse möglich!</td></tr>
+      <tr><td>Was sehen Sie im Röntgen?</td><td><strong>Infiltrat</strong> (alveoläre Verschattung / Konsolidierung), ggf. Aerobronchogramm, Pleuraerguss</td></tr>
+      <tr><td>CT statt Röntgen – wann?</td><td>Bei unklarem Röntgen, Immunsuppression, V.a. Komplikationen, V.a. Metastasen</td></tr>
+      <tr><td>Welche Antibiotika? (Penicillinallergie!)</td><td>Makrolid (Clarithromycin / Azithromycin), Fluorchinolon (Levofloxacin), Ceftriaxon (oft kein Kreuzallergie)</td></tr>
+      <tr><td>Warum keine Penicillin-Allergie mit Cephalosporinen?</td><td>Kreuzallergie selten (&lt;5%), bei Exanthem-Allergie meist sicher; bei anaphylaktischer Reaktion vermeiden</td></tr>
+      <tr><td>Ursachen einer Pneumonie?</td><td>Bakterien (Pneumokokken häufigster Erreger), Viren, Pilze, Strahlung, Aspiration</td></tr>
+      <tr><td>Welche Impfungen bei Pneumonie?</td><td>Pneumokokken-Impfung, jährliche Influenza-Impfung, COVID-19 → besonders bei Immunsuppression!</td></tr>
+      <tr><td>Wann Bronchoskopie?</td><td>Atelektase, starke Sekretion, Versagen der Antibiotikatherapie, V.a. Tumor</td></tr>
+      <tr><td>Was ist Lobärpneumonie?</td><td>Gesamter Lungenlappen betroffen; typisch: plötzlicher Beginn, hohes Fieber, Schüttelfrost, Schonhaltung</td></tr>
+      <tr><td>Sonographie – was siehst du?</td><td>B-Linien, Hepatisation der Lunge, Pleuraerguss (aus Stuttgart 2025)</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2 class="green">Zeitplan &amp; Fachbegriffe</h2>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-green">Vorbereitung</span></td><td><strong>5 Min</strong></td><td>Penicillinallergie notieren! CRB-65 im Kopf. VD/DD/Antibiotika skizzieren.</td></tr>
+      <tr><td><span class="badge badge-blue">Patientengespräch</span></td><td><strong>10 Min</strong></td><td>Fieber? Schüttelfrost? Sputum (Farbe!)? Pleuraschmerzen? Reise? Kontakt? Impfstatus? Strahlentherapie?</td></tr>
+      <tr><td><span class="badge badge-red">AA-Gespräch</span></td><td><strong>5 Min</strong></td><td>Vorstellung (3 Min) + Notfälle ausschließen + CRB-65 + Antibiotika (keine Penicillin!)</td></tr>
+    </table>
+
+    <h3 style="margin-top:1rem">Fachbegriffe aus den Prüfungen</h3>
+    <div>
+      <span class="tag blue">Pyrexie (Fieber)</span>
+      <span class="tag blue">Febris undularis</span>
+      <span class="tag blue">Hyperhidrose</span>
+      <span class="tag blue">Inappetenz</span>
+      <span class="tag blue">Tachykardie / Tachypnoe</span>
+      <span class="tag blue">Rasselgeräusche</span>
+      <span class="tag blue">Stimmfremitus</span>
+      <span class="tag blue">Bronchophonie</span>
+      <span class="tag blue">Hepatisation</span>
+      <span class="tag blue">Konsolidierung</span>
+      <span class="tag purple">Pleuritis</span>
+      <span class="tag purple">Pleuraerguss</span>
+      <span class="tag purple">Empyem</span>
+      <span class="tag purple">Lobärpneumonie</span>
+      <span class="tag purple">Sputumkultur</span>
+      <span class="tag red">Makrolid</span>
+      <span class="tag red">Fluorchinolon</span>
+      <span class="tag red">Ceftriaxon</span>
+      <span class="tag red">CRB-65</span>
+      <span class="tag red">Immunsuppression</span>
+      <span class="tag warn">Antipyretikum</span>
+      <span class="tag warn">Antikoagulans (Xarelto)</span>
+      <span class="tag warn">Antitussivum</span>
+      <span class="tag warn">Leukozyten</span>
+      <span class="tag warn">contagiös</span>
+      <span class="tag">Hämoptysie</span>
+      <span class="tag">Aszites</span>
+      <span class="tag">Follikulitis</span>
+      <span class="tag">Refluxösophagitis</span>
+      <span class="tag">Nephritis</span>
+    </div>
+
+    <div class="good-box" style="margin-top:1rem">
+      <strong>Aus Freiburg 10.04.2024:</strong> Kandidatin konnte den Brief nicht zu Ende schreiben – kein Problem! „Was man nicht schreiben konnte, kann man im AA-Gespräch hinzufügen." Und: ACC ≠ ASS – die Kommission hat freundlich korrigiert und erklärt, dass ACC in manchen Ländern nicht bekannt ist.
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+  FSP Leitfaden · Pneumonie · Freiburg · Karlsruhe · Reutlingen · Stuttgart · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

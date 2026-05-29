@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Multiple Sklerose</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --card2: #f1f3f5;
+    --a1: #0f6b8a;    /* teal – Neurologie */
+    --a2: #1971c2;    /* blau – Diagnostik */
+    --a3: #2f9e44;    /* grün – Therapie */
+    --a4: #c92a2a;    /* rot – Notfall/DD */
+    --warn: #e67700;
+    --text: #212529;
+    --muted: #868e96;
+    --border: #dee2e6;
+    --light-teal: #e8f7fb;
+    --light-blue: #e8f0ff;
+    --light-green: #ebfbee;
+    --light-red: #fff5f5;
+    --light-orange: #fff9db;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-weight: 400; line-height: 1.7; padding: 2rem 1rem; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border); }
+  .header h1 { font-family: 'Inter', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--a1); letter-spacing: -1px; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+  .timer-badge { display: inline-block; background: var(--a1); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 0.8rem; }
+
+  .ch-header { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0 1.2rem; padding: 0.9rem 1.2rem; border-radius: 10px; }
+  .ch-teal   { background: var(--light-teal);   border-left: 5px solid var(--a1); }
+  .ch-blue   { background: var(--light-blue);   border-left: 5px solid var(--a2); }
+  .ch-green  { background: var(--light-green);  border-left: 5px solid var(--a3); }
+  .ch-red    { background: var(--light-red);     border-left: 5px solid var(--a4); }
+  .ch-orange { background: var(--light-orange);  border-left: 5px solid var(--warn); }
+  .ch-num { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 800; opacity: 0.2; }
+  .ch-teal .ch-num   { color: var(--a1); } .ch-blue .ch-num   { color: var(--a2); }
+  .ch-green .ch-num  { color: var(--a3); } .ch-red .ch-num    { color: var(--a4); }
+  .ch-orange .ch-num { color: var(--warn); }
+  .ch-t h2 { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 800; line-height: 1.1; }
+  .ch-teal .ch-t h2   { color: var(--a1); } .ch-blue .ch-t h2   { color: var(--a2); }
+  .ch-green .ch-t h2  { color: var(--a3); } .ch-red .ch-t h2    { color: var(--a4); }
+  .ch-orange .ch-t h2 { color: var(--warn); }
+  .ch-t p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 10px; padding: 1.4rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .card h3 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--a1); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light-teal); }
+  .card h3.bl { color: var(--a2); border-color: var(--light-blue); }
+  .card h3.gn { color: var(--a3); border-color: var(--light-green); }
+  .card h3.rd { color: var(--a4); border-color: var(--light-red); }
+  .card h3.or { color: var(--warn); border-color: var(--light-orange); }
+  .card h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); padding: 0.15rem 0.6rem; border-radius: 4px; font-size: 0.77rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: var(--card2); color: var(--text); }
+  .tag.te { background: var(--light-teal);   border-color: #60b8cc; color: #074a5e; }
+  .tag.bl { background: var(--light-blue);   border-color: #90baf0; color: #0d3a7a; }
+  .tag.gn { background: var(--light-green);  border-color: #8ce99a; color: #1b4a22; }
+  .tag.rd { background: var(--light-red);    border-color: #ffa8a8; color: var(--a4); }
+  .tag.or { background: var(--light-orange); border-color: #ffd43b; color: #7a3800; }
+  .tag.gr { background: #f8f9fa;             border-color: #ced4da; color: #495057; }
+
+  .fb { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #343a40; }
+  .fb.bl { border-left-color: var(--a2); }
+  .fb.gn { border-left-color: var(--a3); }
+  .fb.rd { border-left-color: var(--a4); }
+  .fb.or { border-left-color: var(--warn); }
+  .fb .cm { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hli { color: var(--a2);  font-weight: 600; }
+  .hlg { color: var(--a3);  font-weight: 600; }
+  .hlr { color: var(--a4);  font-weight: 600; }
+  .hlo { color: var(--warn);font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: var(--card2); padding: 0.5rem 0.8rem; text-align: left; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 2px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8f9fa; }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-te { background: var(--light-teal);   color: #074a5e; }
+  .badge-bl { background: var(--light-blue);   color: #0d3a7a; }
+  .badge-gn { background: var(--light-green);  color: #1b4a22; }
+  .badge-rd { background: var(--light-red);    color: var(--a4); }
+  .badge-or { background: var(--light-orange); color: #7a3800; }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0 1rem; }
+  .sdiv span { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: var(--light-orange); border: 1px solid #ffd43b; border-left: 3px solid var(--warn); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #664d00; }
+  .wbox strong { color: #b35900; }
+  .ebox { background: var(--light-red);    border: 1px solid #ffa8a8; border-left: 3px solid var(--a4); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #6b1010; }
+  .ebox strong { color: var(--a4); }
+  .gbox { background: var(--light-green);  border: 1px solid #8ce99a; border-left: 3px solid var(--a3); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #1b4a22; }
+  .gbox strong { color: #2b7a3d; }
+  .bluebox { background: var(--light-blue); border: 1px solid #90baf0; border-left: 3px solid var(--a2); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #0d3a7a; }
+  .tealbox { background: var(--light-teal); border: 1px solid #60b8cc; border-left: 3px solid var(--a1); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #074a5e; }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: var(--a1); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .snum.gn { background: var(--a3); }
+  .snum.rd { background: var(--a4); }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+
+  .verlauf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-top: 0.6rem; }
+  .verlauf-card { border-radius: 8px; padding: 0.8rem; font-size: 0.82rem; border: 1px solid; }
+  .vl-rr  { background: var(--light-green);  border-color: #8ce99a; }
+  .vl-pp  { background: var(--light-orange); border-color: #ffd43b; }
+  .vl-sp  { background: #fff0e0;             border-color: #f0a060; }
+  .vl-kl  { background: var(--light-teal);   border-color: #60b8cc; }
+  .verlauf-card strong { display: block; font-size: 0.85rem; margin-bottom: 0.25rem; }
+  .vl-rr strong  { color: var(--a3); }
+  .vl-pp strong  { color: var(--warn); }
+  .vl-sp strong  { color: #c06000; }
+  .vl-kl strong  { color: var(--a1); }
+
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; font-weight: 600; }
+  .pt-table td:nth-child(3) { color: #2b7a3d; font-size: 0.83rem; }
+
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: 1fr; }
+    .verlauf-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Multiple Sklerose (MS)</h1>
+  <div class="sub">Encephalomyelitis disseminata · Demyelinisierung · MRT · Lumbalpunktion · Schubtherapie</div>
+  <div class="timer-badge">⏱ 20 Min. Arztbrief · 20 Min. AA-Gespräch · Aufklärung MRT + LP!</div>
+</div>
+
+
+<!-- KAPITEL 1: LEITSYMPTOME -->
+<div class="ch-header ch-teal">
+  <div class="ch-num">01</div>
+  <div class="ch-t">
+    <h2>Leitsymptome &amp; typischer Patient</h2>
+    <p>Parästhesien · Muskelschwäche · Sehstörung · Schubförmig · Junger Erwachsener</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Leitsymptome – vollständig abfragen</h3>
+    <h4>Typische Erstsymptome (Schub)</h4>
+    <span class="tag te">Parästhesien / Kribbeln im Bein (einseitig!)</span>
+    <span class="tag te">Muskelschwäche / Parese (einseitig)</span>
+    <span class="tag te">Schwierigkeiten beim Treppensteigen / Bein anheben</span>
+    <span class="tag te">Sehstörungen (Visusminderung, Doppelbilder)</span>
+    <span class="tag te">Retrobulbäre Neuritis (Erstsymptom! Auge schmerzt bei Bewegung)</span>
+    <span class="tag te">Koordinationsstörungen / Ataxie (Gangunsicherheit)</span>
+    <span class="tag te">Lhermitte-Zeichen (Stromschlag bei Kopfbeugung)</span>
+
+    <h4>Zeitlicher Verlauf – entscheidend!</h4>
+    <span class="tag bl">Schubförmig: Symptome kommen und gehen (remittierend)</span>
+    <span class="tag bl">Erstsymptom bildet sich oft zurück (Parästhesie zurückgebildet!)</span>
+    <span class="tag bl">Schwäche bleibt / verschlechtert sich progredient</span>
+    <span class="tag bl">Schub: mindestens 24 Stunden, mindestens 30 Tage Abstand</span>
+    <span class="tag bl">Uhthoff-Phänomen: Hitze/Fieber → Symptome kurzfristig schlimmer</span>
+
+    <h4>Begleitsymptome</h4>
+    <span class="tag gr">Fatigue / Erschöpfung (häufig!)</span>
+    <span class="tag gr">Insomnie (schlafgestört durch Sorgen)</span>
+    <span class="tag gr">Depressive Stimmung (häufig begleitend)</span>
+    <span class="tag gr">Blasenstörung (Dranginkontinenz, Harnretention)</span>
+    <span class="tag gr">Kognitive Störungen</span>
+
+    <div class="tealbox">
+      <strong>Klassische FSP-Präsentation:</strong> Parästhesie + Schwäche im linken Bein seit 3 Monaten. Die Parästhesie hat sich zurückgebildet, die Schwäche verschlechtert sich progredient. Schwierigkeiten beim Treppensteigen. → Räumlich und zeitlich disseminierte Läsionen = MS bis Beweis des Gegenteils!
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Typischer Prüfungspatient</h3>
+    <div style="background:var(--light-teal);border:1px solid #60b8cc;border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.9;margin-bottom:0.8rem">
+      · <strong>Klaus Huber</strong>, 33–34 J., Informatiker<br>
+      · <span style="color:var(--a1)">Parästhesien + Muskelschwäche li./re. Bein seit 3 Monaten</span><br>
+      · <span style="color:var(--a1)">Parästhesie initial zurückgebildet; Schwäche progredient</span><br>
+      · Schwierigkeiten beim Treppensteigen<br>
+      · Ggf. Sehstörungen (je nach Prüfung)<br>
+      · Wirkt deprimiert, viel Stress (Arbeit, Scheidung der Eltern)<br>
+      · Insomnie, Panikattacken<br>
+      · <span style="color:var(--a1)">Fischallergie → Angioödem</span><br>
+      · Z.n. Appendektomie mit 12 J.<br>
+      · Mutter: Mammakarzinom<br>
+      · Ledig, lebt alleine, keine Kinder<br>
+      · Nichtraucher, gelegentlich 1 Bier
+    </div>
+    <h4>Risikofaktoren MS</h4>
+    <span class="tag te">Weiblich (♀:♂ = 2:1)</span>
+    <span class="tag te">Alter 20–40 Jahre (Ersterstsymptom!)</span>
+    <span class="tag te">Nordeuropäische Herkunft</span>
+    <span class="tag te">Positive FA (1. Grad: 1:50 Risiko)</span>
+    <span class="tag te">EBV-Infektion (Mononukleose) in Anamnese</span>
+    <span class="tag te">Vitamin-D-Mangel</span>
+    <span class="tag te">Rauchen</span>
+    <div class="wbox">
+      <strong>Stuttgart 09.08.2025:</strong> Kandidat dachte an Diskusprolaps → Prüferin: „Diskusprolaps ist immer mit Schmerzen!" → Schlüssel: kein Schmerz + junge Person + neurologische Symptome → eher MS. Immer nach Schmerzen fragen!
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 2: VERLAUFSFORMEN -->
+<div class="ch-header ch-orange">
+  <div class="ch-num">02</div>
+  <div class="ch-t">
+    <h2>Verlaufsformen – Prüfungswissen!</h2>
+    <p>Stuttgart + Karlsruhe fragten: „In welcher Form könnte diese MS verlaufen?"</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="or">4 Verlaufsformen der MS</h3>
+    <div class="verlauf-grid">
+      <div class="verlauf-card vl-rr">
+        <strong>RRMS – schubförmig remittierend (70%)</strong>
+        Häufigste Form! Schübe mit vollständiger oder partieller Rückbildung. Im Intervall keine Progression. → Typisch für den FSP-Fall!
+      </div>
+      <div class="verlauf-card vl-kl">
+        <strong>KIS – Klinisch Isoliertes Syndrom</strong>
+        Erster MS-typischer Schub, der die Diagnosekriterien noch nicht vollständig erfüllt. → Häufig das erste Bild beim FSP-Patienten!
+      </div>
+      <div class="verlauf-card vl-sp">
+        <strong>SPMS – sekundär progredient</strong>
+        Aus RRMS entstehend. Behinderung schreitet stetig fort, mit oder ohne aufgesetzte Schübe. &gt;50% der RRMS-Patienten nach Jahren.
+      </div>
+      <div class="verlauf-card vl-pp">
+        <strong>PPMS – primär progredient (15%)</strong>
+        Von Beginn an Progression ohne abgrenzbare Schübe. Häufiger bei Männern und älterem Erstmanifestation. Schlechteres Ansprechen auf Therapie.
+      </div>
+    </div>
+    <div class="tealbox" style="margin-top:0.8rem">
+      <strong>Uhthoff-Phänomen:</strong> Bei Fieber, heißem Bad oder körperlicher Belastung → Temperatur ↑ → passagere Symptomverschlechterung (Pseudoschub). Kein echter Schub! Verschwindet wenn Temperatur sinkt. → Merke: Sauna und heiße Bäder meiden!
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 3: ARZTBRIEF -->
+<div class="ch-header ch-blue">
+  <div class="ch-num">03</div>
+  <div class="ch-t">
+    <h2>Arztbrief-Template</h2>
+    <p>VD · DD · McDonald-Kriterien · MRT · Lumbalpunktion</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="bl">Arztbrief: Multiple Sklerose</h3>
+
+    <h4>Aktuelle Beschwerden</h4>
+    <div class="fb">
+Herr Huber, ein [Alter]-jähriger Patient, stellte sich bei uns wegen
+<span class="hl">seit 3 Monaten bestehender, progredient verschlechternder
+Parästhesien (Kribbeln) und Muskelschwäche im linken Bein</span> vor.<br><br>
+Der Patient berichtete, dass die <span class="hl">Parästhesien in den ersten
+4 Wochen zurückgegangen seien</span>, die Schwäche jedoch zugenommen habe.
+Aktuell habe er <span class="hl">Schwierigkeiten, das Bein beim Treppensteigen
+anzuheben</span>.<br><br>
+Zusätzlich berichtete er über
+<span class="hl">Sehstörungen</span> (Sehstörungen, Flimmern, Doppelbilder).<br><br>
+<span class="cm">// Verneinte Alarmsymptome:</span><br>
+Trauma, Kopfverletzung, Schmerzen im Bein,
+Beinödem, Herzprobleme wurden verneint.
+<span class="cm">// kein Schmerz → Diskusprolaps unwahrscheinlich!</span>
+    </div>
+
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: Multiple Sklerose (Encephalomyelitis disseminata)</span><br>
+(Junger Patient, einseitige Parästhesie mit anschließender Remission,
+progrediente Muskelschwäche ohne Schmerzen, Schubförmigkeit,
+mögliche Retrobulbärneuritis / Sehstörung)<br><br>
+<span class="hl">Klinisch isoliertes Syndrom (KIS)</span> alternativ möglich
+wenn Diagnosekriterien noch nicht vollständig erfüllt.<br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlo">Psychosomatische Störung</span>
+  – Stress, Depression, Panikattacken → organische Ursache zuerst ausschließen!<br>
+· <span class="hlo">Neuroborreliose</span>
+  – Zeckenstich? Erythema migrans? → Borrelien-Serologie!<br>
+· <span class="hlo">Bandscheibenvorfall / Diskusprolaps</span>
+  – <span class="hlr">Cave: immer Schmerzen!</span> Bei Schmerzfreiheit → unwahrscheinlich<br>
+· <span class="hlo">Funiculäre Myelose</span>
+  – Vitamin-B12-Mangel → sensomotorische Symptome<br>
+· <span class="hlo">Hirn-/Rückenmarkstumor</span>
+  – Raumforderung → MRT ausschließen!<br>
+· <span class="hlo">Spinalkanalstenose</span>
+  – Ältere Patienten, Belastungsabhängig, Schmerzen
+  (Reutlingen fragte: „Was ist DD?" → Spinalkanalstenose nennen!)<br>
+· <span class="hlo">pAVK</span>
+  – Claudicatio, Risikofaktoren, Schmerzen bei Bewegung
+  (Karlsruhe: Kandidat dachte zuerst an pAVK – keine RF vorhanden!)<br>
+· <span class="hlo">Zerebelläre Erkrankung, Vaskulitis, NMOSD</span>
+    </div>
+
+    <h4>Diagnostik</h4>
+    <div class="fb bl">
+· <span class="hli">Neurologische Untersuchung</span>:
+  Kraft, Reflexe, Sensibilität (Hypästhesie vs. Parästhesie!),
+  Koordination, Augenmotilität, Babinski-Reflex, Romberg-Test<br>
+· Labor: BB, CRP, BSG, Glukose, Elektrolyte,
+  <span class="hli">Vitamin B12</span> (DD funiculäre Myelose),
+  <span class="hli">TSH</span>,
+  <span class="hli">Borrelien-Serologie</span> (Endemiegebiet!),
+  ANA/ANCA (DD Vaskulitis)<br>
+· <span class="hli">MRT Schädel + Wirbelsäule mit Kontrastmittel</span>
+  = Goldstandard! Nachweis periventrikulärer Entmarkungsherde
+  (Dawson-Finger), T2-hyperintens, aktive Herde KM-aufnehmend<br>
+  <span class="cm">// VOR Lumbalpunktion: MRT obligat! (Herniation bei Hirndruck!)</span><br>
+· <span class="hli">Lumbalpunktion + Liquordiagnostik</span>:
+  Oligoklonale Banden (IgG), IgG-Index &gt;0,7, Zellzahl<br>
+· Evozierte Potentiale:
+  <span class="hli">VEP</span> (visuell – Sehnerv),
+  <span class="hli">SEP</span> (somatosensorisch – Rückenmark)
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb gn">
+<span class="hlg">Akuter Schub (wenn klinisch relevant):</span><br>
+· <span class="hlg">Methylprednisolon 500–1000 mg/Tag i.v. über 5 Tage</span>
+  (Kortikosteroide) → Schubdauer und -schwere ↓<br>
+· Begleitend: PPI (Magenschutz!) + Heparin (Thromboseprophylaxe)<br>
+· 2. Wahl bei Versagen: Plasmapherese / Immunadsorption<br><br>
+<span class="hlg">Verlaufsmodifizierende Therapie (Immuntherapie):</span><br>
+· Basistherapie: Interferon-β (Avonex®, Betaferon®),
+  Glatirameracetat (Copaxone®), Dimethylfumarat<br>
+· Eskalation: Natalizumab (Tysabri®), Fingolimod (Gilenya®),
+  Alemtuzumab<br>
+· PPMS: Ocrelizumab<br><br>
+<span class="hlg">Symptomatische Therapie:</span><br>
+· Physiotherapie + Ergotherapie (immer!)<br>
+· Spastik: Baclofen (Lioresal®)<br>
+· Blasenstörungen: Botulinumtoxin, Katheter<br>
+· Depression: SSRI (Citalopram), Mirtazapin<br>
+· Fatigue: Fampridin (Gehfähigkeit verbessern)<br>
+· Umzug ins Erdgeschoss empfehlen bei Gehbehinderung!
+    </div>
+
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler aus den Fällen:</strong><br>
+      – Diskusprolaps als VD ohne Schmerzfreiheit zu beachten (Stuttgart: Prüferin: „Diskusprolaps ist immer schmerzhaft!")<br>
+      – pAVK als VD ohne Risikofaktoren (Karlsruhe: keine RF vorhanden → unwahrscheinlich)<br>
+      – Lumbalpunktion ohne vorheriges MRT veranlassen → Herniation-Risiko!<br>
+      – MRT ohne Kontrastmittel → aktive Herde nicht sichtbar<br>
+      – Spinalkanalstenose als DD vergessen → Reutlingen fragte explizit!<br>
+      – Wohnort (2. Stock) nicht berücksichtigt → Karlsruhe: Erdgeschoss empfehlen!
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 4: DIAGNOSTIK DETAIL -->
+<div class="full">
+  <div class="card">
+    <h3>MRT-Befunde bei MS – Was erwartet man?</h3>
+    <div class="fb bl">
+<span class="hli">Was sehen wir im MRT?</span>
+<span class="cm">// Karlsruhe fragte: „Was erwarten Sie im MRT?"</span><br><br>
+· <span class="hli">T2-hyperintense Läsionen</span>
+  (periventrikulär, juxtakortikal, infratentoriell, intraspinal)<br>
+· <span class="hli">Dawson-Finger</span>:
+  MS-Herde senkrecht zu den Ventrikelwänden im Corpus Callosum<br>
+· <span class="hli">Aktive Herde (KM-aufnehmend)</span>:
+  in T1 nach KM hyperintens → floride Entzündung<br>
+· <span class="hli">Alte Herde (Black holes)</span>:
+  in T1 ohne KM hypointens → axonale Schädigung<br><br>
+<span class="hli">McDonald-Kriterien:</span><br>
+→ <span class="hli">Räumliche Dissemination</span>:
+  ≥1 T2-Läsion in ≥2 typischen Regionen<br>
+→ <span class="hli">Zeitliche Dissemination</span>:
+  gleichzeitig KM-aufnehmende UND nicht-aufnehmende Läsionen
+  ODER Oligoklonale Banden im Liquor ODER neuer Schub
+    </div>
+
+    <h4>Lumbalpunktion – Befund</h4>
+    <div class="fb">
+· <span class="hl">Oligoklonale Banden (OKB)</span>
+  im Liquor, NICHT im Serum → intrathekale Immunreaktion!<br>
+· <span class="hl">IgG-Index &gt;0,7</span><br>
+· Zellzahl leicht erhöht (lymphozytäre Pleozytose)<br>
+· Gesamtprotein leicht erhöht<br><br>
+<span class="cm">// WICHTIG: VOR Lumbalpunktion immer MRT/CT machen!
+   Erhöhter Hirndruck → Herniation (Einklemmung) bei LP!</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 5: AA-GESPRÄCH -->
+<div class="ch-header ch-green">
+  <div class="ch-num">05</div>
+  <div class="ch-t">
+    <h2>AA-Gespräch &amp; Prüfungsfragen</h2>
+    <p>Freiburg · Karlsruhe · Stuttgart · Reutlingen · echte Fragen</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Patientenvorstellung – 5 Schritte</h3>
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="scont"><strong>Stammdaten + Einweisung</strong>
+      „Ich möchte Ihnen Herrn Huber vorstellen, einen [Alter]-jährigen Informatiker, der vom Hausarzt Dr. Maiser zu uns überwiesen wurde."</div>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="scont"><strong>Leitsymptome</strong>
+      „Der Patient stellte sich wegen <span class="hl">seit 3 Monaten bestehender, progredienter Muskelschwäche und initial aufgetretener, inzwischen remittierter Parästhesien im linken Bein</span> vor. Aktuell hat er <span class="hl">Schwierigkeiten beim Treppensteigen</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="scont"><strong>Wichtige Verneinungen</strong>
+      „<span class="hl">Schmerzen im Bein wurden verneint</span> → Diskusprolaps unwahrscheinlich! Auch Trauma, Ödem, Herzprobleme verneint."</div>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="scont"><strong>VD + DD</strong>
+      „Meine Verdachtsdiagnose lautet <span class="hl">Multiple Sklerose (KIS)</span>. DD: <span class="hlo">Neuroborreliose, funiculäre Myelose, Spinalkanalstenose, Raumforderung, psychosomatische Störung</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="scont"><strong>Procedere</strong>
+      „Ich habe neurologische Untersuchung, Labor (Borrelien, B12!) und <span class="hli">MRT Schädel/WS mit KM</span> veranlasst. Nach Ausschluss Hirndruck: <span class="hli">Lumbalpunktion</span>. Neurologisches Konsil."</div>
+    </div>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th><th>Stadt</th></tr>
+      <tr><td>Was ist MS? (Karlsruhe!)</td><td>Chronische, entzündlich-demyelinisierende Autoimmunerkrankung des ZNS. Immunzellen greifen Myelin der Oligodendrozyten an → Leitungsstörung der Nervenimpulse. Ursache unbekannt, genetische + Umweltfaktoren.</td><td>Karlsruhe 02/2026</td></tr>
+      <tr><td>Warum kein Diskusprolaps? (Stuttgart!)</td><td>Diskusprolaps ist immer mit Schmerzen verbunden! Dieser Patient hat keine Schmerzen → Diskusprolaps sehr unwahrscheinlich. Außerdem: jung, keine typischen Belastungssymptome.</td><td>Stuttgart 08/2025</td></tr>
+      <tr><td>DD: Spinalkanalstenose? (Reutlingen!)</td><td>Möglich: Engpass im Wirbelkanal → Kompression der Nervenwurzeln → Beinschmerzen + Schwäche bei Belastung. Bei jungem Patienten eher atypisch. Diagnose: MRT der Wirbelsäule.</td><td>Reutlingen 04/2024</td></tr>
+      <tr><td>Was erwarten Sie im MRT? (Karlsruhe + Freiburg!)</td><td>T2-hyperintense Läsionen periventrikulär (Dawson-Finger!), juxtakortikal, infratentoriell. Aktive Herde mit KM-Aufnahme (T1 hyperintens). Alte Herde als Black holes (T1 hypointens).</td><td>Karlsruhe + Freiburg</td></tr>
+      <tr><td>McDonald-Kriterien? Was müssen erfüllt sein?</td><td>Räumliche Dissemination (≥1 Läsion in ≥2 typischen Regionen) + Zeitliche Dissemination (gleichzeitig alte + neue Herde im MRT ODER oligoklonale Banden im Liquor ODER neuer Schub)</td><td>Alle</td></tr>
+      <tr><td>Was zeigt die Lumbalpunktion bei MS?</td><td>Oligoklonale Banden (OKB) im Liquor (NICHT im Serum!), IgG-Index &gt;0,7, leicht erhöhte Zellzahl. OKB = intrathekale Immunreaktion = typisch für MS.</td><td>Alle</td></tr>
+      <tr><td>Welche Verlaufsformen? In welcher Form könnte diese MS verlaufen? (Stuttgart!)</td><td>RRMS (70%): schubförmig remittierend – häufigste Form. PPMS (15%): primär progredient von Beginn. SPMS: sekundär progredient aus RRMS entstehend. KIS: erster Schub, Kriterien noch nicht erfüllt.</td><td>Stuttgart 22/2025</td></tr>
+      <tr><td>Was ist ein MS-Schub?</td><td>Neue oder reaktivierte neurologische Defizite: ≥24 Stunden anhaltend, ≥30 Tage Abstand zum vorherigen Schub, kein Fieber/Infekt als Ursache (→ sonst Pseudoschub/Uhthoff!)</td><td>Alle</td></tr>
+      <tr><td>Was ist das Uhthoff-Phänomen?</td><td>Passagere Symptomverschlechterung bei Temperaturerhöhung (Fieber, heißes Bad, Sport). Kein echter Schub! → Patienten aufklären: heiße Bäder und Sauna meiden.</td><td>Alle</td></tr>
+      <tr><td>Retrobulbärneuritis als Erstsymptom? (Stuttgart!)</td><td>Häufiges Erstsymptom! Einseitige Visusminderung + Farbentsättigung + Bulbusbewegungsschmerz. Sehnerventzündung durch Demyelinisierung. → VEP: verlängerte Latenzen → subklinische Beteiligung!</td><td>Stuttgart</td></tr>
+      <tr><td>Was ist VEP und warum machen wir es?</td><td>Visuell evozierte Potentiale: Messung der Nervenleitgeschwindigkeit vom Auge zum Gehirn. Bei MS: Latenzverlängerung durch Demyelinisierung. Wichtig: auch ohne Sehsymptome! → räumliche Dissemination beweisen (McDonald!)</td><td>Stuttgart + Alle</td></tr>
+      <tr><td>Hypästhesie vs. Parästhesie – Unterschied? (Stuttgart!)</td><td>Hypästhesie = verminderte Berührungsempfindung (taubes Gefühl). Parästhesie = abnormale Missempfindung ohne Reiz (Kribbeln, Ameisenlaufen).</td><td>Stuttgart 03/2025</td></tr>
+      <tr><td>Neurologische Untersuchung – was prüfen?</td><td>Muskelkraft (1–5), Reflexe (BSR, PSR, Babinski), Sensibilität (Berührung, Schmerz, Tiefensensibilität), Koordination (Finger-Nasen-Test, Romberg), Augenmotilität (Nystagmus, INO), Gangbild</td><td>Freiburg + Reutlingen</td></tr>
+      <tr><td>Therapie eines akuten Schubes?</td><td>Methylprednisolon 500–1000 mg/Tag i.v. × 5 Tage + PPI (Magenschutz!) + Heparin (TVT-Prophylaxe!). Schubdauer und -schwere ↓. Heilt den Schub nicht – beschleunigt nur Rückbildung.</td><td>Alle</td></tr>
+      <tr><td>MS ist unheilbar – wie erklären Sie das dem Patienten? (Karlsruhe!)</td><td>„MS ist eine chronische Erkrankung, die nicht geheilt werden kann. Aber wir haben heute sehr gute Medikamente, die Schübe verhindern und die Krankheitsprogression verlangsamen. Viele Patienten führen ein weitgehend normales Leben."</td><td>Karlsruhe 07/2024</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- KAPITEL 6: AUFKLÄRUNGEN -->
+<div class="ch-header ch-orange">
+  <div class="ch-num">06</div>
+  <div class="ch-t">
+    <h2>Aufklärungsgespräche – MRT &amp; Lumbalpunktion</h2>
+    <p>Freiburg 10/2023 fragte explizit: Lumbalpunktion aufklären!</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3 class="or">MRT – Aufklärung</h3>
+    <div class="fb or">
+„Herr Huber, zur genauen Abklärung Ihrer Beschwerden
+möchte ich eine <span class="hlo">Kernspintomographie (MRT)</span>
+von Kopf und Wirbelsäule veranlassen."<br><br>
+<span class="hlo">Was ist das?</span><br>
+„Eine Schichtaufnahme ohne Strahlung –
+mit einem starken Magnetfeld. Sie liegen in einer Art Röhre.
+Es macht laute Geräusche, das ist normal."<br><br>
+<span class="hlo">Wichtige Fragen:</span><br>
+· „Haben Sie einen Herzschrittmacher oder Metallimplantate?"<br>
+· „Leiden Sie unter Platzangst?"<br>
+· „Haben Sie Nierenprobleme?" (für Kontrastmittel)<br>
+· „Haben Sie Allergien gegen Kontrastmittel?"<br><br>
+<span class="hlo">Kontrastmittel:</span><br>
+„Wir spritzen ein Mittel in die Vene, das Entzündungsstellen
+im Gehirn sichtbarer macht.
+Mögliche Nebenwirkungen: metallischer Geschmack, Wärme."<br><br>
+<span class="hlo">Bei Platzangst:</span><br>
+„Wir können ein leichtes Beruhigungsmittel geben,
+oder offenes MRT-Gerät verwenden."
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="or">Lumbalpunktion – Aufklärung</h3>
+    <div class="fb or">
+„Zur Bestätigung der Diagnose müssen wir eine Probe des
+<span class="hlo">Nervenwassers (Liquor)</span> nehmen –
+das nennt sich Lumbalpunktion."<br><br>
+<span class="hlo">Wozu?</span><br>
+„Wir suchen nach bestimmten Eiweißkörpern
+(oligoklonale Banden), die auf eine Entzündung
+im Nervensystem hindeuten."<br><br>
+<span class="hlo">Ablauf:</span><br>
+„Sie sitzen auf der Bettkante und machen einen Katzenbuckel.
+Nach Desinfektion + lokaler Betäubung: dünne Nadel in
+den unteren Rücken – weit unterhalb des Rückenmarks."<br><br>
+<span class="hlo">Häufige Angst: Querschnittslähmung?</span><br>
+„Das Rückenmark endet höher (L1–L2). Wir punktieren L3/L4.
+Eine Querschnittslähmung ist bei fachgerechter Durchführung
+extrem unwahrscheinlich."<br><br>
+<span class="hlo">Nebenwirkungen:</span><br>
+· Häufig: Kopfschmerzen danach → flach liegen + viel trinken<br>
+· Selten: lokale Infektion, Blutung, Nervenreizung<br><br>
+<span class="hlo">WICHTIG:</span>
+VOR Lumbalpunktion immer MRT!
+Bei Hirndruck → LP kontraindiziert (Herniation!)
+    </div>
+  </div>
+</div>
+
+
+<!-- PATIENTENSPRACHE -->
+<div class="ch-header ch-teal">
+  <div class="ch-num">07</div>
+  <div class="ch-t">
+    <h2>Fachbegriffe → Patientensprache</h2>
+    <p>Empathische Erklärungen für den Patienten</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="or">Übersetzungstabelle</h3>
+    <table class="pt-table">
+      <tr><th>Fachbegriff</th><th>Medizinisch</th><th>Patientensprache</th></tr>
+      <tr><td><strong>Multiple Sklerose</strong></td><td>Chronisch-entzündlich-demyelinisierende Autoimmunerkrankung</td><td>„Eine Erkrankung, bei der das Immunsystem irrtümlich die Schutzhülle Ihrer Nervenbahnen angreift. Das stört die Weiterleitung von Nervenimpulsen."</td></tr>
+      <tr><td><strong>Demyelinisierung</strong></td><td>Zerstörung der Myelinscheide</td><td>„Die Isolierschicht um Ihre Nerven – wie der Plastikmantel eines Kabels – wird beschädigt. Das verlangsamt oder blockiert die Nervenleitung."</td></tr>
+      <tr><td><strong>Parästhesie</strong></td><td>Spontane Missempfindung</td><td>„Das Kribbeln oder Ameisenlaufen, das Sie spüren, ohne dass jemand Sie berührt."</td></tr>
+      <tr><td><strong>Schub</strong></td><td>Akute Symptomverschlechterung</td><td>„Eine Phase, in der Ihre Symptome plötzlich schlimmer werden. Nach einigen Wochen können sie sich zurückbilden."</td></tr>
+      <tr><td><strong>Remission</strong></td><td>Rückbildung der Symptome</td><td>„Eine Besserungsphase, in der die Symptome ganz oder teilweise verschwinden."</td></tr>
+      <tr><td><strong>Kortikosteroide (Methylprednisolon)</strong></td><td>Glukokortikoid-Pulstherapie</td><td>„Ein Kortison-Präparat, das wir über die Vene geben. Es dämpft die Entzündung und verkürzt die Dauer des Schubes."</td></tr>
+      <tr><td><strong>Oligoklonale Banden</strong></td><td>Intrathekale IgG-Synthese</td><td>„Spezifische Eiweißstoffe im Nervenwasser, die zeigen, dass das Immunsystem im Nervensystem aktiv ist."</td></tr>
+      <tr><td><strong>MS ist chronisch und unheilbar</strong></td><td>Keine Kausaltherapie möglich</td><td>„Die Erkrankung kann nicht geheilt werden. Aber wir haben heute sehr wirksame Medikamente, die Schübe verhindern und das Fortschreiten verlangsamen. Viele Patienten führen ein normales Leben."</td></tr>
+      <tr><td><strong>Uhthoff-Phänomen</strong></td><td>Passagere Symptomverschlechterung bei Wärme</td><td>„Wenn Sie Fieber haben oder ein heißes Bad nehmen, können Ihre Symptome kurzfristig schlimmer werden. Das ist kein neuer Schub – das geht wieder weg wenn die Temperatur sinkt. Bitte heiße Bäder und Sauna meiden."</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PATIENTENREAKTIONEN -->
+<div class="full">
+  <div class="card">
+    <h3>Typische Patientenreaktionen – Musterantworten</h3>
+    <div class="fb gn">
+<span class="cm">// Direkt aus den echten Fällen!</span><br><br>
+🧑 „Ich habe im Internet gelesen – werde ich im Rollstuhl enden?" (Karlsruhe!)<br>
+→ <span class="hlg">„Das ist eine verständliche Sorge. Aber MS bedeutet nicht automatisch Rollstuhl. Viele Patienten führen mit der richtigen Therapie ein weitgehend normales Leben. Wir können das Fortschreiten oft deutlich verlangsamen."</span><br><br>
+🧑 „Ich möchte keine Lumbalpunktion – meine Nachbarin konnte danach nicht mehr laufen!" (Freiburg!)<br>
+→ <span class="hlg">„Das ist ein verbreiteter Irrtum. Das Rückenmark endet höher oben. Wir stechen viel tiefer, wo kein Rückenmark mehr liegt. Eine Lähmung ist bei fachgerechter Durchführung extrem selten. Ohne diese Untersuchung können wir die Diagnose nicht sichern und keine gezielte Therapie einleiten."</span><br><br>
+🧑 „Was habe ich? Können Sie mir das schon sagen?" (Karlsruhe!)<br>
+→ <span class="hlg">„Ich vermute eine neurologische Erkrankung, die die Nervenbahnen betrifft. Bevor ich Ihnen eine sichere Antwort gebe, brauche ich eine Bildgebung und ggf. eine Nervenwasserentnahme. Sobald wir die Ergebnisse haben, erkläre ich Ihnen alles ausführlich."</span><br><br>
+🧑 „Muss ich ins Krankenhaus?" (Stuttgart + Karlsruhe)<br>
+→ <span class="hlg">„Nicht unbedingt dringend. Wir werden erst die Untersuchungen ambulant durchführen. Wenn sich ein akuter Schub bestätigt, besprechen wir eine stationäre Behandlung mit Kortison."</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- FACHBEGRIFFE + ZEITPLAN -->
+<div class="sdiv"><span>Fachbegriffe &amp; Zeitplan</span></div>
+<div class="grid">
+  <div class="card">
+    <h3>Fachbegriffe aus den Prüfungen</h3>
+    <h4>MS direkt</h4>
+    <div>
+      <span class="tag te">Demyelinisierung / Entmarkungsherd</span>
+      <span class="tag te">Oligoklonale Banden</span>
+      <span class="tag te">Dawson-Finger</span>
+      <span class="tag te">McDonald-Kriterien</span>
+      <span class="tag te">Schubförmig remittierend (RRMS)</span>
+      <span class="tag te">Klinisch isoliertes Syndrom (KIS)</span>
+      <span class="tag te">Uhthoff-Phänomen</span>
+      <span class="tag te">Retrobulbärneuritis</span>
+      <span class="tag te">VEP / SEP (evozierte Potentiale)</span>
+      <span class="tag te">Lhermitte-Zeichen</span>
+      <span class="tag te">Methylprednisolon (Schubtherapie)</span>
+      <span class="tag te">Interferon-β / Natalizumab</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Neurologie / KU</h4>
+    <div>
+      <span class="tag bl">Parästhesie / Hypästhesie</span>
+      <span class="tag bl">Ataxie / Koordinationsstörung</span>
+      <span class="tag bl">Spastik / Parese</span>
+      <span class="tag bl">Babinski-Reflex</span>
+      <span class="tag bl">Internukleäre Ophthalmoplegie</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Sonstige aus Prüfungen</h4>
+    <div>
+      <span class="tag gr">Gastroenterologisch</span>
+      <span class="tag gr">Kontagiös</span>
+      <span class="tag gr">Antitussivum</span>
+      <span class="tag gr">Apoplex</span>
+      <span class="tag gr">Arthroskopie</span>
+      <span class="tag gr">Dialyse</span>
+      <span class="tag gr">Alopezie</span>
+      <span class="tag gr">Struma nodosa</span>
+      <span class="tag gr">Adduktoren</span>
+      <span class="tag gr">Psoriasis</span>
+      <span class="tag gr">Meläna / Somnolenz</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="or">Zeitplan &amp; Top-Tipps</h3>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-te">Patientengespräch</span></td><td><strong>20 Min</strong></td><td>Schmerzen ausschließen! Schubförmig? Parästhesie zurückgebildet? Sehstörungen? Stress / Depression? Uhthoff? Wohnort (Etage!).</td></tr>
+      <tr><td><span class="badge badge-bl">Arztbrief</span></td><td><strong>20 Min</strong></td><td>VD KIS/MS. DD: Neuroborreliose, B12-Mangel, Spinalkanalstenose! Kein Diskusprolaps ohne Schmerzen. MRT zuerst, dann LP. McDonald-Kriterien erwähnen.</td></tr>
+      <tr><td><span class="badge badge-gn">AA-Gespräch</span></td><td><strong>20 Min</strong></td><td>Was ist MS? MRT-Befunde (Dawson-Finger!). OKB im Liquor. Verlaufsformen. Uhthoff. Retrobulbärneuritis. Schubtherapie: Methylprednisolon + PPI + Heparin!</td></tr>
+    </table>
+
+    <div class="ebox" style="margin-top:1rem">
+      <strong>Stuttgart 09.08.2025:</strong> Kandidat dachte zunächst an Diskusprolaps. Prüferin korrigierte: „Diskusprolaps ist immer schmerzhaft!" → Lernen: kein Schmerz + junger Patient + neurologisch = MS denken!
+    </div>
+    <div class="gbox" style="margin-top:0.8rem">
+      <strong>Karlsruhe 19.02.2026:</strong> Kandidat dachte zuerst an pAVK → Prüfer: keine RF vorhanden → MS. Dann: „Was ist MS?" → „Autoimmunerkrankung." Prüfer: „Super." → Kurze, klare Antworten werden gelobt!
+    </div>
+    <div class="bluebox" style="margin-top:0.8rem">
+      <strong>Karlsruhe 07/2024:</strong> Patient hatte im Internet über MS gelesen, wollte vollständige Heilung. Prüfer zeigte: Wohnort im 2. Stock → Empfehlung Erdgeschoss war erwartet! Immer nach Wohnverhältnissen fragen.
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top: 1px solid var(--border);">
+  FSP Leitfaden · Multiple Sklerose + Patientensprache · Freiburg · Karlsruhe · Stuttgart · Reutlingen · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

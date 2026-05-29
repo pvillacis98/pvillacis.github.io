@@ -1,0 +1,371 @@
+
+<h2 class="sr-only">Diagnose nennen und weiteres Vorgehen formulieren — Beispielsätze für die Fachsprachprüfung C1 Medizin</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans,system-ui);font-size:14px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.5rem}
+.tab{padding:6px 16px;border-radius:999px;font-size:12px;font-weight:500;border:0.5px solid var(--color-border-secondary);cursor:pointer;background:var(--color-background-primary);color:var(--color-text-secondary);transition:all .15s}
+.tab.on{background:#0F6E56;color:#fff;border-color:#0F6E56}
+.sec{display:none}.sec.on{display:block}
+.group{margin-bottom:1.5rem}
+.group-title{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-tertiary);margin-bottom:10px;padding-bottom:6px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:13px 15px;border-left-width:3px}
+.card.vermute{border-left-color:#1D9E75}
+.card.lautet{border-left-color:#378ADD}
+.card.bitte{border-left-color:#7F77DD}
+.card.empfehle{border-left-color:#EF9F27}
+.card.dd{border-left-color:#D85A30}
+.card.sicher{border-left-color:#639922}
+.badge{display:inline-block;font-size:10px;font-weight:500;padding:2px 9px;border-radius:999px;margin-bottom:7px;text-transform:uppercase;letter-spacing:.05em}
+.badge.vermute{background:#E1F5EE;color:#085041}
+.badge.lautet{background:#E6F1FB;color:#0C447C}
+.badge.bitte{background:#EEEDFE;color:#3C3489}
+.badge.empfehle{background:#FAEEDA;color:#633806}
+.badge.dd{background:#FAECE7;color:#712B13}
+.badge.sicher{background:#EAF3DE;color:#27500A}
+.pattern{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px;line-height:1.5}
+.example{font-size:12.5px;color:var(--color-text-secondary);font-style:italic;line-height:1.55;background:var(--color-background-secondary);border-radius:7px;padding:8px 10px;margin-bottom:4px}
+.example em{font-style:normal;font-weight:500;color:var(--color-text-primary)}
+.note{font-size:11px;color:var(--color-text-tertiary);margin-top:4px}
+.fullcard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:16px 18px;margin-bottom:12px}
+.fc-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-tertiary);margin-bottom:8px}
+.fc-block{background:var(--color-background-secondary);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--color-text-primary);line-height:1.7;font-style:italic;margin-bottom:8px}
+.fc-block em{font-style:normal;font-weight:500;color:var(--color-text-primary)}
+.fc-annot{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.annot{font-size:11px;padding:2px 9px;border-radius:999px;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary)}
+.diagnose-select{padding:7px 12px;font-size:13px;border:0.5px solid var(--color-border-secondary);border-radius:8px;background:var(--color-background-primary);color:var(--color-text-primary);margin-bottom:14px;width:100%}
+.tip{background:#FAEEDA;border-left:3px solid #EF9F27;border-radius:0;padding:8px 12px;font-size:12px;color:#633806;margin-bottom:14px;line-height:1.6}
+.tip strong{color:#633806}
+</style>
+
+<div style="padding:1rem 0 0">
+<div class="tabs">
+  <button class="tab on" onclick="sw('diagnose',this)">Diagnose nennen</button>
+  <button class="tab" onclick="sw('vorgehen',this)">Weiteres Vorgehen</button>
+  <button class="tab" onclick="sw('komplett',this)">Komplette Beispiele</button>
+</div>
+
+<div class="sec on" id="diagnose">
+  <div class="tip"><strong>Prüfungstipp:</strong> „Ich vermute …" → wenn noch keine Sicherheit besteht. „Die Diagnose lautet …" → wenn Befunde gesichert sind. Immer Begründung hinzufügen!</div>
+
+  <div class="group">
+    <div class="group-title">Ich vermute … (Verdachtsdiagnose)</div>
+    <div class="cards">
+      <div class="card vermute">
+        <span class="badge vermute">Basisform</span>
+        <div class="pattern">Ich vermute eine [Diagnose].</div>
+        <div class="example">Ich vermute eine <em>akute Appendizitis</em>.</div>
+        <div class="note">Einfachste, sichere Form</div>
+      </div>
+      <div class="card vermute">
+        <span class="badge vermute">Mit Begründung</span>
+        <div class="pattern">Ich vermute eine [Diagnose], da / aufgrund …</div>
+        <div class="example">Ich vermute eine <em>Pneumonie</em>, da der Patient Fieber, produktiven Husten und ein rechtsseitiges Infiltrat im Röntgen zeigt.</div>
+      </div>
+      <div class="card vermute">
+        <span class="badge vermute">Mit Schweregrad</span>
+        <div class="pattern">Ich vermute eine [leichte/mittelschwere/schwere] [Diagnose].</div>
+        <div class="example">Ich vermute eine <em>mittelschwere akute Pankreatitis</em> auf dem Boden einer Cholelithiasis.</div>
+      </div>
+      <div class="card vermute">
+        <span class="badge vermute">Mit Ätiologie</span>
+        <div class="pattern">Ich vermute eine [Diagnose] [ätiologischer Zusatz].</div>
+        <div class="example">Ich vermute eine <em>biliäre Pankreatitis</em> bei vorbekannten Gallensteinen.</div>
+        <div class="example">Ich vermute eine <em>alkoholtoxische Leberzirrhose</em> bei langjährigem Alkoholabusus.</div>
+      </div>
+      <div class="card vermute">
+        <span class="badge vermute">Vorläufig</span>
+        <div class="pattern">Als Arbeitsdiagnose vermute ich …</div>
+        <div class="example">Als <em>Arbeitsdiagnose</em> vermute ich eine akute Divertikulitis im Sigma, die ich durch eine CT-Untersuchung sichern möchte.</div>
+      </div>
+      <div class="card vermute">
+        <span class="badge vermute">Klinisch</span>
+        <div class="pattern">Klinisch ergibt sich der Verdacht auf …</div>
+        <div class="example">Klinisch ergibt sich der <em>Verdacht auf eine KHK</em> mit instabiler Angina pectoris.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Die Diagnose lautet … (gesicherte Diagnose)</div>
+    <div class="cards">
+      <div class="card lautet">
+        <span class="badge lautet">Basisform</span>
+        <div class="pattern">Die Diagnose lautet [Diagnose].</div>
+        <div class="example">Die Diagnose lautet <em>Magenkarzinom</em>.</div>
+        <div class="note">Nur wenn histologisch / laborchemisch gesichert</div>
+      </div>
+      <div class="card lautet">
+        <span class="badge lautet">Mit Befund</span>
+        <div class="pattern">Die Diagnose lautet [Diagnose]; gesichert durch [Befund].</div>
+        <div class="example">Die Diagnose lautet <em>Ulcus ventriculi</em>, gesichert durch die Gastroskopie mit positivem Helicobacter-pylori-Nachweis.</div>
+      </div>
+      <div class="card lautet">
+        <span class="badge lautet">Histologisch</span>
+        <div class="pattern">Histologisch bestätigt sich die Diagnose eines / einer …</div>
+        <div class="example">Histologisch bestätigt sich die Diagnose eines <em>Adenokarzinoms des Magens</em>.</div>
+      </div>
+      <div class="card lautet">
+        <span class="badge lautet">Gesichert</span>
+        <div class="pattern">Es handelt sich um eine gesicherte [Diagnose].</div>
+        <div class="example">Es handelt sich um eine <em>gesicherte schubförmige Multiple Sklerose</em> nach McDonald-Kriterien.</div>
+      </div>
+      <div class="card lautet">
+        <span class="badge lautet">Laborchemisch</span>
+        <div class="pattern">Laborchemisch / bildgebend bestätigt sich …</div>
+        <div class="example">Laborchemisch bestätigt sich bei einem Troponin-T von 1,8 ng/l die Diagnose eines <em>NSTEMI</em>.</div>
+      </div>
+      <div class="card lautet">
+        <span class="badge lautet">Klassifikation</span>
+        <div class="pattern">Es liegt eine [Diagnose] [Klassifikation] vor.</div>
+        <div class="example">Es liegt eine <em>Schenkelhalsfraktur Garden III</em> des rechten Hüftgelenks vor.</div>
+        <div class="example">Es liegt eine <em>Weber-B-Fraktur</em> des rechten Außenknöchels vor.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Differenzialdiagnosen nennen</div>
+    <div class="cards">
+      <div class="card dd">
+        <span class="badge dd">DD ausschließen</span>
+        <div class="pattern">Differenzialdiagnostisch muss ich … ausschließen.</div>
+        <div class="example">Differenzialdiagnostisch muss ich ein <em>Kolonkarzinom</em> ausschließen.</div>
+      </div>
+      <div class="card dd">
+        <span class="badge dd">DD in Betracht</span>
+        <div class="pattern">Differenzialdiagnostisch käme auch … in Betracht.</div>
+        <div class="example">Differenzialdiagnostisch käme auch eine <em>Lungenembolie</em> in Betracht, die ich klinisch jedoch für weniger wahrscheinlich halte.</div>
+      </div>
+      <div class="card dd">
+        <span class="badge dd">DD bereits ausgeschlossen</span>
+        <div class="pattern">Eine [DD] habe ich klinisch bereits ausgeschlossen.</div>
+        <div class="example">Eine <em>Aortendissektion</em> habe ich klinisch aufgrund fehlender RR-Differenz und unauffälligem Mediastinum bereits ausgeschlossen.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="vorgehen">
+  <div class="tip"><strong>Prüfungstipp:</strong> Immer in dieser Reihenfolge: 1. Sofortmaßnahmen → 2. Diagnostik → 3. Therapie → 4. Konsil / Verlegung. „Ich bitte um …" für Konsile, „Ich empfehle …" für Therapie.</div>
+
+  <div class="group">
+    <div class="group-title">Ich bitte um … (Konsil, Untersuchung, Maßnahme)</div>
+    <div class="cards">
+      <div class="card bitte">
+        <span class="badge bitte">Konsil</span>
+        <div class="pattern">Ich bitte um [Fach]-Konsil.</div>
+        <div class="example">Ich bitte um <em>kardiologisches Konsil</em> und Übernahme zur Koronarangiographie.</div>
+        <div class="example">Ich bitte um <em>neurochirurgisches Konsil</em> aufgrund der zervikalen Myelopathie.</div>
+      </div>
+      <div class="card bitte">
+        <span class="badge bitte">Diagnostik</span>
+        <div class="pattern">Ich bitte um Durchführung einer [Untersuchung].</div>
+        <div class="example">Ich bitte um Durchführung einer <em>CT des Abdomens</em> zur Beurteilung der Divertikulitis.</div>
+        <div class="example">Ich bitte um <em>Gastroskopie mit Biopsie</em> zum Ausschluss eines Malignoms.</div>
+      </div>
+      <div class="card bitte">
+        <span class="badge bitte">Stationäre Aufnahme</span>
+        <div class="pattern">Ich bitte um stationäre Aufnahme / Übernahme.</div>
+        <div class="example">Ich bitte um <em>stationäre Aufnahme</em> zur weiteren Diagnostik und Therapie.</div>
+        <div class="example">Ich bitte um <em>Übernahme auf die Intensivstation</em> zur engmaschigen Überwachung.</div>
+      </div>
+      <div class="card bitte">
+        <span class="badge bitte">Labor</span>
+        <div class="pattern">Ich bitte um Abnahme von [Laborwerten].</div>
+        <div class="example">Ich bitte um <em>Abnahme von Troponin, CK-MB und BNP</em> sowie Anlage eines Zugangs.</div>
+      </div>
+      <div class="card bitte">
+        <span class="badge bitte">OP-Vorbereitung</span>
+        <div class="pattern">Ich bitte um Vorbereitung zur operativen Versorgung.</div>
+        <div class="example">Ich bitte um <em>Vorbereitung zur notfallmäßigen operativen Versorgung</em> der dislozierten Schenkelhalsfraktur.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Ich empfehle … (Therapie, Plan, Maßnahmen)</div>
+    <div class="cards">
+      <div class="card empfehle">
+        <span class="badge empfehle">Therapiebeginn</span>
+        <div class="pattern">Ich empfehle den Beginn einer [Therapie].</div>
+        <div class="example">Ich empfehle den Beginn einer <em>intravenösen Antibiotikatherapie</em> mit Cefuroxim und Metronidazol.</div>
+        <div class="example">Ich empfehle den Beginn einer <em>HP-Eradikationstherapie</em> nach Antibiogramm.</div>
+      </div>
+      <div class="card empfehle">
+        <span class="badge empfehle">Konservativ</span>
+        <div class="pattern">Ich empfehle zunächst ein konservatives Vorgehen mit …</div>
+        <div class="example">Ich empfehle zunächst ein <em>konservatives Vorgehen</em> mit Analgesie, Physiotherapie und einem Unterschenkelgips für 6 Wochen.</div>
+      </div>
+      <div class="card empfehle">
+        <span class="badge empfehle">Verlaufskontrolle</span>
+        <div class="pattern">Ich empfehle eine Verlaufskontrolle in [Zeitraum].</div>
+        <div class="example">Ich empfehle eine <em>Verlaufskontrolle der Leberwerte in 4 Wochen</em> sowie eine erneute Sonografie.</div>
+      </div>
+      <div class="card empfehle">
+        <span class="badge empfehle">Maßnahmen</span>
+        <div class="pattern">Ich empfehle folgende Maßnahmen: …</div>
+        <div class="example">Ich empfehle folgende Maßnahmen: <em>Bettruhe, orale Nahrungskarenz, intravenöse Flüssigkeitszufuhr und engmaschige Überwachung der Vitalparameter</em>.</div>
+      </div>
+      <div class="card empfehle">
+        <span class="badge empfehle">Operative Therapie</span>
+        <div class="pattern">Ich empfehle eine operative Versorgung mittels …</div>
+        <div class="example">Ich empfehle eine <em>operative Versorgung mittels laparoskopischer Cholezystektomie</em> nach Abklingen der akuten Entzündung.</div>
+      </div>
+      <div class="card empfehle">
+        <span class="badge empfehle">Screening / Prävention</span>
+        <div class="pattern">Ich empfehle außerdem … zur Prävention / zum Screening.</div>
+        <div class="example">Ich empfehle außerdem eine <em>Koloskopie nach 6–8 Wochen</em> zum Ausschluss eines Kolonkarzinoms.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Sicherheitsrelevante Formulierungen</div>
+    <div class="cards">
+      <div class="card sicher">
+        <span class="badge sicher">Dringlichkeit</span>
+        <div class="pattern">Es besteht dringende Handlungsnotwendigkeit, da …</div>
+        <div class="example">Es besteht <em>dringende Handlungsnotwendigkeit</em>, da der Patient Zeichen einer Peritonitis zeigt.</div>
+      </div>
+      <div class="card sicher">
+        <span class="badge sicher">Notfall</span>
+        <div class="pattern">Ich halte eine sofortige [Maßnahme] für unbedingt erforderlich.</div>
+        <div class="example">Ich halte eine <em>sofortige Übernahme ins Katheterlabor</em> für unbedingt erforderlich.</div>
+      </div>
+      <div class="card sicher">
+        <span class="badge sicher">Abwarten</span>
+        <div class="pattern">Ich würde zunächst abwarten und … beobachten.</div>
+        <div class="example">Ich würde zunächst <em>abwarten und den klinischen Verlauf unter Analgesie beobachten</em>, bevor wir operative Maßnahmen einleiten.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="komplett">
+  <div class="tip"><strong>Aufbau:</strong> Patient vorstellen → Befunde nennen → Diagnose formulieren → DD nennen → Weiteres Vorgehen</div>
+
+  <div id="diag-selector" style="margin-bottom:1rem">
+    <select class="diagnose-select" id="dsel" onchange="showKomplett()">
+      <option value="">— Diagnose wählen —</option>
+      <option value="divert">Divertikulitis</option>
+      <option value="chol">Cholezystitis</option>
+      <option value="pneu">Pneumonie</option>
+      <option value="khk">KHK / NSTEMI</option>
+      <option value="ms">Multiple Sklerose</option>
+      <option value="sfx">Schenkelhalsfraktur</option>
+      <option value="pan">Pankreatitis</option>
+      <option value="lc">Leberzirrhose</option>
+    </select>
+  </div>
+
+  <div id="komplett-content"></div>
+</div>
+</div>
+
+<script>
+function sw(id, btn) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+
+const EXAMPLES = {
+  divert: {
+    titel: 'Divertikulitis',
+    vorstellung: 'Ich stelle Ihnen Herrn Müller, 67 Jahre, vor, der sich heute Nacht mit linksseitigen Unterbauchschmerzen und Fieber bis 38,7°C vorgestellt hat.',
+    befunde: 'In der körperlichen Untersuchung zeigt sich ein deutlicher Druckschmerz im linken Unterbauch ohne Abwehrspannung. Laborchemisch finden sich eine Leukozytose von 14,5 Gpt/l sowie ein CRP von 87 mg/l. In der Abdomensonografie ist eine peridivertikuläre Entzündungsreaktion im Sigma erkennbar.',
+    diagnose: 'Ich vermute eine akute unkomplizierte Divertikulitis im Sigma, Stadium Hinchey I.',
+    dd: 'Differenzialdiagnostisch muss ich ein Kolonkarzinom ausschließen, das ich nach Abklingen der Entzündung koloskopisch kontrollieren möchte. Eine Appendizitis ist aufgrund der Lokalisation links weniger wahrscheinlich.',
+    vorgehen: 'Ich bitte um stationäre Aufnahme und Beginn einer intravenösen Antibiotikatherapie mit Cefuroxim und Metronidazol. Ich empfehle außerdem Nahrungskarenz, intravenöse Flüssigkeitszufuhr sowie eine Verlaufskontrolle der Entzündungsparameter in 48 Stunden.',
+    annot: ['Ich vermute', 'Differenzialdiagnostisch', 'Ich bitte um', 'Ich empfehle']
+  },
+  chol: {
+    titel: 'Cholezystitis',
+    vorstellung: 'Ich stelle Ihnen Frau Schmidt, 54 Jahre, vor. Die Patientin klagte seit dem gestrigen Abend über rechtsseitige Oberbauchschmerzen mit Ausstrahlung in die rechte Schulter sowie Übelkeit und Erbrechen.',
+    befunde: 'Bei der Untersuchung ist das Murphy-Zeichen positiv. Laborchemisch finden sich eine Leukozytose von 12,8 Gpt/l, ein CRP von 64 mg/l sowie eine leichte Erhöhung von γGT und AP. Sonografisch zeigt sich eine Gallenblasenwandverdickung von 6 mm mit Nachweis von Konkrementen.',
+    diagnose: 'Ich vermute eine akute kalkulöse Cholezystitis.',
+    dd: 'Differenzialdiagnostisch käme eine Choledocholithiasis in Betracht — das Bilirubin ist jedoch nicht erhöht und der Ductus choledochus ist sonografisch nicht dilatiert. Eine akute Pankreatitis habe ich durch ein normwertiges Lipase ausgeschlossen.',
+    vorgehen: 'Ich empfehle Nahrungskarenz, intravenöse Analgesie und Spasmolytika sowie eine Antibiotikatherapie. Ich bitte um chirurgisches Konsil zur Planung einer frühzeitigen laparoskopischen Cholezystektomie innerhalb von 72 Stunden.',
+    annot: ['Ich vermute', 'Differenzialdiagnostisch käme … in Betracht', 'Habe ich ausgeschlossen', 'Ich empfehle', 'Ich bitte um']
+  },
+  pneu: {
+    titel: 'Pneumonie',
+    vorstellung: 'Ich stelle Ihnen Herrn Weber, 72 Jahre, vor. Er leidet seit 3 Tagen unter produktivem Husten mit gelblichem Auswurf, Fieber bis 39,2°C sowie zunehmender Dyspnoe.',
+    befunde: 'Auskultatorisch höre ich Bronchialatmen und feuchte Rasselgeräusche über dem rechten Unterlappen. Die Sauerstoffsättigung beträgt 91% unter Raumluft. Laborchemisch finden sich ein CRP von 142 mg/l und eine Leukozytose von 16,2 Gpt/l. Im Röntgen-Thorax zeigt sich ein Infiltrat im rechten Unterlappen. Der CRB-65-Score beträgt 2 Punkte.',
+    diagnose: 'Ich vermute eine ambulant erworbene Pneumonie des rechten Unterlappens mittlerer Schwere.',
+    dd: 'Differenzialdiagnostisch muss ich eine Lungenembolie ausschließen — der Wells-Score ist jedoch niedrig und die D-Dimere sind nur gering erhöht. Ein Lungenödem ist aufgrund fehlender kardialer Vorgeschichte und normwertigem BNP weniger wahrscheinlich.',
+    vorgehen: 'Ich bitte um stationäre Aufnahme sowie Beginn einer intravenösen Antibiotikatherapie mit Ampicillin/Sulbactam und Clarithromycin. Ich empfehle zusätzlich Sauerstoffgabe mit 2 l/min und Abnahme von Blutkulturen sowie Urin auf Legionellen-Antigen.',
+    annot: ['Ich vermute … mittlerer Schwere', 'Differenzialdiagnostisch', 'Ich bitte um', 'Ich empfehle']
+  },
+  khk: {
+    titel: 'KHK / NSTEMI',
+    vorstellung: 'Ich stelle Ihnen Herrn Bauer, 62 Jahre, vor, der sich mit seit 40 Minuten bestehenden retrosternalen Druckschmerzen mit Ausstrahlung in den linken Arm und Kaltschweißigkeit vorgestellt hat.',
+    befunde: 'Im 12-Kanal-EKG zeigen sich ST-Senkungen von 1,5 mm in den Ableitungen V4 bis V6. Das hochsensitive Troponin T ist auf 0,38 ng/l erhöht. Laborchemisch finden sich zusätzlich erhöhte CK-MB-Werte. Der Blutdruck beträgt 145/90 mmHg beidseits symmetrisch.',
+    diagnose: 'Die Diagnose lautet NSTEMI, gesichert durch Troponin-Anstieg und EKG-Veränderungen.',
+    dd: 'Eine Aortendissektion habe ich klinisch durch fehlende Blutdruckdifferenz und unauffälliges Mediastinum ausgeschlossen. Eine Lungenembolie halte ich aufgrund des typischen Beschwerdebildes für weniger wahrscheinlich.',
+    vorgehen: 'Ich bitte um sofortige kardiologische Übernahme und Aktivierung des Herzkatheterlabors. Ich empfehle unverzüglich die Gabe von ASS 300 mg, Heparin i.v. sowie einen P2Y12-Inhibitor nach Rücksprache mit der Kardiologie.',
+    annot: ['Die Diagnose lautet … gesichert durch', 'Habe ich ausgeschlossen', 'Ich bitte um sofortige Übernahme', 'Ich empfehle unverzüglich']
+  },
+  ms: {
+    titel: 'Multiple Sklerose',
+    vorstellung: 'Ich stelle Ihnen Frau König, 31 Jahre, vor. Sie berichtet über seit 2 Wochen bestehende Schwäche des linken Beins sowie eine vor 3 Monaten aufgetretene Sehminderung auf dem rechten Auge, die sich damals spontan zurückgebildet hat.',
+    befunde: 'In der neurologischen Untersuchung zeigen sich eine Gangstörung, ein positives Lhermitte-Zeichen sowie abgeschwächte Eigenreflexe links. Im MRT finden sich periventrikuläre T2-Läsionen sowie eine frische KM-anreichernde Läsion im Zervikalmark. Im Liquor sind oligoklonale Banden nachweisbar.',
+    diagnose: 'Es handelt sich um eine gesicherte schubförmig-remittierende Multiple Sklerose nach McDonald-Kriterien 2017.',
+    dd: 'Differenzialdiagnostisch habe ich eine Neuromyelitis optica durch negative AQP4-Antikörper ausgeschlossen. Eine Neuroborreliose ist aufgrund negativer Borrelien-Serologie unwahrscheinlich.',
+    vorgehen: 'Ich bitte um neurologisches Konsil zur Einleitung einer verlaufsmodifizierenden Therapie. Ich empfehle zunächst eine Hochdosistherapie mit Methylprednisolon 1 g i.v. über 3 bis 5 Tage zur Schubbehandlung sowie eine ausführliche Aufklärung der Patientin über die Erkrankung.',
+    annot: ['Es handelt sich um eine gesicherte …', 'Habe ich ausgeschlossen', 'Ich bitte um Konsil', 'Ich empfehle']
+  },
+  sfx: {
+    titel: 'Schenkelhalsfraktur',
+    vorstellung: 'Ich stelle Ihnen Frau Hoffmann, 78 Jahre, vor. Sie stürzte heute Morgen beim Gang zur Toilette und kann seitdem das rechte Bein nicht belasten.',
+    befunde: 'Klinisch zeigt sich eine Außenrotation und Verkürzung des rechten Beins. Es besteht ein ausgeprägter Druckschmerz in der rechten Leiste. Der neurozirkuläre Status des rechten Fußes ist intakt. Im Beckenübersichtsröntgen und in der axialen Aufnahme der rechten Hüfte zeigt sich eine dislozierte Schenkelhalsfraktur Garden III.',
+    diagnose: 'Die Diagnose lautet dislozierte Schenkelhalsfraktur Garden III des rechten Hüftgelenks.',
+    dd: 'Eine pertrochantäre Fraktur habe ich durch die Bildgebung ausgeschlossen. Differenzialdiagnostisch hatte ich auch eine pathologische Fraktur in Betracht gezogen — das Röntgenbild zeigt jedoch keine Osteolysen.',
+    vorgehen: 'Ich bitte um orthopädisch-unfallchirurgisches Konsil sowie um Vorbereitung zur operativen Versorgung innerhalb von 24 Stunden. Ich empfehle außerdem den Beginn der Thromboseprophylaxe, adäquate Schmerztherapie und die Einleitung einer Osteoporosediagnostik.',
+    annot: ['Die Diagnose lautet', 'Habe ich ausgeschlossen', 'Differenzialdiagnostisch hatte ich … in Betracht gezogen', 'Ich bitte um', 'Ich empfehle']
+  },
+  pan: {
+    titel: 'Pankreatitis',
+    vorstellung: 'Ich stelle Ihnen Herrn Fischer, 48 Jahre, vor. Er klagte seit heute Morgen über gürtelförmige Oberbauchschmerzen mit Ausstrahlung in den Rücken, Übelkeit und mehrfaches Erbrechen. Vorbekannt sind Gallensteine.',
+    befunde: 'In der körperlichen Untersuchung zeigt sich ein starker Druckschmerz im Oberbauch ohne Peritonismus. Laborchemisch finden sich eine Lipase von 1.840 U/l (6-fach erhöht), ein CRP von 95 mg/l sowie eine Leukozytose von 13,2 Gpt/l. Sonografisch sieht man das Pankreas ödematös verbreitert sowie Gallenblasenkonkremente.',
+    diagnose: 'Ich vermute eine akute biliäre Pankreatitis auf dem Boden der Cholelithiasis.',
+    dd: 'Differenzialdiagnostisch habe ich eine Ulkusperforation durch fehlenden Peritonismus und normwertiges Röntgen klinisch ausgeschlossen. Eine Aortendissektion halte ich bei fehlendem Vernichtungsschmerz und normalem RR für unwahrscheinlich.',
+    vorgehen: 'Ich bitte um stationäre Aufnahme mit Nahrungskarenz, intravenöser Volumentherapie sowie ausreichender Analgesie. Ich empfehle außerdem eine Verlaufskontrolle der Lipase und des CRP in 12 Stunden sowie eine ERCP bei Cholestasezeichen.',
+    annot: ['Ich vermute … auf dem Boden', 'Habe ich ausgeschlossen', 'Halte ich für unwahrscheinlich', 'Ich bitte um', 'Ich empfehle']
+  },
+  lc: {
+    titel: 'Leberzirrhose',
+    vorstellung: 'Ich stelle Ihnen Herrn Braun, 55 Jahre, vor. Er ist bekannter Alkoholiker und stellt sich mit zunehmendem Bauchumfang und Gelbfärbung der Haut und der Augen vor.',
+    befunde: 'Klinisch finden sich Spider-Nävi, Palmarerythem, Ikterus und ein Aszites mit positivem Wellenschlag-Phänomen. Laborchemisch finden sich erhöhte Transaminasen (GOT 89 U/l, GPT 45 U/l), erhöhtes Bilirubin von 4,2 mg/dl, erniedrigtes Albumin von 28 g/l sowie ein erhöhtes INR von 1,8. Sonografisch zeigt sich eine knotige Leber mit Splenomegalie und Aszites.',
+    diagnose: 'Ich vermute eine dekompensierte alkoholtoxische Leberzirrhose Child-Pugh C.',
+    dd: 'Differenzialdiagnostisch muss ich ein hepatozelluläres Karzinom ausschließen — das AFP ist leicht erhöht und ich bitte daher um eine kontrastmittelgestützte CT-Untersuchung der Leber. Eine Herzinsuffizienz als Ursache des Aszites halte ich bei fehlender Dyspnoe und normalem BNP für unwahrscheinlich.',
+    vorgehen: 'Ich bitte um Gastroskopie zum Varizen-Screening sowie um Aszitespunktion zur Untersuchung auf spontan bakterielle Peritonitis. Ich empfehle außerdem Diuretika mit Spironolacton und Furosemid, striktes Alkoholverbot sowie Lactulose bei Zeichen der hepatischen Enzephalopathie.',
+    annot: ['Ich vermute … Child-Pugh C', 'Muss ich ausschließen', 'Halte ich für unwahrscheinlich', 'Ich bitte um', 'Ich empfehle']
+  }
+};
+
+function showKomplett() {
+  const key = document.getElementById('dsel').value;
+  const c = document.getElementById('komplett-content');
+  if (!key) { c.innerHTML = ''; return; }
+  const d = EXAMPLES[key];
+  c.innerHTML = `
+    <div class="fullcard">
+      <div style="font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:14px">${d.titel} — komplettes Arzt-Arzt-Gespräch</div>
+      <div class="fc-label">1. Patientenvorstellung</div>
+      <div class="fc-block">${d.vorstellung}</div>
+      <div class="fc-label">2. Befundbericht</div>
+      <div class="fc-block">${d.befunde}</div>
+      <div class="fc-label">3. Diagnose</div>
+      <div class="fc-block"><em>${d.diagnose}</em></div>
+      <div class="fc-label">4. Differenzialdiagnosen</div>
+      <div class="fc-block">${d.dd}</div>
+      <div class="fc-label">5. Weiteres Vorgehen</div>
+      <div class="fc-block"><em>${d.vorgehen}</em></div>
+      <div class="fc-annot">${d.annot.map(a=>`<span class="annot">${a}</span>`).join('')}</div>
+    </div>`;
+}
+</script>

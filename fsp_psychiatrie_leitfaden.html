@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Psychiatrie</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --card2: #f1f3f5;
+    --a1: #4a1c6b;    /* lila – Psychiatrie */
+    --a2: #1971c2;    /* blau – Diagnostik */
+    --a3: #2f9e44;    /* grün – Therapie */
+    --a4: #c92a2a;    /* rot – Suizid/Notfall */
+    --warn: #e67700;
+    --text: #212529;
+    --muted: #868e96;
+    --border: #dee2e6;
+    --light-purple: #f5eeff;
+    --light-blue: #e8f0ff;
+    --light-green: #ebfbee;
+    --light-red: #fff5f5;
+    --light-orange: #fff9db;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-weight: 400; line-height: 1.7; padding: 2rem 1rem; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border); }
+  .header h1 { font-family: 'Inter', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--a1); letter-spacing: -1px; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+  .timer-badge { display: inline-block; background: var(--a1); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 0.8rem; margin-right: 0.4rem; }
+
+  /* Themen-Tabs */
+  .topic-bar { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .topic-pill { display: inline-block; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; border: 2px solid; }
+  .tp-dep  { background: var(--light-purple); border-color: var(--a1);  color: var(--a1); }
+  .tp-pan  { background: var(--light-orange); border-color: var(--warn); color: #7a3800; }
+  .tp-pts  { background: var(--light-blue);   border-color: var(--a2);  color: #0d3a7a; }
+
+  .ch-header { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0 1.2rem; padding: 0.9rem 1.2rem; border-radius: 10px; }
+  .ch-purple { background: var(--light-purple); border-left: 5px solid var(--a1); }
+  .ch-orange { background: var(--light-orange); border-left: 5px solid var(--warn); }
+  .ch-blue   { background: var(--light-blue);   border-left: 5px solid var(--a2); }
+  .ch-green  { background: var(--light-green);  border-left: 5px solid var(--a3); }
+  .ch-red    { background: var(--light-red);     border-left: 5px solid var(--a4); }
+  .ch-num { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 800; opacity: 0.2; }
+  .ch-purple .ch-num { color: var(--a1); } .ch-orange .ch-num { color: var(--warn); }
+  .ch-blue .ch-num   { color: var(--a2); } .ch-green .ch-num  { color: var(--a3); }
+  .ch-red .ch-num    { color: var(--a4); }
+  .ch-t h2 { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 800; line-height: 1.1; }
+  .ch-purple .ch-t h2 { color: var(--a1); } .ch-orange .ch-t h2 { color: var(--warn); }
+  .ch-blue .ch-t h2   { color: var(--a2); } .ch-green .ch-t h2  { color: var(--a3); }
+  .ch-red .ch-t h2    { color: var(--a4); }
+  .ch-t p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 10px; padding: 1.4rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .card h3 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--a1); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light-purple); }
+  .card h3.or { color: var(--warn); border-color: var(--light-orange); }
+  .card h3.bl { color: var(--a2);  border-color: var(--light-blue); }
+  .card h3.gn { color: var(--a3);  border-color: var(--light-green); }
+  .card h3.rd { color: var(--a4);  border-color: var(--light-red); }
+  .card h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); padding: 0.15rem 0.6rem; border-radius: 4px; font-size: 0.77rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: var(--card2); color: var(--text); }
+  .tag.pu { background: var(--light-purple); border-color: #c090e8; color: #3a0a55; }
+  .tag.or { background: var(--light-orange); border-color: #ffd43b; color: #7a3800; }
+  .tag.bl { background: var(--light-blue);   border-color: #90baf0; color: #0d3a7a; }
+  .tag.gn { background: var(--light-green);  border-color: #8ce99a; color: #1b4a22; }
+  .tag.rd { background: var(--light-red);    border-color: #ffa8a8; color: var(--a4); }
+  .tag.gr { background: #f8f9fa;             border-color: #ced4da; color: #495057; }
+
+  .fb { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #343a40; }
+  .fb.or { border-left-color: var(--warn); }
+  .fb.bl { border-left-color: var(--a2); }
+  .fb.gn { border-left-color: var(--a3); }
+  .fb.rd { border-left-color: var(--a4); }
+  .fb .cm { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hli { color: var(--a2);  font-weight: 600; }
+  .hlg { color: var(--a3);  font-weight: 600; }
+  .hlr { color: var(--a4);  font-weight: 600; }
+  .hlo { color: var(--warn);font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: var(--card2); padding: 0.5rem 0.8rem; text-align: left; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 2px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8f9fa; }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-pu { background: var(--light-purple); color: #3a0a55; }
+  .badge-or { background: var(--light-orange); color: #7a3800; }
+  .badge-bl { background: var(--light-blue);   color: #0d3a7a; }
+  .badge-gn { background: var(--light-green);  color: #1b4a22; }
+  .badge-rd { background: var(--light-red);    color: var(--a4); }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 2rem 0 1rem; }
+  .sdiv span { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: var(--light-orange); border: 1px solid #ffd43b; border-left: 3px solid var(--warn); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #664d00; }
+  .wbox strong { color: #b35900; }
+  .ebox { background: var(--light-red);    border: 1px solid #ffa8a8; border-left: 3px solid var(--a4); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #6b1010; }
+  .ebox strong { color: var(--a4); }
+  .gbox { background: var(--light-green);  border: 1px solid #8ce99a; border-left: 3px solid var(--a3); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #1b4a22; }
+  .gbox strong { color: #2b7a3d; }
+  .bluebox { background: var(--light-blue); border: 1px solid #90baf0; border-left: 3px solid var(--a2); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #0d3a7a; }
+  .purpbox { background: var(--light-purple); border: 1px solid #c090e8; border-left: 3px solid var(--a1); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #3a0a55; }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: var(--a1); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .snum.or { background: var(--warn); }
+  .snum.bl { background: var(--a2); }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; font-weight: 600; }
+  .pt-table td:nth-child(3) { color: #2b7a3d; font-size: 0.83rem; }
+
+  .suizid-box { background: #fff0f0; border: 2px solid var(--a4); border-radius: 10px; padding: 1.2rem 1.4rem; margin: 1rem 0; }
+  .suizid-box h3 { color: var(--a4); font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 800; margin-bottom: 0.7rem; }
+
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Psychiatrie – FSP Leitfaden</h1>
+  <div class="sub">Depression · Panikattacke · PTBS · Suizidalität · Empathie · Psychopharmaka</div>
+  <span class="timer-badge">⏱ 20 Min. Arztbrief</span>
+  <span class="timer-badge" style="background:var(--warn)">💬 Empathie wichtiger als Fachwissen!</span>
+</div>
+
+<div class="topic-bar">
+  <span class="topic-pill tp-dep">🟣 Depression</span>
+  <span class="topic-pill tp-pan">🟠 Panikattacke</span>
+  <span class="topic-pill tp-pts">🔵 PTBS</span>
+</div>
+
+
+<!-- ===== DEPRESSION ===== -->
+<div class="ch-header ch-purple">
+  <div class="ch-num">01</div>
+  <div class="ch-t">
+    <h2>🟣 Depression</h2>
+    <p>Häufigstes psychiatrisches FSP-Thema · Freiburg · Stuttgart · Karlsruhe · Reutlingen</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Leitsymptome – 3 Hauptsymptome</h3>
+    <h4>Hauptsymptome (mind. 2 für Diagnose)</h4>
+    <span class="tag pu">Gedrückte / depressive Stimmung</span>
+    <span class="tag pu">Interessenverlust / Freudlosigkeit (Anhedonie)</span>
+    <span class="tag pu">Verminderter Antrieb / Erschöpfung (Fatigue)</span>
+
+    <h4>Zusatzsymptome</h4>
+    <span class="tag gr">Insomnie (Ein-/Durchschlafstörung)</span>
+    <span class="tag gr">Inappetenz / Gewichtsverlust</span>
+    <span class="tag gr">Konzentrationsstörungen</span>
+    <span class="tag gr">Selbstzweifel / Schuldgefühle</span>
+    <span class="tag gr">Suizidgedanken!</span>
+    <span class="tag gr">Psychomotorische Hemmung</span>
+    <span class="tag gr">Morgentief (schlimmer morgens, besser abends)</span>
+
+    <h4>Somatisches Syndrom – besonders prüfungsrelevant</h4>
+    <span class="tag pu">Morgentief</span>
+    <span class="tag pu">Früherwachen (2–3h vor üblicher Zeit)</span>
+    <span class="tag pu">Anhedonie (kein Genuss mehr)</span>
+    <span class="tag pu">Gewichtsverlust ≥5% in einem Monat</span>
+    <span class="tag pu">Libidoverlust</span>
+
+    <div class="purpbox">
+      <strong>Larvierte Depression:</strong> Körperliche Beschwerden stehen im Vordergrund! Cephalgie, Myalgien, Gelenk-/Rückenschmerzen ohne organischen Befund → immer an Depression denken! Typisch im FSP: Patient kommt wegen Kopfschmerzen, hat aber eigentlich eine Depression.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Typischer Prüfungspatient</h3>
+    <div style="background:var(--light-purple);border:1px solid #c090e8;border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.9;margin-bottom:0.8rem">
+      <strong>Typ 1: Karl/Thomas Heidenreich, 55 J.</strong><br>
+      · <span style="color:var(--a1)">Drückende morgendliche Cephalgie seit 10 Wochen</span><br>
+      · <span style="color:var(--a1)">Auslöser: Tod der Schwester an Leukämie</span><br>
+      · Schmerzen morgens stärker, abends besser (Morgentief!)<br>
+      · <span style="color:var(--a1)">Suizidgedanken (mir ist egal, ob ich lebe oder nicht)</span><br>
+      · Vater: Selbstmord mit 58 J. (positive FA!)<br>
+      · aHT → Ramipril + HCT + <span style="color:var(--a1)">Benzodiazepine</span> (Adumbran/Diazepam)<br>
+      · Alkohol: 2–3 Gläser Wein abends
+    </div>
+    <div style="background:var(--light-orange);border:1px solid #ffd43b;border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.9;margin-bottom:0.8rem">
+      <strong>Typ 2: Gotthilf/Knitthilf Weidele, 32 J.</strong><br>
+      · <span style="color:var(--warn)">Viele diffuse Beschwerden seit 4–5 Jahren</span><br>
+      · Polyarthralgie, Myalgien, Cephalgie, Sehstörungen<br>
+      · <span style="color:var(--warn)">13 Fachärzte besucht – ohne Befund!</span><br>
+      · Studium abgebrochen; arbeitet beim Vater<br>
+      · Ledig, lebt alleine; Mutter hat Depression<br>
+      · Globuli / Opioide ohne Wirkung versucht
+    </div>
+    <div class="wbox">
+      <strong>Karlsruhe/Stuttgart: Medikamente als Depressionsuslöser!</strong> Ramipril + HCT + Adumbran → können morgendliche Kopfschmerzen + depressive Stimmung verursachen → Medikamentenumstellung diskutieren!
+    </div>
+  </div>
+</div>
+
+<!-- SUIZID BOX -->
+<div class="suizid-box">
+  <h3>⚠️ Suizidalität – obligat immer fragen! (Karlsruhe + Freiburg)</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;font-size:0.85rem">
+    <div>
+      <strong style="color:var(--a4)">Immer direkt ansprechen:</strong><br>
+      „Haben Sie manchmal Gedanken, dass Sie lieber nicht mehr leben wollten?"<br>
+      „Haben Sie daran gedacht, sich etwas anzutun?"<br>
+      „Haben Sie einen Plan?"<br><br>
+      <em style="color:var(--muted)">→ Suizidalität offen ansprechen entlastet den Patienten!</em>
+    </div>
+    <div>
+      <strong style="color:var(--a4)">Bei akuter Suizidalität:</strong><br>
+      · <strong>Stationäre Aufnahme obligat!</strong><br>
+      · Ggf. Zwangseinweisung (§ PsychKG)<br>
+      · Nicht entlassen!<br>
+      · Prüfer Freiburg: „Was tun wenn Patient von 20m springen will?"<br>
+      → Stationäre Behandlung, Sicherheitsvorkehrungen, psychiatrisches Team
+    </div>
+  </div>
+  <div style="margin-top:0.7rem;font-size:0.84rem">
+    <strong style="color:var(--a4)">Risikofaktoren Suizid:</strong>
+    <span class="tag rd">Positive FA (Vater Suizid!)</span>
+    <span class="tag rd">Männlich</span>
+    <span class="tag rd">Alkoholabusus</span>
+    <span class="tag rd">Soziale Isolation</span>
+    <span class="tag rd">Konkreter Plan</span>
+    <span class="tag rd">Frühere Versuche</span>
+    <span class="tag rd">Schwere depressive Episode</span>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3>Arztbrief Depression</h3>
+    <h4>Aktuelle Beschwerden</h4>
+    <div class="fb">
+Herr Heidenreich, ein [Alter]-jähriger Patient, stellte sich bei uns wegen
+<span class="hl">seit [X] Wochen bestehender, drückender, beidseitiger Cephalgie
+ohne Ausstrahlung</span> (NRS 6/10) vor.<br><br>
+Die Schmerzen seien <span class="hl">morgens am stärksten und abends besser</span>
+(Morgentief!). Auslöser: <span class="hl">Tod der Schwester vor 2 Monaten an Leukämie</span>.<br><br>
+Begleitsymptome: <span class="hl">Antriebslosigkeit, Anhedonie, Gedankenkreisen,
+Inappetenz, Insomnie (Durchschlafstörung)</span>.<br><br>
+<span class="hlr">⚠️ Der Patient äußerte Suizidgedanken</span>
+(„mir ist egal, ob ich lebe oder nicht") – aktive Suizidabsicht verneint.<br><br>
+<span class="cm">// Wichtig: Suizidgedanken immer explizit dokumentieren!</span>
+    </div>
+
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: Depression</span>
+(mittelgradig, mit somatischem Syndrom: Morgentief, Inappetenz, Insomnie,
+Anhedonie, Antriebsverlust, psychosozialer Auslöser)<br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlo">Hypothyreose</span>
+  – TSH ↓/↑, Müdigkeit, Gewichtszunahme, Kälteempfindlichkeit<br>
+· <span class="hlo">Anämie</span>
+  – Erschöpfung, Blässe; BB + Ferritin<br>
+· <span class="hlo">Gehirntumor / ZNS-Erkrankung</span>
+  – persistierende Cephalgie → MRT Schädel!<br>
+· <span class="hlo">Hypothyreose / Hyperthyreose</span>
+  – TSH, fT3, fT4<br>
+· <span class="hlo">Medikamenten-induzierte Depression</span>
+  – HCT, Betablocker, Benzodiazepine, Statine<br>
+· <span class="hlo">Schlafapnoe-Syndrom</span>
+  – Schnarchen, Tagesmüdigkeit; Polysomnographie<br>
+· <span class="hlo">Metabolisches Syndrom / DM</span>
+  – HbA1c, Nüchternglukose, Lipidstatus
+    </div>
+
+    <h4>Diagnostik</h4>
+    <div class="fb bl">
+· Körperliche + neurologische Untersuchung<br>
+· Labor: BB, CRP, BSG,
+  <span class="hli">TSH, fT3, fT4</span> (Hypothyreose!),
+  <span class="hli">Ferritin, Vit. B12</span> (Anämie, Mangel),
+  Glukose, HbA1c, Elektrolyte, Leberwerte,
+  <span class="hli">Cortisol</span> (V.a. Cushing)<br>
+· EKG (Medikamentennebenwirkungen!)<br>
+· <span class="hli">MRT Schädel</span>: bei persistierender Cephalgie → Tumor, MS ausschließen<br>
+· Psychiatrisches Konsil veranlassen!
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb gn">
+<span class="hlg">Sofortmaßnahmen bei Suizidalität:</span>
+Stationäre Aufnahme, Sicherheitsvorkehrungen, psychiatrisches Team<br><br>
+<span class="hlg">Psychoedukation</span> (immer zuerst!):
+Patient über Erkrankung informieren<br><br>
+<span class="hlg">Psychotherapie</span>:
+Kognitive Verhaltenstherapie (KVT) = Mittel der Wahl
+(bei leichter Episode ggf. allein; bei mittelgr./schwer kombiniert)<br><br>
+<span class="hlg">Antidepressiva</span>:<br>
+· <span class="hlg">SSRI = 1. Wahl</span>:
+  Sertralin, Citalopram, Escitalopram
+  (Wirklatenz 2–4 Wochen! Patienten aufklären!)<br>
+· Trizyklika (Amitriptylin): wirksam aber Nebenwirkungen<br>
+· Mirtazapin: gut bei Insomnie + Inappetenz<br><br>
+<span class="hlg">Schlaftherapie</span>: Schlafhygiene, ggf. kurzfristig Benzodiazepin (max. 4 Wo!)<br>
+<span class="hlr">Cave: Benzodiazepine machen abhängig! (Adumbran/Valium/Diazepam)</span><br><br>
+<span class="hlg">Sonstiges</span>:
+Sport, Lichttherapie (bei Winterdepression),
+psychiatrisches Konsil, Selbsthilfegruppen
+    </div>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3>AA-Gespräch Depression – Prüfungsfragen</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th><th>Stadt</th></tr>
+      <tr><td>VD und warum? Hauptsymptome?</td><td>Depression: Morgentief + Anhedonie + Antriebsverlust + psychosozialer Auslöser + Insomnie + Inappetenz. Schweregrad: leicht/mittelgradig/schwer</td><td>Alle</td></tr>
+      <tr><td>Primäre oder sekundäre Depression?</td><td>Primär: keine organische Ursache. Sekundär: Hypothyreose, Anämie, Medikamente, Tumor → immer ausschließen!</td><td>Karlsruhe 08/2023</td></tr>
+      <tr><td>Was ist Metabolisches Syndrom? (Stuttgart!)</td><td>Kombination: Adipositas + aHT + DM + Hypercholesterinämie. Abklärung: HbA1c, Nüchternglukose, Lipidstatus, Bauchumfang</td><td>Stuttgart 06/2021</td></tr>
+      <tr><td>Kann Patient entlassen werden? (Freiburg!)</td><td>Bei Suizidgedanken: NEIN! Stationäre Aufnahme. Depression → Suizidrisiko! Erst Psychiater konsultieren.</td><td>Freiburg 11/2021</td></tr>
+      <tr><td>Was bedeutet „Abusus" bei Schlafmitteleinnahme?</td><td>Tägliche Einnahme von Benzodiazepinen (Adumbran/Valium) → Abhängigkeit (Abusus). Psychologische + physische Abhängigkeit möglich. → Psychologische Beratung + schrittweises Ausschleichen</td><td>Freiburg 11/2021</td></tr>
+      <tr><td>Was ist Hypothyreose als DD? Wie ausschließen?</td><td>Schilddrüsenunterfunktion: Müdigkeit, Gewichtszunahme, Kälte, Bradykardie. → TSH bestimmen + Sonographie Schilddrüse</td><td>Karlsruhe 08/2023</td></tr>
+      <tr><td>Wie erklären Sie dem Patienten die Depression? (Karlsruhe!)</td><td>„Sie leiden an einer Erkrankung, bei der bestimmte Botenstoffe im Gehirn nicht mehr im Gleichgewicht sind. Das verursacht Ihre Erschöpfung, Stimmungstiefs und Schlafprobleme. Das ist keine Schwäche – das ist eine behandelbare Erkrankung."</td><td>Freiburg 12/2025</td></tr>
+      <tr><td>Wie wirken Antidepressiva? Wirklatenz?</td><td>SSRI: hemmen Wiederaufnahme von Serotonin → Serotonin ↑ im synaptischen Spalt. Wirkung erst nach 2–4 Wochen sichtbar! Patient aufklären: „Die Wirkung kommt langsam – nicht nach dem ersten Tag."</td><td>Alle</td></tr>
+      <tr><td>Morgendliche Kopfschmerzen – Ursache? (Karlsruhe!)</td><td>Medikamente! Ramipril + HCT + Benzodiazepine können morgendliche Kopfschmerzen verursachen → Medikamentenumstellung. Auch: Depression selbst (Morgentief)</td><td>Karlsruhe 03/2023</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- ===== PANIKATTACKE ===== -->
+<div class="ch-header ch-orange">
+  <div class="ch-num">02</div>
+  <div class="ch-t">
+    <h2>🟠 Panikattacke</h2>
+    <p>Plötzlich auftretend · Tachykardie · Todesangst · Differentialdiagnostik wichtig!</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3 class="or">Leitsymptome Panikattacke</h3>
+    <h4>Kernsymptome – plötzlich + episodisch</h4>
+    <span class="tag or">Tachykardie / Herzrasen (Palpitation)</span>
+    <span class="tag or">Retrosternales Druckgefühl / Enge</span>
+    <span class="tag or">Todesangst / Kontrollverlust</span>
+    <span class="tag or">Hyperhidrosis (Schwitzen)</span>
+    <span class="tag or">Vertigo / Schwindel</span>
+    <span class="tag or">Dyspnoe / Hyperventilation</span>
+    <span class="tag or">Nausea</span>
+    <span class="tag or">Tremor (Zittern)</span>
+    <span class="tag or">Derealisation / Depersonalisation</span>
+    <span class="tag or">Parestesien (Kribbeln)</span>
+
+    <h4>Episodisch oder dauerhaft?</h4>
+    <span class="tag gr">Plötzlich + kommt und geht (episodisch) → Panikattacke</span>
+    <span class="tag gr">Dauerhaft → Andere Diagnose ausschließen</span>
+    <span class="tag gr">Auslöser? (oft keiner!)</span>
+    <span class="tag gr">Angst vor nächster Attacke (Angst vor der Angst!)</span>
+    <span class="tag gr">Sozialer Rückzug → Agoraphobie?</span>
+
+    <div class="wbox">
+      <strong>Wichtig!</strong> Panikattacke = Ausschlussdiagnose! Erst organische Ursachen ausschließen: Herzarrhythmie, Hyperthyreose, Hypoglykämie, Anämie, Karzinoid, Phäochromozytom.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="or">Typischer Prüfungspatient</h3>
+    <div style="background:var(--light-orange);border:1px solid #ffd43b;border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.9;margin-bottom:0.8rem">
+      · <strong>Karin Hartmann, 45 J.</strong> / Herr Hartmann 38 J.<br>
+      · <span style="color:var(--warn)">Episoden von Tachykardie + Druckgefühl + Schwitzen seit 3 Wochen</span><br>
+      · <span style="color:var(--warn)">Kein Auslöser erkennbar</span><br>
+      · Hausarzt: EKG + Labor + RR → alles unauffällig<br>
+      · <span style="color:var(--warn)">Angst wegen Sohn (Trennungsangst)</span><br>
+      · Antriebslosigkeit, Rückzug, Insomnie<br>
+      · Keine Vorerkrankungen<br>
+      · Proband legt Kopf auf den Tisch (Empathie zeigen!)
+    </div>
+    <h4>Erste Reaktion – sofort tun!</h4>
+    <div class="fb or">
+<span class="cm">// Patient sagt: „Mein Herz schlägt wie verrückt!"</span><br>
+→ <span class="hlo">Notfall ausschließen:</span><br>
+„Haben Sie <span class="hlo">Brustschmerzen</span>?"<br>
+„Können Sie <span class="hlo">normal atmen</span>?"<br>
+„Haben Sie sich verletzt?"<br><br>
+→ Alle verneint → Anamnese fortsetzen<br>
+→ Beruhigen: <span class="hlo">„Ich bin bei Ihnen. Wir kümmern uns."</span>
+    </div>
+    <div class="ebox">
+      <strong>Patient legt Kopf auf den Tisch:</strong> „Herr Hartmann, geht es Ihnen gut?" → Hinlegen anbieten. Freiburg: diese Reaktion wurde bewertet!
+    </div>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="or">AA-Gespräch Panikattacke – Prüfungsfragen (Freiburg 19.03.2024)</h3>
+    <p style="font-size:0.83rem;color:var(--muted);margin-bottom:0.8rem">Prüfer fragte zu JEDER Frage: „Warum haben Sie das gefragt?" → Begründen können!</p>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th><th>Warum?</th></tr>
+      <tr><td>Warum nach Fieber fragen?</td><td>Ausschluss Tuberkulose / Lymphom (bei Nachtschweiß)</td><td>B-Symptomatik!</td></tr>
+      <tr><td>Warum nach Durchfall / Schluckbeschwerden?</td><td>Ausschluss Hyperthyreose (Tachykardie + Schwitzen + Diarrhö)</td><td>DD Hyperthyreose</td></tr>
+      <tr><td>Warum nach plötzlicher Rötung + Bauchschmerzen?</td><td>Ausschluss Karzinoid (neuroendokriner Tumor → Flush + Diarrhö)</td><td>DD Karzinoid</td></tr>
+      <tr><td>Warum nach Schwindel + Krampfanfällen?</td><td>Ausschluss Hypoglykämie</td><td>DD DM</td></tr>
+      <tr><td>Wichtigster Teil der KU?</td><td>Auskultation Herz + Lunge (zusätzliche Geräusche?)</td><td>DD Herzerkrankung</td></tr>
+      <tr><td>Welche Herzrhythmusstörung bei episodischen Palpitationen?</td><td><strong>Vorhofflimmern</strong> (kommt und geht). EKG zeigt: fehlende regelmäßige P-Wellen</td><td>Freiburg fragte!</td></tr>
+      <tr><td>Welches EKG? (Freiburg!)</td><td>Ruhe-EKG + Belastungs-EKG + 24h-EKG (Holter)! → episodische Arrhythmie erkennen</td><td>Episodisch!</td></tr>
+      <tr><td>Schilddrüsenknoten gefunden – was dann?</td><td>Zytologie (Feinnadelbiopsie) + Szintigraphie (heißer Knoten?)</td><td>Freiburg lobte!</td></tr>
+      <tr><td>Akutbehandlung der Panikattacke?</td><td><strong>Anxiolytikum (Valium/Diazepam) i.v.</strong> + Beruhigung + kontrolliertes Atmen</td><td>Freiburg</td></tr>
+      <tr><td>Langzeittherapie?</td><td>Psychotherapie (KVT) + ggf. SSRI. Cave: Benzodiazepine max. 4 Wochen (Abhängigkeit!)</td><td>Alle</td></tr>
+      <tr><td>Warum ist Patient ängstlich?</td><td>Trennungsangst (Sohn), Angst vor weiterer Attacke (Angst vor der Angst = Panikstörung!)</td><td>Freiburg</td></tr>
+    </table>
+    <div class="gbox" style="margin-top:0.8rem">
+      <strong>Freiburg Erfolgsstrategie:</strong> Kandidat konnte zu JEDER Frage in der Anamnese begründen warum er sie gestellt hat (Fieber → Lymphom, Flush → Karzinoid usw.). Das war die Schlüsselleistung!
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== PTBS ===== -->
+<div class="ch-header ch-blue">
+  <div class="ch-num">03</div>
+  <div class="ch-t">
+    <h2>🔵 PTBS – Posttraumatische Belastungsstörung</h2>
+    <p>Motorradunfall · Flashbacks · Alpträume · Vermeidungsverhalten · Freiburg + Reutlingen</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3 class="bl">Leitsymptome PTBS – 3 Symptomgruppen</h3>
+    <h4>1. Wiedererleben (Intrusion)</h4>
+    <span class="tag bl">Flashbacks (tagsüber aufdrängende Erinnerungen)</span>
+    <span class="tag bl">Albträume (Nachtschlaf gestört)</span>
+    <span class="tag bl">Emotionale Reaktion auf Erinnerung = wie beim Trauma</span>
+
+    <h4>2. Vermeidung + Rückzug</h4>
+    <span class="tag bl">Vermeidung von Orten / Situationen (die ans Trauma erinnern)</span>
+    <span class="tag bl">Sozialer Rückzug</span>
+    <span class="tag bl">Emotionale Taubheit / Gefühllosigkeit</span>
+    <span class="tag bl">Keine Lebensfreude (Anhedonie)</span>
+
+    <h4>3. Vegetative Übererregung (Hyperarousal)</h4>
+    <span class="tag bl">Insomnie (Ein-/Durchschlafstörung)</span>
+    <span class="tag bl">Konzentrationsstörungen</span>
+    <span class="tag bl">Reizbarkeit / Schreckhaftigkeit</span>
+    <span class="tag bl">Tachykardie / Palpitation</span>
+
+    <h4>Diagnosevoraussetzungen</h4>
+    <span class="tag gr">Trauma: außergewöhnliches, bedrohliches Ereignis</span>
+    <span class="tag gr">Symptome bestehen &gt;4 Wochen</span>
+    <span class="tag gr">Leistungseinschränkung im Alltag</span>
+    <span class="tag gr">Latenz: Wochen bis Monate nach Trauma!</span>
+
+    <div class="bluebox">
+      <strong>PTBS ≠ Depression ≠ Panikattacke!</strong> Unterschied: Konkretes Trauma in der Anamnese! Flashbacks + Vermeidungsverhalten sind pathognomonisch. → Immer nach Trauma fragen!
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="bl">Typischer Prüfungspatient</h3>
+    <div style="background:var(--light-blue);border:1px solid #90baf0;border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.9;margin-bottom:0.8rem">
+      · <strong>Lisa Häberle, 35 J.</strong> / Patient 52 J.<br>
+      · <span style="color:var(--a2)">Motorradunfall vor 6 Monaten (ohne organische Verletzungen laut MRT)</span><br>
+      · Seit Unfall: Cephalgie, <span style="color:var(--a2)">Flashbacks, Albträume</span><br>
+      · Konzentrationsstörungen, Insomnie<br>
+      · <span style="color:var(--a2)">Sozialer Rückzug</span>, depressive Stimmung<br>
+      · Tachykardie, Engegefühl in der Brust<br>
+      · Inappetenz + Gewichtsverlust (5 kg in 5 Monaten)<br>
+      · Alkohol ↑ seit Unfall (3 Bier/Tag)<br>
+      · Rauchen ↑ (1,5 Schachteln/Tag bei Stress)
+    </div>
+    <h4>DD PTBS vs. Depression vs. Anpassungsstörung</h4>
+    <table>
+      <tr><th>Merkmal</th><th>PTBS</th><th>Depression</th></tr>
+      <tr><td>Auslöser</td><td>Schweres Trauma</td><td>Psychosozialer Stress / keiner</td></tr>
+      <tr><td>Flashbacks</td><td>Ja! Typisch</td><td>Nein</td></tr>
+      <tr><td>Vermeidung</td><td>Ja</td><td>Eher nicht spezifisch</td></tr>
+      <tr><td>Albträume</td><td>Thematisch Trauma</td><td>Unspezifisch</td></tr>
+      <tr><td>Beginn</td><td>Nach Latenz (Wo./Mo.)</td><td>Schleichend</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="bl">AA-Gespräch PTBS – Prüfungsfragen</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th><th>Stadt</th></tr>
+      <tr><td>VD? Warum PTBS?</td><td>Schweres Trauma (Motorradunfall) + Flashbacks + Albträume + Vermeidung + Hyperarousal → Symptome &gt;4 Wochen → PTBS</td><td>Alle</td></tr>
+      <tr><td>DD?</td><td>Depression (ohne Flashbacks/Vermeidung), Panikattacke (ohne Trauma), Anpassungsstörung (weniger schwer), Hirntumor (anhaltende Cephalgie!)</td><td>Alle</td></tr>
+      <tr><td>Haben Sie an Hirntumor gedacht? (Reutlingen!)</td><td>Ja – wichtige DD bei anhaltenden Kopfschmerzen! → MRT Schädel veranlassen</td><td>Reutlingen</td></tr>
+      <tr><td>Warum Suizidgedanken so wichtig?</td><td>Bei positiver Antwort → stationäre Behandlung! PTBS-Patienten haben erhöhtes Suizidrisiko → immer aktiv fragen!</td><td>Reutlingen</td></tr>
+      <tr><td>Therapie PTBS?</td><td><strong>1. Psychotherapie</strong>: Traumatherapie (EMDR = Eye Movement Desensitization and Reprocessing). <strong>2. SSRI</strong>: Sertralin oder Paroxetin (zugelassen für PTBS). <strong>3. Schlaftherapie</strong>. Psychiatrisches Konsil.</td><td>Alle</td></tr>
+      <tr><td>Was ist EMDR?</td><td>Eye Movement Desensitization and Reprocessing: Patient erinnert sich ans Trauma während er Augenbewegungen folgt → Traumaverarbeitung. Etabliertes PTBS-Verfahren.</td><td>Reutlingen</td></tr>
+      <tr><td>Welche Psychotherapie als Beispiel? (Reutlingen!)</td><td>EMDR, KVT (kognitive Verhaltenstherapie), Traumaexpositionstherapie, Selbsthilfe</td><td>Reutlingen</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- PATIENTENSPRACHE + EMPATHIE -->
+<div class="ch-header ch-green">
+  <div class="ch-num">04</div>
+  <div class="ch-t">
+    <h2>Empathie &amp; Patientensprache</h2>
+    <p>Das Wichtigste im psychiatrischen FSP-Fall! Sprachliche Formulierungen</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Musterformulierungen aus echten Fällen</h3>
+    <div class="fb gn">
+<span class="cm">// Depression – Diagnose erklären (Karlsruhe):</span><br>
+🧑 „Was habe ich, Frau Doktor?"<br>
+→ <span class="hlg">„Ich vermute, dass Sie an einer Depression leiden – das ist eine Erkrankung, bei der bestimmte Botenstoffe im Gehirn aus dem Gleichgewicht geraten. Das verursacht Ihre Erschöpfung, die gedrückte Stimmung und die Schlafprobleme. Das ist keine Schwäche – das ist eine gut behandelbare Erkrankung."</span><br><br>
+<span class="cm">// Ich glaube ich habe keine Depression, ich habe Schilddrüsenprobleme (Karlsruhe!):</span><br>
+🧑 „Ich glaube nicht, dass ich eine Depression habe – das ist doch die Schilddrüse!"<br>
+→ <span class="hlg">„Das ist ein sehr guter Hinweis! Wir werden die Schilddrüse auf jeden Fall mit einem Bluttest untersuchen – das kann tatsächlich ähnliche Beschwerden verursachen. Wenn das in Ordnung ist, schauen wir uns die Möglichkeit einer Depression genauer an."</span><br><br>
+<span class="cm">// Patient sitzt wie ein „Potato sack" (Stuttgart!):</span><br>
+🧑 „Ich sitze die ganze Zeit vor dem Fernseher wie ein Potato sack."<br>
+→ <span class="hlg">„Ich verstehe das sehr gut – wenn man sich so erschöpft fühlt, fällt selbst das Aufstehen schwer. Das ist ein Zeichen, dass Ihr Körper gerade Hilfe braucht."</span><br><br>
+<span class="cm">// Patient will nicht aus dem Haus (Freiburg Panikattacke):</span><br>
+🧑 „Zu Hause ist es besser, ich traue mich nicht mehr raus."<br>
+→ <span class="hlg">„Das kann ich gut verstehen – zu Hause fühlt man sich sicherer. Aber langfristig ist es wichtig, dass Sie wieder Schritt für Schritt nach draußen gehen. Zusammen mit einem Therapeuten werden wir das üben. Sie werden das schaffen."</span><br><br>
+<span class="cm">// Alle Familienangehörigen krank/gestorben – „Habe ich auch Krebs?":</span><br>
+🧑 „Meine Mutter hatte Krebs, mein Vater Schlaganfall – habe ich auch etwas Schlimmes?"<br>
+→ <span class="hlg">„Ich verstehe gut, dass Sie sich nach allem, was Ihre Familie durchgemacht hat, Sorgen machen. Im Moment gibt es keinen Hinweis auf eine schwere körperliche Erkrankung. Aber wir werden das gründlich abklären – damit wir sicher sein können."</span>
+    </div>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="or">Fachbegriffe → Patientensprache</h3>
+    <table class="pt-table">
+      <tr><th>Fachbegriff</th><th>Medizinisch</th><th>Patientensprache</th></tr>
+      <tr><td><strong>Depression</strong></td><td>Affektive Störung, Stimmungsstörung</td><td>„Eine Erkrankung, bei der die Stimmung dauerhaft gedrückt ist und Botenstoffe im Gehirn aus dem Gleichgewicht geraten."</td></tr>
+      <tr><td><strong>Anhedonie</strong></td><td>Freud-/Interessenverlust</td><td>„Sie können an Dingen, die Ihnen früher Freude gemacht haben, keinen Spaß mehr finden."</td></tr>
+      <tr><td><strong>Antidepressivum (SSRI)</strong></td><td>Selektiver Serotonin-Wiederaufnahmehemmer</td><td>„Ein Medikament, das dafür sorgt, dass mehr Glücksbotenstoffe im Gehirn verfügbar sind. Wirkt nach 2–4 Wochen."</td></tr>
+      <tr><td><strong>Benzodiazepin (Adumbran/Valium)</strong></td><td>Anxiolytikum / Sedativum</td><td>„Ein Beruhigungsmittel, das kurzfristig hilft. Man darf es aber nicht lange nehmen, weil es abhängig machen kann."</td></tr>
+      <tr><td><strong>Panikattacke</strong></td><td>Akute Angstepisode mit vegetativer Symptomatik</td><td>„Ein plötzlicher Angstanfall, bei dem Ihr Körper in Alarmbereitschaft geht – mit Herzrasen, Schwitzen und Todesangst. Gefährlich ist er nicht, auch wenn er sich so anfühlt."</td></tr>
+      <tr><td><strong>Flashback</strong></td><td>Intrusives Wiedererleben des Traumas</td><td>„Das plötzliche, unkontrollierbare Auftauchen von Bildern oder Gefühlen des Unfalls – als ob er gerade passiert."</td></tr>
+      <tr><td><strong>EMDR</strong></td><td>Eye Movement Desensitization and Reprocessing</td><td>„Eine Therapiemethode, bei der Sie an den Unfall denken, während Sie Augenbewegungen machen. Das hilft dem Gehirn, die Erinnerung zu verarbeiten."</td></tr>
+      <tr><td><strong>Psychotherapie</strong></td><td>Kognitive Verhaltenstherapie (KVT)</td><td>„Gespräche mit einem Spezialisten, bei denen wir erarbeiten, wie negative Denkmuster erkannt und verändert werden können."</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- FACHBEGRIFFE + ZEITPLAN -->
+<div class="sdiv"><span>Fachbegriffe aus den Prüfungen</span></div>
+<div class="grid">
+  <div class="card">
+    <h3>Fachbegriffe – Psychiatrie</h3>
+    <h4>Depression direkt</h4>
+    <div>
+      <span class="tag pu">Anhedonie</span>
+      <span class="tag pu">Antriebslosigkeit</span>
+      <span class="tag pu">Morgentief</span>
+      <span class="tag pu">Somatisches Syndrom</span>
+      <span class="tag pu">Suizidalität</span>
+      <span class="tag pu">SSRI (Sertralin, Citalopram)</span>
+      <span class="tag pu">Psychotherapie / KVT</span>
+      <span class="tag pu">Benzodiazepine (Adumbran/Diazepam)</span>
+      <span class="tag pu">Anxiolytikum</span>
+      <span class="tag pu">Larvierte Depression</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Panikattacke / PTBS</h4>
+    <div>
+      <span class="tag or">Panikattacke / Panikstörung</span>
+      <span class="tag or">Agoraphobie</span>
+      <span class="tag or">Derealisation</span>
+      <span class="tag bl">PTBS (Posttraumatische Belastungsstörung)</span>
+      <span class="tag bl">Flashback / Intrusion</span>
+      <span class="tag bl">Hyperarousal</span>
+      <span class="tag bl">EMDR</span>
+      <span class="tag bl">Traumatherapie</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Sonstige aus Prüfungen</h4>
+    <div>
+      <span class="tag gr">Supination</span>
+      <span class="tag gr">Nystagmus</span>
+      <span class="tag gr">Bursitis</span>
+      <span class="tag gr">Inkontinenz</span>
+      <span class="tag gr">Intoxikation</span>
+      <span class="tag gr">Hepatomegalie</span>
+      <span class="tag gr">Somnolenz</span>
+      <span class="tag gr">Pankreatitis</span>
+      <span class="tag gr">Otitis media</span>
+      <span class="tag gr">Mandibula</span>
+      <span class="tag gr">Myom / Läsion</span>
+      <span class="tag gr">Varizen</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="or">Zeitplan &amp; Top-Tipps</h3>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-pu">Depression</span></td><td>20 Min</td><td>Morgentief? Suizidgedanken (immer!)? Auslöser? FA (Suizid!). Medikamente depressiogen? Alkohol? Soziale Situation.</td></tr>
+      <tr><td><span class="badge badge-or">Panikattacke</span></td><td>20 Min</td><td>Organisch ausschließen (Herz, Schilddrüse, DM). EKG + TSH + BB + Troponin. Jede Frage begründen können!</td></tr>
+      <tr><td><span class="badge badge-bl">PTBS</span></td><td>20 Min</td><td>Trauma genau erfragen. 3 Symptomgruppen nennen. Suizidgedanken! MRT Schädel (DD Tumor). Therapie: EMDR + SSRI.</td></tr>
+    </table>
+
+    <div class="ebox" style="margin-top:1rem">
+      <strong>⚠️ Suizidalität – die wichtigste Frage überhaupt:</strong> IMMER stellen. Nicht stellen aus Angst den Patienten aufzuregen = Fehler! Freiburg + Karlsruhe prüfen das explizit.
+    </div>
+    <div class="gbox" style="margin-top:0.8rem">
+      <strong>Stuttgart:</strong> „Klapsmühle" und „Potato sack" wurden positiv bewertet. Umgangssprache verstehen und empathisch reagieren ist eine eigenständige Prüfungsleistung!
+    </div>
+    <div style="background:var(--light-purple);border:1px solid #c090e8;border-left:3px solid var(--a1);border-radius:0 6px 6px 0;padding:0.75rem 1rem;font-size:0.85rem;margin-top:0.8rem;color:#3a0a55">
+      <strong>Wichtigster Tipp für Psychiatrie-Fälle:</strong> Der Prüfer bewertet Sprache + Empathie, nicht nur medizinisches Wissen. Patient ruhig behandeln, aktiv zuhören, Suizid direkt ansprechen, immer beruhigen dass es Lösungen gibt.
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top: 1px solid var(--border);">
+  FSP Leitfaden · Psychiatrie: Depression · Panikattacke · PTBS · Freiburg · Stuttgart · Karlsruhe · Reutlingen · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

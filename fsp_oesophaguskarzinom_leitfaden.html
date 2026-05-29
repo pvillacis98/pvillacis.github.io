@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Ösophaguskarzinom</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700;800&family=Rubik:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #0a0a14;
+    --card: #10102a;
+    --a1: #818cf8;   /* indigo */
+    --a2: #38bdf8;   /* hellblau */
+    --a3: #e879f9;   /* pink */
+    --good: #34d399;
+    --warn: #fbbf24;
+    --bad: #f43f5e;
+    --text: #e8e0ff;
+    --muted: #3d3870;
+    --border: #1e1a40;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Rubik', sans-serif; background: var(--bg); color: var(--text); font-weight: 300; line-height: 1.7; padding: 2rem 1rem; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; }
+  .header::after { content: ''; display: block; width: 120px; height: 3px; background: linear-gradient(90deg, var(--a1), var(--a2), var(--a3)); margin: 1.5rem auto 0; border-radius: 2px; }
+  .header h1 { font-family: 'Raleway', sans-serif; font-size: 2.6rem; font-weight: 800; background: linear-gradient(135deg, var(--a1), var(--a2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -1px; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+  .timer-badge { display: inline-block; background: linear-gradient(135deg, var(--a1), #6366f1); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 1rem; }
+
+  .ch-header { display: flex; align-items: center; gap: 1rem; margin: 3rem 0 1.5rem; padding: 1rem 1.5rem; border-radius: 12px; }
+  .ch1 { background: rgba(129,140,248,0.08); border-left: 5px solid var(--a1); }
+  .ch2 { background: rgba(56,189,248,0.08); border-left: 5px solid var(--a2); }
+  .ch3 { background: rgba(232,121,249,0.08); border-left: 5px solid var(--a3); }
+  .ch4 { background: rgba(52,211,153,0.08);  border-left: 5px solid var(--good); }
+  .ch-num { font-family: 'Raleway', sans-serif; font-size: 2.4rem; font-weight: 800; opacity: 0.3; }
+  .ch1 .ch-num { color: var(--a1); } .ch2 .ch-num { color: var(--a2); } .ch3 .ch-num { color: var(--a3); } .ch4 .ch-num { color: var(--good); }
+  .ch-t h2 { font-family: 'Raleway', sans-serif; font-size: 1.7rem; font-weight: 800; line-height: 1; }
+  .ch1 .ch-t h2 { color: var(--a1); } .ch2 .ch-t h2 { color: var(--a2); } .ch3 .ch-t h2 { color: var(--a3); } .ch4 .ch-t h2 { color: var(--good); }
+  .ch-t p { font-size: 0.82rem; color: var(--muted); margin-top: 0.3rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 14px; padding: 1.5rem; border: 1px solid var(--border); }
+  .card h3 { font-size: 0.95rem; font-weight: 600; color: var(--a1); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .card h3.bl { color: var(--a2); border-color: rgba(56,189,248,0.2); }
+  .card h3.pk { color: var(--a3); border-color: rgba(232,121,249,0.2); }
+  .card h3.gn { color: var(--good); border-color: rgba(52,211,153,0.2); }
+  .card h3.yw { color: var(--warn); border-color: rgba(251,191,36,0.2); }
+  .card h3.rd { color: var(--bad); border-color: rgba(244,63,94,0.2); }
+  .card h4 { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); color: var(--text); padding: 0.18rem 0.65rem; border-radius: 5px; font-size: 0.78rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.03); }
+  .tag.in { background: rgba(129,140,248,0.1); border-color: rgba(129,140,248,0.3); color: var(--a1); }
+  .tag.bl { background: rgba(56,189,248,0.1);  border-color: rgba(56,189,248,0.3);  color: var(--a2); }
+  .tag.pk { background: rgba(232,121,249,0.1); border-color: rgba(232,121,249,0.3); color: var(--a3); }
+  .tag.gn { background: rgba(52,211,153,0.1);  border-color: rgba(52,211,153,0.3);  color: var(--good); }
+  .tag.yw { background: rgba(251,191,36,0.1);  border-color: rgba(251,191,36,0.3);  color: var(--warn); }
+  .tag.rd { background: rgba(244,63,94,0.1);   border-color: rgba(244,63,94,0.3);   color: var(--bad); }
+
+  .fb { background: rgba(0,0,0,0.4); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #d0d0f8; }
+  .fb.bl { border-color: var(--a2); color: #c0e8f8; }
+  .fb.pk { border-color: var(--a3); color: #f0c0f8; }
+  .fb.gn { border-color: var(--good); color: #c0f0d8; }
+  .fb.yw { border-color: var(--warn); color: #f0e8b0; }
+  .fb.rd { border-color: var(--bad); color: #f0c0c8; }
+  .fb .cm { color: var(--muted); font-family: 'Rubik', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hlb { color: var(--a2);  font-weight: 600; }
+  .hlp { color: var(--a3);  font-weight: 600; }
+  .hlg { color: var(--good);font-weight: 600; }
+  .hlw { color: var(--warn);font-weight: 600; }
+  .hlr { color: var(--bad); font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: rgba(255,255,255,0.04); padding: 0.5rem 0.8rem; text-align: left; font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 1px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-in { background: rgba(129,140,248,0.15); color: var(--a1); }
+  .badge-bl { background: rgba(56,189,248,0.15);  color: var(--a2); }
+  .badge-gn { background: rgba(52,211,153,0.15);  color: var(--good); }
+  .badge-yw { background: rgba(251,191,36,0.15);  color: var(--warn); }
+  .badge-rd { background: rgba(244,63,94,0.15);   color: var(--bad); }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 1.8rem 0 1.2rem; }
+  .sdiv span { font-family: 'Raleway', sans-serif; font-size: 0.8rem; color: var(--muted); white-space: nowrap; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: rgba(251,191,36,0.07); border: 1px solid rgba(251,191,36,0.2); border-left: 3px solid var(--warn); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #d4c080; }
+  .wbox strong { color: var(--warn); }
+  .ebox { background: rgba(244,63,94,0.07); border: 1px solid rgba(244,63,94,0.2); border-left: 3px solid var(--bad); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #d4a0a8; }
+  .ebox strong { color: var(--bad); }
+  .gbox { background: rgba(52,211,153,0.07); border: 1px solid rgba(52,211,153,0.2); border-left: 3px solid var(--good); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #a0d4b8; }
+  .gbox strong { color: var(--good); }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: linear-gradient(135deg, var(--a1), #6366f1); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+
+  /* Karzinom-Typen */
+  .types-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 0.8rem 0; }
+  .tbox { border-radius: 8px; padding: 0.9rem; border: 1px solid var(--border); }
+  .tbox-in { background: rgba(129,140,248,0.07); border-color: rgba(129,140,248,0.2); }
+  .tbox-bl { background: rgba(56,189,248,0.07);  border-color: rgba(56,189,248,0.2); }
+  .tbox-title { font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 0.9rem; margin-bottom: 0.4rem; }
+
+  /* patient language */
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; }
+  .pt-table td:nth-child(3) { color: var(--good); font-size: 0.83rem; }
+  .pt-table td:nth-child(4) { color: var(--warn); font-size: 0.81rem; font-style: italic; }
+
+  @media (max-width: 700px) {
+    .grid, .types-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Ösophaguskarzinom</h1>
+  <div class="sub">Speiseröhrenkrebs · Dysphagie · B-Symptomatik · FSP Leitfaden</div>
+  <div class="timer-badge">⏱ 20 Min. Arztbrief · 20 Min. AA-Gespräch</div>
+</div>
+
+
+<!-- ═══ KAPITEL 1: LEITSYMPTOME ═══ -->
+<div class="ch-header ch1">
+  <div class="ch-num">01</div>
+  <div class="ch-t">
+    <h2>Leitsymptome &amp; typischer Patient</h2>
+    <p>Dysphagie · Odynophagie · Gewichtsverlust · Risikofaktoren</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Leitsymptome – immer abfragen</h3>
+    <h4>Kernsymptome (Trias!)</h4>
+    <span class="tag in">Dysphagie (Schluckbeschwerden)</span>
+    <span class="tag in">Zuerst bei fester Nahrung!</span>
+    <span class="tag in">Später auch bei Flüssigkeiten</span>
+    <span class="tag in">Odynophagie (Schmerzen beim Schlucken)</span>
+    <span class="tag in">Gewichtsverlust (5–20 kg!)</span>
+
+    <h4>Begleitsymptome</h4>
+    <span class="tag bl">Retrosternale Schmerzen (drückend)</span>
+    <span class="tag bl">Globusgefühl (Kloß im Hals)</span>
+    <span class="tag bl">Inappetenz</span>
+    <span class="tag bl">Morgendlicher trockener Husten</span>
+    <span class="tag bl">Heiserkeit (N. laryngeus recurrens!)</span>
+    <span class="tag bl">Pyrosis / Sodbrennen (früher!)</span>
+    <span class="tag bl">Insomnie (schmerzbedingt)</span>
+
+    <h4>B-Symptomatik – immer fragen!</h4>
+    <span class="tag rd">Gewichtsverlust &gt;10% in 6 Mon.</span>
+    <span class="tag rd">Nachtschweiß</span>
+    <span class="tag rd">Fieber (unklarer Ursache)</span>
+
+    <div class="wbox">
+      <strong>Schlüsselfrage:</strong> „Haben Sie Probleme beim Schlucken? Nur bei fester Nahrung oder auch bei Flüssigkeiten?" → Feste Nahrung zuerst = typisch für mechanische Enge (Karzinom). Feste UND flüssige = Achalasie (motorisch)!
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Typischer Prüfungspatient</h3>
+    <div style="background:rgba(129,140,248,0.08);border:1px solid rgba(129,140,248,0.2);border-radius:10px;padding:1rem;font-size:0.84rem;line-height:1.9;margin-bottom:0.8rem">
+      · 50–56 Jahre, <strong>männlich</strong> (seltener weiblich)<br>
+      · <span style="color:var(--bad)">20–35 PY Rauchen</span><br>
+      · <span style="color:var(--bad)">10–19 Flaschen Bier täglich</span> seit 20–35 Jahren<br>
+      · <strong>Körperliche Arbeit</strong>: Bauarbeiter, Maschinenschlosser, Gipser<br>
+      · <span style="color:var(--bad)">Kachexie</span>: 49–54 kg bei 172–179 cm<br>
+      · <span style="color:var(--warn)">Reduzierer AZ und EZ</span> → immer betonen!<br>
+      · DM Typ 2 + aHT + Gicht (häufige Komorbiditäten)<br>
+      · Geschieden, alleinlebend, keine/wenig Kinder<br>
+      · <span style="color:var(--a2)">Bruder mit Prostatakarzinom</span> (positive FA)
+    </div>
+    <h4>Risikofaktoren – alle abfragen!</h4>
+    <span class="tag rd">Rauchen (Pack Years!)</span>
+    <span class="tag rd">Alkohol (Flaschen/Tag, seit wann?)</span>
+    <span class="tag rd">GERD / Barrett-Ösophagus</span>
+    <span class="tag rd">Nitrosamine (Räucherfleisch, Wurst)</span>
+    <span class="tag rd">Achalasie</span>
+    <span class="tag rd">Adipositas</span>
+    <span class="tag rd">Männliches Geschlecht + Alter</span>
+    <span class="tag rd">Positive Familienanamnese</span>
+    <div class="wbox">
+      <strong>Aus Freiburg 2023:</strong> Kandidat vergaß Noxen zu fragen! Im AA-Gespräch aktiv erwähnen: „Ich habe leider vergessen, nach Rauchen und Alkohol zu fragen – diese Risikofaktoren sind für meine VD sehr wichtig, ich würde sie nachfragen." → Prüfer waren zufrieden!
+    </div>
+  </div>
+</div>
+
+<!-- TUMORTYPEN + AZ/EZ -->
+<div class="grid">
+  <div class="card">
+    <h3 class="bl">Plattenepithel vs. Adeno – Prüfungsfrage!</h3>
+    <div class="types-grid">
+      <div class="tbox tbox-in">
+        <div class="tbox-title" style="color:var(--a1)">Plattenepithelkarzinom</div>
+        <div style="font-size:0.82rem;line-height:1.8">
+          Oberes/mittleres Drittel<br>
+          <span style="color:var(--bad)">Alkohol + Rauchen</span> → #1<br>
+          Früher häufiger<br>
+          Nitrosamine<br>
+          M &gt;&gt; F
+        </div>
+      </div>
+      <div class="tbox tbox-bl">
+        <div class="tbox-title" style="color:var(--a2)">Adenokarzinom</div>
+        <div style="font-size:0.82rem;line-height:1.8">
+          Unteres Drittel / AEG<br>
+          <span style="color:var(--warn)">GERD → Barrett</span> → Karzinom<br>
+          Zunehmend häufiger<br>
+          Adipositas<br>
+          Westliche Länder
+        </div>
+      </div>
+    </div>
+    <div class="wbox">
+      <strong>Karlsruhe 08.04.2024:</strong> Prüfer fragte direkt: „Welchen Typ von Karzinom hat der Patient?" → Antwort: <strong>Plattenepithelkarzinom</strong> (starker Raucher + Alkohol, mittlerer Ösophagus). Adenokarzinom → bei Barrett-Ösophagus, unteres Drittel.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="pk">AZ / EZ – immer kommentieren!</h3>
+    <p style="font-size:0.84rem;margin-bottom:0.8rem">Im AA-Gespräch wird explizit nach Allgemein- und Ernährungszustand gefragt!</p>
+    <table>
+      <tr><th>Parameter</th><th>Bedeutung</th><th>Aus den Fällen</th></tr>
+      <tr><td><span class="hl">Reduzierter AZ</span></td><td>Kachexie, Erschöpfung, Tumorerkrankung</td><td>Freiburg: Ärztin unterbrach wegen Ernährungszustand!</td></tr>
+      <tr><td><span class="hl">BMI berechnen!</span></td><td>49 kg / (1,79 m)² = 15,3 → Untergewicht</td><td>Stuttgart: „laut BMI besteht Untergewicht"</td></tr>
+      <tr><td><span class="hlr">Kachexie</span></td><td>Extremer Gewichtsverlust durch Tumor</td><td>Immer beim Ösophaguskarzinom</td></tr>
+    </table>
+    <div class="fb pk" style="margin-top:0.8rem">
+<span class="cm">// Formulierung für AA-Gespräch:</span><br>
+„Der Patient befindet sich in
+<span class="hlp">reduziertem Allgemeinzustand</span> und
+<span class="hlp">stark reduziertem Ernährungszustand</span>
+(Gewicht [X] kg, Größe [X] cm, BMI [X] → Untergewicht).
+Er berichtete über einen Gewichtsverlust von [X] kg
+innerhalb von [X] Monaten."
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ KAPITEL 2: ARZTBRIEF ═══ -->
+<div class="ch-header ch2">
+  <div class="ch-num">02</div>
+  <div class="ch-t">
+    <h2>Arztbrief-Template</h2>
+    <p>Vollständig · Diagnostik · Therapie · Prüfungshinweise</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="bl">Arztbrief: Ösophaguskarzinom</h3>
+
+    <h4>Aktuelle Beschwerden</h4>
+    <div class="fb">
+Herr/Frau [Name], ein/eine [Alter]-jährige/r Patient/in in
+<span class="hl">reduziertem AZ und EZ</span> (Gewicht [X] kg, BMI [X]),
+stellte sich bei uns wegen <span class="hl">seit [X] Wochen / Monaten bestehender,
+progredienter Dysphagie</span> vor, zunächst nur bei fester Nahrung,
+inzwischen auch bei flüssiger Nahrung.<br><br>
+Begleitend berichtete er/sie über
+<span class="hl">retrosternale Druckschmerzen</span> (NRS [X]/10),
+<span class="hl">Odynophagie</span> sowie einen
+<span class="hl">Gewichtsverlust von ca. [X] kg innerhalb von [X] Monaten</span>.<br><br>
+Zusätzlich klagte er/sie über
+<span class="hl">morgendlichen trockenen Husten</span>,
+<span class="hl">Globusgefühl</span>,
+<span class="hl">Inappetenz</span> und schmerzbedingte Insomnie.<br><br>
+<span class="cm">// Verneinte Alarmsymptome dokumentieren:</span><br>
+Hämatemesis, Meläna, Fieber, Schüttelfrost, Nachtschweiß
+sowie Erbrechen wurden verneint.
+    </div>
+
+    <h4>Noxen – entscheidend für die VD!</h4>
+    <div class="fb">
+<span class="hlr">Nikotinkonsum:</span> ca. [X] Zigaretten täglich seit [X] Jahren
+(= ca. <span class="hlr">[X] Pack Years</span>).<br>
+<span class="hlr">Alkoholkonsum:</span> täglich [X] Flaschen Bier sowie
+[gelegentlich Schnaps] seit [X] Jahren.<br>
+Drogenkonsum wurde verneint.
+    </div>
+
+    <h4>Vorerkrankungen</h4>
+    <div class="fb">
+Als Vorerkrankungen seien bekannt:<br>
+· <span class="hl">GERD / Pyrosis</span> (seit Jahren) → Barrett-Risiko!<br>
+· Diabetes mellitus Typ 2 · arterielle Hypertonie · Gicht<br>
+· Phlebitis / Varizen / Lungenembolie (Antikoagulation beachten!)<br><br>
+Medikamentös: Janumet [1-0-1], Beloc-Zok, ASS 100 mg<br>
+Keine Allergien bekannt.
+    </div>
+
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: Ösophaguskarzinom</span><br>
+(Progrediente Dysphagie, starker Gewichtsverlust,
+langjähriger Nikotin- und Alkoholabusus, GERD-Anamnese,
+reduzierter AZ/EZ, höheres Lebensalter)<br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlw">GERD / Refluxösophagitis</span> – Sodbrennen, aber kein Gewichtsverlust;<br>
+  Schmerzen besser nach Antazida<br>
+· <span class="hlw">Achalasie</span> – Dysphagie für feste UND flüssige Speisen von Anfang an;<br>
+  kein Gewichtsverlust, Regurgitation unverdauter Speisen<br>
+· <span class="hlw">Barrett-Ösophagus</span> – Präkanzerose, keine Symptome (wichtig!)<br>
+· <span class="hlw">Magenkarzinom</span> – Epigastrische Schmerzen, HP-Anamnese<br>
+· <span class="hlw">Ösophagusstriktur</span> – nach Verätzung, Bestrahlung<br>
+· <span class="hlw">Ösophagusdivertikel</span> – Regurgitation, Foetor ex ore<br>
+· <span class="hlr">Akutes Koronarsyndrom</span> – DD bei retrosternalen Schmerzen!<br>
+  → EKG + Troponin<br>
+· <span class="hlw">Bronchialkarzinom / Schilddrüsenkarzinom</span> – Kompression von außen
+    </div>
+
+    <h4>Diagnostik</h4>
+    <div class="fb bl">
+· Körperliche Untersuchung: AZ/EZ beurteilen,
+  <span class="hlb">Lymphknoten tastbar?</span> (zervikal, supraklavikulär),
+  Ikterus?, Hepatomegalie?<br>
+· Labor: BB (<span class="hlb">Hb ↓ bei Anämie</span>), CRP, BSG, LDH,
+  <span class="hlb">Tumormarker</span> (SCC für Plattenepithel, CEA, CA19-9)<br>
+· <span class="hlb">EKG</span> (DD ACS – immer!)<br><br>
+<span class="hlb">Apparative Diagnostik:</span><br>
+· <span class="hl">ÖGD (Ösophagogastroduodenoskopie)</span> mit Biopsie
+  = wichtigste Untersuchung / Goldstandard!<br>
+  → Tumorlokalisation, -größe, Histologie, HP-Status<br>
+· <span class="hl">Röntgen-Ösophagus mit Bariumbrei (Breischluck)</span>
+  = erste orientierende Bildgebung; Füllungsdefekt sichtbar<br>
+· <span class="hl">Endosonographie (EUS)</span>: T- und N-Stadium (Wandinfiltration, Lymphknoten)<br>
+· <span class="hl">CT Thorax + Abdomen + Becken</span> (mit KM): Staging, Metastasen<br>
+· <span class="hl">PET-CT</span>: Fernmetastasen, Lymphknoten<br>
+  <span class="cm">// PET-CT = Kombination aus CT und Stoffwechselaktivitätsmessung;
+  aktive Tumorzellen nehmen mehr Glucose auf → sichtbar</span><br>
+· Abdomensonographie (Lebermetastasen?)<br>
+· Ggf. Bronchoskopie (Tracheainfiltration?), Mediastinoskopie
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb gn">
+<span class="cm">// Therapie abhängig vom TNM-Stadium!</span><br><br>
+<span class="hlg">Kurativ (lokalisierter Tumor):</span><br>
+· Frühkarzinom (T1): <span class="hlg">Endoskopische Mukosaresektion (EMR)</span><br>
+· Fortgeschritten: <span class="hlg">Neoadjuvante Radiochemotherapie</span>
+  (FLOT-Schema: 5-FU + Folinsäure + Oxaliplatin + Docetaxel)<br>
+  → dann <span class="hlg">Ösophagektomie + Magenhochzug</span>
+  (= Magen wird in die Brust hochgezogen als Ersatz)<br>
+· Bei proximalem Tumor: ggf. Pharyngo-/Laryngektomie<br><br>
+<span class="hlw">Palliativ (inoperabel / Fernmetastasen):</span><br>
+· <span class="hlw">Radiochemotherapie</span> (Cisplatin + 5-FU)<br>
+· <span class="hlw">Stentimplantation</span> in den Ösophagus
+  (hält Speiseröhre offen → Schlucken möglich)<br>
+· Ernährungssonde (PEG)<br>
+· Schmerztherapie (WHO-Stufenschema)<br><br>
+<span class="hlg">Prognose:</span><br>
+· 5-Jahres-Überlebensrate: nur ~20%<br>
+· Bei Palliativtherapie: Überlebenszeit oft &lt;6 Monate
+    </div>
+
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler + Karlsruhe-Hinweis:</strong><br>
+      – Karlsruhe 2025: „Es gibt Minuspunkte, wenn Diagnostik und Therapie im Brief fehlen – selbst wenn es nur Stichpunkte sind. Immer etwas schreiben!"<br>
+      – AZ/EZ nicht kommentiert → Prüfer unterbrach explizit (Freiburg!)<br>
+      – Achalasie als DD vergessen → wird immer gefragt<br>
+      – ACS/Herzinfarkt als DD bei retrosternalen Schmerzen vergessen
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ KAPITEL 3: AA-GESPRÄCH ═══ -->
+<div class="ch-header ch3">
+  <div class="ch-num">03</div>
+  <div class="ch-t">
+    <h2>AA-Gespräch &amp; Patientenvorstellung</h2>
+    <p>Direkte Prüfungsfragen · Aufklärung ÖGD · Krebsgespräch</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="pk">Patientenvorstellung – 5 Schritte</h3>
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="scont"><strong>Stammdaten + AZ/EZ</strong>
+      „Ich möchte Ihnen Herrn [Name], einen [Alter]-jährigen [Bauarbeiter], vorstellen. Der Patient befindet sich in <span class="hlp">reduziertem Allgemein- und stark reduziertem Ernährungszustand</span> (Gewicht [X] kg, BMI [X] → Untergewicht)."</div>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="scont"><strong>Leitsymptome</strong>
+      „Der Patient stellte sich wegen <span class="hl">seit [X] Wochen progredienter Dysphagie</span>, zunächst nur bei fester, inzwischen auch bei flüssiger Nahrung, sowie <span class="hl">retrosternaler Druckschmerzen</span> und einem <span class="hlr">Gewichtsverlust von [X] kg</span> in [X] Monaten vor."</div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="scont"><strong>Risikofaktoren</strong>
+      „Der Patient gibt einen langjährigen schweren <span class="hlr">Nikotin- und Alkoholabusus</span> an ([X] PY / [X] Flaschen täglich). Außerdem leidet er seit Jahren an <span class="hlr">GERD</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="scont"><strong>VD + DD</strong>
+      „Meine Verdachtsdiagnose lautet <span class="hl">Ösophaguskarzinom</span>. Differentialdiagnostisch kommen <span class="hlw">Achalasie, GERD, Magenkarzinom</span> sowie ein <span class="hlr">akutes Koronarsyndrom</span> in Betracht."</div>
+    </div>
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="scont"><strong>Procedere</strong>
+      „Ich habe <span class="hl">EKG, Labor mit Tumormarkern und eine ÖGD mit Biopsie</span> veranlasst sowie ein <span class="hl">CT-Thorax/Abdomen zum Staging</span>."</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRÜFUNGSFRAGEN -->
+<div class="sdiv"><span>Prüfungsfragen – direkt aus allen Städten</span></div>
+<div class="full">
+  <div class="card">
+    <h3>Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th></tr>
+      <tr><td>Warum denken Sie an Ösophaguskarzinom?</td><td>Progrediente Dysphagie (feste → flüssig), starker Gewichtsverlust, langjähriger Nikotin- und Alkoholabusus, GERD-Anamnese, reduzierter AZ/EZ, Alter &gt;50</td></tr>
+      <tr><td>DD: Was spricht gegen Achalasie?</td><td>Achalasie: Dysphagie von Anfang an für feste UND flüssige Speisen, Regurgitation unverdauter Nahrung, kein Gewichtsverlust, jüngere Patienten</td></tr>
+      <tr><td>Was spricht gegen Ösophagitis / GERD?</td><td>GERD: Sodbrennen, Besserung durch Antazida, kein Gewichtsverlust, keine progressive Dysphagie, keine Kachexie</td></tr>
+      <tr><td>Wichtigste Untersuchung?</td><td><strong>ÖGD mit Biopsie</strong> = Goldstandard (Diagnose + Histologie + Staging)</td></tr>
+      <tr><td>Womit beurteilen Sie zuerst den Zustand?</td><td><strong>Röntgen mit Bariumbrei (Breischluck)</strong> = erste orientierende Bildgebung; zeigt Füllungsdefekt / Stenose</td></tr>
+      <tr><td>Wie misst man die Tumorgröße?</td><td>CT (mit KM) oder Endosonographie (EUS) → exaktes T-Staging</td></tr>
+      <tr><td>Welcher Tumortyp?</td><td>Plattenepithelkarzinom: Alkohol + Rauchen, oberes/mittleres Drittel. Adenokarzinom: GERD → Barrett, unteres Drittel</td></tr>
+      <tr><td>Was ist PET-CT? Wozu?</td><td>Kombination CT + Positronen-Emissions-Tomographie. Tumorzellen nehmen mehr Glucose auf → aktive Metastasen sichtbar. Für Fernmetastasen-Suche.</td></tr>
+      <tr><td>Therapiemöglichkeiten?</td><td>Kurativ: EMR (Frühkarzinom) oder neoadjuvante RCT + Ösophagektomie + Magenhochzug. Palliativ: RCT + Stentimplantation + PEG-Sonde</td></tr>
+      <tr><td>Was wenn inoperabel?</td><td>Palliative Radiochemotherapie (Cisplatin + 5-FU) + Stent + PEG-Sonde + Schmerztherapie</td></tr>
+      <tr><td>Welche Erkrankungen der Speiseröhre gibt es?</td><td>Ösophagitis, Karzinom, GERD, Barrett-Ösophagus (keine Symptome!), <strong>Achalasie</strong> (motorisch!), Divertikel, Striktur, Varizen</td></tr>
+      <tr><td>Was ist Barrett-Ösophagus?</td><td>Umwandlung des Plattenepithels → Zylinderepithel durch chronischen Säurerückfluss. Präkanzerose! Meist keine Symptome → wichtig für Screening</td></tr>
+      <tr><td>Komplikationen der ÖGD bei diesem Patienten?</td><td>Blutung (Varizen!), Schleimhautverletzung, Perforation, Unmöglichkeit vollständiger Untersuchung bei Obstruktion durch Tumor</td></tr>
+      <tr><td>Prognose?</td><td>Schlecht: 5-JÜR ~20%. Bei Palliativtherapie selten &gt;6 Monate. Frühkarzinom = deutlich besser.</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- KREBSGESPRÄCH -->
+<div class="full">
+  <div class="card">
+    <h3 class="rd">Krebsgespräch – was sagen / was NICHT sagen</h3>
+    <p style="font-size:0.84rem;color:var(--muted);margin-bottom:0.8rem">Stuttgart 23.03.2024: Prüfer betonte explizit: Bei Krebspatienten gibt es drei Dinge, die vermieden werden müssen!</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:0.8rem">
+      <div class="gbox">
+        <strong>✓ Das darf man sagen:</strong><br>
+        „Wir haben den Verdacht auf einen Tumor in der Speiseröhre."<br>
+        „Wir müssen zunächst alle Untersuchungen abwarten."<br>
+        „Wir sind für Sie da und begleiten Sie durch den Prozess."<br>
+        „Wir werden alles tun, was medizinisch möglich ist."
+      </div>
+      <div class="ebox">
+        <strong>✗ Diese 3 Dinge NICHT sagen:</strong><br>
+        1. „Es wird alles gut werden."<br>
+        2. „Das ist heilbar / Sie werden das überstehen."<br>
+        3. „Sie sind bei uns in den besten Händen."<br>
+        → Keine falschen Versprechungen!
+      </div>
+    </div>
+
+    <div class="fb rd">
+<span class="cm">// Musterformulierung – Krebsverdacht mitteilen:</span><br><br>
+„Herr/Frau [Name], die Symptome, die Sie mir beschrieben haben, geben mir
+Anlass zu einer ernsthaften Untersuchung. Ich möchte ehrlich mit Ihnen sein:
+Wir müssen die Möglichkeit eines <span class="hlr">Tumors in der Speiseröhre</span>
+ausschließen. Dafür werde ich eine Magenspiegelung mit Gewebeprobe veranlassen.
+Erst wenn wir die Ergebnisse haben, können wir Ihnen genaueres sagen.
+Ich bin für Sie da und beantworte gerne Ihre Fragen."
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ KAPITEL 4: PATIENTENSPRACHE ═══ -->
+<div class="ch-header ch4">
+  <div class="ch-num">04</div>
+  <div class="ch-t">
+    <h2>Fachbegriffe → Patientensprache</h2>
+    <p>Was fragen Patienten? Wie antworte ich auf Deutsch?</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Übersetzungstabelle</h3>
+    <table class="pt-table">
+      <tr><th>Fachbegriff</th><th>Medizinisch</th><th>Patientensprache</th><th>Typischer Patientensatz</th></tr>
+      <tr><td><strong>Ösophaguskarzinom</strong></td><td>Speiseröhrenkrebs</td><td>„Wir haben den Verdacht, dass es sich um einen Tumor in Ihrer Speiseröhre handelt – das ist der Schlauch, der die Nahrung vom Mund in den Magen transportiert."</td><td>„Was habe ich?"</td></tr>
+      <tr><td><strong>Dysphagie</strong></td><td>Schluckbeschwerden</td><td>„Schwierigkeiten beim Schlucken – das Gefühl, dass die Nahrung stecken bleibt."</td><td>„Ich kann kaum noch essen."</td></tr>
+      <tr><td><strong>Odynophagie</strong></td><td>Schmerzen beim Schlucken</td><td>„Schmerzen beim Schlucken – nicht nur das Steckenbleiben, sondern es tut auch weh."</td><td>–</td></tr>
+      <tr><td><strong>Globusgefühl</strong></td><td>Fremdkörpergefühl im Hals</td><td>„Das Gefühl, als ob ein Kloß oder Knoten im Hals sitzt."</td><td>„Es fühlt sich an, als hätte ich etwas im Hals."</td></tr>
+      <tr><td><strong>ÖGD / Gastroskopie</strong></td><td>Magenspiegelung</td><td>„Wir führen einen dünnen, biegsamen Schlauch mit einer Kamera durch den Mund in die Speiseröhre und den Magen. Sie bekommen vorher ein Beruhigungsmittel – Sie merken kaum etwas davon."</td><td>„Ich habe Angst vor der Magenspiegelung!"</td></tr>
+      <tr><td><strong>Biopsie</strong></td><td>Gewebeprobe</td><td>„Wir entnehmen bei der Spiegelung eine winzige Gewebeprobe und schicken sie ins Labor, um die Zellen unter dem Mikroskop zu untersuchen."</td><td>„Werde ich betäubt?"</td></tr>
+      <tr><td><strong>Breischluck (Barium)</strong></td><td>Röntgen mit Kontrastmittel</td><td>„Sie schlucken eine dickflüssige weiße Flüssigkeit (Bariumbrei). Diese leuchtet im Röntgenbild und zeigt uns, wie die Speiseröhre innen aussieht."</td><td>„Was ist diese Untersuchung?"</td></tr>
+      <tr><td><strong>CT mit Kontrastmittel</strong></td><td>Computertomographie</td><td>„Eine Röntgenuntersuchung, die den ganzen Körper in Schichten darstellt. Mit dem Kontrastmittel können wir Tumoren und Metastasen besser sehen."</td><td>–</td></tr>
+      <tr><td><strong>PET-CT</strong></td><td>Positronen-Emissions-Tomographie</td><td>„Eine Spezialuntersuchung, die zeigt, welche Stellen im Körper besonders aktiv sind – Krebszellen verbrauchen mehr Zucker, das sieht man dann im Bild."</td><td>„Was ist PET-CT?"</td></tr>
+      <tr><td><strong>Endosonographie</strong></td><td>Ultraschall von innen</td><td>„Eine Ultraschalluntersuchung von innen – wie die Magenspiegelung, aber mit einem Ultraschallgerät am Ende des Schlauches."</td><td>–</td></tr>
+      <tr><td><strong>Ösophagektomie + Magenhochzug</strong></td><td>Speiseröhren-OP</td><td>„Wir entfernen den erkrankten Teil der Speiseröhre und ziehen dann den Magen nach oben, damit er die Aufgabe der Speiseröhre übernimmt."</td><td>„Brauche ich eine OP?"</td></tr>
+      <tr><td><strong>Stentimplantation</strong></td><td>Stent in den Ösophagus</td><td>„Wir legen eine kleine Metallröhre in die Speiseröhre, die sie offen hält und Ihnen das Schlucken erleichtert."</td><td>„Was ist ein Stent?"</td></tr>
+      <tr><td><strong>GERD</strong></td><td>Gastroösophageale Refluxkrankheit</td><td>„Der Rückfluss von Magensäure in die Speiseröhre – das verursacht das Sodbrennen. Langfristig kann das die Schleimhaut verändern."</td><td>„Was ist GERD?" (Freiburg!)</td></tr>
+      <tr><td><strong>Barrett-Ösophagus</strong></td><td>Präkanzerose</td><td>„Eine Veränderung der Schleimhaut in der Speiseröhre durch jahrelangen Säurerückfluss. Das ist noch kein Krebs, aber ein Risikofaktor – deshalb sollte es regelmäßig kontrolliert werden."</td><td>–</td></tr>
+      <tr><td><strong>Palliative Therapie</strong></td><td>Lindernde Behandlung</td><td>„Eine Behandlung, die darauf zielt, Ihre Beschwerden zu lindern und Ihre Lebensqualität zu verbessern – keine Heilung, aber Unterstützung."</td><td>„Kann man das noch heilen?"</td></tr>
+      <tr><td><strong>Kachexie</strong></td><td>Extreme Abmagerung</td><td>„Ein starker, ungewollter Gewichtsverlust durch die Erkrankung."</td><td>–</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PATIENTENREAKTIONEN -->
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Typische Patientenreaktionen – Musterantworten</h3>
+    <div class="fb gn">
+<span class="cm">// Direkt aus den echten Fällen!</span><br><br>
+🧑 „Ich habe Angst vor der Magenspiegelung!" (Stuttgart, Freiburg!)<br>
+→ <span class="hlg">„Das verstehe ich gut. Aber ich kann Ihnen versichern:
+Sie bekommen vorher ein Beruhigungs- und Schlafmittel, sodass Sie während
+der Untersuchung entspannt sind und kaum etwas merken. Der Schlauch ist
+sehr dünn und flexibel. Die Untersuchung dauert nur wenige Minuten."</span><br><br>
+🧑 „Was ist GERD?" (Freiburg!)<br>
+→ <span class="hlg">„GERD bedeutet, dass Magensäure aus dem Magen zurück in die Speiseröhre
+fließt – das verursacht das Sodbrennen, das Sie beschrieben haben.
+Langfristig kann das die Schleimhaut der Speiseröhre verändern."</span><br><br>
+🧑 „Warum fragen Sie nach den Venen – hat das mit meinen Schluckproblemen zu tun?" (Freiburg!)<br>
+→ <span class="hlg">„Gute Frage! Die Venenprobleme und Lungenembolie sind nicht direkt
+mit den Schluckproblemen verbunden. Aber sie sind wichtig für mich zu wissen,
+damit wir bei der Behandlung auf Blutverdünner und Blutungsrisiken achten."</span><br><br>
+🧑 „Habe ich Krebs?" (Stuttgart, Freiburg)<br>
+→ <span class="hlg">„Ich verstehe Ihre Sorge sehr gut, besonders da Ihr Bruder an
+Bauchspeicheldrüsenkrebs gestorben ist. Ich kann Ihnen das heute noch nicht
+mit Sicherheit sagen. Wir müssen zuerst die Ergebnisse der Magenspiegelung
+und der Gewebeprobe abwarten. Sobald wir sie haben, sprechen wir offen
+mit Ihnen darüber."</span><br><br>
+🧑 „Kann ich jetzt 2 Flaschen Bier vom Kiosk holen?" (Karlsruhe!)<br>
+→ <span class="hlg">„Das verstehe ich, aber nein – bitte nicht. Alkohol ist einer der
+Hauptauslöser Ihrer Erkrankung und würde die Speiseröhre weiter reizen.
+Ich weiß, dass das schwer ist, und wir können Sie dabei unterstützen,
+den Alkohol zu reduzieren."</span>
+    </div>
+  </div>
+</div>
+
+<!-- FACHBEGRIFFE + ZEITPLAN -->
+<div class="sdiv"><span>Fachbegriffe &amp; Zeitplan</span></div>
+<div class="grid">
+  <div class="card">
+    <h3>Fachbegriffe aus den Prüfungen</h3>
+    <h4>Ösophagus direkt</h4>
+    <div>
+      <span class="tag in">Ösophaguskarzinom</span>
+      <span class="tag in">Dysphagie / Odynophagie</span>
+      <span class="tag in">Globusgefühl</span>
+      <span class="tag in">GERD / Pyrosis</span>
+      <span class="tag in">Barrett-Ösophagus</span>
+      <span class="tag in">Achalasie</span>
+      <span class="tag in">Plattenepithelkarzinom</span>
+      <span class="tag in">Adenokarzinom</span>
+      <span class="tag in">ÖGD / Gastroskopie</span>
+      <span class="tag in">Breischluck / Barium</span>
+      <span class="tag in">Endosonographie</span>
+      <span class="tag in">PET-CT</span>
+      <span class="tag in">Ösophagektomie</span>
+      <span class="tag in">Magenhochzug</span>
+      <span class="tag in">Stentimplantation</span>
+      <span class="tag in">Kachexie</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Sonstige (aus Prüfungen)</h4>
+    <div>
+      <span class="tag bl">Palliative Therapie / Medizin</span>
+      <span class="tag bl">Tumormarker (SCC, CEA, CA19-9)</span>
+      <span class="tag bl">Anämie / Hämatemesis</span>
+      <span class="tag bl">Meläna</span>
+      <span class="tag bl">Ösophagitis</span>
+      <span class="tag bl">TNM-Klassifikation</span>
+      <span class="tag bl">Koronararterienstenose</span>
+      <span class="tag bl">Intoxikation / Abusus</span>
+      <span class="tag bl">Konjunktivitis</span>
+      <span class="tag bl">Hämatemesis</span>
+      <span class="tag gn">Flexion / Beugung</span>
+      <span class="tag gn">Leukozyt</span>
+      <span class="tag gn">Gonorrhoe</span>
+      <span class="tag gn">Inkontinenz</span>
+      <span class="tag gn">Anasarka</span>
+      <span class="tag gn">Pneumonie</span>
+      <span class="tag gn">Ren (Niere)</span>
+      <span class="tag gn">Osteoporose</span>
+      <span class="tag gn">Synechie</span>
+      <span class="tag gn">Apoplektischer Insult</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="yw">Zeitplan &amp; Tipps</h3>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-in">Patientengespräch</span></td><td><strong>20 Min</strong></td><td>Dysphagie (feste vs. flüssig?), Gewichtsverlust (wieviel, wann?), Noxen (PY!), GERD?, Angst des Patienten ansprechen!</td></tr>
+      <tr><td><span class="badge badge-bl">Arztbrief</span></td><td><strong>20 Min</strong></td><td>AZ/EZ zuerst! VD, DD (Achalasie + ACS nicht vergessen!), Diagnostik (ÖGD + CT + PET-CT), Therapie (mind. Stichpunkte!)</td></tr>
+      <tr><td><span class="badge badge-gn">AA-Gespräch</span></td><td><strong>20 Min</strong></td><td>Spontan wie Kollege. AZ/EZ betonen. Tumortyp kennen. PET-CT erklären können. Krebsgespräch = keine falschen Versprechen!</td></tr>
+    </table>
+
+    <div class="gbox" style="margin-top:1rem">
+      <strong>Top-Tipps aus Stuttgart 22.02.2025:</strong> „Sie mochten es sehr, dass die Vorstellung spontan war, wie ein Gespräch unter Kollegen. Wir haben viel über ÖGD, CT, PET-CT, Endosonographie, chirurgisches Risiko, Metastasen und Prognose gesprochen."
+    </div>
+    <div class="wbox" style="margin-top:0.8rem">
+      <strong>Aus Stuttgart 03.08.2024:</strong> „Was ist PET-CT? Warum PET-CT? Was erwarten wir vom PET-CT?" → Diese drei Fragen zum PET-CT immer vorbereiten!
+    </div>
+    <div class="gbox" style="margin-top:0.8rem">
+      <strong>Karlsruhe 2025:</strong> Arztbrief muss Diagnostik + Therapie enthalten, auch als Stichpunkte. Fehlen diese → Minuspunkte!
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+  FSP Leitfaden · Ösophaguskarzinom + Patientensprache · Freiburg · Karlsruhe · Stuttgart · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

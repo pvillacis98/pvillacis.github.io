@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Pyelonephritis & Harnwegsinfektion</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --card2: #f1f3f5;
+    --a1: #1a5e7a;    /* petrol – Harnwege */
+    --a2: #1971c2;    /* blau – Diagnostik */
+    --a3: #2f9e44;    /* grün – Therapie */
+    --a4: #c92a2a;    /* rot – Komplikationen */
+    --warn: #e67700;
+    --text: #212529;
+    --muted: #868e96;
+    --border: #dee2e6;
+    --light-petrol: #e6f4f9;
+    --light-blue: #e8f0ff;
+    --light-green: #ebfbee;
+    --light-red: #fff5f5;
+    --light-orange: #fff9db;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-weight: 400; line-height: 1.7; padding: 2rem 1rem; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border); }
+  .header h1 { font-family: 'Inter', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--a1); letter-spacing: -1px; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+  .timer-badge { display: inline-block; background: var(--a1); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 0.8rem; }
+
+  .ch-header { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0 1.2rem; padding: 0.9rem 1.2rem; border-radius: 10px; }
+  .ch-petrol { background: var(--light-petrol); border-left: 5px solid var(--a1); }
+  .ch-blue   { background: var(--light-blue);   border-left: 5px solid var(--a2); }
+  .ch-green  { background: var(--light-green);  border-left: 5px solid var(--a3); }
+  .ch-red    { background: var(--light-red);    border-left: 5px solid var(--a4); }
+  .ch-orange { background: var(--light-orange); border-left: 5px solid var(--warn); }
+  .ch-num { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 800; opacity: 0.2; }
+  .ch-petrol .ch-num { color: var(--a1); } .ch-blue .ch-num   { color: var(--a2); }
+  .ch-green .ch-num  { color: var(--a3); } .ch-red .ch-num    { color: var(--a4); }
+  .ch-orange .ch-num { color: var(--warn); }
+  .ch-t h2 { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 800; line-height: 1.1; }
+  .ch-petrol .ch-t h2 { color: var(--a1); } .ch-blue .ch-t h2   { color: var(--a2); }
+  .ch-green .ch-t h2  { color: var(--a3); } .ch-red .ch-t h2    { color: var(--a4); }
+  .ch-orange .ch-t h2 { color: var(--warn); }
+  .ch-t p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 10px; padding: 1.4rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .card h3 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--a1); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light-petrol); }
+  .card h3.bl { color: var(--a2); border-color: var(--light-blue); }
+  .card h3.gn { color: var(--a3); border-color: var(--light-green); }
+  .card h3.rd { color: var(--a4); border-color: var(--light-red); }
+  .card h3.or { color: var(--warn); border-color: var(--light-orange); }
+  .card h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); padding: 0.15rem 0.6rem; border-radius: 4px; font-size: 0.77rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: var(--card2); color: var(--text); }
+  .tag.pe { background: var(--light-petrol); border-color: #80c0d8; color: #0d3a4a; }
+  .tag.bl { background: var(--light-blue);   border-color: #90baf0; color: #0d3a7a; }
+  .tag.gn { background: var(--light-green);  border-color: #8ce99a; color: #1b4a22; }
+  .tag.rd { background: var(--light-red);    border-color: #ffa8a8; color: var(--a4); }
+  .tag.or { background: var(--light-orange); border-color: #ffd43b; color: #7a3800; }
+  .tag.gr { background: #f8f9fa;             border-color: #ced4da; color: #495057; }
+
+  .fb { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #343a40; }
+  .fb.bl { border-left-color: var(--a2); }
+  .fb.gn { border-left-color: var(--a3); }
+  .fb.rd { border-left-color: var(--a4); }
+  .fb.or { border-left-color: var(--warn); }
+  .fb .cm { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hli { color: var(--a2);  font-weight: 600; }
+  .hlg { color: var(--a3);  font-weight: 600; }
+  .hlr { color: var(--a4);  font-weight: 600; }
+  .hlo { color: var(--warn);font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: var(--card2); padding: 0.5rem 0.8rem; text-align: left; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 2px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8f9fa; }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-pe { background: var(--light-petrol); color: #0d3a4a; }
+  .badge-bl { background: var(--light-blue);   color: #0d3a7a; }
+  .badge-gn { background: var(--light-green);  color: #1b4a22; }
+  .badge-rd { background: var(--light-red);    color: var(--a4); }
+  .badge-or { background: var(--light-orange); color: #7a3800; }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0 1rem; }
+  .sdiv span { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: var(--light-orange); border: 1px solid #ffd43b; border-left: 3px solid var(--warn); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #664d00; }
+  .wbox strong { color: #b35900; }
+  .ebox { background: var(--light-red);    border: 1px solid #ffa8a8; border-left: 3px solid var(--a4); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #6b1010; }
+  .ebox strong { color: var(--a4); }
+  .gbox { background: var(--light-green);  border: 1px solid #8ce99a; border-left: 3px solid var(--a3); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #1b4a22; }
+  .gbox strong { color: #2b7a3d; }
+  .bluebox { background: var(--light-blue); border: 1px solid #90baf0; border-left: 3px solid var(--a2); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #0d3a7a; }
+  .petrolbox { background: var(--light-petrol); border: 1px solid #80c0d8; border-left: 3px solid var(--a1); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #0d3a4a; }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: var(--a1); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .snum.gn { background: var(--a3); }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; font-weight: 600; }
+  .pt-table td:nth-child(3) { color: #2b7a3d; font-size: 0.83rem; }
+
+  .hwi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 0.5rem; }
+  .hwi-col { padding: 1rem; font-size: 0.83rem; }
+  .hwi-col:first-child { background: var(--light-petrol); border-right: 1px solid var(--border); }
+  .hwi-col:last-child  { background: var(--light-red); }
+  .hwi-col h4 { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .hwi-col:first-child h4 { color: var(--a1); }
+  .hwi-col:last-child h4  { color: var(--a4); }
+  .hwi-col li { list-style: none; padding: 0.15rem 0; line-height: 1.6; }
+  .hwi-col li::before { content: "·  "; color: var(--muted); }
+
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: 1fr; }
+    .hwi-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Pyelonephritis &amp; HWI</h1>
+  <div class="sub">Nierenbeckenentzündung · E. coli · Urosepsis · Antibiotika · Mittelstrahlurin · FSP Leitfaden</div>
+  <div class="timer-badge">⏱ 15–20 Min. Arztbrief · 20 Min. AA-Gespräch · Freiburg · Karlsruhe · Stuttgart · Reutlingen</div>
+</div>
+
+
+<!-- KAPITEL 1: LEITSYMPTOME -->
+<div class="ch-header ch-petrol">
+  <div class="ch-num">01</div>
+  <div class="ch-t">
+    <h2>Leitsymptome &amp; typischer Patient</h2>
+    <p>Flankenschmerz + Fieber + Dysurie = Pyelonephritis-Trias!</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Leitsymptome – Pyelonephritis-Trias</h3>
+    <h4>Klassische Trias (mind. 2 = V.a. Pyelonephritis)</h4>
+    <span class="tag pe">Flankenschmerz (ein- oder beidseitig)</span>
+    <span class="tag pe">Fieber &gt;38°C + Schüttelfrost</span>
+    <span class="tag pe">Dysurie / Algurie (brennendes Wasserlassen)</span>
+
+    <h4>Weitere Symptome</h4>
+    <span class="tag pe">Klopfschmerzhaftes Nierenlager!</span>
+    <span class="tag pe">Pollakisurie (häufig, wenig Urin)</span>
+    <span class="tag pe">Nykturie (nachts Wasserlassen)</span>
+    <span class="tag pe">Hämaturie (bräunlicher, schäumender Urin)</span>
+    <span class="tag pe">Übelkeit / Erbrechen (reflektorisch)</span>
+    <span class="tag pe">Abgeschlagenheit / Erschöpfung</span>
+
+    <h4>Alarmsymptome → Urosepsis!</h4>
+    <span class="tag rd">Sehr hohes Fieber (&gt;39°C) + Schüttelfrost</span>
+    <span class="tag rd">Kreislaufinstabilität / Schock</span>
+    <span class="tag rd">Anhaltendes Fieber trotz Antibiotikatherapie (&gt;72h)</span>
+
+    <h4>Vorgeschichte – immer fragen!</h4>
+    <span class="tag bl">Vorherige Zystitis (kürzlich? unbehandelt?)</span>
+    <span class="tag bl">Rezidivierende HWI bekannt?</span>
+    <span class="tag bl">Nierenprobleme / Harnstauung?</span>
+    <span class="tag bl">Harnwegssteine bekannt?</span>
+
+    <div class="petrolbox">
+      <strong>Reutlingen + Freiburg:</strong> Patientin hatte 2 Wochen vor der Pyelonephritis eine Zystitis → unbehandelt → Keimaszension → Pyelonephritis. Immer nach vorheriger Zystitis fragen: „Haben Sie in den letzten Wochen Brennen beim Wasserlassen gehabt?"
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Typischer Prüfungspatient</h3>
+    <div style="background:var(--light-petrol);border:1px solid #80c0d8;border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.9;margin-bottom:0.8rem">
+      · <strong>Jörg Müller / Karl-Heinz Krämer / Lisa Häberle</strong>, 74–79 J.<br>
+      · Rentner/in (Buchhalter, Bäcker, Kassiererin, Optikerin)<br>
+      · <span style="color:var(--a1)">Flankenschmerzen links/rechts seit 2–3 Tagen</span><br>
+      · <span style="color:var(--a1)">Fieber 39–39,5°C + Schüttelfrost</span><br>
+      · Dysurie, Pollakisurie, Nykturie, Hämaturie<br>
+      · <span style="color:var(--a1)">VE: DM Typ 2 + COPD + BPH</span><br>
+      · Metformin + Spiriva (+ ggf. Prostagutt)<br>
+      · Raucher/in (langjährig), 1 Glas Wein/Tag<br>
+      · Verwitwet, lebt alleine, 2 gesunde Kinder
+    </div>
+
+    <h4>Risikofaktoren für Pyelonephritis</h4>
+    <span class="tag pe">Weibliches Geschlecht (kürzere Harnröhre!)</span>
+    <span class="tag pe">Diabetes mellitus (#1 Risikofaktor!)</span>
+    <span class="tag pe">Harnabflussstörung (BPH, Harnsteine)</span>
+    <span class="tag pe">Rezidivierende HWI / Zystitis</span>
+    <span class="tag pe">Hohes Alter</span>
+    <span class="tag pe">Immunsuppression</span>
+    <span class="tag pe">Schwangerschaft</span>
+
+    <div class="ebox">
+      <strong>⚠️ DM = wichtigster RF!</strong> Freiburg: „Welche Risikofaktoren gibt es in der Anamnese?" → Prüferin wollte <strong>Diabetes mellitus</strong> hören! DM → periphere Polyneuropathie → reduzierte Schmerzwahrnehmung → späte Diagnose + schwerere Verläufe. Außerdem: Metformin → Laktatazidose als Risiko bei Niereninsuffizienz!
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 2: PYELONEPHRITIS VS. ZYSTITIS -->
+<div class="ch-header ch-orange">
+  <div class="ch-num">02</div>
+  <div class="ch-t">
+    <h2>Pyelonephritis vs. Zystitis – Unterschied kennen!</h2>
+    <p>Freiburg 04/2019: „Warum Pyelonephritis und nicht Zystitis?"</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="or">Vergleich Pyelonephritis (oben) vs. Zystitis (unten)</h3>
+    <div class="hwi-grid">
+      <div class="hwi-col">
+        <h4>Pyelonephritis (obere HWI)</h4>
+        <ul>
+          <li><strong>Fieber &gt;38°C + Schüttelfrost</strong></li>
+          <li>Flankenschmerz, klopfschmerzhaftes Nierenlager</li>
+          <li>Systemisch krank, Abgeschlagenheit</li>
+          <li>Übelkeit, Erbrechen möglich</li>
+          <li>Dysurie / Pollakisurie (begleitend)</li>
+          <li>Beteiligung des Nierenparenchyms</li>
+          <li>→ immer stationäre Aufnahme!</li>
+          <li>→ i.v. Antibiotika!</li>
+        </ul>
+      </div>
+      <div class="hwi-col">
+        <h4>Zystitis (untere HWI)</h4>
+        <ul>
+          <li>Kein Fieber (oder &lt;38°C)</li>
+          <li>Kein Flankenschmerz</li>
+          <li>Kein Nierenklopfschmerz</li>
+          <li>Suprapubischer Schmerz</li>
+          <li>Dysurie, Pollakisurie, Harndrang</li>
+          <li>Nur Blase betroffen</li>
+          <li>→ ambulant behandelbar</li>
+          <li>→ orale Antibiotika (5–7 Tage)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="wbox" style="margin-top:0.8rem">
+      <strong>Freiburg 04/2019:</strong> Prüfer fragte: „Warum Pyelonephritis und nicht Zystitis?" → Antwort: Fieber + Schüttelfrost + Flankenschmerz + klopfschmerzhaftes Nierenlager → obere HWI! Zystitis: kein Fieber, kein Flankenschmerz.
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 3: ARZTBRIEF -->
+<div class="ch-header ch-blue">
+  <div class="ch-num">03</div>
+  <div class="ch-t">
+    <h2>Arztbrief-Template</h2>
+    <p>Pyelonephritis · VD · DD · Diagnostik · Antibiotika · Mittelstrahlurin!</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="bl">Arztbrief: Pyelonephritis</h3>
+
+    <h4>Aktuelle Beschwerden</h4>
+    <div class="fb">
+Herr/Frau Müller, ein/e [Alter]-jährige/r Patient/in,
+stellte sich bei uns wegen <span class="hl">seit 2–3 Tagen bestehender,
+progredienter, bohrend-stechender, linksseitiger Flankenschmerzen</span>
+(NRS 7–8/10) vor.<br><br>
+Begleitend bestünden <span class="hl">Fieber (39°C) + Schüttelfrost</span>,
+<span class="hl">Dysurie</span> (brennendes Wasserlassen),
+<span class="hl">Pollakisurie</span>, <span class="hl">Nykturie</span>
+und <span class="hl">bräunlicher, schäumender Urin mit fischigem Geruch</span>.<br><br>
+<span class="cm">// Wichtig: Vorherige Zystitis vor 2 Wochen → unbehandelt!
+→ Keimaszension → Pyelonephritis (Reutlingen!)</span><br><br>
+<span class="cm">// Verneint: Bewusstlosigkeit, Anurie, Trauma</span>
+    </div>
+
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: Akute Pyelonephritis</span> links<br>
+(Flankenschmerz + Fieber/Schüttelfrost + Dysurie + Nierenklopfschmerz;
+RF: DM Typ 2, BPH, hohes Alter, Z.n. Zystitis)<br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlo">Nephrolithiasis</span>
+  – kolikartige Schmerzen, Hämaturie, kein hohes Fieber;<br>
+  kann Pyelonephritis auslösen!<br>
+· <span class="hlo">Zystitis (untere HWI)</span>
+  – kein Fieber, kein Flankenschmerz, kein Nierenklopfschmerz<br>
+· <span class="hlo">Divertikulitis</span>
+  – linksseitig, Kolonsymptome, CRP ↑; eher kein Dysurie<br>
+· <span class="hlo">Pankreatitis</span>
+  – Oberbauchschmerz, Gürtelform, Amylase/Lipase ↑<br>
+· <span class="hlo">Basale Pneumonie</span>
+  – Husten, Dyspnoe, Auskultationsbefund (bes. bei COPD!)<br>
+· <span class="hlo">Bandscheibenvorfall (LWS)</span>
+  – Ausstrahlung ins Bein, Neurologie; kein Fieber<br>
+· <span class="hlo">Appendizitis</span>
+  – rechtsseitig, McBurney, kein Dysurie
+    </div>
+
+    <h4>Diagnostik</h4>
+    <div class="fb bl">
+· Körperliche Untersuchung:
+  <span class="hli">Nierenklopfschmerz</span> (positiv!),
+  Abdomenpalpation, Blutdruck, Temperatur<br>
+· <span class="hli">Mittelstrahlurin</span>:
+  U-Stix (Leukozyten, Nitrit, Hämaturie, pH),
+  Urinsediment (Leukozytenzylinder!),
+  <span class="hli">Urinkultur + Resistogramm</span>
+  <span class="hli">OBLIGAT!</span>
+  <span class="cm">// Karlsruhe: „Welche Probe?" → Mittelstrahlurin! Nicht vergessen!</span><br>
+· Labor: BB, CRP, BSG,
+  <span class="hli">Nierenretentionswerte (Kreatinin, Harnstoff)</span>,
+  Blutzucker, HbA1c (DM!), Elektrolyte,
+  <span class="hli">Blutkultur bei Fieber</span><br>
+· <span class="hli">Sonographie Nieren + Blase</span>
+  = 1. Wahl Bildgebung!<br>
+  Befund: vergrößerte Niere, unscharf Mark-Rinden-Grenze,
+  Harnabflussstörung?, Abszess?<br>
+  <span class="cm">// Karlsruhe fragte: „Was sehen wir in der Sonographie?"</span><br>
+· Ggf. <span class="hli">CT Abdomen mit KM</span>:
+  bei anhaltendem Fieber &gt;72h nach AB, V.a. Abszess, Komplikationen<br>
+· Urologie-Konsil veranlassen
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb gn">
+<span class="hlg">Sofortmaßnahmen:</span><br>
+· Stationäre Aufnahme (Fieber + systemische Symptome!)<br>
+· i.v. Zugang + Flüssigkeitsgabe (Rehydratation, Diurese fördern)<br>
+· <span class="hlg">Analgesie: Metamizol i.v.</span>
+  (1. Wahl) oder Diclofenac (gute Nierenfunktion!)<br>
+  <span class="hlr">Cave Reutlingen: Novalgin-Allergie! → Ibuprofen / Paracetamol</span><br>
+· Antipyretika (Paracetamol bei Fieber)<br><br>
+<span class="hlg">Antibiotikatherapie – IMMER bei Pyelonephritis!</span><br><br>
+<span class="hlg">Schwerer Verlauf (Fieber, systemisch krank → stationär, i.v.):</span><br>
+· <span class="hlg">Cephalosporin 3. Generation i.v.: Ceftriaxon</span> (1. Wahl!)<br>
+· Alternative: Ciprofloxacin i.v. (Fluorchinolon)<br>
+· Bei Besserung: Umstellung auf orale Therapie (Sequenztherapie)<br>
+· Therapiedauer: 7–14 Tage<br><br>
+<span class="hlg">Leichter Verlauf (ambulant):</span><br>
+· Ciprofloxacin p.o. oder Cefpodoxim p.o.<br>
+· Therapiedauer: 5–10 Tage<br><br>
+<span class="hlg">Wenn kein Ansprechen nach 72h:</span><br>
+· Breitspektrum-AB (Piperacillin/Tazobactam, Carbapenem)<br>
+· Erregerkultur abwarten! Therapie anpassen.<br>
+· CT Abdomen: Abszess? Harnabflussstörung?<br><br>
+<span class="hlg">Allgemein:</span><br>
+· Flüssigkeit ≥2 L/Tag trinken<br>
+· Spasmolytika bei Krämpfen (Butylscopolamin)
+    </div>
+
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler aus den Fällen:</strong><br>
+      – Urinkultur vergessen → Freiburg + Karlsruhe: „Urinkultur ist obligat!" Ohne Kultur = kein Erregernachweis = keine gezielte AB-Therapie<br>
+      – Mittelstrahlurin statt Katheterurin → Frage: „Welche Probe?" → Mittelstrahlurin!<br>
+      – Metformin bei Niereninsuffizienz → Karlsruhe fragte: „Spielt Metformin eine Rolle?" → Laktatazidose-Risiko bei eingeschränkter Nierenfunktion!<br>
+      – Patientin nach Hause schicken trotz Fieber → NEIN! Stationäre Aufnahme obligat!<br>
+      – DD Bandscheibenvorfall ohne Neurologie → Freiburg: unwahrscheinlich, da kein Beinschmerz
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 4: AA-GESPRÄCH -->
+<div class="ch-header ch-green">
+  <div class="ch-num">04</div>
+  <div class="ch-t">
+    <h2>AA-Gespräch &amp; Prüfungsfragen</h2>
+    <p>Freiburg · Karlsruhe · Stuttgart · Reutlingen · echte Fragen</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Patientenvorstellung – 5 Schritte</h3>
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="scont"><strong>Stammdaten</strong>
+      „Ich möchte Ihnen Herrn Müller vorstellen, einen 79-jährigen Rentner, der sich notfallmäßig in unserer Aufnahme vorgestellt hat."</div>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="scont"><strong>Leitsymptome</strong>
+      „<span class="hl">Seit 2–3 Tagen progrediente, linksseitige Flankenschmerzen (NRS 8/10) mit Fieber 39°C, Schüttelfrost, Dysurie, Pollakisurie und bräunlichem Urin</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="scont"><strong>Risikofaktoren</strong>
+      „Wichtige RF: <span class="hl">Diabetes mellitus Typ 2</span> (periphere Polyneuropathie → reduzierte Schmerzwahrnehmung), <span class="hl">COPD, BPH</span>, hohes Alter. Metformin → <span class="hlr">Laktatazidose-Risiko bei Niereninsuffizienz beachten!</span>"</div>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="scont"><strong>VD + DD</strong>
+      „VD: <span class="hl">Akute Pyelonephritis links</span>. DD: <span class="hlo">Nephrolithiasis, Zystitis, Divertikulitis, Pankreatitis, basale Pneumonie</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="scont"><strong>Procedere</strong>
+      „Stationäre Aufnahme. <span class="hli">Mittelstrahlurin-Kultur + U-Stix + Labor + Sono</span>. <span class="hlg">Ceftriaxon i.v. + Analgesie + Flüssigkeit</span>. Urologie-Konsil."</div>
+    </div>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th><th>Stadt</th></tr>
+      <tr><td>VD? Warum Pyelonephritis und nicht Zystitis? (Freiburg!)</td><td>Pyelonephritis: Fieber + Schüttelfrost + Flankenschmerz + Nierenklopfschmerz + systemisch krank. Zystitis: kein Fieber, kein Flankenschmerz, nur untere HWI-Symptome (Dysurie, Pollakisurie)</td><td>Freiburg 04/2019</td></tr>
+      <tr><td>Welche Urinprobe? (Karlsruhe!)</td><td><strong>Mittelstrahlurin</strong>: Patient uriniert zuerst etwas (Harnröhre spülen), dann Urin in Becher auffangen (Mitte des Strahls), dann Rest lassen. Verhindert Kontamination durch Hautkeime.</td><td>Karlsruhe 04/2023</td></tr>
+      <tr><td>Was sehen wir in der Sonographie? (Karlsruhe!)</td><td>Pyelonephritis: vergrößerte Niere, aufgelockertes Parenchym, unscharf Mark-Rinden-Grenze. Komplikation: Abszess (echoarme Raumforderung), Harnstauungsniere. + Nierenstein ausschließen!</td><td>Karlsruhe 04/2023</td></tr>
+      <tr><td>Welche Risikofaktoren? (Freiburg!)</td><td>DM (#1!), BPH, Harnsteine, weibliches Geschlecht, hohes Alter, rezidivierende HWI, Immunsuppression. Prüferin wollte <strong>Diabetes mellitus</strong> hören!</td><td>Freiburg 04/2019</td></tr>
+      <tr><td>Welche Bakterien verursachen Pyelonephritis? (Karlsruhe!)</td><td><strong>E. coli (ca. 70%!)</strong> = häufigster Erreger. Auch: Proteus mirabilis, Klebsiellen, Enterokokken. Aufsteigend aus Darmflora über Harnröhre!</td><td>Karlsruhe 08/2022</td></tr>
+      <tr><td>Welches Antibiotikum? (Karlsruhe + Stuttgart!)</td><td>Schwer/stationär: <strong>Ceftriaxon i.v.</strong> (Cephalosporin 3. Gen.) oder Ciprofloxacin i.v. Bei ambulant: Ciprofloxacin p.o. oder Cefpodoxim p.o. Nach Kultur: Anpassung!</td><td>Karlsruhe + Stuttgart</td></tr>
+      <tr><td>Kein Ansprechen auf AB nach 72h – was tun? (Karlsruhe!)</td><td>Breitspektrum-AB (Piperacillin/Tazobactam, ggf. Carbapenem). CT Abdomen: Abszess? Harnabflussstörung? Erregerkultur abwarten! Urologie-Konsil. Evtl. Drainage.</td><td>Karlsruhe 08/2022</td></tr>
+      <tr><td>Stationäre Aufnahme? Warum? (Stuttgart!)</td><td>JA! Fieber + systemische Symptome → Urosepsis-Risiko! Stationär: i.v.-Zugang, i.v. Antibiotika, Monitoring. Patient darf nicht nach Hause! Stuttgart: „Warum kann ich den Patienten nicht nach Hause schicken?" → DM + Fieber + hohes Urosepsis-Risiko</td><td>Stuttgart 08/2023</td></tr>
+      <tr><td>Spielt Metformin eine Rolle? (Freiburg!)</td><td>Ja! Bei Pyelonephritis → Niereninsuffizienz möglich → Metformin akkumuliert → <strong>Laktatazidose!</strong> → Metformin pausieren / Kreatinin kontrollieren. Prüferin sagte das explizit!</td><td>Freiburg 04/2019</td></tr>
+      <tr><td>Komplikationen der Pyelonephritis?</td><td>Urosepsis (lebensbedrohlich!), Nierenabszess, chronische Pyelonephritis → Schrumpfniere, Nierenversagen, Pyonephrose. Bei DM: besonders schwere Verläufe!</td><td>Alle</td></tr>
+      <tr><td>Welches Analgetikum? Welches Spasmolytikum? (Reutlingen!)</td><td>Analgesie: Metamizol i.v. (1. Wahl) oder Diclofenac. CAVE Reutlingen: Novalgin-Allergie! → Ibuprofen oder Paracetamol. Spasmolytikum: Butylscopolamin (Buscopan) bei Krämpfen.</td><td>Reutlingen 06/2024</td></tr>
+      <tr><td>Was tun bei Allergie gegen Novalgin? (Reutlingen!)</td><td>Novalgin (Metamizol) → Allergie bekannt → Ibuprofen oder Paracetamol als Alternative. Immer Allergien vor Medikamentengabe prüfen!</td><td>Reutlingen 06/2024</td></tr>
+      <tr><td>Erklären Sie die nächsten Schritte dem Patienten. (Karlsruhe!)</td><td>„Wir nehmen Sie jetzt bei uns auf. Ich lege Ihnen einen Zugang, geben Ihnen ein Schmerzmittel und ein Antibiotikum in die Vene. Wir untersuchen Ihren Urin und machen eine Ultraschalluntersuchung der Nieren. Sie müssen viel Wasser trinken."</td><td>Karlsruhe 04/2024</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- KAPITEL 5: PATIENTENSPRACHE -->
+<div class="ch-header ch-orange">
+  <div class="ch-num">05</div>
+  <div class="ch-t">
+    <h2>Fachbegriffe → Patientensprache &amp; Empathie</h2>
+    <p>Häufige Fragen aus den echten Fällen</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="or">Übersetzungstabelle</h3>
+    <table class="pt-table">
+      <tr><th>Fachbegriff</th><th>Medizinisch</th><th>Patientensprache</th></tr>
+      <tr><td><strong>Pyelonephritis</strong></td><td>Obere Harnwegsinfektion mit Nierenbeteiligung</td><td>„Bakterien sind von der Blase in die Niere aufgestiegen und haben dort eine Entzündung verursacht. Das erklärt die Flankenschmerzen und das Fieber."</td></tr>
+      <tr><td><strong>Dysurie / Algurie</strong></td><td>Schmerzhaftes Wasserlassen</td><td>„Das Brennen beim Wasserlassen entsteht, weil die Harnröhre und Blase durch die Bakterien gereizt sind."</td></tr>
+      <tr><td><strong>Hämaturie</strong></td><td>Blut im Urin</td><td>„Der bräunliche Urin kommt davon, dass die Entzündung die Schleimhaut leicht verletzt. Das ist typisch für diese Erkrankung."</td></tr>
+      <tr><td><strong>Urinkultur</strong></td><td>Mikrobiologische Urinuntersuchung</td><td>„Wir untersuchen Ihren Urin im Labor, um herauszufinden, welche Bakterien die Entzündung verursachen. Dann können wir das genau richtige Antibiotikum auswählen."</td></tr>
+      <tr><td><strong>Mittelstrahlurin</strong></td><td>Technisch korrekte Urinprobe</td><td>„Lassen Sie zuerst etwas Urin in die Toilette, dann sammeln Sie die Mitte des Strahls in den Becher. So vermeiden wir, dass Keime von der Haut die Probe verunreinigen."</td></tr>
+      <tr><td><strong>Sonographie der Nieren</strong></td><td>Ultraschall</td><td>„Wir schauen mit Ultraschall in Ihre Nieren – das ist völlig schmerzfrei. Wir sehen damit, ob die Niere entzündet ist oder ob ein Stein die Ursache sein könnte."</td></tr>
+      <tr><td><strong>Antibiotikum (Ceftriaxon)</strong></td><td>Cephalosporin 3. Gen. i.v.</td><td>„Ein starkes Antibiotikum, das wir direkt in die Vene geben – das wirkt schneller als eine Tablette und ist bei Ihrer Erkrankung notwendig."</td></tr>
+      <tr><td><strong>Urosepsis</strong></td><td>Lebensbedrohliche Sepsis ausgehend von Harnwegen</td><td>„Wenn Bakterien aus der Niere ins Blut gelangen, kann das lebensbedrohlich werden. Deshalb ist es so wichtig, dass Sie jetzt bei uns bleiben und sofort behandelt werden."</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3>Typische Patientenreaktionen – Musterantworten</h3>
+    <div class="fb gn">
+<span class="cm">// Direkt aus den echten Fällen!</span><br><br>
+🧑 „Was habe ich? Ist es gefährlich?" (Alle Städte!)<br>
+→ <span class="hlg">„Wir vermuten eine Nierenbeckenentzündung – das ist eine bakterielle Entzündung, die sich von der Blase in die Niere ausgebreitet hat. Mit dem richtigen Antibiotikum ist das gut behandelbar. Wenn wir jetzt schnell handeln, wird es Ihnen bald besser gehen."</span><br><br>
+🧑 „Soll ich im Krankenhaus bleiben?" (Freiburg + Stuttgart!)<br>
+→ <span class="hlg">„Ja, leider müssen Sie heute bei uns bleiben. Sie haben hohes Fieber und die Bakterien könnten ins Blut übergehen – das wäre sehr gefährlich. Wir behandeln Sie sofort mit einem starken Antibiotikum in die Vene und beobachten Sie genau."</span><br><br>
+🧑 Patient spricht sehr viel / unterbricht (Freiburg 04/2019!)<br>
+→ Ruhig bleiben! <span class="hlg">„Ich verstehe, dass Sie Schmerzen haben. Darf ich kurz nachfragen, damit ich Ihnen am besten helfen kann?"</span><br>
+→ Am Ende aktiv das Schmerzmittel anbieten: <span class="hlg">„Herr Müller, ich gebe Ihnen jetzt gleich ein Schmerzmittel."</span><br><br>
+🧑 Patient fragt nach Laboruntersuchung: „Was wollen Sie mit meinem Blut machen?" (Freiburg!)<br>
+→ <span class="hlg">„Wir messen Entzündungswerte und kontrollieren Ihre Nierenwerte – das ist wichtig, damit wir das richtige Antibiotikum wählen und sicherstellen, dass die Nieren nicht belastet sind."</span><br><br>
+🧑 Patient fragt: „Wollen Sie nicht meinen Urin untersuchen?" (Freiburg – Patient erinnert Arzt!)<br>
+→ <span class="hlg">„Ja, natürlich! Das ist sehr wichtig. Wir untersuchen den Urin direkt auf Keime und bestimmen, welches Antibiotikum am besten wirkt."</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- FACHBEGRIFFE + ZEITPLAN -->
+<div class="sdiv"><span>Fachbegriffe &amp; Zeitplan</span></div>
+<div class="grid">
+  <div class="card">
+    <h3>Fachbegriffe aus den Prüfungen</h3>
+    <h4>Pyelonephritis / HWI direkt</h4>
+    <div>
+      <span class="tag pe">Pyelonephritis / Nierenbeckenentzündung</span>
+      <span class="tag pe">Urozystitis / Zystitis</span>
+      <span class="tag pe">Mittelstrahlurin</span>
+      <span class="tag pe">Urinkultur + Resistogramm</span>
+      <span class="tag pe">Leukozytenzylinder</span>
+      <span class="tag pe">Nierenklopfschmerz</span>
+      <span class="tag pe">E. coli (Erreger #1)</span>
+      <span class="tag pe">Ceftriaxon / Ciprofloxacin</span>
+      <span class="tag pe">Urosepsis</span>
+      <span class="tag pe">Laktatazidose (Metformin!)</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Komplikationen</h4>
+    <div>
+      <span class="tag rd">Urosepsis (lebensbedrohlich!)</span>
+      <span class="tag rd">Nierenabszess</span>
+      <span class="tag rd">Chronische Pyelonephritis</span>
+      <span class="tag rd">Schrumpfniere</span>
+      <span class="tag rd">Nierenversagen</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Sonstige aus Prüfungen</h4>
+    <div>
+      <span class="tag gr">Sepsis</span>
+      <span class="tag gr">Exsikkose</span>
+      <span class="tag gr">Noncompliance</span>
+      <span class="tag gr">Meläna</span>
+      <span class="tag gr">Tinnitus</span>
+      <span class="tag gr">Pankreatitis</span>
+      <span class="tag gr">Hodentorsion</span>
+      <span class="tag gr">Laktoseintoleranz</span>
+      <span class="tag gr">Neoplasie</span>
+      <span class="tag gr">Laxativum</span>
+      <span class="tag gr">Epididymistorsion</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="or">Zeitplan &amp; Top-Tipps</h3>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-pe">Patientengespräch</span></td><td><strong>15–20 Min</strong></td><td>Trias: Flankenschmerz + Fieber + Dysurie. Vorherige Zystitis? DM als RF! Urin-Farbe/-Geruch? Patient lenkt ab → ruhig führen!</td></tr>
+      <tr><td><span class="badge badge-bl">Arztbrief</span></td><td><strong>15–20 Min</strong></td><td>VD Pyelonephritis. DD (Nephrolithiasis immer!). Urinkultur + Mittelstrahlurin! Sono. Ceftriaxon. Metformin pausieren (Laktatazidose).</td></tr>
+      <tr><td><span class="badge badge-gn">AA-Gespräch</span></td><td><strong>20 Min</strong></td><td>Pyelonephritis vs. Zystitis (Prüfer fragte!). Erreger = E. coli. AB = Ceftriaxon. Kein AB-Ansprechen → Breitspektrum. Urosepsis erklären. Sono-Befunde. Mittelstrahlurin!</td></tr>
+    </table>
+
+    <div class="ebox" style="margin-top:1rem">
+      <strong>Urinkultur NIEMALS vergessen!</strong> Karlsruhe + Freiburg + Stuttgart betonten: ohne Urinkultur = keine gesicherte Diagnose, kein gezieltes Antibiotikum. Frage: „Welche Probe?" → Mittelstrahlurin!
+    </div>
+    <div class="gbox" style="margin-top:0.8rem">
+      <strong>Freiburg 04/2019:</strong> Patient redete sehr viel, unterbrach ständig, fragte nach Diagnose. Kandidat blieb ruhig, fragte nach Schmerzmittel-Wunsch, strukturierte das Gespräch. Prüfer: völlig okay, auch als vergessene Allergienfrage zugegeben wurde.
+    </div>
+    <div class="bluebox" style="margin-top:0.8rem">
+      <strong>Metformin + Niereninsuffizienz = Laktatazidose!</strong> Karlsruhe fragte: „Spielen die Medikamente eine Rolle?" → Metformin bei eingeschränkter Nierenfunktion → Akkumulation → Laktatazidose → pausieren und Kreatinin kontrollieren.
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top: 1px solid var(--border);">
+  FSP Leitfaden · Pyelonephritis &amp; HWI + Patientensprache · Freiburg · Karlsruhe · Stuttgart · Reutlingen · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>

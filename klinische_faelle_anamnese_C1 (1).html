@@ -1,0 +1,448 @@
+
+<h2 class="sr-only">Klinische Fälle: Anamnese, Differentialdiagnosen und Arzt-Arzt-Gespräch für die Fachsprachprüfung C1</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans,system-ui);font-size:14px}
+.top-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.search-wrap{flex:1;min-width:160px}
+input[type=search]{width:100%;padding:7px 12px;font-size:13px;border:0.5px solid var(--color-border-secondary);border-radius:999px;background:var(--color-background-primary);color:var(--color-text-primary)}
+.cat-btns{display:flex;gap:6px;flex-wrap:wrap}
+.cbt{padding:5px 14px;border-radius:999px;font-size:12px;font-weight:500;border:0.5px solid var(--color-border-secondary);cursor:pointer;background:var(--color-background-primary);color:var(--color-text-secondary);transition:all .15s}
+.cbt.on{color:#fff}
+.cbt.gastro.on{background:#0F6E56;border-color:#0F6E56}
+.cbt.neuro.on{background:#534AB7;border-color:#534AB7}
+.cbt.kardio.on{background:#185FA5;border-color:#185FA5}
+.cbt.pneumo.on{background:#3B6D11;border-color:#3B6D11}
+.cbt.ortho.on{background:#854F0B;border-color:#854F0B}
+.cbt.all.on{background:#444441;border-color:#444441}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:16px}
+.tile{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:12px 14px;cursor:pointer;border-left-width:3px;transition:border-color .15s}
+.tile:hover{border-color:var(--color-border-primary)}
+.tile.gastro{border-left-color:#1D9E75}
+.tile.neuro{border-left-color:#7F77DD}
+.tile.kardio{border-left-color:#378ADD}
+.tile.pneumo{border-left-color:#639922}
+.tile.ortho{border-left-color:#EF9F27}
+.tile-cat{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.tile.gastro .tile-cat{color:#0F6E56}
+.tile.neuro .tile-cat{color:#534AB7}
+.tile.kardio .tile-cat{color:#185FA5}
+.tile.pneumo .tile-cat{color:#3B6D11}
+.tile.ortho .tile-cat{color:#854F0B}
+.tile-name{font-size:13px;font-weight:500;color:var(--color-text-primary);line-height:1.4}
+.detail{display:none;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.detail.open{display:block}
+.det-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.det-title{font-size:17px;font-weight:500;color:var(--color-text-primary)}
+.det-cat{font-size:11px;font-weight:500;padding:3px 10px;border-radius:999px;margin-top:4px;display:inline-block}
+.det-cat.gastro{background:#E1F5EE;color:#085041}
+.det-cat.neuro{background:#EEEDFE;color:#3C3489}
+.det-cat.kardio{background:#E6F1FB;color:#0C447C}
+.det-cat.pneumo{background:#EAF3DE;color:#27500A}
+.det-cat.ortho{background:#FAEEDA;color:#633806}
+.close-btn{font-size:13px;cursor:pointer;color:var(--color-text-secondary);padding:4px 10px;border:0.5px solid var(--color-border-secondary);border-radius:999px;background:var(--color-background-secondary)}
+.close-btn:hover{background:var(--color-background-tertiary)}
+.tabs2{display:flex;gap:6px;margin-bottom:12px;border-bottom:0.5px solid var(--color-border-tertiary);padding-bottom:8px;flex-wrap:wrap}
+.t2{font-size:12px;font-weight:500;padding:5px 14px;border-radius:999px;cursor:pointer;border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-secondary);transition:all .15s}
+.t2.on{background:var(--color-background-tertiary);color:var(--color-text-primary);border-color:var(--color-border-primary)}
+.tab-content{display:none}
+.tab-content.on{display:block}
+.section-lbl{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-tertiary);margin:12px 0 6px}
+.q-list{list-style:none;padding:0}
+.q-list li{padding:7px 10px;border-radius:8px;font-size:13px;line-height:1.5;color:var(--color-text-primary);border-bottom:0.5px solid var(--color-border-tertiary)}
+.q-list li:last-child{border-bottom:none}
+.q-list li::before{content:"→ ";color:var(--color-text-tertiary);font-size:12px}
+.dd-list{padding:0;list-style:none}
+.dd-item{padding:8px 10px;border-left:3px solid var(--color-border-tertiary);margin-bottom:6px;border-radius:0}
+.dd-item.high{border-left-color:#E24B4A}
+.dd-item.mid{border-left-color:#EF9F27}
+.dd-item.low{border-left-color:#1D9E75}
+.dd-name{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.dd-reason{font-size:12px;color:var(--color-text-secondary);margin-top:2px;line-height:1.4}
+.legend{display:flex;gap:12px;margin-bottom:10px}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--color-text-secondary)}
+.leg-dot{width:8px;height:8px;border-radius:50%}
+.arzt-block{background:var(--color-background-secondary);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.arzt-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-tertiary);margin-bottom:6px}
+.arzt-text{font-size:13px;color:var(--color-text-primary);line-height:1.6;font-style:italic}
+.klinik-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.klinik-box{background:var(--color-background-secondary);border-radius:8px;padding:10px 12px}
+.klinik-box-title{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-tertiary);margin-bottom:5px}
+.klinik-box ul{padding-left:14px;font-size:12px;color:var(--color-text-primary);line-height:1.6}
+.warn-box{background:#FAEEDA;border-left:3px solid #EF9F27;border-radius:0;padding:8px 12px;font-size:12px;color:#633806;margin-top:10px;line-height:1.5}
+</style>
+
+<div style="padding:1rem 0 0">
+<div class="top-bar">
+  <div class="search-wrap"><input type="search" id="srch" placeholder="Diagnose suchen …" oninput="filterTiles()"></div>
+  <div class="cat-btns">
+    <button class="cbt all on" onclick="filterCat('all',this)">Alle</button>
+    <button class="cbt gastro" onclick="filterCat('gastro',this)">Gastro</button>
+    <button class="cbt neuro" onclick="filterCat('neuro',this)">Neuro</button>
+    <button class="cbt kardio" onclick="filterCat('kardio',this)">Kardio</button>
+    <button class="cbt pneumo" onclick="filterCat('pneumo',this)">Pneumo</button>
+    <button class="cbt ortho" onclick="filterCat('ortho',this)">Ortho</button>
+  </div>
+</div>
+
+<div class="grid" id="tile-grid"></div>
+<div class="detail" id="detail-panel"></div>
+</div>
+
+<script>
+const DATA = [
+  {
+    id:'div', name:'Divertikulitis', cat:'gastro',
+    fragen:[
+      {section:'Hauptbeschwerden',qs:['Könnten Sie mir sagen, wo genau Sie Schmerzen haben?','Darf ich fragen, wann die Schmerzen begonnen haben – plötzlich oder schleichend?','Wie würden Sie die Schmerzen beschreiben – eher drückend, kolikartig oder konstant?','Könnten Sie mir sagen, ob Sie Fieber bemerkt haben?','Darf ich fragen, ob Sie Übelkeit oder Erbrechen hatten?']},
+      {section:'Stuhlgang & Vegetativum',qs:['Ich würde gerne wissen, ob sich Ihre Stuhlgewohnheiten verändert haben – Obstipation oder Diarrhö?','Könnten Sie mir sagen, ob Sie Blut im Stuhl bemerkt haben?','Darf ich fragen, ob Sie beim Stuhlgang Schmerzen hatten?']},
+      {section:'Vorgeschichte',qs:['Ich würde gerne wissen, ob Ihnen eine Divertikelerkrankung bekannt ist.','Könnten Sie mir sagen, wie Ihre Ernährung aussieht – ballaststoffreich oder eher fettreich?','Darf ich fragen, ob Sie in der Vergangenheit ähnliche Beschwerden hatten?']}
+    ],
+    dd:[
+      {name:'Kolonkarzinom',prio:'high',reason:'Linksseitige Unterbauchschmerzen, Stuhlunregelmäßigkeiten, älterer Patient → immer ausschließen'},
+      {name:'Appendizitis',prio:'high',reason:'Rechtsseitig: Mc-Burney, Lanz-Punkt, Rovsing-Zeichen positiv'},
+      {name:'Reizdarmsyndrom',prio:'mid',reason:'Chron. Schmerzen ohne Fieber, stuhlabhängig, kein CRP-Anstieg'},
+      {name:'Ovarialzyste / Adnexitis',prio:'mid',reason:'Frau im gebärfähigen Alter, gynäkolog. Untersuchung notwendig'},
+      {name:'Psoas-Abszess',prio:'low',reason:'Flankenschmerz, Fieber, Immunsupprimierte'},
+    ],
+    klinik:{labor:['CRP erhöht (>50)','Leukozytose','Procalcitonin bei Perforation'],bild:['Sono: peridivertikuläre Entzündung','CT Abdomen: Goldstandard','KM-KT: Abszess, Perforation'],körper:['Druckschmerz li. Unterbauch','Loslass-Schmerz (Peritonismus?)','Klopfschmerz, Abwehrspannung'],therapie:['Leicht: Amoxicillin/Clavulansäure oral + Schonkost','Schwer: stationär, Cefuroxim + Metronidazol i.v.','Abszess: CT-gezielte Drainage']},
+    arzt:'Ich stelle Ihnen Herrn/Frau [Name], [Alter] Jahre alt vor. Der Patient/die Patientin stellt sich mit seit [X] Tagen bestehenden linksseitigen Unterbauchschmerzen und Fieber bis [X]°C vor. In der klinischen Untersuchung zeigt sich ein ausgeprägter Druckschmerz im linken Unterbauch ohne Abwehrspannung. Laborchemisch finden sich eine Leukozytose von [X] Gpt/l sowie ein CRP von [X] mg/l. Sonografisch sieht man eine peridivertikuläre Entzündungsreaktion. Ich vermute eine akute Divertikulitis, Stadium [Hinchey I]. Differenzialdiagnostisch käme auch ein Kolonkarzinom in Betracht, das wir durch eine Koloskopie nach Abklingen der Entzündung ausschließen möchten.',
+    warn:'Alarmsignale: Peritonismus, Perforation (freie Luft), Abszess → chirurgisches Konsil!'
+  },
+  {
+    id:'chol', name:'Cholezystitis', cat:'gastro',
+    fragen:[
+      {section:'Hauptbeschwerden',qs:['Könnten Sie mir sagen, wo der Schmerz sitzt – eher rechts unter dem Rippenbogen?','Darf ich fragen, ob der Schmerz in die rechte Schulter oder den Rücken ausstrahlt?','Ich würde gerne wissen, ob die Schmerzen nach dem Essen aufgetreten sind – besonders nach fettem Essen?','Könnten Sie mir sagen, ob Sie Fieber hatten oder sich krank fühlten?','Darf ich fragen, ob Sie Übelkeit oder Erbrechen bemerkt haben?']},
+      {section:'Haut & Ikterus',qs:['Ich würde gerne wissen, ob Sie eine Gelbfärbung der Haut oder der Augen bemerkt haben.','Könnten Sie mir sagen, ob Ihr Urin dunkler als gewöhnlich war?','Darf ich fragen, ob Ihr Stuhl entfärbt oder hellgrau war?']},
+      {section:'Risikofaktoren (5F)',qs:['Darf ich fragen, wie alt Sie sind?','Könnten Sie mir sagen, ob Sie in letzter Zeit zugenommen haben?','Darf ich fragen, ob Sie schon einmal Gallensteine hatten oder ob Ihnen das bekannt ist?','Ich würde gerne wissen, ob andere in Ihrer Familie Gallensteinleiden haben.']}
+    ],
+    dd:[
+      {name:'Choledocholithiasis',prio:'high',reason:'Ikterus + erhöhtes Bilirubin + AP → Stein im Ductus choledochus'},
+      {name:'Akute Pankreatitis',prio:'high',reason:'Gürtelförmiger Oberbauchschmerz, Lipase stark erhöht'},
+      {name:'Magenulkus / Duodenalulkus',prio:'mid',reason:'Epigastrisch, nüchternabhängig, Helicobacter-Anamnese'},
+      {name:'Leberzirrhose / Hepatitis',prio:'mid',reason:'Ikterus, Transaminasen erhöht, Noxenanamnese wichtig'},
+      {name:'Rechtsherzinsuffizienz',prio:'low',reason:'Stauungsikterus, Unterschenkelödeme, Dyspnoe'}
+    ],
+    klinik:{labor:['Leukozytose','CRP erhöht','γGT, AP, Bilirubin erhöht (bei Verschluss)','Lipase (Pankreatitis ausschließen)'],bild:['Sono: Gallenblasenhydrops, Wandverdickung >4mm, Choledochus-Dilatation','CT/MRT: Komplikationen','ERCP: therapeutisch bei Choledochus-Stein'],körper:['Murphy-Zeichen positiv','Druckschmerz re. Oberbauch','Ikterus?'],therapie:['Nüchtern, i.v.-Analgesie, Spasmolytika','Antibiotika: Cefazolin + Metronidazol','Cholezystektomie (laparoskopisch, elektiv oder früh)']},
+    arzt:'Ich stelle Ihnen Frau/Herrn [Name], [Alter] Jahre, vor. Die Patientin klagt über seit gestern Nacht bestehende rechtsseitige Oberbauchschmerzen mit Ausstrahlung in die rechte Schulter, begleitet von Übelkeit und Fieber. In der Untersuchung ist das Murphy-Zeichen positiv. Sonografisch zeigt sich eine Gallenblasenwandverdickung mit Nachweis von Konkrementen. Laborchemisch bestehen Leukozytose und CRP-Erhöhung. Ich vermute eine akute kalkulöse Cholezystitis. Differenzialdiagnostisch müssen wir eine Choledocholithiasis und eine Pankreatitis ausschließen.',
+    warn:'Charcot-Trias bei Cholangitis: Fieber + Ikterus + Oberbauchschmerz → Notfall!'
+  },
+  {
+    id:'mca', name:'Magenkarzinom', cat:'gastro',
+    fragen:[
+      {section:'Leitsymptome',qs:['Ich würde gerne wissen, ob Sie in letzter Zeit Schmerzen im Oberbauch bemerkt haben.','Könnten Sie mir sagen, ob Sie ungewollt Gewicht verloren haben – und wenn ja, wie viel in welchem Zeitraum?','Darf ich fragen, ob Sie Probleme beim Schlucken haben – Dysphagie?','Ich würde gerne wissen, ob Sie frühzeitig satt werden, auch wenn Sie nur wenig gegessen haben.','Könnten Sie mir sagen, ob Sie Blut erbrochen haben oder Blut im Stuhl bemerkt haben?']},
+      {section:'B-Symptomatik',qs:['Darf ich fragen, ob Sie nachts stark schwitzen?','Ich würde gerne wissen, ob Sie sich anhaltend müde und erschöpft fühlen.','Könnten Sie mir sagen, ob Sie sich blass fühlen oder Ihnen Schwindel auffiel?']},
+      {section:'Risikofaktoren',qs:['Darf ich fragen, ob Sie rauchen oder geraucht haben?','Könnten Sie mir sagen, ob Sie häufig Alkohol trinken?','Ich würde gerne wissen, ob bei Ihnen ein Magengeschwür bekannt ist oder ob Sie wegen Helicobacter behandelt wurden.','Darf ich fragen, ob in Ihrer Familie Magenkrebs vorkommt?']}
+    ],
+    dd:[
+      {name:'Ulcus ventriculi',prio:'high',reason:'Ähnliche Schmerzen, aber lagebezogen, HP-positiv, keine Gewichtsabnahme'},
+      {name:'GERD / Ösophagitis',prio:'high',reason:'Sodbrennen, Regurgitation, keine Gewichtsabnahme'},
+      {name:'Pankreaskarzinom',prio:'mid',reason:'Schmerzloser Ikterus, Gewichtsabnahme, CA 19-9 erhöht'},
+      {name:'Lymphom (MALT)',prio:'mid',reason:'Assoz. mit HP, endoskopisch ähnlich, Biopsie entscheidend'},
+      {name:'Funktionelle Dyspepsie',prio:'low',reason:'Jüngere Patienten, keine Alarmsymptome, unauffällige Gastroskopie'}
+    ],
+    klinik:{labor:['Hb erniedrigt (mikrozytäre Anämie)','Ferritin erniedrigt','CEA, CA 72-4 (Verlaufsmarker)','HP-Serologie / Atemtest'],bild:['Gastroskopie + Biopsie: Goldstandard','CT Thorax/Abdomen: Staging','EUS: Tiefeninfiltration','PET-CT: Fernmetastasen'],körper:['Epigastrischer Druckschmerz','Virchow-Lymphknoten (li. supraklavikulär)?','Blumer-Shelf (rektale Untersuchung)?'],therapie:['Früh: kurative Resektion (Gastrektomie)','Perioperativ: FLOT-Schema (Chemotherapie)','Palliativ: FOLFOX, Trastuzumab (HER2+)']},
+    arzt:'Ich stelle Ihnen Herrn [Name], [Alter] Jahre, vor. Der Patient berichtet über seit etwa [X] Wochen bestehende epigastrische Schmerzen, Gewichtsverlust von ca. [X] kg in [X] Monaten sowie Appetitlosigkeit. Laborchemisch finden sich eine mikrozytäre Anämie und ein erniedrigtes Ferritin, was auf einen okkulten Blutverlust hinweist. Endoskopisch zeigt sich eine exulzerierte Raumforderung im Magenantrum. Die Biopsie ergab ein Adenokarzinom. Ich vermute ein Magenkarzinom und bitte um Staging-CT und onkologisches Konsil.',
+    warn:'Alarmsignale (Red Flags): Dysphagie, Gewichtsverlust, Hämatemesis, Meläna → sofortige Gastroskopie!'
+  },
+  {
+    id:'ulc', name:'Ulcus ventriculi / duodeni', cat:'gastro',
+    fragen:[
+      {section:'Schmerzcharakter',qs:['Könnten Sie mir sagen, wo genau Sie die Schmerzen spüren – eher in der Magengrube?','Darf ich fragen, ob die Schmerzen mit dem Essen zusammenhängen – besser oder schlechter nach dem Essen?','Ich würde gerne wissen, ob Sie nachts durch Schmerzen aufgewacht sind.','Könnten Sie mir beschreiben, ob der Schmerz eher brennend oder drückend ist?']},
+      {section:'Komplikationen',qs:['Darf ich fragen, ob Sie Blut erbrochen haben oder teerfarbenen Stuhl bemerkt haben?','Ich würde gerne wissen, ob sich Ihr Stuhl verändert hat – schwarz oder sehr dunkel?','Könnten Sie mir sagen, ob die Schmerzen plötzlich schlimmer geworden sind – wie ein Messerstich?']},
+      {section:'Ursachen & Noxen',qs:['Darf ich fragen, ob Sie regelmäßig Schmerzmittel wie Ibuprofen oder Aspirin nehmen?','Ich würde gerne wissen, ob Sie Cortison oder andere Medikamente einnehmen.','Könnten Sie mir sagen, wie viel Alkohol Sie konsumieren?','Darf ich fragen, ob Sie rauchen?']}
+    ],
+    dd:[
+      {name:'Magenkarzinom',prio:'high',reason:'Jeder Magenulkus: Biopsie Pflicht! Persistenz trotz Therapie = suspekt'},
+      {name:'Akute Pankreatitis',prio:'high',reason:'Gürtelförmig, Lipase erhöht, kein Nüchternbezug'},
+      {name:'GERD',prio:'mid',reason:'Retrosternales Brennen, Regurgitation, lageabhängig'},
+      {name:'Gallenkolik',prio:'mid',reason:'Kolikartig, re. Oberbauch, sonografisch Steine'},
+      {name:'Funktionelle Dyspepsie',prio:'low',reason:'Gastroskopie normal, kein organisches Korrelat'}
+    ],
+    klinik:{labor:['Hp-Test (Atemtest/Biopsie/Stuhl-Antigen)','Blutbild: Anämie bei Blutung','BKS, CRP zum Ausschluss anderer Ursachen'],bild:['Gastroskopie + Biopsie: Pflicht!','Sono: Komplikationen'],körper:['Epigastrischer Druckschmerz','Brett-harter Bauch bei Perforation','Blass, tachykard bei Blutung'],therapie:['HP-Eradikation: 7-Tage Triple-Therapie (PPI + Clarithromycin + Amoxicillin)','PPI: 4–8 Wochen','NSAR absetzen, Magenprotektiva']},
+    arzt:'Der Patient stellt sich mit seit [X] Wochen bestehenden nüchternabhängigen epigastrischen Schmerzen vor, die sich durch Nahrungsaufnahme bessern. Er gibt an, regelmäßig NSAR einzunehmen. In der Gastroskopie zeigte sich ein Ulkus an der kleinen Kurvatur. Bioptisch war HP positiv. Ich vermute ein Ulcus ventriculi auf dem Boden einer HP-Infektion und NSAR-Einnahme und empfehle HP-Eradikation sowie PPI-Therapie.',
+    warn:'Perforation: schlagartige Schmerzfreiheit → Peritonitis! Meläna/Hämatemesis → Notfallendoskopie!'
+  },
+  {
+    id:'pan', name:'Pankreatitis', cat:'gastro',
+    fragen:[
+      {section:'Schmerzcharakter',qs:['Könnten Sie mir sagen, wie die Schmerzen begonnen haben – plötzlich oder langsam?','Darf ich fragen, ob der Schmerz in den Rücken ausstrahlt – gürtelförmig?','Ich würde gerne wissen, ob die Schmerzen in eine bestimmte Körperposition besser werden – zum Beispiel vorgebeugt?','Könnten Sie mir sagen, wie stark der Schmerz ist auf einer Skala von 0 bis 10?']},
+      {section:'Begleitsymptome',qs:['Darf ich fragen, ob Sie Übelkeit und Erbrechen hatten?','Ich würde gerne wissen, ob Sie zuletzt viel Alkohol getrunken haben.','Könnten Sie mir sagen, ob bei Ihnen Gallensteine bekannt sind?']},
+      {section:'Schwere & Verlauf',qs:['Darf ich fragen, ob Sie Fieber hatten?','Ich würde gerne wissen, ob Sie sich schwach und kreislaufinstabil gefühlt haben.','Könnten Sie mir sagen, ob Sie in den letzten Tagen noch essen konnten?']}
+    ],
+    dd:[
+      {name:'Aortendissektion',prio:'high',reason:'Vernichtungsschmerz, in den Rücken ausstrahlend, RR-Differenz'},
+      {name:'Perforation (Ulkus)',prio:'high',reason:'Schlagartig, Peritonismus, freie Luft im Röntgen'},
+      {name:'Cholezystitis / Cholelithiasis',prio:'mid',reason:'Rechter Oberbauch, Murphy+, Lipase normal oder leicht erhöht'},
+      {name:'Mesenterialischämie',prio:'mid',reason:'Ältere Patienten, VHF, Schmerz > Befund'},
+      {name:'Nierenkolik',prio:'low',reason:'Wellenförmig, Flankenschmerz, Hämaturie'}
+    ],
+    klinik:{labor:['Lipase >3× Normwert (Goldstandard)','CRP, PCT, IL-6 (Schwere)','Bilirubin, AP (biliäre Genese?)','Blutbild, Elektrolyte, Laktat'],bild:['Sono: Gallenblase, Pankreasödem','CT Abdomen mit KM: Nekrosen (Balthazar-Score)','MRT/MRCP: Gangpathologie'],körper:['Druckschmerz Oberbauch','Cullens Zeichen (periumbilikal)','Grey-Turner (Flanken) – Einblutung'],therapie:['Nüchtern (Schmerztherapie), i.v.-Volumen','Keine Antibiotika routinemäßig (außer Infektion)','Enterale Ernährung frühzeitig','ERCP bei biliärer Ursache']},
+    arzt:'Ich stelle Ihnen Herrn [Name], [Alter] Jahre, vor. Er klagte über seit [X] Stunden bestehende gürtelförmige Oberbauchschmerzen mit Ausstrahlung in den Rücken sowie Übelkeit und Erbrechen. Vorbekannte Cholelithiasis. Laborchemisch zeigt sich eine Lipase von [X] U/l ([X]-fach erhöht), erhöhtes CRP und Leukozytose. Sonografisch Gallenblasenkonkremente, das Pankreas ödematös verbreitert. Ich vermute eine akute biliäre Pankreatitis. Differenzialdiagnostisch habe ich eine Aortendissektion und eine Ulkusperforation ausgeschlossen.',
+    warn:'Ranson/BISAP-Score erheben! Organversagen → intensivmedizinische Überwachung nötig!'
+  },
+  {
+    id:'lc', name:'Leberzirrhose', cat:'gastro',
+    fragen:[
+      {section:'Leitsymptome',qs:['Darf ich fragen, ob Sie bemerkt haben, dass Ihr Bauch größer geworden ist – Aszites?','Könnten Sie mir sagen, ob Sie eine Gelbfärbung der Haut oder der Augen bemerkt haben?','Ich würde gerne wissen, ob Sie Blut erbrochen haben oder ob Ihr Stuhl schwarz war.','Darf ich fragen, ob Sie sich in letzter Zeit verwirrt oder vergesslich gefühlt haben – Gedächtnisstörungen?']},
+      {section:'Noxen & Ursachen',qs:['Darf ich fragen, wie viel Alkohol Sie täglich trinken – auch früher?','Ich würde gerne wissen, ob bei Ihnen eine Hepatitis B oder C bekannt ist.','Könnten Sie mir sagen, ob Sie an einer Stoffwechselerkrankung leiden – zum Beispiel Diabetes oder starkes Übergewicht?']},
+      {section:'Komplikationen',qs:['Darf ich fragen, ob bei Ihnen Magenspiegelungen gemacht wurden und dabei Krampfadern in der Speiseröhre (Varizen) gefunden wurden?','Ich würde gerne wissen, ob Sie regelmäßig Wasser lassen müssen oder ob sich Wasser in Ihren Beinen ansammelt.']}
+    ],
+    dd:[
+      {name:'Hepatozelluläres Karzinom (HCC)',prio:'high',reason:'AFP erhöht, neue Raumforderung in der Leber bei Zirrhose → Sonografie alle 6 Mon.'},
+      {name:'Herzinsuffizienz',prio:'high',reason:'Stauungsleber, Aszites, Ödeme, Dyspnoe → Echo'},
+      {name:'Budd-Chiari-Syndrom',prio:'mid',reason:'Thrombose der Lebervenen, akuter Verlauf'},
+      {name:'Primär sklerosierende Cholangitis',prio:'mid',reason:'Junge Männer, CED-Assoziation, Cholestaseenzyme'},
+      {name:'Alkoholische Hepatitis',prio:'low',reason:'Akute Dekompensation nach Alkohol-Exzess, Fieber, AST > ALT'}
+    ],
+    klinik:{labor:['GOT/GPT, γGT, AP','Bilirubin (direkt/indirekt)','Quick/INR, Albumin (Syntheseleistung)','AFP (HCC-Screening)','NH3 (hepatische Enzephalopathie)'],bild:['Sonografie: Leberparenchym, Aszites, Splenomegalie','Fibroscan: Elastizität','Gastroskopie: Ösophagusvarizen','CT/MRT: HCC-Ausschluss'],körper:['Spider-Nävi, Palmarerythem','Caput medusae','Leukonychie','Dupuytren','Aszites (Wellenschlag-Phänomen)'],therapie:['Alkohol- und Hepatotoxin-Karenz','Diuretika: Spironolacton + Furosemid','Lactulose bei Enzephalopathie','Varizenprophylaxe: Beta-Blocker / Ligatur','Leberersatztherapie/Transplantation']},
+    arzt:'Ich stelle Ihnen Herrn [Name], [Alter] Jahre, vor. Er ist bekannter Alkoholiker und stellt sich mit zunehmendem Bauchumfang und Gelbsucht vor. Klinisch zeigen sich Spider-Nävi, Palmarerythem, Aszites und Ikterus. Laborchemisch finden sich erhöhte Transaminasen, erniedrigtes Albumin und ein erhöhtes INR. Sonografisch imponiert eine knotige Leber mit Splenomegalie und Aszites. Ich vermute eine dekompensierte Leberzirrhose Child C, wahrscheinlich alkoholtoxischer Genese, und bitte um Gastroskopie zum Varizensscreening sowie Aszitespunktion.',
+    warn:'Spontan bakterielle Peritonitis (SBP): Fieber + Aszites + Bauchschmerzen → Sofortpunktion!'
+  },
+  {
+    id:'ced', name:'CED (Morbus Crohn / Colitis ulcerosa)', cat:'gastro',
+    fragen:[
+      {section:'Stuhlgang',qs:['Könnten Sie mir sagen, wie oft Sie täglich Stuhlgang haben?','Darf ich fragen, ob Blut oder Schleim im Stuhl vorhanden war?','Ich würde gerne wissen, ob Sie nachts durch Stuhldrang aufgewacht sind.','Könnten Sie mir sagen, ob Sie Tenesmen hatten – schmerzhafter Stuhldrang ohne Stuhlgang?']},
+      {section:'Schmerzen & Allgemein',qs:['Darf ich fragen, wo Sie Bauchschmerzen haben – rechter Unterbauch oder diffus?','Ich würde gerne wissen, ob Sie ungewollt abgenommen haben.','Könnten Sie mir sagen, ob Sie Fieber hatten?','Darf ich fragen, ob Sie sich allgemein erschöpft und müde fühlen?']},
+      {section:'Extraintestinal & Verlauf',qs:['Ich würde gerne wissen, ob Sie Gelenkschmerzen oder Hautveränderungen haben.','Darf ich fragen, ob Ihre Augen gerötet oder schmerzhaft waren?','Könnten Sie mir sagen, ob diese Beschwerden schon früher aufgetreten sind?','Ich würde gerne wissen, ob jemand in Ihrer Familie eine Darmerkrankung hat.']}
+    ],
+    dd:[
+      {name:'Infektiöse Enteritis',prio:'high',reason:'Akut, Reiseanamnese, Stuhlkulturen positiv, selbstlimitierend'},
+      {name:'Kolonkarzinom',prio:'high',reason:'Ältere Patienten, Gewichtsabnahme, Kolonoskopie + Biopsie'},
+      {name:'Reizdarmsyndrom',prio:'mid',reason:'Kein Blut, kein Fieber, normale Entzündungsparameter'},
+      {name:'Appendizitis',prio:'mid',reason:'Akut, rechter Unterbauch, Fieber, Leukozyten ↑'},
+      {name:'Zöliakie',prio:'low',reason:'Fettstühle, Gewichtsabnahme, Anti-Gliadin-AK, Biopsie Dünndarm'}
+    ],
+    klinik:{labor:['CRP, BSG, Leukozyten','Calprotectin im Stuhl (Aktivität)','Hb, Ferritin, B12 (Mangelernährung)','ASCA (Crohn), pANCA (Colitis)'],bild:['Kolonoskopie + Biopsie: Goldstandard','MRT-Sellink: Dünndarmbefall (Crohn)','Sono: Wandverdickung, Abszess'],körper:['Druckschmerz re. Unterbauch (Crohn)','Perianale Fisteln, Abszesse (Crohn)','Erythema nodosum, Pyoderma (extraint.)'],therapie:['Schub: Kortikosteroide systemisch','Erhaltung: Azathioprin, MTX, Biologika (TNF-α-AK)','Colitis ulcerosa: Mesalazin','Chirurgie bei Komplikationen']},
+    arzt:'Ich stelle Ihnen Frau [Name], [Alter] Jahre, vor. Sie berichtet über seit [X] Monaten bestehende blutiger Durchfälle (bis zu [X] pro Tag), Tenesmen und Gewichtsverlust von [X] kg. Klinisch druckschmerzhafter linker Unterbauch. Laborchemisch erhöhtes CRP und Calprotectin im Stuhl. Kolonoskopisch zeigte sich eine kontinuierliche Entzündung vom Rektum bis zum Sigma mit Kryptenabszessen. Histologisch passt der Befund zu einer Colitis ulcerosa. Ich bitte um Steroidstoßtherapie und Vorstellung in der IBD-Sprechstunde.',
+    warn:'Toxisches Megakolon: Fieber + Tachykardie + aufgetriebener Bauch → chirurgisches Notfallkonsil!'
+  },
+  {
+    id:'ms', name:'Multiple Sklerose', cat:'neuro',
+    fragen:[
+      {section:'Erster Schub / Symptome',qs:['Darf ich fragen, welche Beschwerden Sie zuerst bemerkt haben und wann?','Ich würde gerne wissen, ob Sie Sehstörungen hatten – Doppelbilder oder Sehverlust auf einem Auge?','Könnten Sie mir sagen, ob Sie Kribbeln, Taubheitsgefühle oder Schwäche in Armen oder Beinen hatten?','Darf ich fragen, ob Sie Schwindel oder Gleichgewichtsstörungen bemerkt haben?']},
+      {section:'Verlauf',qs:['Ich würde gerne wissen, ob die Beschwerden über mehrere Tage anhielten und dann wieder besser wurden.','Könnten Sie mir sagen, ob Sie in der Vergangenheit ähnliche Episoden hatten, die sich von selbst gebessert haben?','Darf ich fragen, ob die Beschwerden bei Wärme oder nach einem heißen Bad schlimmer werden – Uhthoff-Phänomen?']},
+      {section:'Funktion & Alltag',qs:['Ich würde gerne wissen, ob Sie Blasenprobleme haben – häufiger Harndrang oder Inkontinenz.','Könnten Sie mir sagen, ob Sie Erschöpfung (Fatigue) erleben, die über normale Müdigkeit hinausgeht?','Darf ich fragen, ob Sie Stimmungsschwankungen oder Gedächtnisprobleme bemerkt haben?']}
+    ],
+    dd:[
+      {name:'Neuromyelitis optica',prio:'high',reason:'Schwere Optikusneuritis + Myelitis, AQP4-AK positiv, anders behandeln!'},
+      {name:'Zerebrale Vaskulitis',prio:'high',reason:'Schubförmig, MRT-Läsionen, junges Alter, Systemerkrankung'},
+      {name:'Vitamin-B12-Mangel',prio:'mid',reason:'Sensibilitätsstörungen, funikuläre Myelose, B12 erniedrigt'},
+      {name:'Lyme-Neuroborreliose',prio:'mid',reason:'Zeckenstich, Erythema migrans, Borrelien-AK'},
+      {name:'Funktionelle Störung',prio:'low',reason:'Keine MRT-Läsionen, inkonsistente Symptome, junge Frauen'}
+    ],
+    klinik:{labor:['MRT Schädel/Spinalkanal: McDonald-Kriterien','Liquorpunktion: oligoklonale Banden','VEP (visuell evozierte Potenziale)','AQP4- und MOG-AK (NMO ausschließen)','B12, Borrelien-Titer'],bild:['MRT: periventrikuläre T2-Läsionen (Dawson fingers)','KM-Aufnahme aktiver Läsionen'],körper:['EDSS-Score','Lhermitte-Zeichen (Stromgefühl bei Kopfneigung)','Internukleäre Ophthalmoplegie'],therapie:['Schub: Methylprednisolon i.v. 1g × 3–5 Tage','Verlaufsmodifizierende Therapie: Interferon-β, Natalizumab, Ocrelizumab','Symptomatisch: Baclofen (Spastik), Amantadin (Fatigue)']},
+    arzt:'Ich stelle Ihnen Frau [Name], [Alter] Jahre, vor. Sie berichtet über eine seit [X] Wochen bestehende Schwäche des rechten Beins und vorausgehende Sehminderung auf dem linken Auge vor drei Monaten, die sich spontan zurückgebildet hat. Im MRT finden sich periventrikuläre T2-Läsionen sowie eine frische KM-anreichernde Läsion. Im Liquor oligoklonale Banden positiv. Die McDonald-Kriterien für eine schubförmig-remittierende MS sind erfüllt. Ich bitte um Einleitung einer verlaufsmodifizierenden Therapie nach neurologischem Konsil.',
+    warn:'Uhthoff-Phänomen: Verschlechterung bei Wärme ≠ neuer Schub! Neuer Schub = neue Läsion + >24h Symptome.'
+  },
+  {
+    id:'dp', name:'Zervikaler Diskusprolaps', cat:'neuro',
+    fragen:[
+      {section:'Schmerzen',qs:['Könnten Sie mir sagen, wo genau der Schmerz sitzt – im Nacken, im Arm oder in der Schulter?','Darf ich fragen, ob der Schmerz in einen bestimmten Finger oder in die Hand ausstrahlt?','Ich würde gerne wissen, ob der Schmerz durch bestimmte Kopfbewegungen verstärkt oder ausgelöst wird.','Könnten Sie mir sagen, ob der Schmerz eher brennend, stechend oder drückend ist?']},
+      {section:'Neurologie',qs:['Darf ich fragen, ob Sie Kribbeln oder Taubheitsgefühle in Arm oder Hand haben?','Ich würde gerne wissen, ob Sie eine Schwäche in der Hand oder im Arm bemerkt haben – zum Beispiel Schwierigkeiten beim Greifen?','Könnten Sie mir sagen, ob Ihnen Gegenstände aus der Hand fallen?','Darf ich fragen, ob Sie Schwierigkeiten beim Gehen haben oder stolpern?']},
+      {section:'Red Flags',qs:['Ich würde gerne wissen, ob Sie Probleme beim Wasserlassen oder Stuhlgang haben – Inkontinenz?','Könnten Sie mir sagen, ob beide Beine schwächer oder tauber werden?','Darf ich fragen, ob die Beschwerden nach einem Trauma oder Sturz aufgetreten sind?']}
+    ],
+    dd:[
+      {name:'Zervikale Myelopathie',prio:'high',reason:'Gangataxie, Hyperreflexie, Blasenstörung → MRT dringend'},
+      {name:'Schulter-Arm-Syndrom (peripher)',prio:'high',reason:'Impingement, Rotatorenmanschettenläsion, lokaler Schultertest positiv'},
+      {name:'Thoracic-Outlet-Syndrom',prio:'mid',reason:'Vaskuläre + neurale Kompression, Adson-Test'},
+      {name:'Karpaltunnelsyndrom',prio:'mid',reason:'Nächtliches Kribbeln, D1-D3, Phalen/Tinel positiv'},
+      {name:'Multiple Sklerose',prio:'low',reason:'Junge Patienten, andere Läsionen im MRT, Liquor'}
+    ],
+    klinik:{labor:['MRT HWS: Protrusion/Prolaps, Myelon-Kompression','Röntgen HWS: Osteophyten, Instabilität','EMG/NLG: Denervierungszeichen, Leitungsblockierung'],bild:['Höhe C5/C6: Schwäche Bizeps, Taubheit D1-D2','Höhe C6/C7: Schwäche Trizeps, Taubheit D3','Höhe C7/C8: Schwäche Handmuskeln, D4-D5'],körper:['Spurling-Test positiv','Reflexstatus: BSR, TSR, RPR','Sensibilitätsdermatom','Grip strength'],therapie:['Konservativ: Physiotherapie, Analgesie, Cervicalkragen kurzzeitig','Op-Indikation: motorisches Defizit >2 Wochen, Myelopathie, Konservativversagen → ACDF']},
+    arzt:'Ich stelle Ihnen Herrn [Name], [Alter] Jahre, vor. Er berichtet über seit [X] Wochen bestehende Nackenschmerzen mit Ausstrahlung in den rechten Arm bis in den Daumen und Zeigefinger, begleitet von Kribbeln in diesem Bereich. Im MRT zeigt sich ein Bandscheibenvorfall C5/C6 mit Kompression der rechten Nervenwurzel. Der BSR ist abgeschwächt. Ich vermute eine Radikulopathie C6 rechts und empfehle zunächst konservative Therapie.',
+    warn:'Myelopathie-Zeichen (spastische Paraparese, Blasenstörung) → neurochirurgisches Notfallkonsil!'
+  },
+  {
+    id:'khk', name:'KHK / Angina pectoris / ACS', cat:'kardio',
+    fragen:[
+      {section:'Hauptbeschwerden',qs:['Könnten Sie mir sagen, wie Sie die Brustschmerzen beschreiben würden – Druck, Enge, Brennen?','Darf ich fragen, ob die Schmerzen in den linken Arm, den Kiefer oder den Rücken ausstrahlen?','Ich würde gerne wissen, ob die Schmerzen bei körperlicher Belastung auftreten oder auch in Ruhe.','Könnten Sie mir sagen, wie lange die Schmerzen anhalten – wenige Minuten oder länger?','Darf ich fragen, ob die Schmerzen nach Nitro-Spray besser werden?']},
+      {section:'Begleitsymptome',qs:['Ich würde gerne wissen, ob Sie Atemnot, Schwindel oder Übelkeit während der Schmerzen hatten.','Darf ich fragen, ob Sie geschwitzt haben – kalter Schweiß?','Könnten Sie mir sagen, ob Sie sich unwohl oder wie vor einer Ohnmacht gefühlt haben?']},
+      {section:'Risikofaktoren',qs:['Darf ich fragen, ob bei Ihnen Bluthochdruck, Zuckerkrankheit oder erhöhte Blutfette bekannt sind?','Ich würde gerne wissen, ob Sie rauchen oder früher geraucht haben.','Könnten Sie mir sagen, ob in Ihrer Familie Herzerkrankungen oder Herzinfarkte vorkamen – besonders vor dem 60. Lebensjahr?']}
+    ],
+    dd:[
+      {name:'NSTEMI / STEMI',prio:'high',reason:'Ruheschmerz >20 Min, EKG-Veränderungen, Troponin erhöht → Notfall!'},
+      {name:'Lungenembolie',prio:'high',reason:'Pleuritischer Schmerz, Dyspnoe, Tachykardie, D-Dimer, CT-Angio'},
+      {name:'Aortendissektion',prio:'high',reason:'Vernichtungsschmerz Rücken, RR-Differenz, breites Mediastinum'},
+      {name:'Perikarditis',prio:'mid',reason:'Lageabhängig (besser aufrecht), Perikardreiben, diffuse ST-Hebungen'},
+      {name:'Gastroösophagealer Reflux',prio:'low',reason:'Retrosternal brennend, lageabhängig, kein EKG-Befund'}
+    ],
+    klinik:{labor:['Troponin I/T (hochsensitiv): 0h/1h/3h','CK-MB','BNP/NT-proBNP','Blutbild, Gerinnung, Kreatinin'],bild:['12-Kanal-EKG sofort!','Echokardiographie: Wandbewegungsstörung','Koronarangiographie: Goldstandard'],körper:['RR beidseits (Dissektion!)', 'Herzauskultation','Zeichen der Herzinsuffizienz?'],therapie:['NSTEMI: Heparin, ASS + P2Y12-Inhibitor, frühzeitige PCI','STEMI: sofortige PCI (<90 Min.), Thrombolyse wenn kein Katheterlabor','Stabile KHK: Betablocker, ACE-Hemmer, Statin, Nitrate']},
+    arzt:'Ich stelle Ihnen Herrn [Name], [Alter] Jahre, vor. Er stellt sich mit seit [X] Minuten bestehenden retrosternalen Druckschmerzen mit Ausstrahlung in den linken Arm vor. Im EKG zeigen sich ST-Senkungen in V4–V6. Das hochsensitive Troponin T ist auf [X] ng/l erhöht. Ich vermute ein NSTEMI. Differenzialdiagnostisch habe ich eine Lungenembolie und eine Aortendissektion klinisch ausgeschlossen. Ich bitte um umgehende kardiologische Übernahme und Koronarangiographie.',
+    warn:'STEMI: ST-Hebungen ≥2 mm + Brustschmerz → Katheterlabor-Aktivierung sofort! Door-to-Balloon <90 Min.!'
+  },
+  {
+    id:'pneu', name:'Pneumonie', cat:'pneumo',
+    fragen:[
+      {section:'Atemwegssymptome',qs:['Könnten Sie mir sagen, ob Sie Husten haben – trocken oder mit Auswurf?','Darf ich fragen, welche Farbe der Auswurf hat – gelblich, grünlich oder rostfarben?','Ich würde gerne wissen, ob Sie Atemnot in Ruhe oder nur bei Belastung haben.','Könnten Sie mir sagen, ob Sie Schmerzen beim Atmen oder Husten haben – atemabhängige Schmerzen?']},
+      {section:'Allgemeinsymptome',qs:['Darf ich fragen, wie hoch Ihr Fieber war – haben Sie es gemessen?','Ich würde gerne wissen, ob die Beschwerden plötzlich oder schleichend begonnen haben.','Könnten Sie mir sagen, ob Sie sich allgemein sehr krank fühlen, mit Schüttelfrost?']},
+      {section:'Risikofaktoren',qs:['Darf ich fragen, ob Sie Vorerkrankungen haben – COPD, Herzinsuffizienz, Diabetes?','Ich würde gerne wissen, ob Sie immunsupprimiert sind oder Kortison einnehmen.','Könnten Sie mir sagen, ob Sie geimpft sind – Pneumokokken, Influenza?']}
+    ],
+    dd:[
+      {name:'Lungenembolie',prio:'high',reason:'Plötzliche Dyspnoe, Tachykardie, D-Dimer ↑, Wells-Score'},
+      {name:'Lungenödem',prio:'high',reason:'Ortho/Dyspnoe, Rasselgeräusche, BNP ↑, Herzinsuffizienz'},
+      {name:'Lungenabszess',prio:'mid',reason:'Fötider Auswurf, Fieber trotz Therapie, CT: Hohlraum'},
+      {name:'Tuberkulose',prio:'mid',reason:'Chron. Husten, Nachtschweiß, Gewichtsverlust, Oberlappen'},
+      {name:'Bronchialkarzinom',prio:'low',reason:'Rezidivierende Pneumonie gleicher Lokalisation, Raucher'}
+    ],
+    klinik:{labor:['CRP, Leukozyten, PCT','Blutkultur (2× vor Antibiotika)','Legionellen-/Pneumokokken-Antigen im Urin','BGA: Oxygenierung'],bild:['Röntgen Thorax: Infiltrat','CT Thorax: Komplikationen, Abszess','Sono Pleura: Erguss'],körper:['Auskultation: Bronchialatmen, Rasselgeräusche','Perkussion: gedämpft','SpO2','CRB-65 / CURB-65 Score'],therapie:['Ambulant: Amoxicillin ± Clarithromycin 5–7 Tage','Stationär: Ampicillin/Sulbactam + Clarithromycin i.v.','ICU: Piperacillin/Tazobactam + Levofloxacin']},
+    arzt:'Ich stelle Ihnen Frau [Name], [Alter] Jahre, vor. Sie klagt über seit [X] Tagen bestehenden produktiven Husten mit gelblichem Auswurf, Fieber bis [X]°C und Dyspnoe. Auskultatorisch Bronchialatmen und Rasselgeräusche rechts basal. Im Röntgen-Thorax zeigt sich ein Infiltrat im rechten Unterlappen. CRP [X] mg/l, Leukozyten [X] Gpt/l. Der CRB-65-Score beträgt [X] Punkte. Ich vermute eine ambulant erworbene Pneumonie und empfehle stationäre Aufnahme mit Beginn einer Antibiotikatherapie.',
+    warn:'SpO2 <90%: O2-Gabe! CURB-65 ≥3: ICU-Kriterien prüfen. Bilaterale Infiltrate → ARDS?'
+  },
+  {
+    id:'sf', name:'Schenkelhalsfraktur', cat:'ortho',
+    fragen:[
+      {section:'Unfallhergang',qs:['Darf ich fragen, wie Sie sich verletzt haben – Sturz, Unfall?','Ich würde gerne wissen, ob der Sturz beim Gehen passiert ist oder ob Sie das Bein spontan gebrochen haben.','Könnten Sie mir sagen, ob Sie sich erinnern, warum Sie gestürzt sind – Schwindel, Ohnmacht?']},
+      {section:'Schmerzen & Funktion',qs:['Könnten Sie mir sagen, wo genau der Schmerz sitzt – Leistenbereich, Hüfte oder Oberschenkel?','Darf ich fragen, ob der Schmerz in das Knie ausstrahlt?','Ich würde gerne wissen, ob Sie nach dem Sturz noch aufstehen konnten.','Könnten Sie mir sagen, ob Sie das Bein bewegen können?']},
+      {section:'Risikofaktoren & Osteoporose',qs:['Darf ich fragen, ob bei Ihnen Osteoporose bekannt ist?','Ich würde gerne wissen, ob Sie Kortison oder andere Medikamente einnehmen, die die Knochen beeinflussen.','Könnten Sie mir sagen, ob Sie in der Vergangenheit schon Knochenbrüche erlitten haben?']}
+    ],
+    dd:[
+      {name:'Pertrochantäre Fraktur',prio:'high',reason:'Röntgen: Frakturlinie unterhalb des Schenkelhalses, ähnliche Klinik'},
+      {name:'Acetabulumfraktur',prio:'high',reason:'Hochenergie-Trauma, CT notwendig'},
+      {name:'Koxarthrose dekompensiert',prio:'mid',reason:'Chron. Beschwerden, kein akutes Trauma, Röntgen: Gelenkspaltverschmälerung'},
+      {name:'Bursitis trochanterica',prio:'mid',reason:'Lokaler Druckschmerz Trochanter, kein Trauma, Röntgen normal'},
+      {name:'Lumbale Radikulopathie',prio:'low',reason:'Schmerz Ausstrahlung Oberschenkel, Lasègue positiv, normales Hüft-Röntgen'}
+    ],
+    klinik:{labor:['Blutbild, Gerinnung, Kreatinin (präoperativ)','CRP (Infektion ausschließen)','Vitamin D, Calcium (Osteoporose)'],bild:['Röntgen Becken + Hüfte axial: Klassifikation Garden I–IV','CT: okkulte Fraktur, präoperatives Planning','MRT: Stressfraktur, Knochenödem'],körper:['Beinverkürzung + Außenrotation','Leistendruckschmerz','Axiale Stauchung positiv','Neurozirkulatorischer Status Fuß'],therapie:['Garden I/II (undisloziiert): Verschraubung','Garden III/IV (disloziiert): Hemiprothese (ältere Pt.) / TEP (aktive Pt.)','Sofortige OP <24h → weniger Komplikationen']},
+    arzt:'Ich stelle Ihnen Frau [Name], [Alter] Jahre, vor. Sie stürzte heute Morgen im Bad und kann das rechte Bein nicht belasten. Klinisch zeigt sich eine Außenrotation und Verkürzung des rechten Beins mit Druckschmerz in der Leiste. Im Röntgenbild zeigt sich eine dislozierte Schenkelhalsfraktur Garden III. Laborchemisch präoperatives Screening unauffällig außer Hb [X] g/dl. Ich bitte um orthopädisches Konsil und Vorbereitung zur operativen Versorgung.',
+    warn:'Avaskuläre Femurkopfnekrose bei Garden III/IV → Hüftprothese bevorzugen! Thromboseprophylaxe ab Aufnahme!'
+  },
+  {
+    id:'hf', name:'Handgelenkfraktur (Radius)', cat:'ortho',
+    fragen:[
+      {section:'Unfallhergang',qs:['Darf ich fragen, wie es zu der Verletzung gekommen ist – Sturz auf die ausgestreckte Hand?','Ich würde gerne wissen, aus welcher Höhe Sie gefallen sind.','Könnten Sie mir sagen, ob Sie sofort Schmerzen hatten oder ob sie erst später kamen?']},
+      {section:'Symptome',qs:['Darf ich fragen, wo genau Sie Schmerzen haben – am Handgelenk oder auch im Unterarm?','Ich würde gerne wissen, ob das Handgelenk angeschwollen oder verformt ist.','Könnten Sie mir sagen, ob Sie die Finger bewegen können?','Darf ich fragen, ob Sie Kribbeln oder Taubheit in den Fingern bemerkt haben?']},
+      {section:'Funktion',qs:['Ich würde gerne wissen, ob Sie die Hand belasten können.','Könnten Sie mir sagen, in welchem Beruf Sie tätig sind – für die Therapieplanung?','Darf ich fragen, ob Sie Rechtshänder oder Linkshänder sind?']}
+    ],
+    dd:[
+      {name:'Skaphoidfraktur',prio:'high',reason:'Tabatière-Druckschmerz, Röntgen oft normal → MRT! Avaskuläre Nekrose droht'},
+      {name:'Distale Ulnafraktur',prio:'high',reason:'Kombination mit Radiusfraktur häufig, immer Ulna mitbeurteilen'},
+      {name:'Handgelenkkontusion / Verstauchung',prio:'mid',reason:'Nur Weichteilschwellung, Röntgen normal'},
+      {name:'Karpale Instabilität (SL-Ligament)',prio:'mid',reason:'Röntgen: erweiterter SL-Spalt, Kinetikverlust'},
+      {name:'Distale Bizepssehnenruptur',prio:'low',reason:'Kraftverlust Supination/Flexion, Popeye-Zeichen'}
+    ],
+    klinik:{labor:['Präoperativ: Blutbild, Gerinnung (nur bei OP)'],bild:['Röntgen in 2 Ebenen: Klassifikation (Colles, Smith, Barton)','CT: intraartikulärer Verlauf, Trümmerzone','MRT: Skaphoid-Ausschluss'],körper:['Silbergabel-Deformität (Colles)','Druckschmerz distal Radius / Tabatière','Sensibilität N. medianus (Daumen-D3)','Kapselbandriss?'],therapie:['Undisloziiert: Unterarmgips 4–6 Wochen','Disloziiert/intraartikulär: Reposition + winkelstabile Plattenosteosynthese','Physiotherapie frühzeitig postop.']},
+    arzt:'Ich stelle Ihnen Herrn [Name], [Alter] Jahre, vor. Er stürzte beim Radfahren auf die ausgestreckte rechte Hand. Er klagt über sofortige Schmerzen im rechten Handgelenk mit Schwellung und eingeschränkter Beweglichkeit. Im Röntgenbild zeigt sich eine dislozierte distale Radiusfraktur ohne intraartikuläre Beteiligung. Neurologie intakt. Ich bitte um handchirurgisches Konsil zur Entscheidung operative versus konservative Therapie.',
+    warn:'Tabatière-Druckschmerz trotz normalem Röntgen → Skaphoidfraktur ausschließen (MRT)! Cave: avaskuläre Nekrose!'
+  },
+  {
+    id:'osg', name:'Sprunggelenkfraktur', cat:'ortho',
+    fragen:[
+      {section:'Unfallhergang',qs:['Darf ich fragen, wie sich die Verletzung ereignet hat – Umknicken, Sturz?','Ich würde gerne wissen, ob Sie ein Knackgeräusch gehört oder gespürt haben.','Könnten Sie mir sagen, ob Sie nach dem Unfall noch auftreten konnten?']},
+      {section:'Schmerzen & Schwellung',qs:['Darf ich fragen, wo genau die Schmerzen sitzen – innen, außen oder rundherum?','Ich würde gerne wissen, ob das Sprunggelenk stark angeschwollen ist.','Könnten Sie mir sagen, ob die Schwellung sofort nach dem Unfall aufgetreten ist?','Darf ich fragen, ob Sie die Zehen bewegen können?']},
+      {section:'Ottawa Rules',qs:['Ich würde gerne wissen, ob Sie sofort nach dem Unfall 4 Schritte gehen konnten.','Könnten Sie mir sagen, ob es beim Drücken auf den Knöchel – innen oder außen – besonders schmerzhaft ist?','Darf ich fragen, ob der Fuß taubheitsgefühle oder Kribbeln hat?']}
+    ],
+    dd:[
+      {name:'Außenbandruptur OSG',prio:'high',reason:'Supinationstrauma, Druckschmerz Lig. fibulotalare ant., Röntgen normal'},
+      {name:'Peronaeussehnenruptur',prio:'high',reason:'Lateraler Schmerz, Schwellung, aktive Eversion eingeschränkt'},
+      {name:'Lisfranc-Verletzung',prio:'mid',reason:'Fußwurzelschmerz, subtiles Trauma, MRT oder Weight-bearing-Röntgen'},
+      {name:'Kalkaneusfraktur',prio:'mid',reason:'Sturz aus Höhe, Fersendruckschmerz, Böhler-Winkel erniedrigt'},
+      {name:'Syndesmoseruptur isoliert',prio:'low',reason:'Außenrotationstrauma, Druckschmerz Syndesmose, Stress-Röntgen'}
+    ],
+    klinik:{labor:['Präoperativ: Standard'],bild:['Röntgen OSG in 2 Ebenen + Mortise-Aufnahme: Weber A/B/C','CT: bimalleoläre Fraktur, pilon tibial','MRT: Bandverletzungen'],körper:['Ottawa Ankle Rules anwenden','Druckschmerz Malleolus medialis/lateralis','Gefäß-/Nervenstatus Fuß','Schubladen-Test (ant./post.)'],therapie:['Weber A: Orthese/Unterschenkelgips, funktionell','Weber B stabil: konservativ; instabil: OP','Weber C: immer OP (Plattenosteosynthese Fibula + Syndesmosenschraube)']},
+    arzt:'Ich stelle Ihnen Herrn [Name], [Alter] Jahre, vor. Er knickte beim Sport um und kann das rechte Sprunggelenk nicht belasten. Klinisch deutliche Schwellung und Druckschmerz über dem Außenknöchel. Im Röntgenbild zeigt sich eine Weber-B-Fraktur des Außenknöchels ohne erkennbare Instabilität. Neurozirkulärer Status intakt. Ich bitte um unfallchirurgisches Konsil zur Entscheidung über konservative oder operative Versorgung.',
+    warn:'Bimalleoläre Fraktur + Bandverletzung = instabiles OSG → OP-Indikation. Gefäßstatus immer prüfen!'
+  }
+];
+
+let activeCat = 'all';
+let activeId = null;
+let activeDtab = 'fragen';
+
+function filterCat(cat, btn) {
+  activeCat = cat;
+  document.querySelectorAll('.cbt').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderTiles();
+}
+
+function filterTiles() {
+  renderTiles();
+}
+
+function renderTiles() {
+  const q = document.getElementById('srch').value.toLowerCase();
+  const grid = document.getElementById('tile-grid');
+  grid.innerHTML = '';
+  DATA.filter(d => (activeCat === 'all' || d.cat === activeCat) && d.name.toLowerCase().includes(q))
+    .forEach(d => {
+      const t = document.createElement('div');
+      t.className = 'tile ' + d.cat;
+      t.innerHTML = `<div class="tile-cat">${catLabel(d.cat)}</div><div class="tile-name">${d.name}</div>`;
+      t.onclick = () => openDetail(d.id);
+      grid.appendChild(t);
+    });
+}
+
+function catLabel(c) {
+  return {gastro:'Gastroenterologie',neuro:'Neurologie',kardio:'Kardiologie',pneumo:'Pneumologie',ortho:'Orthopädie/Unfallchirurgie'}[c] || c;
+}
+
+function openDetail(id) {
+  activeId = id;
+  activeDtab = 'fragen';
+  renderDetail();
+  document.getElementById('detail-panel').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function renderDetail() {
+  const d = DATA.find(x => x.id === activeId);
+  if (!d) return;
+  const panel = document.getElementById('detail-panel');
+  panel.className = 'detail open';
+
+  const tabs = ['fragen','dd','arzt','klinik'];
+  const tabLabels = {fragen:'Anamnese-Fragen', dd:'Differenzialdiagnosen', arzt:'Arzt-Arzt-Gespräch', klinik:'Klinik & Therapie'};
+
+  let html = `<div class="det-header">
+    <div><div class="det-title">${d.name}</div><span class="det-cat ${d.cat}">${catLabel(d.cat)}</span></div>
+    <button class="close-btn" onclick="closeDetail()">Schließen</button>
+  </div>
+  <div class="tabs2">${tabs.map(t=>`<button class="t2${activeDtab===t?' on':''}" onclick="switchTab('${t}')">${tabLabels[t]}</button>`).join('')}</div>`;
+
+  if (activeDtab === 'fragen') {
+    html += '<div class="tab-content on">';
+    d.fragen.forEach(s => {
+      html += `<div class="section-lbl">${s.section}</div><ul class="q-list">`;
+      s.qs.forEach(q => { html += `<li>${q}</li>`; });
+      html += '</ul>';
+    });
+    html += '</div>';
+  } else if (activeDtab === 'dd') {
+    html += '<div class="tab-content on"><div class="legend"><div class="leg-item"><div class="leg-dot" style="background:#E24B4A"></div>Wichtig</div><div class="leg-item"><div class="leg-dot" style="background:#EF9F27"></div>Möglich</div><div class="leg-item"><div class="leg-dot" style="background:#1D9E75"></div>Selten</div></div><ul class="dd-list">';
+    d.dd.forEach(dd => {
+      html += `<div class="dd-item ${dd.prio}"><div class="dd-name">${dd.name}</div><div class="dd-reason">${dd.reason}</div></div>`;
+    });
+    html += '</ul>';
+    if (d.warn) html += `<div class="warn-box"><strong>Achtung:</strong> ${d.warn}</div>`;
+    html += '</div>';
+  } else if (activeDtab === 'arzt') {
+    html += `<div class="tab-content on">
+      <div class="arzt-block"><div class="arzt-label">Musterformulierung Arzt-Arzt-Gespräch</div><div class="arzt-text">${d.arzt}</div></div>
+      ${d.warn ? `<div class="warn-box"><strong>Alarmsignal:</strong> ${d.warn}</div>` : ''}
+    </div>`;
+  } else if (activeDtab === 'klinik') {
+    const k = d.klinik;
+    html += `<div class="tab-content on"><div class="klinik-grid">
+      <div class="klinik-box"><div class="klinik-box-title">Labor</div><ul>${k.labor.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+      <div class="klinik-box"><div class="klinik-box-title">Bildgebung / Diagnostik</div><ul>${k.bild.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+      <div class="klinik-box"><div class="klinik-box-title">Klinische Zeichen</div><ul>${k.körper.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+      <div class="klinik-box"><div class="klinik-box-title">Therapie</div><ul>${k.therapie.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+    </div>${d.warn?`<div class="warn-box"><strong>Merke:</strong> ${d.warn}</div>`:''}</div>`;
+  }
+
+  panel.innerHTML = html;
+}
+
+function switchTab(t) {
+  activeDtab = t;
+  renderDetail();
+}
+
+function closeDetail() {
+  document.getElementById('detail-panel').className = 'detail';
+  activeId = null;
+}
+
+renderTiles();
+</script>

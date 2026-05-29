@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Malaria</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+  :root {
+    --bg:#f8f9fa;--card:#fff;--card2:#f1f3f5;
+    --a1:#7a2e0a;--a2:#1971c2;--a3:#2f9e44;--a4:#c92a2a;--warn:#e67700;
+    --text:#212529;--muted:#868e96;--border:#dee2e6;
+    --lt:#fff3ec;--lb:#e8f0ff;--lg:#ebfbee;--lr:#fff5f5;--lo:#fff9db;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:2rem 1rem}
+  .wrap{max-width:1020px;margin:0 auto}
+  .header{text-align:center;margin-bottom:3rem;padding-bottom:2rem;border-bottom:2px solid var(--border)}
+  .header h1{font-family:'Inter',sans-serif;font-size:2.4rem;font-weight:800;color:var(--a1);letter-spacing:-1px}
+  .header .sub{color:var(--muted);font-size:.85rem;margin-top:.4rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:500}
+  .tb{display:inline-block;color:#fff;padding:.3rem 1.2rem;border-radius:20px;font-size:.82rem;font-weight:700;margin-top:.8rem;margin-right:.3rem}
+  .ch{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 1.2rem;padding:.9rem 1.2rem;border-radius:10px}
+  .ch-t{background:var(--lt);border-left:5px solid var(--a1)}
+  .ch-b{background:var(--lb);border-left:5px solid var(--a2)}
+  .ch-g{background:var(--lg);border-left:5px solid var(--a3)}
+  .ch-r{background:var(--lr);border-left:5px solid var(--a4)}
+  .ch-o{background:var(--lo);border-left:5px solid var(--warn)}
+  .cn{font-family:'Inter',sans-serif;font-size:2rem;font-weight:800;opacity:.2}
+  .ch-t .cn{color:var(--a1)}.ch-b .cn{color:var(--a2)}.ch-g .cn{color:var(--a3)}.ch-r .cn{color:var(--a4)}.ch-o .cn{color:var(--warn)}
+  .ct h2{font-family:'Inter',sans-serif;font-size:1.5rem;font-weight:800;line-height:1.1}
+  .ch-t .ct h2{color:var(--a1)}.ch-b .ct h2{color:var(--a2)}.ch-g .ct h2{color:var(--a3)}.ch-r .ct h2{color:var(--a4)}.ch-o .ct h2{color:var(--warn)}
+  .ct p{font-size:.82rem;color:var(--muted);margin-top:.2rem}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.2rem}
+  .full{margin-bottom:1.2rem}
+  .card{background:var(--card);border-radius:10px;padding:1.4rem;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  .card h3{font-family:'Inter',sans-serif;font-size:.9rem;font-weight:700;color:var(--a1);margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:2px solid var(--lt)}
+  .card h3.bl{color:var(--a2);border-color:var(--lb)}.card h3.gn{color:var(--a3);border-color:var(--lg)}.card h3.rd{color:var(--a4);border-color:var(--lr)}.card h3.or{color:var(--warn);border-color:var(--lo)}
+  .card h4{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin:.9rem 0 .4rem}
+  .card h4:first-of-type{margin-top:0}
+  .tag{display:inline-block;border:1px solid var(--border);padding:.15rem .6rem;border-radius:4px;font-size:.77rem;margin:.1rem;font-family:'JetBrains Mono',monospace;background:var(--card2);color:var(--text)}
+  .tag.tr{background:var(--lt);border-color:#e8a080;color:#5a1a00}
+  .tag.bl{background:var(--lb);border-color:#90baf0;color:#0d3a7a}
+  .tag.gn{background:var(--lg);border-color:#8ce99a;color:#1b4a22}
+  .tag.rd{background:var(--lr);border-color:#ffa8a8;color:var(--a4)}
+  .tag.or{background:var(--lo);border-color:#ffd43b;color:#7a3800}
+  .tag.gr{background:#f8f9fa;border-color:#ced4da;color:#495057}
+  .fb{background:#fff;border:1px solid var(--border);border-left:3px solid var(--a1);padding:.9rem 1.1rem;border-radius:0 8px 8px 0;font-family:'JetBrains Mono',monospace;font-size:.79rem;line-height:2;margin:.6rem 0;color:#343a40}
+  .fb.bl{border-left-color:var(--a2)}.fb.gn{border-left-color:var(--a3)}.fb.rd{border-left-color:var(--a4)}.fb.or{border-left-color:var(--warn)}
+  .fb .cm{color:var(--muted);font-family:'DM Sans',sans-serif;font-size:.74rem;font-style:italic}
+  .hl{color:var(--a1);font-weight:600}.hli{color:var(--a2);font-weight:600}.hlg{color:var(--a3);font-weight:600}.hlr{color:var(--a4);font-weight:600}.hlo{color:var(--warn);font-weight:600}
+  table{width:100%;border-collapse:collapse;font-size:.84rem;margin-top:.5rem}
+  th{background:var(--card2);padding:.5rem .8rem;text-align:left;font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);border-bottom:2px solid var(--border)}
+  td{padding:.5rem .8rem;border-bottom:1px solid var(--border);vertical-align:top;font-size:.83rem}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:#f8f9fa}
+  .badge{display:inline-block;padding:.1rem .55rem;border-radius:4px;font-size:.72rem;font-weight:700}
+  .badge-tr{background:var(--lt);color:#5a1a00}.badge-bl{background:var(--lb);color:#0d3a7a}.badge-gn{background:var(--lg);color:#1b4a22}
+  .sdiv{display:flex;align-items:center;gap:1rem;margin:1.5rem 0 1rem}
+  .sdiv span{font-family:'Inter',sans-serif;font-size:.75rem;color:var(--muted);white-space:nowrap;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+  .sdiv::before,.sdiv::after{content:'';flex:1;height:1px;background:var(--border)}
+  .wbox{background:var(--lo);border:1px solid #ffd43b;border-left:3px solid var(--warn);border-radius:0 6px 6px 0;padding:.75rem 1rem;font-size:.85rem;margin-top:.8rem;color:#664d00}
+  .wbox strong{color:#b35900}
+  .ebox{background:var(--lr);border:1px solid #ffa8a8;border-left:3px solid var(--a4);border-radius:0 6px 6px 0;padding:.75rem 1rem;font-size:.85rem;margin-top:.8rem;color:#6b1010}
+  .ebox strong{color:var(--a4)}
+  .gbox{background:var(--lg);border:1px solid #8ce99a;border-left:3px solid var(--a3);border-radius:0 6px 6px 0;padding:.75rem 1rem;font-size:.85rem;margin-top:.8rem;color:#1b4a22}
+  .gbox strong{color:#2b7a3d}
+  .bluebox{background:var(--lb);border:1px solid #90baf0;border-left:3px solid var(--a2);border-radius:0 6px 6px 0;padding:.75rem 1rem;font-size:.85rem;margin-top:.8rem;color:#0d3a7a}
+  .tbox{background:var(--lt);border:1px solid #e8a080;border-left:3px solid var(--a1);border-radius:0 6px 6px 0;padding:.75rem 1rem;font-size:.85rem;margin-top:.8rem;color:#5a1a00}
+  .step{display:flex;gap:.9rem;margin-bottom:.9rem;align-items:flex-start}
+  .snum{width:27px;height:27px;min-width:27px;background:var(--a1);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;margin-top:.1rem}
+  .snum.gn{background:var(--a3)}
+  .scont{flex:1;font-size:.9rem}
+  .scont strong{display:block;color:var(--a1);font-size:.7rem;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:.15rem;font-weight:700}
+  .mg{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:.5rem}
+  .mc{border-radius:8px;padding:.75rem;font-size:.8rem;border:1px solid}
+  .mc1{background:var(--lg);border-color:#8ce99a}.mc2{background:var(--lo);border-color:#ffd43b}.mc3{background:var(--lr);border-color:#ffa8a8}
+  .mc strong{display:block;font-size:.83rem;margin-bottom:.2rem}
+  .mc1 strong{color:var(--a3)}.mc2 strong{color:var(--warn)}.mc3 strong{color:var(--a4)}
+  .pt2{color:var(--a1);font-family:'JetBrains Mono',monospace;font-size:.79rem;font-weight:600}
+  .pt3{color:#2b7a3d;font-size:.83rem}
+  @media(max-width:700px){.grid{grid-template-columns:1fr}.mg{grid-template-columns:1fr}.header h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="header">
+  <h1>Malaria</h1>
+  <div class="sub">Tropenkrankheit · Anopheles · Dicker Tropfen · Artemether · Reiseanamnese · FSP Leitfaden</div>
+  <span class="tb" style="background:var(--a1)">⏱ 15–20 Min. Arztbrief</span>
+  <span class="tb" style="background:var(--a4)">⚠️ Meldepflichtig! Kein ASS! Isolierung!</span>
+</div>
+
+<!-- LEITSYMPTOME -->
+<div class="ch ch-t"><div class="cn">01</div><div class="ct"><h2>Leitsymptome &amp; typischer Patient</h2><p>Welliges Fieber + Tropenreise = Malaria bis Beweis des Gegenteils!</p></div></div>
+
+<div class="grid">
+<div class="card">
+  <h3>Malaria-Trias + Begleitsymptome</h3>
+  <h4>Klassische Trias</h4>
+  <span class="tag tr">Paroxysmales Fieber (wellenartig, periodisch!)</span>
+  <span class="tag tr">Schüttelfrost / Frösteln</span>
+  <span class="tag tr">Schweißausbruch (nach Fieberabfall)</span>
+  <h4>Grippe-ähnliche Begleitsymptome</h4>
+  <span class="tag tr">Kopfschmerzen (diffus, drückend)</span>
+  <span class="tag tr">Myalgien / Arthralgien</span>
+  <span class="tag tr">Übelkeit / Erbrechen</span>
+  <span class="tag tr">Diarrhö (wässrig)</span>
+  <span class="tag tr">Bauchschmerzen (diffus)</span>
+  <span class="tag tr">Fatigue / Inappetenz</span>
+  <span class="tag tr">Nachtschweiß</span>
+  <h4>Alarmsymptome → komplizierte Malaria!</h4>
+  <span class="tag rd">Bewusstlosigkeit / Verwirrtheit (zerebrale Malaria!)</span>
+  <span class="tag rd">Ikterus (hämolytische Anämie)</span>
+  <span class="tag rd">Dunkler Urin / Hämoglobinurie</span>
+  <span class="tag rd">Oligurie / Anurie (Nierenversagen)</span>
+  <span class="tag rd">Blutungsneigung (Thrombozytopenie)</span>
+  <h4>Reiseanamnese – immer fragen!</h4>
+  <span class="tag bl">Reise in Tropen? Wohin? Wann zurück?</span>
+  <span class="tag bl">Malaria-Prophylaxe? Compliant? Welches Medikament?</span>
+  <span class="tag bl">Mückenstich? Insektenschutz benutzt?</span>
+  <span class="tag bl">Reiseimpfungen (Gelbfieber, Hepatitis)?</span>
+  <div class="tbox"><strong>Inkubationszeit: 6–42 Tage!</strong> Fieber vor dem 6. Tag im Endemiegebiet → KEIN Malaria. Reutlingen: Patientin 1,5 Jahre in Malawi, vor 3 Wochen zurück, Fieber seit 10 Tagen → Inkubationszeit passt!</div>
+</div>
+
+<div class="card">
+  <h3>Typischer Prüfungspatient</h3>
+  <div style="background:var(--lt);border:1px solid #e8a080;border-radius:8px;padding:.9rem;font-size:.84rem;line-height:1.9;margin-bottom:.8rem">
+    · <strong>Entwicklungshelferin / Wasseringenieurin / Bauingenieur</strong><br>
+    · Reise nach <span style="color:var(--a1)">Afrika (Gambia, Malawi, Niger)</span><br>
+    · <span style="color:var(--a1)">Malaria-Prophylaxe nicht regelmäßig eingenommen!</span><br>
+    · <span style="color:var(--a1)">Welliges Fieber seit 1–2 Wochen (39–41°C)</span><br>
+    · Schüttelfrost, Nachtschweiß, Kopfschmerzen<br>
+    · Myalgien, Übelkeit, Erbrechen, Diarrhö<br>
+    · Asthma → 2 Sprays; Partner hatte Malaria<br>
+    · Keine Reiseimpfungen (Gelbfieber, FSME)
+  </div>
+  <h4>Wichtige Risikofaktoren für schweren Verlauf</h4>
+  <span class="tag rd">Plasmodium falciparum (Malaria tropica!)</span>
+  <span class="tag rd">Keine / unregelmäßige Prophylaxe</span>
+  <span class="tag rd">Keine Teilimmunität (Erstinfektion!)</span>
+  <span class="tag rd">Splenektomie! (Milz-OP in Anamnese!)</span>
+  <span class="tag rd">Schwangerschaft, Kinder &lt;5J, Immunsuppression</span>
+  <div class="ebox"><strong>Reutlingen: Patientin hatte Milzoperation!</strong> Splenektomie = Milz filtert keine Parasiten mehr → massive Parasitämie möglich → hohes Risiko für komplizierten Verlauf! Immer nach Milz-OP fragen.</div>
+</div>
+</div>
+
+<!-- MALARIA-TYPEN -->
+<div class="ch ch-o"><div class="cn">02</div><div class="ct"><h2>Malaria-Typen – Prüfungswissen!</h2><p>Freiburg: „Was sind die Arten von Malaria?" · Fieberrhythmus kennen!</p></div></div>
+
+<div class="full"><div class="card">
+  <h3 class="or">4 Malaria-Typen – Fieberrhythmus</h3>
+  <div class="mg">
+    <div class="mc mc1">
+      <strong>Malaria tertiana</strong>
+      Erreger: P. vivax / P. ovale<br>
+      Fieber: <strong>alle 48h</strong> (3-Tage-Fieber)<br>
+      Verlauf: gutartig<br>
+      Rezidive möglich! (Hypnozoiten in Leber)<br>
+      → Primaquin = Rezidivprophylaxe
+    </div>
+    <div class="mc mc2">
+      <strong>Malaria quartana</strong>
+      Erreger: P. malariae<br>
+      Fieber: <strong>alle 72h</strong> (4-Tage-Fieber)<br>
+      Verlauf: meist gutartig<br>
+      Chronischer Verlauf möglich
+    </div>
+    <div class="mc mc3">
+      <strong>Malaria tropica ⚡</strong>
+      Erreger: P. falciparum<br>
+      Fieber: <strong>unregelmäßig</strong>, oft kontinuierlich<br>
+      Verlauf: <strong>oft schwer!</strong><br>
+      Zerebrale Malaria! Intensivstation!<br>
+      Häufigster Erreger weltweit!
+    </div>
+  </div>
+  <div class="ebox" style="margin-top:.8rem"><strong>Malaria tropica = lebensgefährlich!</strong> Freiburg: „Ist Malaria gefährlich?" → Ja, besonders P. falciparum → Parasiten haften an Gefäßwänden → Mikroinfarkte in Gehirn, Niere, Lunge. Ohne Therapie tödlich!</div>
+  <div class="tbox" style="margin-top:.5rem"><strong>Merksatz Fieberrhythmus:</strong> Tertiana = 48h (Plasmodien brauchen 48h für Erythrozytenzyklus). Quartana = 72h. Tropica = unregelmäßig (gleichzeitig verschiedene Entwicklungsstadien). Prüfer fragte in Freiburg explizit nach den Arten!</div>
+</div></div>
+
+<!-- ARZTBRIEF -->
+<div class="ch ch-b"><div class="cn">03</div><div class="ct"><h2>Arztbrief-Template</h2><p>VD · DD · Dicker Tropfen · Artemether · Kein ASS! · Isolierung!</p></div></div>
+
+<div class="full"><div class="card">
+  <h3 class="bl">Arztbrief: Malaria</h3>
+  <h4>Aktuelle Beschwerden</h4>
+  <div class="fb">
+Frau/Herr Bohn, eine/ein [Alter]-jährige/r Patient/in, stellte sich bei uns
+wegen <span class="hl">seit 1–2 Wochen bestehendem, wellenartigem Fieber
+(39–41°C) mit Schüttelfrost und Schweißausbrüchen</span> vor.<br><br>
+Die Patient/in berichtete, <span class="hl">vor 3–4 Wochen aus Afrika
+(Gambia/Malawi/Niger) zurückgekehrt</span> zu sein.
+<span class="hl">Malaria-Prophylaxe wurde nicht (regelmäßig) eingenommen.</span><br><br>
+Begleitsymptome: <span class="hl">Kopfschmerzen, Myalgien, Arthralgien,
+Übelkeit, Erbrechen, Diarrhö, Fatigue, Nachtschweiß, Inappetenz</span>.<br><br>
+<span class="cm">// Fieberrhythmus: Alle 48h (V.a. Tertiana)?
+  Alle 72h (Quartana)? Unregelmäßig (Tropica)?</span><br><br>
+<span class="cm">// Verneint: Nackensteifigkeit, Bewusstseinsstörung,
+Ikterus, Zeckenstich</span>
+  </div>
+
+  <h4>Verdachtsdiagnose &amp; DD</h4>
+  <div class="fb">
+<span class="hl">VD: Malaria</span>
+(V.a. Malaria tropica / tertiana je nach Fieberrhythmus)<br>
+(Tropenreise Afrika + fehlende Prophylaxe + periodisches Fieber
++ Inkubationszeit passend 6–42 Tage)<br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlo">Typhus abdominalis</span>
+  – Stufenfieber, Roseolen, Bradykardie, Stuhl-/Blutkultur<br>
+· <span class="hlo">Dengue-Fieber</span>
+  – Gelenkschmerzen, Exanthem, Thrombozytopenie;
+  <span class="hlr">→ KEIN ASS bei Dengue!</span><br>
+· <span class="hlo">Influenza / virale Infektion</span>
+  – saisonal, kein Tropenaufenthalt notwendig<br>
+· <span class="hlo">Meningitis</span>
+  – Nackensteifigkeit, Photophobie; hier verneint<br>
+· <span class="hlo">Sepsis / Endokarditis</span>
+  – Blutkultur, Herzgeräusche, Fokussuche<br>
+· <span class="hlo">Hepatitis</span>
+  – Ikterus, Leberwerte, Serologie (Freiburg fragte!)
+  </div>
+
+  <h4>Diagnostik</h4>
+  <div class="fb bl">
+· Körperliche Untersuchung: Temperatur, AZ/EZ,
+  <span class="hli">Splenomegalie</span> (Palpation linker UB!), Ikterus?,
+  Bewusstsein, Urinfarbe?<br>
+· <span class="hli">„Dicker Tropfen" + Blutausstrich (Giemsa-Färbung)</span>
+  = wichtigste Diagnostik! Suchtest + Bestätigungstest<br>
+  → Parasitendichte (%): &lt;5% = unkompliziert; &gt;5% = kompliziert!<br>
+  <span class="cm">// Bei negativem Befund + Symptomen → WIEDERHOLEN!</span><br>
+· Labor: BB (Thrombozytopenie!, Anämie),
+  Haptoglobin ↓, LDH ↑, Bilirubin ↑,
+  <span class="hli">Kreatinin</span> (Niere), <span class="hli">Blutzucker!</span>
+  (Hypoglykämie-Risiko), CRP, Blutkultur<br>
+· Ggf. Malaria-Schnelltest (Antigennachweis)<br>
+· Sono Abdomen: Splenomegalie?, Lebervergrößerung?<br>
+· LP bei V.a. zerebrale Malaria / Meningitis
+  </div>
+
+  <h4>Therapie</h4>
+  <div class="fb gn">
+<span class="hlg">Sofortmaßnahmen – NOTFALL!</span><br>
+· <span class="hlg">Stationäre Aufnahme obligat</span><br>
+· <span class="hlg">Isolierung + Moskitonetz!</span>
+  (Mücken im KH → Erreger auf andere Patienten!)<br>
+· i.v. Zugang, Flüssigkeit, Monitoring (Temperatur + Blutzucker!)<br>
+· Fiebersenkung: <span class="hlg">Paracetamol</span>
+  <span class="hlr">→ KEIN ASS! (Thrombozytopenie + Dengue-Risiko!)</span><br><br>
+<span class="hlg">Antiparasitäre Therapie:</span><br>
+· Unkompliziert:
+  <span class="hlg">Artemether / Lumefantrin p.o.</span> (Riamet®) = 1. Wahl!<br>
+· Alternative: Atovaquon / Proguanil (Malarone®)<br>
+· Kompliziert (P. falciparum, Organbeteiligung):
+  <span class="hlg">Artesunat i.v.</span> → Intensivstation!<br>
+  Alternative: Chinin i.v.<br><br>
+<span class="hlg">Rezidivprophylaxe (Malaria tertiana):</span><br>
+· Primaquin (gegen Hypnozoiten in Leber)
+  <span class="hlr">→ G6PD-Mangel vorher ausschließen!</span><br><br>
+<span class="hlg">Meldepflichtig!</span> → Gesundheitsamt informieren!<br>
+<span class="hlg">Tropenmediziner / Infektiologe konsultieren!</span>
+  </div>
+
+  <div class="ebox"><strong>⚠️ Häufige Fehler:</strong><br>
+  – ASS als Antipyretikum → FALSCH! Paracetamol!<br>
+  – Isolierung vergessen → Moskitonetz über Bett!<br>
+  – Dicker Tropfen nicht als erste Maßnahme<br>
+  – Infektionsklinik / Tropenmediziner nicht erwähnt<br>
+  – Prophylaxe-Compliance nicht detailliert erfragt (Stuttgart!)</div>
+</div></div>
+
+<!-- AA-GESPRÄCH -->
+<div class="ch ch-g"><div class="cn">04</div><div class="ct"><h2>AA-Gespräch &amp; Prüfungsfragen</h2><p>Freiburg · Reutlingen · Stuttgart · echte Fragen</p></div></div>
+
+<div class="full"><div class="card">
+  <h3 class="gn">Patientenvorstellung – 5 Schritte</h3>
+  <div class="step"><div class="snum">1</div><div class="scont"><strong>Stammdaten</strong>„Ich möchte Ihnen Frau Bohn vorstellen, eine 31-jährige Patientin, die sich notfallmäßig bei uns vorgestellt hat."</div></div>
+  <div class="step"><div class="snum">2</div><div class="scont"><strong>Leitsymptome + Reiseanamnese!</strong>„Die Patientin klagt über <span class="hl">seit 1 Woche wellenartig auftretendes hohes Fieber (40°C, alle 48h) mit Schüttelfrost und Schweißausbrüchen</span>. Sie kam vor 10 Tagen aus dem Niger zurück. <span class="hl">Malaria-Prophylaxe nicht eingenommen.</span>"</div></div>
+  <div class="step"><div class="snum">3</div><div class="scont"><strong>Begleitsymptome</strong>„Begleitend: <span class="hl">Kopfschmerzen, Myalgien, Arthralgien, Übelkeit, Erbrechen, Diarrhö, Fatigue</span>. Kein Ikterus, kein Bewusstseinsverlust, keine Nackensteifigkeit."</div></div>
+  <div class="step"><div class="snum">4</div><div class="scont"><strong>VD + DD</strong>„VD: <span class="hl">Malaria tertiana</span> (Fieberrhythmus alle 48h). DD: <span class="hlo">Typhus, Dengue, Meningitis, Sepsis, Hepatitis</span>."</div></div>
+  <div class="step"><div class="snum">5</div><div class="scont"><strong>Sofortmaßnahmen</strong>„<span class="hlr">Stationäre Aufnahme + Isolierung + Moskitonetz</span>. <span class="hli">Dicker Tropfen + Blutausstrich sofort</span>. <span class="hlg">Artemether/Lumefantrin. Paracetamol – kein ASS!</span> Meldepflicht. Tropenmediziner konsultieren."</div></div>
+</div></div>
+
+<div class="full"><div class="card">
+  <h3 class="gn">Kommissionsfragen – Antworten</h3>
+  <table>
+    <tr><th>Frage</th><th>Antwort</th><th>Stadt</th></tr>
+    <tr><td>VD und warum Malaria?</td><td>Tropenreise Afrika + fehlende Prophylaxe + periodisches Fieber (Rhythmus!) + Inkubationszeit 6–42 Tage passend + Schüttelfrost/Schweiß</td><td>Alle</td></tr>
+    <tr><td>Was sind die Arten von Malaria? (Freiburg!)</td><td>Tertiana (P. vivax/ovale): alle 48h. Quartana (P. malariae): alle 72h. Tropica (P. falciparum): unregelmäßig, schwer! Knowlesi-Malaria (Asien, selten)</td><td>Freiburg 05/2024</td></tr>
+    <tr><td>Ist Malaria gefährlich? (Freiburg!)</td><td>Ja! P. falciparum → zerebrale Malaria, Nierenversagen, DIC, Lungenödem. Parasiten haften an Gefäßwänden → Mikroinfarkte. Ohne Therapie tödlich!</td><td>Freiburg 05/2024</td></tr>
+    <tr><td>Was ist der „Dicke Tropfen"? (Alle!)</td><td>Bluttest: mehr Blut auf Objektträger → höhere Sensitivität = Suchtest. Giemsa-Färbung. Blutausstrich: Bestätigungstest + Erregermorphologie + Parasitendichte. Bei negativem Befund + Symptomen: wiederholen!</td><td>Alle</td></tr>
+    <tr><td>Warum kein ASS? (Freiburg!)</td><td>1. Thrombozytopenie bei Malaria → ASS hemmt Blutplättchen → Blutungsrisiko. 2. DD Dengue: ASS → hämorrhagisches Dengue tödlich! 3. Kinder: Reye-Syndrom. → Paracetamol immer!</td><td>Freiburg 04/2024</td></tr>
+    <tr><td>Warum dunkler Urin? (Freiburg!)</td><td>Hämoglobinurie: Plasmodien zerstören Erythrozyten → Hämoglobin frei → Urin dunkelbraun. Zeichen schwerer hämolytischer Anämie + Nierenschädigung möglich.</td><td>Freiburg 04/2024</td></tr>
+    <tr><td>Könnte es Hepatitis sein? (Freiburg!)</td><td>Möglich als DD: Hepatosplenomegalie + Leberbeteiligung bei Malaria (Bilirubin ↑). Direkter Malaria-Hepatitis-Effekt. Gleichzeitige Hepatitis bei Reiserückkehrer möglich → Serologie.</td><td>Freiburg 04/2024</td></tr>
+    <tr><td>Stationäre Aufnahme? Isolierung? (Alle!)</td><td>Obligat stationär. Isolierung + Moskitonetz: Krankenhausmücken könnten Erreger aufnehmen und auf andere Patienten übertragen! Patient nicht im Wartezimmer lassen.</td><td>Freiburg + Stuttgart</td></tr>
+    <tr><td>Gibt es Malaria in Europa? (Freiburg!)</td><td>Kein Endemiegebiet. Extrem seltene „Airport-Malaria" (importierte Mücke). Fast alle deutschen Fälle = importiert aus Tropen. → Tropenreise als Schlüsselinfo!</td><td>Freiburg 05/2024</td></tr>
+    <tr><td>Wen konsultieren? Welches KH? (Freiburg!)</td><td>Tropenmediziner / Infektiologe! Bei schweren Fällen: Infektionsklinik mit Tropenmedizin (z.B. BG Klinik Freiburg). Gesundheitsamt: Meldepflichtige Erkrankung!</td><td>Freiburg 05/2024</td></tr>
+    <tr><td>Prophylaxe genauer erfragen! (Stuttgart!)</td><td>Welches Medikament? (Atovaquon/Proguanil, Mefloquin, Doxycyclin).

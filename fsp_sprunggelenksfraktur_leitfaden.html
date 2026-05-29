@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Leitfaden – Sprunggelenksfraktur</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --card2: #f1f3f5;
+    --a1: #2b5797;    /* sportblau */
+    --a2: #7b2d8b;    /* lila – Neurologie/DD */
+    --a3: #2f9e44;    /* grün – Therapie */
+    --a4: #c92a2a;    /* rot – Notfall/Komplikation */
+    --warn: #e67700;
+    --text: #212529;
+    --muted: #868e96;
+    --border: #dee2e6;
+    --light-blue: #e8f0ff;
+    --light-purple: #f3e8ff;
+    --light-green: #ebfbee;
+    --light-red: #fff5f5;
+    --light-orange: #fff9db;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-weight: 400; line-height: 1.7; padding: 2rem 1rem; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border); }
+  .header h1 { font-family: 'Inter', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--a1); letter-spacing: -1px; }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+  .timer-badge { display: inline-block; background: var(--a1); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-top: 0.8rem; }
+
+  .ch-header { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0 1.2rem; padding: 0.9rem 1.2rem; border-radius: 10px; }
+  .ch-blue   { background: var(--light-blue);   border-left: 5px solid var(--a1); }
+  .ch-purple { background: var(--light-purple);  border-left: 5px solid var(--a2); }
+  .ch-green  { background: var(--light-green);   border-left: 5px solid var(--a3); }
+  .ch-red    { background: var(--light-red);     border-left: 5px solid var(--a4); }
+  .ch-orange { background: var(--light-orange);  border-left: 5px solid var(--warn); }
+  .ch-num { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 800; opacity: 0.2; }
+  .ch-blue .ch-num   { color: var(--a1); } .ch-purple .ch-num { color: var(--a2); }
+  .ch-green .ch-num  { color: var(--a3); } .ch-red .ch-num    { color: var(--a4); }
+  .ch-orange .ch-num { color: var(--warn); }
+  .ch-t h2 { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 800; line-height: 1.1; }
+  .ch-blue .ch-t h2   { color: var(--a1); } .ch-purple .ch-t h2 { color: var(--a2); }
+  .ch-green .ch-t h2  { color: var(--a3); } .ch-red .ch-t h2    { color: var(--a4); }
+  .ch-orange .ch-t h2 { color: var(--warn); }
+  .ch-t p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .full { margin-bottom: 1.2rem; }
+
+  .card { background: var(--card); border-radius: 10px; padding: 1.4rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .card h3 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--a1); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light-blue); }
+  .card h3.pu { color: var(--a2); border-color: var(--light-purple); }
+  .card h3.gn { color: var(--a3); border-color: var(--light-green); }
+  .card h3.rd { color: var(--a4); border-color: var(--light-red); }
+  .card h3.or { color: var(--warn); border-color: var(--light-orange); }
+  .card h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin: 0.9rem 0 0.4rem; }
+  .card h4:first-of-type { margin-top: 0; }
+
+  .tag { display: inline-block; border: 1px solid var(--border); padding: 0.15rem 0.6rem; border-radius: 4px; font-size: 0.77rem; margin: 0.1rem; font-family: 'JetBrains Mono', monospace; background: var(--card2); color: var(--text); }
+  .tag.bl { background: var(--light-blue);   border-color: #90baf0; color: #1a3666; }
+  .tag.pu { background: var(--light-purple);  border-color: #d0a0f0; color: #5c1a7a; }
+  .tag.gn { background: var(--light-green);   border-color: #8ce99a; color: #1b4a22; }
+  .tag.rd { background: var(--light-red);     border-color: #ffa8a8; color: var(--a4); }
+  .tag.or { background: var(--light-orange);  border-color: #ffd43b; color: #b35900; }
+  .tag.gr { background: #f8f9fa;              border-color: #ced4da; color: #495057; }
+
+  .fb { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--a1); padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; line-height: 2; margin: 0.6rem 0; color: #343a40; }
+  .fb.pu { border-left-color: var(--a2); }
+  .fb.gn { border-left-color: var(--a3); }
+  .fb.rd { border-left-color: var(--a4); }
+  .fb.or { border-left-color: var(--warn); }
+  .fb .cm { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-style: italic; }
+
+  .hl  { color: var(--a1);  font-weight: 600; }
+  .hlp { color: var(--a2);  font-weight: 600; }
+  .hlg { color: var(--a3);  font-weight: 600; }
+  .hlr { color: var(--a4);  font-weight: 600; }
+  .hlo { color: var(--warn);font-weight: 600; }
+  .hlm { color: var(--muted); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem; }
+  th { background: var(--card2); padding: 0.5rem 0.8rem; text-align: left; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 2px solid var(--border); }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.83rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8f9fa; }
+
+  .badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+  .badge-bl { background: var(--light-blue);   color: #1a3666; }
+  .badge-pu { background: var(--light-purple);  color: #5c1a7a; }
+  .badge-gn { background: var(--light-green);   color: #1b4a22; }
+  .badge-rd { background: var(--light-red);     color: var(--a4); }
+  .badge-or { background: var(--light-orange);  color: #b35900; }
+
+  .sdiv { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0 1rem; }
+  .sdiv span { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--muted); white-space: nowrap; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .sdiv::before, .sdiv::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .wbox { background: var(--light-orange); border: 1px solid #ffd43b; border-left: 3px solid var(--warn); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #664d00; }
+  .wbox strong { color: #b35900; }
+  .ebox { background: var(--light-red);    border: 1px solid #ffa8a8; border-left: 3px solid var(--a4); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #6b1010; }
+  .ebox strong { color: var(--a4); }
+  .gbox { background: var(--light-green);  border: 1px solid #8ce99a; border-left: 3px solid var(--a3); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #1b4a22; }
+  .gbox strong { color: #2b7a3d; }
+  .bluebox { background: var(--light-blue); border: 1px solid #90baf0; border-left: 3px solid var(--a1); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #1a3666; }
+  .bluebox strong { color: var(--a1); }
+  .purplebox { background: var(--light-purple); border: 1px solid #d0a0f0; border-left: 3px solid var(--a2); border-radius: 0 6px 6px 0; padding: 0.75rem 1rem; font-size: 0.85rem; margin-top: 0.8rem; color: #5c1a7a; }
+  .purplebox strong { color: var(--a2); }
+
+  .step { display: flex; gap: 0.9rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .snum { width: 27px; height: 27px; min-width: 27px; background: var(--a1); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 0.1rem; }
+  .snum.gn { background: var(--a3); }
+  .snum.rd { background: var(--a4); }
+  .scont { flex: 1; font-size: 0.9rem; }
+  .scont strong { display: block; color: var(--a1); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.15rem; font-weight: 700; }
+  .scont strong.gn { color: var(--a3); }
+
+  .weber-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-top: 0.5rem; }
+  .weber-card { border-radius: 8px; padding: 0.8rem; font-size: 0.82rem; border: 1px solid; }
+  .weber-a { background: var(--light-green);  border-color: #8ce99a; }
+  .weber-b { background: var(--light-orange); border-color: #ffd43b; }
+  .weber-c { background: var(--light-red);    border-color: #ffa8a8; }
+  .weber-card strong { display: block; font-size: 1rem; margin-bottom: 0.3rem; }
+  .weber-a strong { color: var(--a3); }
+  .weber-b strong { color: var(--warn); }
+  .weber-c strong { color: var(--a4); }
+
+  .pt-table td:nth-child(2) { color: var(--a1); font-family: 'JetBrains Mono', monospace; font-size: 0.79rem; font-weight: 600; }
+  .pt-table td:nth-child(3) { color: #2b7a3d; font-size: 0.83rem; }
+  .pt-table td:nth-child(4) { color: #b35900; font-size: 0.81rem; font-style: italic; }
+
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: 1fr; }
+    .weber-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>Sprunggelenksfraktur</h1>
+  <div class="sub">Malleolarfraktur · Weber-Klassifikation · Supinationstrauma · Faktor-V-Leiden · FSP Leitfaden</div>
+  <div class="timer-badge">⏱ 20 Min. Arztbrief · 20 Min. AA-Gespräch</div>
+</div>
+
+
+<!-- KAPITEL 1: LEITSYMPTOME -->
+<div class="ch-header ch-blue">
+  <div class="ch-num">01</div>
+  <div class="ch-t">
+    <h2>Leitsymptome &amp; typischer Patient</h2>
+    <p>Umknicken beim Sport · Sprunggelenkschmerz · Ödem · Hämatom</p>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Leitsymptome – immer vollständig abfragen</h3>
+    <h4>Kernsymptome</h4>
+    <span class="tag bl">Sprunggelenkschmerz (stechend, plötzlich)</span>
+    <span class="tag bl">Auslöser: Umknicken / Supinationstrauma</span>
+    <span class="tag bl">Ödem (Schwellung) am Knöchel</span>
+    <span class="tag bl">Hämatom (Bluterguss)</span>
+    <span class="tag bl">Eingeschränkte Beweglichkeit des Fußes</span>
+    <span class="tag bl">Ausstrahlung in Wade / Unterschenkel</span>
+    <span class="tag bl">Belastungsschmerz (NRS 7–10/10)</span>
+
+    <h4>Wichtige Unterscheidungsfragen</h4>
+    <span class="tag or">Kann der Patient auftreten / gehen? (Fraktur vs. Distorsion)</span>
+    <span class="tag or">Zehenstand möglich? (DD Achillessehnenruptur!)</span>
+    <span class="tag or">Knacken gehört beim Umknicken?</span>
+    <span class="tag or">Schmerz direkt am Knochen (Knöchel) oder im Weichteil?</span>
+    <span class="tag or">Hämatom: wo genau? (Außenknöchel / Innenknöchel)</span>
+
+    <h4>Verneint typischerweise</h4>
+    <span class="tag gr">Parästhesien / Hypästhesie (wenn keine Nervenverletzung)</span>
+    <span class="tag gr">Offene Wunde</span>
+    <span class="tag gr">Weitere Verletzungen</span>
+
+    <div class="wbox">
+      <strong>Distorsion oder Fraktur?</strong> Fraktur: Druckschmerz direkt am Knochen (Malleolus), Gehunfähigkeit, deutliche Schwellung/Hämatom. Distorsion: Bandschmerz lateral, oft noch gehfähig. → Ottawa-Regeln: Röntgen wenn Druckschmerz am Malleolus oder Gehunfähigkeit.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Typischer Prüfungspatient</h3>
+    <div style="background:var(--light-blue);border:1px solid #90baf0;border-radius:8px;padding:0.9rem;font-size:0.84rem;line-height:1.9;margin-bottom:0.8rem">
+      · <strong>Gerard / Klaus Schröder</strong>, 38–40 Jahre<br>
+      · <span style="color:var(--a1)">Sportler (Fußball / Tennis)</span><br>
+      · Ledig, lebt alleine, Lehrer / Bankkaufmann / Apotheker<br>
+      · <span style="color:var(--a1)">Supinationstrauma re. Fuß beim Fußballspielen</span><br>
+      · Schmerzen NRS 7–8/10, Ausstrahlung in Wade<br>
+      · Ibuprofen eingenommen → keine Besserung<br>
+      · <span style="color:var(--a1)">Faktor-V-Leiden-Mutation!</span> (Gerinnungsstörung → TVT-Risiko!)<br>
+      · Asthma bronchiale → Berodual Spray<br>
+      · Z.n. Meniskus-OP re. (vor 3 Jahren)<br>
+      · Pollenallergie → Loratadin<br>
+      · Raucher (20 PY)<br>
+      · Z.n. Hodenkarzinom / Non-Hodgkin-Lymphom (früher)
+    </div>
+    <h4>Risikofaktoren für Fraktur</h4>
+    <span class="tag bl">Sportliche Aktivität (Fußball, Tennis)</span>
+    <span class="tag bl">Unebenes Gelände / Loch übersehen</span>
+    <span class="tag bl">Supinationstrauma</span>
+    <span class="tag bl">Vorherige Sprunggelenkverletzungen</span>
+    <span class="tag bl">Osteoporose (bei älteren Patienten)</span>
+    <div class="ebox">
+      <strong>⚠️ Faktor-V-Leiden immer beachten!</strong> Gerinnungsstörung → erhöhtes TVT-Risiko bei Immobilisation / Gipsverband. → Immer fragen: „Hatten Sie schon mal eine Thrombose?" → Gerinnungsparameter (PTT, INR) + <strong>Thromboseprophylaxe mit Heparin obligat!</strong>
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 2: WEBER-KLASSIFIKATION -->
+<div class="ch-header ch-purple">
+  <div class="ch-num">02</div>
+  <div class="ch-t">
+    <h2>Weber-Klassifikation – Prüfungswissen!</h2>
+    <p>Stuttgart + Reutlingen + Karlsruhe haben explizit gefragt</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="pu">Weber-Klassifikation der Malleolarfraktur</h3>
+    <p style="font-size:0.83rem;color:var(--muted);margin-bottom:0.8rem">Einteilung nach Lage der Fibulafraktur in Bezug auf die Syndesmose (Tibiofibularverbindung)</p>
+    <div class="weber-grid">
+      <div class="weber-card weber-a">
+        <strong>Weber A</strong>
+        Fibulafraktur <em>unterhalb</em> der Syndesmose<br><br>
+        · Syndesmose intakt<br>
+        · Sprunggelenk stabil<br>
+        · Häufig durch Supination<br><br>
+        <strong>Therapie:</strong><br>
+        Konservativ: Gips / Orthese 4–6 Wochen<br>
+        (Sonderfall: Aircast-Stiefel – erlaubt Mobilisation!)
+      </div>
+      <div class="weber-card weber-b">
+        <strong>Weber B ⭐ häufigste!</strong>
+        Fibulafraktur <em>auf Höhe</em> der Syndesmose<br><br>
+        · Syndesmose teilweise verletzt möglich<br>
+        · Stabilität variiert<br>
+        · Häufigste Frakturart!<br><br>
+        <strong>Therapie:</strong><br>
+        Konservativ (stabil) oder<br>
+        Operativ (instabil / disloziert):<br>
+        Plattenosteosynthese + Stellschraube
+      </div>
+      <div class="weber-card weber-c">
+        <strong>Weber C ⚡ → OP!</strong>
+        Fibulafraktur <em>oberhalb</em> der Syndesmose<br><br>
+        · Syndesmose zerrissen!<br>
+        · Sprunggelenk instabil<br>
+        · Maisonneuve-Fraktur möglich!<br><br>
+        <strong>Therapie:</strong><br>
+        Immer operativ:<br>
+        Plattenosteosynthese + Stellschraube<br>
+        Syndesmosenschraube
+      </div>
+    </div>
+    <div class="purplebox" style="margin-top:0.8rem">
+      <strong>Merksatz Weber:</strong> A = <strong>u</strong>nter Syndesmose = stabil → konservativ möglich. B = a<strong>u</strong>f Höhe = variabel. C = <strong>o</strong>ber Syndesmose = instabil → immer OP!<br>
+      <strong>Maisonneuve-Fraktur</strong> = Weber C + proximale Fibulafraktur (am Fibulaköpfchen!) + Syndesmoseruptur → Beides röntgen!
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 3: ARZTBRIEF -->
+<div class="ch-header ch-blue">
+  <div class="ch-num">03</div>
+  <div class="ch-t">
+    <h2>Arztbrief-Template</h2>
+    <p>Vollständig · VD · DD · Faktor-V-Leiden beachten! · Therapie</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3>Arztbrief: Sprunggelenksfraktur</h3>
+
+    <h4>Aktuelle Beschwerden</h4>
+    <div class="fb">
+Herr Schröder, ein [Alter]-jähriger Patient, stellte sich bei uns wegen
+<span class="hl">seit gestern bestehender, plötzlich aufgetretener, stechender
+Sprunggelenkschmerzen rechts</span> (NRS 8/10 bei Bewegung) vor.<br><br>
+Der Patient berichtete, dass er <span class="hl">beim Fußballspielen seinen rechten Fuß
+umgeknickt</span> habe (Supinationstrauma).<br><br>
+Als Begleitsymptome nannte er
+<span class="hl">Ödem (Schwellung), Hämatom</span> und
+<span class="hl">eingeschränkte Beweglichkeit</span> des rechten Sprunggelenks.
+Die Schmerzen strahlen in die <span class="hl">rechte Wade</span> aus.<br><br>
+<span class="cm">// Verneinte Befunde:</span><br>
+Parästhesien, Hypästhesie, Parese sowie weitere Verletzungen wurden verneint.
+Zehenstand: <span class="hlo">nicht möglich</span>
+<span class="cm">// → DD Achillessehnenruptur!</span>
+    </div>
+
+    <h4>⚠️ Wichtige Vorerkrankung: Faktor-V-Leiden!</h4>
+    <div class="fb rd">
+<span class="hlr">Faktor-V-Leiden-Mutation</span>:
+hereditäre Gerinnungsstörung – erhöhtes TVT-Risiko!<br>
+<span class="cm">// Immer fragen: „Hatten Sie schon mal eine Thrombose?"</span><br><br>
+Medikamente: <span class="hlr">Antikoagulation / Gerinnungsmedikament</span>
+(Name unklar → Rücksprache mit Hausarzt / Medikamentenliste anfordern!)<br><br>
+→ <span class="hlr">Labor: PTT, Quick/INR, Thrombozytenzahl vor jeder Therapie!</span><br>
+→ <span class="hlr">Thromboseprophylaxe mit Heparin obligat!</span>
+(besonders bei Gipsanlage / Immobilisation)
+    </div>
+
+    <h4>Verdachtsdiagnose &amp; DD</h4>
+    <div class="fb">
+<span class="hl">VD: Sprunggelenksfraktur rechts</span>
+(wahrscheinlich Fibulafraktur = Außenknöchelfraktur / Malleolarfraktur)<br>
+(Supinationstrauma, Druckschmerz Malleolus, Ödem, Hämatom,
+eingeschränkte Beweglichkeit, Belastungsschmerz)<br><br>
+<span class="hl">DD:</span><br>
+· <span class="hlo">Sprunggelenksdistorsion</span>
+  – Bandverletzung ohne Knochenfraktur; Gehfähigkeit meist möglich;<br>
+  Grad I: ohne Bänderschaden, II: Teilruptur, III: vollständige Ruptur<br>
+· <span class="hlo">Achillessehnenruptur</span>
+  – Zehenstand nicht möglich, Thompson-Test positiv, Delle tastbar;<br>
+  Sonographie / MRT!<br>
+· <span class="hlo">Kontusion (Prellung)</span>
+  – keine Fraktur im Röntgen, Weichteilverletzung<br>
+· <span class="hlo">Maisonneuve-Fraktur</span>
+  – Weber C + prox. Fibulafraktur → ganzes Bein röntgen!<br>
+· <span class="hlo">Hüftkopf-/Knöchelluxation</span>
+  – sichtbare Fehlstellung, federnde Fixierung
+    </div>
+
+    <h4>Diagnostik</h4>
+    <div class="fb bl">
+· Körperliche Untersuchung:
+  <span class="hli">DMS-Kontrolle</span>
+  (periphere Pulse – A. dorsalis pedis, A. tibialis posterior –,
+  Motorik, Sensibilität),
+  <span class="hli">Druckschmerz am Malleolus</span>,
+  Beweglichkeit, Krepitation,
+  <span class="hli">Thompson-Test</span> (Achillessehne!)<br>
+· Labor: BB, CRP,
+  <span class="hli">Gerinnungsparameter (PTT, Quick/INR, Thrombozyten!)</span>
+  <span class="cm">// wegen Faktor-V-Leiden!</span><br>
+· <span class="hli">Röntgen Sprunggelenk in 2 Ebenen</span>
+  = erste und wichtigste Bildgebung!<br>
+  Bei V.a. Maisonneuve-Fraktur: <span class="hli">ganzes Fibula röntgen!</span><br>
+· <span class="hli">CT</span>: bei unklarem Röntgen, komplexer Fraktur, präoperativ<br>
+· <span class="hli">MRT</span>: V.a. Achillessehnenruptur, Bandverletzungen, Knorpelschäden<br>
+· <span class="hli">Sonographie</span>: V.a. Blutung in Gelenkkapsel, Sehnenläsion<br>
+· Orthopädisch-chirurgisches Konsil!
+<span class="cm">// Karlsruhe: „Sind Sie Orthopädin?" → Nein → Konsil veranlassen!</span>
+    </div>
+
+    <h4>Therapie</h4>
+    <div class="fb gn">
+<span class="hlg">Sofortmaßnahmen: PECH-Schema</span><br>
+· <span class="hlg">P</span>ause (Entlastung)<br>
+· <span class="hlg">E</span>is (Kühlung)<br>
+· <span class="hlg">C</span>ompression (Druckverband)<br>
+· <span class="hlg">H</span>ochlagerung<br>
+· Analgesie: Ibuprofen / Diclofenac (NSAR) oder Metamizol<br><br>
+<span class="hlg">⚠️ Wegen Faktor-V-Leiden: Heparin s.c. (Thromboseprophylaxe!)</span><br><br>
+<span class="hlg">Konservativ (Weber A / stabile Weber B):</span><br>
+· <span class="hlg">Unterschenkelgips in Neutralposition für 4–6 Wochen</span><br>
+· Oder: <span class="hlg">Aircast-Stiefel / Orthese</span>
+  (erlaubt frühe Mobilisation – Stuttgart fragte danach!)<br>
+· Thromboseprophylaxe (Enoxaparin s.c.)<br>
+· Physiotherapie nach Ausheilung<br><br>
+<span class="hlg">Operativ (Weber C / instabile Weber B / disloziert):</span><br>
+· Indikation: Instabilität, Dislokation, Syndesmoseruptur<br>
+· <span class="hlg">Plattenosteosynthese</span> (Fibula) + Stellschraube / Syndesmosenschraube<br>
+· Stationäre Aufnahme + Nahrungskarenz + i.v. Analgesie<br>
+· Postop. Teilbelastung (15–20 kg) für 4–6 Wochen + Gehstützen<br>
+· Sportfähigkeit nach 3–6 Monaten<br>
+· Implantatentfernung nach 10–12 Monaten
+    </div>
+
+    <div class="ebox">
+      <strong>⚠️ Häufige Fehler aus den Fällen:</strong><br>
+      – Faktor-V-Leiden ignoriert → Thromboseprophylaxe vergessen! → Prüfer fragte: „Wichtigste Antwort = Heparin!" (Reutlingen)<br>
+      – Nie fragen ob schon Thrombose hatte → immer fragen bei Faktor-V-Leiden!<br>
+      – Weber-Klassifikation nicht genannt → Stuttgart fragte explizit nach Unterschieden<br>
+      – Orthopäden-Konsil vergessen → Karlsruhe: Prüfer lachte und fragte: „Sind Sie Orthopädin?"<br>
+      – Aircast-Stiefel nicht genannt → Stuttgart fragte nach Therapie die Mobilisation erlaubt
+    </div>
+  </div>
+</div>
+
+
+<!-- KAPITEL 4: AA-GESPRÄCH -->
+<div class="ch-header ch-green">
+  <div class="ch-num">04</div>
+  <div class="ch-t">
+    <h2>AA-Gespräch &amp; Prüfungsfragen</h2>
+    <p>Weber A/B/C · Thromboseprophylaxe · DD Achillessehne · Narkose</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Patientenvorstellung – 5 Schritte</h3>
+    <div class="step">
+      <div class="snum">1</div>
+      <div class="scont"><strong>Stammdaten</strong>
+      „Ich möchte Ihnen Herrn Schröder, einen [Alter]-jährigen [Lehrer / Bankkaufmann] vorstellen, der mit dem Rettungsdienst / zu Fuß bei uns eingetroffen ist."</div>
+    </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div class="scont"><strong>Leitsymptome</strong>
+      „Der Patient stellte sich wegen <span class="hl">seit gestern bestehender, plötzlicher Sprunggelenkschmerzen rechts</span> (NRS 8/10) nach <span class="hl">Supinationstrauma beim Fußballspielen</span> vor. Begleitend: <span class="hl">Ödem, Hämatom, eingeschränkte Beweglichkeit</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div class="scont"><strong>Risikofaktoren</strong>
+      „Wichtigste VE: <span class="hlr">Faktor-V-Leiden-Mutation</span> → erhöhtes TVT-Risiko. Außerdem: Asthma (Berodual), Z.n. Meniskus-OP, Raucher (20 PY). Gerinnungsmedikament unklar – Rücksprache mit HA angefordert."</div>
+    </div>
+    <div class="step">
+      <div class="snum">4</div>
+      <div class="scont"><strong>VD + DD</strong>
+      „Meine Verdachtsdiagnose: <span class="hl">Sprunggelenksfraktur rechts</span> (V.a. Weber-B). DD: <span class="hlo">Distorsion, Achillessehnenruptur, Kontusion, Maisonneuve-Fraktur</span>."</div>
+    </div>
+    <div class="step">
+      <div class="snum">5</div>
+      <div class="scont"><strong>Procedere</strong>
+      „Sofortmaßnahmen: <span class="hl">DMS-Kontrolle, Analgesie (Ibuprofen), PECH-Schema</span>. Labor: <span class="hlr">Gerinnungsparameter (PTT/INR)</span>. Bildgebung: <span class="hli">Röntgen Sprunggelenk 2 Ebenen</span>. <span class="hlr">Thromboseprophylaxe (Heparin)</span>. Orthopädie-Konsil."</div>
+    </div>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="gn">Kommissionsfragen – Antworten</h3>
+    <table>
+      <tr><th>Frage</th><th>Antwort</th><th>Stadt</th></tr>
+      <tr><td>VD und warum?</td><td>Sprunggelenksfraktur: Supinationstrauma, Druckschmerz Knöchel, Ödem + Hämatom, Bewegungseinschränkung, Gehunfähigkeit</td><td>Alle</td></tr>
+      <tr><td>DD – welche kennen Sie? (Reutlingen: Achillessehne sehr gut!)</td><td>Distorsion (Grad I–III), <strong>Achillessehnenruptur</strong> (Thompson-Test!), Kontusion, Maisonneuve-Fraktur, Fraktur anderer Knochen (Kalkaneus, 5. Metatarsale)</td><td>Reutlingen + Karlsruhe</td></tr>
+      <tr><td>Was ist der Thompson-Test?</td><td>Patient liegt bauchlings. Untersucher drückt die Wade zusammen. Normal: Plantarflexion des Fußes. Positiv = keine Plantarflexion = Achillessehnenruptur!</td><td>Reutlingen</td></tr>
+      <tr><td>Weber-Klassifikation – Unterschiede? (Stuttgart!)</td><td>A = unterhalb Syndesmose → stabil → konservativ. B = auf Höhe → variabel. C = oberhalb → instabil → immer OP! Prüfung: Stressstabilität bei B entscheidend</td><td>Stuttgart 11/2022</td></tr>
+      <tr><td>Weber C – was tun? (Reutlingen!)</td><td>Immer OP! Plattenosteosynthese + Stellschraube + ggf. Syndesmosenschraube. Cave: Maisonneuve-Fraktur ausschließen (ganzes Fibula röntgen!)</td><td>Reutlingen + Stuttgart</td></tr>
+      <tr><td>Wichtigstes Medikament bei diesem Patienten? (Reutlingen!)</td><td><strong>Heparin</strong> (Thromboseprophylaxe)! Wegen Faktor-V-Leiden + Immobilisation durch Gips → TVT-Risiko stark erhöht → Enoxaparin s.c. für 4–5 Wochen</td><td>Reutlingen 05/2023</td></tr>
+      <tr><td>Labor wegen Faktor-V-Leiden?</td><td>PTT, Quick/INR, Thrombozytenzahl. Außerdem fragen: „Hatten Sie schon mal eine Thrombose?" (Karlsruhe: vergessen → wurde angemerkt!)</td><td>Karlsruhe 06/2024</td></tr>
+      <tr><td>Welche Prophylaxe bei Faktor-V-Leiden? (Stuttgart!)</td><td>Thromboseprophylaxe: niedermolekulares Heparin (z.B. Fondaparinoux / Enoxaparin s.c.) für Dauer der Immobilisation</td><td>Stuttgart 11/2022</td></tr>
+      <tr><td>Therapie die Mobilisation erlaubt? (Stuttgart!)</td><td><strong>Aircast-Stiefel / Unterschenkel-Fuß-Orthese (UFO)</strong>! → erlaubt frühzeitige Mobilisation im Gegensatz zum starren Gipsverband → bevorzugt bei Weber A und stabilen B</td><td>Stuttgart 11/2022</td></tr>
+      <tr><td>Orthopädie-Konsil? (Karlsruhe!)</td><td>Ja! „Wir sind keine Chirurgen / Orthopäden" → Konsil oder ggf. Verlegung ins Traumazentrum für OP-Planung</td><td>Karlsruhe 06/2024</td></tr>
+      <tr><td>Wenn Röntgen negativ – was dann?</td><td>CT bei unklarem Befund! Klinisch verdächtig → Gips + Kontrolle nach 5–7 Tagen. MRT bei V.a. Bänderverletzung / Knorpelschaden</td><td>Karlsruhe 06/2024</td></tr>
+      <tr><td>Narkosemöglichkeiten? (Stuttgart 01/2023!)</td><td>Lokalanästhesie / Regionalanästhesie (Fußblockade) / Spinalanästhesie / Vollnarkose. Komplikationen: Allergie auf Anästhetikum, Nervenschaden, Aspiration (Vollnarkose)</td><td>Stuttgart 01/2023</td></tr>
+      <tr><td>Komplikationen der Sprunggelenksfraktur?</td><td>Nachblutung, Wundheilungsstörung, Infektion, Nervenverletzung, TVT, Pseudoarthrose, posttraumatische Arthrose, Implantatversagen</td><td>Alle</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- KAPITEL 5: DD VERGLEICH -->
+<div class="full">
+  <div class="card">
+    <h3 class="pu">DD-Vergleich: Fraktur vs. Distorsion vs. Achillessehnenruptur</h3>
+    <table>
+      <tr><th>Kriterium</th><th>Fraktur</th><th>Distorsion</th><th>Achillessehnenruptur</th></tr>
+      <tr><td><strong>Auslöser</strong></td><td>Umknicken / Supination</td><td>Umknicken / Supination</td><td>Abrupte Plantarflexion, Sprung</td></tr>
+      <tr><td><strong>Schmerz</strong></td><td>Am Knochen (Malleolus)</td><td>Lateral am Band</td><td>Ferse / Wade</td></tr>
+      <tr><td><strong>Ödem</strong></td><td>Stark, rasch</td><td>Mäßig</td><td>Ferse / Achillessehne</td></tr>
+      <tr><td><strong>Hämatom</strong></td><td>Ja, oft groß</td><td>Möglich</td><td>Selten</td></tr>
+      <tr><td><strong>Zehenstand</strong></td><td>Schmerzhaft aber möglich</td><td>Schmerzhaft aber möglich</td><td><strong>NICHT möglich!</strong></td></tr>
+      <tr><td><strong>Thompson-Test</strong></td><td>Negativ</td><td>Negativ</td><td><strong>Positiv (keine Plantarflexion)!</strong></td></tr>
+      <tr><td><strong>Diagnose</strong></td><td>Röntgen 2 Ebenen</td><td>Klinisch + ggf. MRT</td><td>Sonographie / MRT</td></tr>
+      <tr><td><strong>Therapie</strong></td><td>Gips / OP je nach Weber</td><td>PECH + Orthese (4–6 Wo.)</td><td>Konservativ (Spitzfuß-Gips) oder OP</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- KAPITEL 6: PATIENTENSPRACHE -->
+<div class="ch-header ch-orange">
+  <div class="ch-num">06</div>
+  <div class="ch-t">
+    <h2>Fachbegriffe → Patientensprache</h2>
+    <p>Wie erkläre ich dem Patienten, was er hat?</p>
+  </div>
+</div>
+
+<div class="full">
+  <div class="card">
+    <h3 class="or">Übersetzungstabelle</h3>
+    <table class="pt-table">
+      <tr><th>Fachbegriff</th><th>Medizinisch</th><th>Patientensprache</th><th>Typischer Patientensatz</th></tr>
+      <tr><td><strong>Sprunggelenksfraktur</strong></td><td>Knochenbruch am Knöchel</td><td>„Beim Umknicken haben Sie sich wahrscheinlich den Knöchelknochen gebrochen. Das erklärt die Schwellung und die starken Schmerzen."</td><td>„Was habe ich?"</td></tr>
+      <tr><td><strong>Supinationstrauma</strong></td><td>Umknicktrauma nach innen</td><td>„Beim Umknicken ist der Fuß nach innen gekippt – dabei können die Bänder und Knochen am Außenknöchel verletzt werden."</td><td>–</td></tr>
+      <tr><td><strong>Ödem</strong></td><td>Flüssigkeitsansammlung / Schwellung</td><td>„Die Schwellung entsteht durch Blut und Flüssigkeit, die sich nach der Verletzung im Gewebe ansammeln."</td><td>–</td></tr>
+      <tr><td><strong>Röntgen</strong></td><td>Konventionelle Radiographie</td><td>„Ein schnelles Bild der Knochen – damit sehen wir, ob und wo der Knochen gebrochen ist."</td><td>„Werden Sie ein Röntgen machen?"</td></tr>
+      <tr><td><strong>CT</strong></td><td>Computertomographie</td><td>„Eine detailliertere Röntgenuntersuchung, die dreidimensionale Bilder zeigt. Wir liegen in einem Ring – das dauert ca. 10 Minuten."</td><td>–</td></tr>
+      <tr><td><strong>Gips / Orthese (Aircast)</strong></td><td>Ruhigstellung</td><td>„Wir legen entweder einen Gips an – dabei können Sie den Fuß nicht bewegen – oder einen speziellen Stiefel (Orthese), der den Fuß hält aber trotzdem Gehen erlaubt."</td><td>–</td></tr>
+      <tr><td><strong>Plattenosteosynthese</strong></td><td>Operative Frakturstabilisierung</td><td>„Eine Operation, bei der wir die gebrochenen Knochen mit einer Metallplatte und Schrauben zusammenhalten, damit sie richtig heilen."</td><td>„Brauche ich eine OP?"</td></tr>
+      <tr><td><strong>Thromboseprophylaxe (Heparin)</strong></td><td>Blutverdünnung</td><td>„Weil Sie sich nicht bewegen können und eine Blutgerinnungsstörung haben, müssen wir täglich ein blutverdünnendes Medikament spritzen – das verhindert Blutgerinnsel in den Beinen."</td><td>–</td></tr>
+      <tr><td><strong>Faktor-V-Leiden</strong></td><td>Hereditäre Gerinnungsstörung</td><td>„Sie haben eine angeborene Veränderung im Blut, die dazu führt, dass sich leichter Blutgerinnsel bilden können. Deshalb ist die Blutverdünnung besonders wichtig."</td><td>–</td></tr>
+      <tr><td><strong>PECH-Schema</strong></td><td>Erste-Hilfe-Maßnahmen</td><td>„Pause – Eis – Compression (Druckverband) – Hochlagern. Das sind die wichtigsten Sofortmaßnahmen nach einer Sportverletzung."</td><td>–</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PATIENTENREAKTIONEN -->
+<div class="full">
+  <div class="card">
+    <h3>Typische Patientenreaktionen – Musterantworten</h3>
+    <div class="fb gn">
+<span class="cm">// Direkt aus den echten Fällen!</span><br><br>
+🧑 „Geben Sie mir bitte ein Schmerzmittel! Ich habe sehr starke Schmerzen." (Karlsruhe!)<br>
+→ <span class="hlg">„Natürlich – das machen wir sofort. Ich gebe Ihnen ein Schmerzmittel. Darf ich kurz fragen, ob Sie Allergien gegen Medikamente haben und ob Sie schon etwas eingenommen haben?"</span>
+→ Dann handeln, nicht nur versprechen!<br><br>
+🧑 „Werden Sie ein Röntgen machen?" (Karlsruhe!)<br>
+→ <span class="hlg">„Ja, auf jeden Fall. Wir machen ein Röntgenbild des Sprunggelenks in zwei Richtungen – das zeigt uns, ob und wo ein Knochen gebrochen ist."</span><br><br>
+🧑 „Kann ich heute nach Hause gehen?" (Reutlingen!)<br>
+→ <span class="hlg">„Das hängt von den Untersuchungsergebnissen ab. Wenn es eine unkomplizierte Fraktur ist, können wir den Fuß ruhigstellen und Sie nach Hause entlassen. Bei einer instabilen Fraktur, die operiert werden muss, müssen Sie bei uns bleiben."</span><br><br>
+🧑 Der Patient versucht zu verwirrren / redet viel durcheinander (Stuttgart!)<br>
+→ Ruhig bleiben! Kurze Zusammenfassung: <span class="hlg">„Ich fasse kurz zusammen, was Sie mir gesagt haben – damit ich sicher bin, alles richtig verstanden zu haben."</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- FACHBEGRIFFE + ZEITPLAN -->
+<div class="sdiv"><span>Fachbegriffe &amp; Zeitplan</span></div>
+<div class="grid">
+  <div class="card">
+    <h3>Fachbegriffe aus den Prüfungen</h3>
+    <h4>Sprunggelenksfraktur direkt</h4>
+    <div>
+      <span class="tag bl">Sprunggelenksfraktur / Malleolarfraktur</span>
+      <span class="tag bl">Weber A / B / C</span>
+      <span class="tag bl">Syndesmose</span>
+      <span class="tag bl">Supinationstrauma</span>
+      <span class="tag bl">Maisonneuve-Fraktur</span>
+      <span class="tag bl">DMS-Kontrolle</span>
+      <span class="tag bl">Plattenosteosynthese</span>
+      <span class="tag bl">Aircast-Stiefel / Orthese</span>
+      <span class="tag bl">PECH-Schema</span>
+      <span class="tag bl">Ottawa-Regeln</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Faktor-V-Leiden + Gerinnnung</h4>
+    <div>
+      <span class="tag rd">Faktor-V-Leiden-Mutation</span>
+      <span class="tag rd">Thromboseprophylaxe (Heparin!)</span>
+      <span class="tag rd">PTT / INR / Quick</span>
+      <span class="tag rd">TVT (tiefe Venenthrombose)</span>
+      <span class="tag rd">Fondaparinoux / Enoxaparin</span>
+    </div>
+    <h4 style="margin-top:0.8rem">DD + Achillessehne</h4>
+    <div>
+      <span class="tag pu">Distorsion (Grad I–III)</span>
+      <span class="tag pu">Achillessehnenruptur</span>
+      <span class="tag pu">Thompson-Test</span>
+      <span class="tag pu">Kontusion / Prellung</span>
+    </div>
+    <h4 style="margin-top:0.8rem">Sonstige aus Prüfungen</h4>
+    <div>
+      <span class="tag gr">Kontusion</span>
+      <span class="tag gr">Distorsion</span>
+      <span class="tag gr">STIKO</span>
+      <span class="tag gr">Multimorbidität</span>
+      <span class="tag gr">Tonsillitis purulenta</span>
+      <span class="tag gr">Claudicatio intermittens</span>
+      <span class="tag gr">Anxiolyse</span>
+      <span class="tag gr">Exsikkiert</span>
+      <span class="tag gr">Cerebrum</span>
+      <span class="tag gr">Meläna</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="or">Zeitplan &amp; Top-Tipps</h3>
+    <table>
+      <tr><th>Phase</th><th>Zeit</th><th>Fokus</th></tr>
+      <tr><td><span class="badge badge-bl">Patientengespräch</span></td><td><strong>20 Min</strong></td><td>Supinationstrauma genau schildern lassen. Zehenstand möglich? (Achillessehne!). Faktor-V-Leiden: schon Thrombose gehabt? Gerinnungsmedikament? Ibuprofen eingenommen?</td></tr>
+      <tr><td><span class="badge badge-pu">Arztbrief</span></td><td><strong>20 Min</strong></td><td>VD + DD (Thompson-Test!). Diagnostik: Röntgen + DMS + Gerinnungslabor. Therapie: Weber-Typ bestimmt alles. HEPARIN bei Faktor-V-Leiden!!</td></tr>
+      <tr><td><span class="badge badge-gn">AA-Gespräch</span></td><td><strong>20 Min</strong></td><td>Weber A/B/C erklären. Wichtigstes Medikament = Heparin! Thompson-Test. Aircast-Stiefel. Orthopädie-Konsil. Narkoseformen (Stuttgart!).</td></tr>
+    </table>
+
+    <div class="gbox" style="margin-top:1rem">
+      <strong>Reutlingen 24.05.2023:</strong> Prüfer fragte nach Differentialdiagnosen → Achillessehnenruptur nennen! → „mit Achillessehnenruptur waren sie sehr zufrieden." Thompson-Test erklären können!
+    </div>
+    <div class="wbox" style="margin-top:0.8rem">
+      <strong>Karlsruhe 30.06.2024:</strong> Prüfer: „Sind Sie Orthopädin?" (weil Kandidatin Labor und Röntgen korrekt nannte) → Antwort: „Nein." → Prüfer: „Dann veranlassen Sie ein orthopädisches Konsil oder Verlegung." → immer Konsil erwähnen!
+    </div>
+    <div class="bluebox" style="margin-top:0.8rem">
+      <strong>Stuttgart 06.11.2022:</strong> Kandidat sagte „Gips" bei Weber A → Prüfer wollte mehr hören → richtig: <strong>Aircast-Stiefel / Orthese</strong> erlaubt frühe Mobilisation! Besser als starrer Gips bei Weber A.
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:0.78rem; margin-top:3rem; padding-top:1.5rem; border-top: 1px solid var(--border);">
+  FSP Leitfaden · Sprunggelenksfraktur (Malleolarfraktur) + Patientensprache · Reutlingen · Stuttgart · Karlsruhe · Aus echten Prüfungsberichten
+</div>
+
+</div>
+</body>
+</html>
